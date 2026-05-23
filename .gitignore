@@ -12,3 +12,6 @@ node_modules/
 # Claude Code local state and hidden file histories
 .claude/settings.local.json
 .claude/file-history/
+
+# Nano-banana / image-gen local output cache (originals live in Cloudinary)
+generated_imgs/

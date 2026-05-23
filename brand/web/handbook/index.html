@@ -4,9 +4,11 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="robots" content="noindex, nofollow" />
-  <title>Intern Handbook — Human AI Marketing</title>
-  <meta name="description" content="Onboarding handbook for Human AI Marketing apprentices. Internal use only." />
+  <title>API Keys — Intern Handbook · Human AI Marketing</title>
+  <meta name="description" content="How interns set up and safely use the shared Gemini, OpenAI, and Cloudinary API keys. Internal use only." />
 
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg" />
+  <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" />
@@ -22,8 +24,8 @@
       <a class="brand" href="#top">
         <span class="brand__human">human</span><span class="brand__sep">·</span><span class="brand__ai">AI</span><span class="brand__sep">·</span><span class="brand__mark">marketing</span>
       </a>
-      <span class="masthead__title">Intern Handbook</span>
-      <span class="masthead__stamp">v1 · Internal</span>
+      <span class="masthead__title">Intern Handbook · API Keys</span>
+      <span class="masthead__stamp">1 of 3 · Internal</span>
     </div>
     <div class="progress"><span></span></div>
   </header>
@@ -33,82 +35,51 @@
     <nav class="toc" aria-label="Sections">
       <p class="toc__label">Contents</p>
       <ol>
-        <li><a href="#welcome"><span class="toc__num">I</span><span class="toc__text">Welcome</span></a></li>
-        <li><a href="#prerequisites"><span class="toc__num">II</span><span class="toc__text">Prerequisites</span></a></li>
-        <li><a href="#keys"><span class="toc__num">III</span><span class="toc__text">Getting your API keys</span></a></li>
-        <li><a href="#clone"><span class="toc__num">IV</span><span class="toc__text">Cloning a project</span></a></li>
-        <li><a href="#env"><span class="toc__num">V</span><span class="toc__text">The .env file</span></a></li>
-        <li><a href="#claude"><span class="toc__num">VI</span><span class="toc__text">Claude Code safety</span></a></li>
-        <li><a href="#workflow"><span class="toc__num">VII</span><span class="toc__text">Daily workflow</span></a></li>
-        <li><a href="#ai-calls"><span class="toc__num">VIII</span><span class="toc__text">Where AI calls happen</span></a></li>
-        <li><a href="#deploy"><span class="toc__num">IX</span><span class="toc__text">Deploying</span></a></li>
-        <li><a href="#stuck"><span class="toc__num">X</span><span class="toc__text">When you're stuck</span></a></li>
-        <li><a href="#checklist"><span class="toc__num">XI</span><span class="toc__text">Pre-commit checklist</span></a></li>
+        <li><a href="#welcome"><span class="toc__num">I</span><span class="toc__text">About the shared services</span></a></li>
+        <li><a href="#keys"><span class="toc__num">II</span><span class="toc__text">What you need from Gary</span></a></li>
+        <li><a href="#env"><span class="toc__num">III</span><span class="toc__text">Set up your local <code>.env</code></span></a></li>
+        <li><a href="#ai-calls"><span class="toc__num">IV</span><span class="toc__text">Using the keys in code</span></a></li>
+        <li><a href="#checklist"><span class="toc__num">V</span><span class="toc__text">Don't leak the keys</span></a></li>
       </ol>
+      <p class="toc__series-label">Other articles</p>
+      <ul class="toc__series">
+        <li><span class="toc__series-num">2</span><span>Setting up Claude Code <em>(soon)</em></span></li>
+        <li><span class="toc__series-num">3</span><a href="git/">Using Git &amp; GitHub</a></li>
+      </ul>
     </nav>
 
     <article class="prose">
 
       <header class="hero">
-        <p class="eyebrow">For apprentices · Internal only</p>
-        <h1>How to ship your first week.</h1>
-        <p class="lede">You're working on <em>Human AI Marketing</em> — where we bring big-budget marketing capabilities to Tri-Cities businesses by pairing apprentice talent with AI tools we operate as a team. This handbook is everything you need to start contributing safely.</p>
+        <p class="eyebrow">Intern handbook · Article 1 of 3</p>
+        <h1>Setting up the shared API keys.</h1>
+        <p class="lede">Three production API services are shared across the team and used on every project at <em>Human AI Marketing</em>. This article covers how you get access to them, set them up locally, use them safely in code, and avoid leaking them.</p>
       </header>
 
       <section id="welcome" class="section">
         <p class="section__num">I.</p>
-        <h2>Welcome</h2>
-        <p>You'll be building and maintaining client sites, writing copy, and generating creative with our AI tools. The work is real — what you ship reaches local business owners in Batavia, Geneva, and St. Charles.</p>
-        <p>A few things we operate as a single team — not per intern, not per project — and treat as <strong>shared production resources</strong>:</p>
+        <h2>About the shared services</h2>
+        <p>Three production services are operated as a single team account — not per intern, not per project — and treated as <strong>shared production resources</strong>:</p>
         <ul>
           <li><strong>Gemini Nano Banana</strong> — Google's image-generation API</li>
           <li><strong>OpenAI Image 2</strong> — OpenAI's image-generation API</li>
           <li><strong>Cloudinary</strong> — media storage, transformation, and delivery</li>
         </ul>
-        <p>Because the bills are pooled, leaked credentials are <em>everyone's</em> problem. The rest of this handbook is mostly about protecting that shared trust.</p>
-      </section>
-
-      <section id="prerequisites" class="section">
-        <p class="section__num">II.</p>
-        <h2>Prerequisites</h2>
-        <p>We work entirely from the terminal — no IDE. Install these before your first day. All are free.</p>
-        <ul class="checklist">
-          <li><strong>A terminal</strong>
-            <ul>
-              <li><em>macOS:</em> built-in Terminal app. Find it in <em>Applications → Utilities → Terminal</em>, or press <kbd>⌘</kbd> + <kbd>Space</kbd> and type "Terminal".</li>
-              <li><em>Windows:</em> use <strong>Git Bash</strong>, which is installed as part of Git for Windows (next item). It gives you the same bash shell, commands, and keyboard shortcuts we use on Mac. Open it from the Start menu after install.</li>
-            </ul>
-          </li>
-          <li><strong>Git</strong>
-            <ul>
-              <li><em>macOS:</em> usually pre-installed. Run <code>git --version</code> to confirm. If missing, install Xcode Command Line Tools.</li>
-              <li><em>Windows:</em> download from <a href="https://git-scm.com/download/win">git-scm.com/download/win</a>. The installer also gives you Git Bash. Use all default options.</li>
-            </ul>
-          </li>
-          <li><strong>Node.js (LTS)</strong> — JavaScript runtime. <a href="https://nodejs.org">nodejs.org</a> (download for your OS; the installer handles the rest).</li>
-          <li><strong>Claude Code CLI</strong> — our AI pair-programmer; this is how we edit files. <a href="https://docs.claude.com/en/docs/claude-code">docs.claude.com/en/docs/claude-code</a></li>
-          <li><strong>nano</strong> — simple terminal text editor. Already there: pre-installed on macOS Terminal, and bundled with Git Bash on Windows. We use it for files you need to edit by hand (like <code>.env</code>), since pasting secret keys into Claude is off-limits.</li>
-          <li><strong>A GitHub account</strong>. Send your username to Gary so you can be added to the org and get repo access.</li>
-          <li><strong>GitHub CLI (<code>gh</code>)</strong> — lets Claude open PRs, fetch preview URLs, and check PR status from the terminal so you never have to leave your work.
-            <ul>
-              <li><em>macOS:</em> <code>brew install gh</code>, or download from <a href="https://cli.github.com">cli.github.com</a>.</li>
-              <li><em>Windows:</em> <code>winget install --id GitHub.cli</code> in PowerShell, or download from <a href="https://cli.github.com">cli.github.com</a>.</li>
-              <li><em>Then, once:</em> run <code>gh auth login</code> and follow the prompts to link your GitHub account. You only do this one time per machine.</li>
-            </ul>
-          </li>
-        </ul>
+        <p>Because the bills are pooled, leaked credentials are <em>everyone's</em> problem. The rest of this article is mostly about protecting that shared trust.</p>
       </section>
 
       <section id="keys" class="section">
-        <p class="section__num">III.</p>
-        <h2>Getting your API keys</h2>
-        <p>Each project repo includes a password-protected file called <code>apikeys.zip</code> in the root. Inside is a single <code>.env</code> file with all three credentials Gary maintains for the team:</p>
+        <p class="section__num">II.</p>
+        <h2>What you need from Gary</h2>
+        <p>When you clone a project, almost everything you need to use the shared API keys is already in the repo:</p>
         <ul>
-          <li><code>GEMINI_API_KEY</code></li>
-          <li><code>OPENAI_API_KEY</code></li>
-          <li><code>CLOUDINARY_URL</code></li>
+          <li><code>apikeys.zip</code> — a password-protected archive containing all three credentials</li>
+          <li><code>scripts/test-apis.mjs</code> — a smoke test that verifies your setup works</li>
+          <li><code>.gitignore</code> — already configured to keep your unzipped <code>.env</code> out of git</li>
+          <li><code>.claudeignore</code> and <code>.claude/settings.json</code> — already configured so Claude Code never indexes your secrets</li>
         </ul>
-        <p>To open the zip, you need the <strong>unzip password</strong>. Gary sends it to you through <strong>1Password</strong> (or another secure share) — never in Slack, email, or any public channel. Once you have it, you'll use it in <a href="#env">Section V</a> to extract your <code>.env</code>.</p>
+        <p>The <em>one</em> thing not in the repo is the <strong>unzip password</strong>. Gary sends it to you through <strong>1Password</strong> (or another secure share) — never in Slack, email, or any public channel. Without that password, the contents of <code>apikeys.zip</code> stay locked even though the file itself is right there in the project.</p>
+        <p>Once you have the password, you'll use it in <a href="#env">Section III</a>.</p>
 
         <div class="callout callout--danger">
           <p class="callout__label">Do not</p>
@@ -123,90 +94,9 @@
         </div>
       </section>
 
-      <section id="clone" class="section">
-        <p class="section__num">IV.</p>
-        <h2>Cloning a project</h2>
-        <p>Each project lives in its own repo under <code>github.com/garyricke/</code>. To start work on one:</p>
-        <pre class="code"><code>git clone https://github.com/garyricke/&lt;project-name&gt;.git
-cd &lt;project-name&gt;</code></pre>
-        <p>You're now inside the project directory. With hidden files visible (see the tip at the end of <a href="#env">Section V</a>), the root folder looks roughly like this:</p>
-
-        <figure class="finder-mock" aria-label="Mockup of the project root folder shown in macOS Finder column view, with hidden files visible and the .claude folder selected to reveal its contents.">
-          <div class="finder-mock__window">
-            <div class="finder-mock__pane finder-mock__pane--list">
-              <ul>
-                <li class="finder-mock__row is-folder is-hidden is-selected">
-                  <span class="finder-mock__icon finder-mock__icon--folder" aria-hidden="true"></span>
-                  <span class="finder-mock__name">.claude</span>
-                  <span class="finder-mock__chevron" aria-hidden="true">›</span>
-                </li>
-                <li class="finder-mock__row is-hidden">
-                  <span class="finder-mock__icon finder-mock__icon--file" aria-hidden="true"></span>
-                  <span class="finder-mock__name">.claudeignore</span>
-                </li>
-                <li class="finder-mock__row is-hidden">
-                  <span class="finder-mock__icon finder-mock__icon--file" aria-hidden="true"></span>
-                  <span class="finder-mock__name">.env</span>
-                </li>
-                <li class="finder-mock__row is-folder is-hidden">
-                  <span class="finder-mock__icon finder-mock__icon--folder" aria-hidden="true"></span>
-                  <span class="finder-mock__name">.git</span>
-                  <span class="finder-mock__chevron" aria-hidden="true">›</span>
-                </li>
-                <li class="finder-mock__row is-hidden">
-                  <span class="finder-mock__icon finder-mock__icon--file" aria-hidden="true"></span>
-                  <span class="finder-mock__name">.gitignore</span>
-                </li>
-                <li class="finder-mock__row">
-                  <span class="finder-mock__icon finder-mock__icon--file" aria-hidden="true"></span>
-                  <span class="finder-mock__name">apikeys.zip</span>
-                </li>
-                <li class="finder-mock__row is-folder">
-                  <span class="finder-mock__icon finder-mock__icon--folder" aria-hidden="true"></span>
-                  <span class="finder-mock__name">brand</span>
-                  <span class="finder-mock__chevron" aria-hidden="true">›</span>
-                </li>
-                <li class="finder-mock__row is-folder">
-                  <span class="finder-mock__icon finder-mock__icon--folder" aria-hidden="true"></span>
-                  <span class="finder-mock__name">scripts</span>
-                  <span class="finder-mock__chevron" aria-hidden="true">›</span>
-                </li>
-              </ul>
-            </div>
-            <div class="finder-mock__pane finder-mock__pane--detail" aria-label="Contents of selected folder .claude">
-              <p class="finder-mock__detail-label">Inside <code>.claude/</code></p>
-              <ul>
-                <li class="finder-mock__row">
-                  <span class="finder-mock__icon finder-mock__icon--json" aria-hidden="true"></span>
-                  <span class="finder-mock__name">settings.json</span>
-                </li>
-                <li class="finder-mock__row">
-                  <span class="finder-mock__icon finder-mock__icon--json" aria-hidden="true"></span>
-                  <span class="finder-mock__name">settings.local.json</span>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <figcaption>
-            <p><strong>What each item does</strong> — read the orange names left-to-right:</p>
-            <dl class="finder-mock__legend">
-              <dt><code>.claude/</code></dt><dd>Shared Claude Code rules for the project. <code>settings.json</code> ships with the repo and applies to everyone; <code>settings.local.json</code> is your personal preferences (gitignored).</dd>
-              <dt><code>.claudeignore</code></dt><dd>Tells Claude Code to never read or index your <code>.env</code>.</dd>
-              <dt><code>.env</code></dt><dd>Your API keys. Created when you unzip <code>apikeys.zip</code>. Lives only on your machine. Gitignored.</dd>
-              <dt><code>.git/</code></dt><dd>Git's internal bookkeeping for the project. Auto-managed — never edit by hand.</dd>
-              <dt><code>.gitignore</code></dt><dd>Lists patterns Git will refuse to track (including <code>.env</code>).</dd>
-              <dt><code>apikeys.zip</code></dt><dd>Password-protected archive containing the team's shared API credentials. Committed to the repo. <a href="#env">Unzip with Gary's password</a> to extract your <code>.env</code>.</dd>
-              <dt><code>scripts/</code></dt><dd>Project utility scripts. Includes <code>test-apis.mjs</code> for verifying your <code>.env</code> works end-to-end.</dd>
-            </dl>
-          </figcaption>
-        </figure>
-
-        <p>If you don't see the dotted entries (<code>.env</code>, <code>.claude</code>, etc.) in Finder or File Explorer, they're being hidden by the OS — see the next section for how to reveal them.</p>
-      </section>
-
       <section id="env" class="section">
-        <p class="section__num">V.</p>
-        <h2>The <code>.env</code> file</h2>
+        <p class="section__num">III.</p>
+        <h2>Set up your local <code>.env</code></h2>
         <p>Each project includes a password-protected file called <code>apikeys.zip</code> at the root. Open it once on your machine to create your local <code>.env</code> file:</p>
         <pre class="code"><code>unzip apikeys.zip</code></pre>
         <p>When prompted for the password, paste the one Gary sent you. It won't echo as you type — that's normal. On success, a <code>.env</code> file appears in your project root, containing all three credentials and ready to use.</p>
@@ -292,200 +182,10 @@ cd &lt;project-name&gt;</code></pre>
         </div>
       </section>
 
-      <section id="claude" class="section">
-        <p class="section__num">VI.</p>
-        <h2>Claude Code safety</h2>
-        <p>Each project ships with two safety files that run in the background:</p>
-        <ul>
-          <li><code>.claudeignore</code> — tells Claude Code to never index your <code>.env</code></li>
-          <li><code>.claude/settings.json</code> — shared sensitive-pattern rules</li>
-        </ul>
-        <p>You don't need to interact with these. But there are still habits to keep:</p>
-        <ul>
-          <li><strong>Don't paste raw keys into Claude conversations.</strong> Reference them as <code>$OPENAI_API_KEY</code> if needed; let Claude read <code>.env</code> patterns through your shell.</li>
-          <li><strong>Review every diff before committing.</strong> Claude is fast and helpful, but you are the engineer of record. If a generated commit drops in an unfamiliar import, ask why.</li>
-          <li><strong>When Claude needs to run scripts that touch APIs,</strong> load your <code>.env</code> values into the terminal <em>before</em> you launch Claude. Run both commands in the same terminal window, in this order:</li>
-        </ul>
-        <pre class="code"><code># Step 1 — load .env into your current shell (do this FIRST)
-export $(cat .env | xargs)
-
-# Step 2 — now launch Claude (it inherits the loaded env vars)
-claude</code></pre>
-        <p>If you start Claude first and then try to export, the variables won't reach Claude — you'd have to quit (<kbd>Ctrl</kbd> + <kbd>C</kbd>) and start over.</p>
-      </section>
-
-      <section id="workflow" class="section">
-        <p class="section__num">VII.</p>
-        <h2>Daily workflow</h2>
-
-        <h3>First: which mode is the project in?</h3>
-        <p>Projects pass through two phases. Which one you're in changes how you ship.</p>
-
-        <div class="mode-grid">
-          <div class="mode-card mode-card--build">
-            <p class="mode-card__label">Build mode</p>
-            <p class="mode-card__when">Site isn't live yet. No customers reaching it, no client reviewing changes. You (and maybe Gary) are prototyping fast.</p>
-            <p class="mode-card__rule">Direct push to <code>main</code> is fine. Branches and PRs are overhead you don't need yet.</p>
-            <p class="mode-card__flow-label">The flow:</p>
-            <ol class="mode-card__flow">
-              <li><code>git pull</code> — get the latest</li>
-              <li>Edit (with Claude)</li>
-              <li><code>git commit -m "&hellip;"</code></li>
-              <li><code>git push</code> — straight to <code>main</code></li>
-            </ol>
-          </div>
-          <div class="mode-card mode-card--live">
-            <p class="mode-card__label">Live mode</p>
-            <p class="mode-card__when">Site is in production. Real customers reach it, the client may be reviewing changes, multiple people may touch the code.</p>
-            <p class="mode-card__rule">Always branch + PR + preview + merge. The 8-step flow below.</p>
-            <p class="mode-card__flow-label">The flow:</p>
-            <ol class="mode-card__flow">
-              <li>Pull <code>main</code></li>
-              <li>Make a branch</li>
-              <li>Edit (with Claude)</li>
-              <li>Commit</li>
-              <li>Push branch</li>
-              <li>Open PR (preview URL appears)</li>
-              <li>Check preview yourself / send to client</li>
-              <li>Merge to <code>main</code></li>
-            </ol>
-          </div>
-        </div>
-
-        <p><strong>How to tell which mode you're in:</strong> Is there a public URL where real customers reach this site today? <em>Live mode.</em> Could you break things without anyone outside the team noticing? <em>Build mode.</em> When in doubt, <strong>ask Gary before your first push</strong> — guessing wrong in either direction has real costs (extra friction in Build mode, broken site for customers in Live mode).</p>
-
-        <h3 class="workflow-section-heading">The Live mode workflow, in eight steps</h3>
-
-        <h3>1. Pull the latest <code>main</code></h3>
-        <pre class="code"><code>git checkout main
-git pull</code></pre>
-        <p><code>git checkout main</code> switches you to the <code>main</code> branch (production code). <code>git pull</code> downloads any new commits from GitHub and merges them into your local copy. Always do these two together, in this order, at the start of each work session — otherwise you'll be building on stale code.</p>
-
-        <h3>2. Make a branch for your work</h3>
-        <pre class="code"><code>git checkout -b feat/&lt;your-name&gt;/&lt;short-description&gt;
-# example: feat/maya/testimonial-section</code></pre>
-        <p>A <strong>branch</strong> is your own personal copy of the code, isolated from everyone else's work. While you're on your branch, you can change anything without affecting <code>main</code> or what other interns are doing. When the work is reviewed and approved, your branch is merged back in.</p>
-        <p>Branch even for one-line fixes. Name it <code>feat/your-name/short-description</code> so it's clear at a glance who's working on what.</p>
-
-        <div class="callout callout--info">
-          <p class="callout__label">Why branches matter for interns</p>
-          <p>If you skip branching and edit <code>main</code> directly, your unfinished work goes straight to production the moment you push — and you'll collide with anyone else editing the same files. Branches give every intern their own sandbox.</p>
-        </div>
-
-        <h3>3. Edit files (Claude does the heavy lifting)</h3>
-        <p>This is where you describe what you want, and Claude Code makes the changes. Claude also handles the <code>git add</code> step (which tells git which files to include in your next commit), so you don't usually need to run it yourself.</p>
-
-        <h3>4. Save your work with a commit</h3>
-        <pre class="code"><code>git commit -m "Add testimonial section to homepage"</code></pre>
-        <p>A <strong>commit</strong> is a save point — a snapshot of your changes recorded in your local git history. It does <em>not</em> reach GitHub yet; it lives only on your laptop. You can make many commits in a row as you work.</p>
-
-        <button type="button" class="info-trigger" data-dialog="why-commit" aria-haspopup="dialog">
-          <span class="info-trigger__icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" width="28" height="28">
-              <circle cx="12" cy="12" r="10.5" fill="none" stroke="currentColor" stroke-width="1.6"/>
-              <circle cx="12" cy="7.4" r="1.4" fill="currentColor"/>
-              <path d="M12 11.2 L12 17.2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-            </svg>
-          </span>
-          <span class="info-trigger__label">
-            <span class="info-trigger__eyebrow">Tap to read more</span>
-            <span class="info-trigger__title">Why multiple commits before pushing?</span>
-          </span>
-          <span class="info-trigger__arrow" aria-hidden="true">→</span>
-        </button>
-
-        <p>Write messages in clear, present-tense words: <em>"Add testimonial section,"</em> <em>"Fix mobile nav overlap,"</em> not <em>"stuff"</em> or <em>"wip."</em> Your future self and your reviewer will thank you.</p>
-
-        <h3>5. Push your commits to GitHub</h3>
-        <pre class="code"><code># first time pushing a new branch
-git push -u origin &lt;branch-name&gt;
-
-# every push after that
-git push</code></pre>
-        <p>A <strong>push</strong> uploads your local commits to GitHub. Once pushed, your work is visible to the team in the remote repo. The <code>-u origin &lt;branch-name&gt;</code> on the first push sets up tracking — after that, plain <code>git push</code> knows where to send things.</p>
-
-        <div class="callout callout--info">
-          <p class="callout__label">Commit vs. push, in one sentence</p>
-          <p><code>git commit</code> saves a snapshot to <strong>your laptop only</strong>. <code>git push</code> uploads those snapshots to <strong>GitHub</strong>, where the team can see them. You can commit many times before pushing; you cannot push without committing first.</p>
-        </div>
-
-        <h3>6. Open a Pull Request</h3>
-        <p>The easiest way: <strong>ask Claude.</strong> In your terminal, say something like:</p>
-        <pre class="code"><code>Push my branch and open a PR. Give me the preview URL when Netlify has it.</code></pre>
-        <p>Claude runs <code>gh pr create</code> behind the scenes, then watches the PR for the Netlify preview comment and hands you the URL once it's live. You never have to leave the terminal.</p>
-        <p>If you'd rather do it manually: go to the project's page on GitHub, click the <em>"Compare &amp; pull request"</em> banner for your branch, write a sentence or two describing what you changed, and create the PR.</p>
-        <p>Either way, the moment your PR exists, Netlify automatically builds a <strong>preview deploy</strong> — a temporary URL where your branch is live, exactly as it would appear in production.</p>
-
-        <div class="callout callout--info">
-          <p class="callout__label">Share previews with clients</p>
-          <p>The preview URL is a real, working website with just your branch's changes. It's perfect for sending to a client for sign-off <em>before</em> anything goes live. The URL stays active until the PR is merged or closed, and it auto-updates with every new push to the branch — so you can iterate based on client feedback and just send the same link again.</p>
-        </div>
-
-        <h3>7. Check your own work on the preview</h3>
-        <p>Open the preview URL and click through everything you changed:</p>
-        <ul>
-          <li>Does the thing you built actually do what you intended?</li>
-          <li>Does it look right at desktop sizes <em>and</em> at phone-sized widths?</li>
-          <li>Did anything unrelated break elsewhere — links, other pages, layouts you didn't touch?</li>
-        </ul>
-        <p>If you find a problem, fix it locally, commit, and push again to the same branch. The preview auto-rebuilds with every push. Repeat until you're satisfied.</p>
-
-        <div class="callout callout--info">
-          <p class="callout__label">Each person checks their own work</p>
-          <p>There is no separate reviewer waiting to catch your mistakes. Once you click <em>Merge</em>, your changes are live on the real site. So before you merge: <strong>open the preview, click around, confirm the change works and nothing else broke</strong>. The bar is the same one Gary holds himself to — ship it only when you'd want to see it live.</p>
-          <p>If you're genuinely unsure whether something looks right, drop a link to the preview in <code>#interns</code> or DM Gary <em>before</em> you merge — much cheaper than rolling back from production.</p>
-        </div>
-
-        <h3>8. Merge the PR to <code>main</code></h3>
-        <p>Once the preview looks right, you can merge from the terminal — just tell Claude:</p>
-        <pre class="code"><code>The preview looks good. Merge the PR and delete the branch.</code></pre>
-        <p>Claude runs <code>gh pr merge --delete-branch</code> behind the scenes. Netlify auto-deploys <code>main</code> to production within a minute or two, and your branch is cleaned up.</p>
-        <p>Or, manually: scroll to the bottom of your PR on GitHub, click <strong>Merge pull request</strong>, then confirm. Click the button to delete the branch when it appears next to the merge confirmation.</p>
-
-        <div class="callout callout--warning">
-          <p class="callout__label">Never push directly to <code>main</code> on a Live mode project</p>
-          <p>On Live mode, <code>main</code> serves real customers right now. Your changes always go through a branch and a PR — even when you're the one merging. The PR is what creates the preview you test against; skip it and you'd be shipping blind. (Build mode is different — see the top of this section.)</p>
-        </div>
-
-        <h3 class="workflow-section-heading">A worked example: Live mode in practice</h3>
-
-        <div class="example">
-          <p class="example__scenario"><strong>Scenario.</strong> Your client, the St. Charles Bakery, has a live site at <code>stcharlesbakery.com</code>. Sarah from the bakery emails: <em>"Can we add a testimonials section to the homepage?"</em></p>
-
-          <p class="example__step-label">1. Pull and branch</p>
-          <pre class="code"><code>git checkout main
-git pull
-git checkout -b feat/maya/add-testimonials</code></pre>
-
-          <p class="example__step-label">2. Tell Claude what you want</p>
-          <blockquote class="example__say">"Add a testimonials section to the homepage. Pull three quotes from the document Sarah sent yesterday. Use the same card pattern as the services section."</blockquote>
-          <p class="example__note">Claude edits the files.</p>
-
-          <p class="example__step-label">3. Commit, push, and get the preview URL — all in one ask</p>
-          <blockquote class="example__say">"Commit those changes, push my branch, and open a PR. Give me the preview URL when Netlify has it."</blockquote>
-          <p class="example__note">Claude returns the preview URL:</p>
-          <pre class="code"><code>https://feat-maya-add-testimonials--stcharlesbakery.netlify.app</code></pre>
-
-          <p class="example__step-label">4. Check the preview yourself, then send to Sarah</p>
-          <p>Open the URL. Confirm the testimonials look right on desktop and at phone width. Click around the rest of the site to make sure nothing else broke. Then email Sarah:</p>
-          <blockquote class="example__say example__say--client">"Hi Sarah — here's the testimonials section we discussed: [preview URL]. Let me know if you'd like any changes."</blockquote>
-
-          <p class="example__step-label">5. Iterate on Sarah's feedback</p>
-          <p>Sarah replies: <em>"Looks great, but can the quotes be a bit bigger?"</em></p>
-          <blockquote class="example__say">"Bump the testimonial quote font size to about 1.25rem, commit, and push it."</blockquote>
-          <p class="example__note">Claude edits, commits, pushes. The same preview URL auto-updates with the new build. Send Sarah the same link again.</p>
-
-          <p class="example__step-label">6. Sarah approves — merge it</p>
-          <p>Sarah: <em>"Perfect, ship it."</em></p>
-          <blockquote class="example__say">"The preview looks good and the client approved. Merge the PR and delete the branch."</blockquote>
-          <p class="example__note">Claude merges. <code>stcharlesbakery.com</code> auto-deploys with the new testimonials within a minute or two. Done.</p>
-        </div>
-      </section>
-
       <section id="ai-calls" class="section">
-        <p class="section__num">VIII.</p>
-        <h2>Where AI calls happen</h2>
-        <p>This is the single most important rule in this document. Read it twice.</p>
+        <p class="section__num">IV.</p>
+        <h2>Using the keys in code</h2>
+        <p>This is the single most important rule for shared keys. Read it twice.</p>
 
         <div class="callout callout--danger">
           <p class="callout__label">Never call AI APIs from browser JavaScript</p>
@@ -517,34 +217,9 @@ export default async (req) => {
         <p>The browser calls <code>/.netlify/functions/generate-image</code>. The key never leaves the server.</p>
       </section>
 
-      <section id="deploy" class="section">
-        <p class="section__num">IX.</p>
-        <h2>Deploying</h2>
-        <p>Netlify watches each project's <code>main</code> branch. When a PR merges to <code>main</code>, the site auto-deploys to production within a minute or two.</p>
-        <p>Every PR also gets a <strong>preview deploy</strong> — Netlify posts a unique URL as a PR comment. This is where you check your work before merging it to <code>main</code>. See <a href="#workflow">step 7 of the daily workflow</a>.</p>
-        <p>If the preview build fails, click the "Details" link from the PR to see the error log. Build failures are usually:</p>
-        <ul>
-          <li>Missing environment variable (Gary will add it in the Netlify dashboard)</li>
-          <li>Syntax error your editor didn't catch</li>
-          <li>A file path that works on your machine (macOS and Windows both treat filenames as case-insensitive by default) but not on Netlify's Linux build servers (case-sensitive)</li>
-        </ul>
-      </section>
-
-      <section id="stuck" class="section">
-        <p class="section__num">X.</p>
-        <h2>When you're stuck</h2>
-        <p>Don't spend more than thirty minutes stuck on the same thing. Ask early.</p>
-        <ul>
-          <li><strong>Slack:</strong> <code>#interns</code> channel — or DM Gary directly</li>
-          <li><strong>Email:</strong> <a href="mailto:gary.ricke@orbisdesign.com">gary.ricke@orbisdesign.com</a></li>
-          <li><strong>Async is fine</strong> — leave a thread with what you tried, even if no one's online. Future-you will read it back later.</li>
-        </ul>
-        <p>There are no stupid questions during onboarding. There <em>are</em> questions that get more expensive the longer you sit on them.</p>
-      </section>
-
       <section id="checklist" class="section">
-        <p class="section__num">XI.</p>
-        <h2>Pre-commit security checklist</h2>
+        <p class="section__num">V.</p>
+        <h2>Don't leak the keys</h2>
         <p>Run through this every time before you push. It takes ten seconds and will save you the worst week of your apprenticeship.</p>
         <ul class="checklist checklist--final">
           <li>Run <code>git status</code> — is <code>.env</code> anywhere in the output? If yes, stop. Don't commit.</li>
@@ -557,33 +232,6 @@ export default async (req) => {
 
     </article>
   </main>
-
-  <dialog id="why-commit" class="info-dialog" aria-labelledby="why-commit-title">
-    <div class="info-dialog__body">
-      <button type="button" class="info-dialog__close" aria-label="Close" data-close-dialog>&times;</button>
-      <p class="info-dialog__eyebrow">More on commits</p>
-      <h3 id="why-commit-title">Why multiple commits before a push?</h3>
-      <p class="info-dialog__lede">A commit is a focused save point. A push is "going public." Doing several small commits before a single push gives you four real benefits.</p>
-
-      <h4>1. Undo specific things</h4>
-      <p>If a later commit breaks something, you can revert just that one commit and keep the rest of your work intact. One huge commit forces you to throw out the good with the bad.</p>
-
-      <h4>2. Readable history</h4>
-      <p>Six months from now, running <code>git blame</code> on any line points to the commit that introduced it — with whatever message you wrote. <em>"Add scroll-fade animation"</em> answers the question instantly. <em>"stuff"</em> doesn't.</p>
-
-      <h4>3. Easier PR review</h4>
-      <p>Small commits let Gary follow your thinking step by step. One huge commit makes review slow, and bugs slip past unnoticed because there's too much to read at once.</p>
-
-      <h4>4. Safe experimentation</h4>
-      <p>Commit, try something, commit again. If experiment #3 turns out to be a dead end, you can rewind to commit #2 — without losing the in-between work you might still want.</p>
-
-      <div class="info-dialog__rule"></div>
-
-      <h4>Rule of thumb</h4>
-      <p>If your commit message has the word <em>"and"</em> in it, it should probably be multiple commits instead:</p>
-      <blockquote class="info-dialog__quote">"Add testimonials <em>and</em> fix nav <em>and</em> update colors" → three separate commits.</blockquote>
-    </div>
-  </dialog>
 
   <footer class="footer">
     <div class="footer__inner">
