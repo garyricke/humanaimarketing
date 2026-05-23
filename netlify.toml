@@ -1,6 +1,11 @@
-[build]
-  publish = "."
+# Netlify build/runtime config.
+# The static site lives in brand/web/. Edge functions live alongside it.
 
+[build]
+  publish = "brand/web"
+  edge_functions = "brand/web/netlify/edge-functions"
+
+# Password-gate the intern handbook (Basic Auth in auth.js).
 [[edge_functions]]
   function = "auth"
   path = "/handbook"
@@ -9,6 +14,7 @@
   function = "auth"
   path = "/handbook/*"
 
+# Site-wide security headers.
 [[headers]]
   for = "/*"
   [headers.values]
@@ -17,11 +23,13 @@
     Referrer-Policy = "strict-origin-when-cross-origin"
     Permissions-Policy = "geolocation=(), microphone=(), camera=()"
 
+# Keep the handbook out of search engines.
 [[headers]]
   for = "/handbook/*"
   [headers.values]
     X-Robots-Tag = "noindex, nofollow"
 
+# Long-cache static assets (filenames are stable, contents are versioned via Cloudinary).
 [[headers]]
   for = "/*.css"
   [headers.values]
