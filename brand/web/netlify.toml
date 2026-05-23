@@ -1,6 +1,14 @@
 [build]
   publish = "."
 
+[[edge_functions]]
+  function = "auth"
+  path = "/handbook"
+
+[[edge_functions]]
+  function = "auth"
+  path = "/handbook/*"
+
 [[headers]]
   for = "/*"
   [headers.values]
@@ -8,6 +16,11 @@
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "strict-origin-when-cross-origin"
     Permissions-Policy = "geolocation=(), microphone=(), camera=()"
+
+[[headers]]
+  for = "/handbook/*"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
 
 [[headers]]
   for = "/*.css"

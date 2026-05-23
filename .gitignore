@@ -2,7 +2,6 @@
 .env
 .env.local
 .env.*
-!key.env.example
 *.pem
 
 # Dependency & System Logs
