@@ -1,0 +1,18 @@
+{
+  "sensitive": {
+    "envPatterns": ["*_KEY", "*_SECRET", "*_TOKEN", "CLOUDINARY_URL"],
+    "paths": [".env", ".env.local", ".env.*", "**/secrets/**"]
+  },
+  "permissions": {
+    "deny": [
+      {
+        "tool": "FileSystem",
+        "path": ".env"
+      },
+      {
+        "tool": "FileSystem",
+        "path": ".env.*"
+      }
+    ]
+  }
+}

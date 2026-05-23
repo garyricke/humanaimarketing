@@ -1,6 +1,15 @@
-.DS_Store
-.claude/settings.local.json
-node_modules/
-*.log
+# Secrets and Credentials
 .env
 .env.local
+.env.*
+!key.env.example
+*.pem
+
+# Dependency & System Logs
+node_modules/
+*.log
+.DS_Store
+
+# Claude Code local state and hidden file histories
+.claude/settings.local.json
+.claude/file-history/
