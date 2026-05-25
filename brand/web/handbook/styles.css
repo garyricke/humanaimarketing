@@ -1555,6 +1555,23 @@ body.has-dialog-open {
   transform: translateY(0);
 }
 
+/* ===== Video figure (intro walkthrough) ===================== */
+
+.video-figure {
+  margin: 28px 0 36px;
+  width: 100%;
+}
+
+.video-figure__player {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: var(--ink);
+  border: 1px solid var(--ink-08);
+  border-radius: 6px;
+  box-shadow: 0 1px 0 var(--ink-08), 0 18px 40px -22px var(--ink-30);
+}
+
 /* ===== Slideshow figure (Section IV demo) =================== */
 
 .slideshow {
