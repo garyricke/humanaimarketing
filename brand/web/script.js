@@ -230,6 +230,50 @@
   }
 
   /* ------------------------------------------------------------------ */
+  /* Admin popover (circled "A" in footer)                              */
+  /* ------------------------------------------------------------------ */
+  const admin = document.querySelector("[data-admin]");
+  if (admin) {
+    const trigger = admin.querySelector(".admin__trigger");
+    const menu = admin.querySelector(".admin__menu");
+    const items = Array.from(admin.querySelectorAll('[role="menuitem"]'));
+
+    const open = () => {
+      admin.dataset.open = "true";
+      trigger.setAttribute("aria-expanded", "true");
+      menu.hidden = false;
+      requestAnimationFrame(() => items[0]?.focus());
+    };
+    const close = (returnFocus = false) => {
+      admin.dataset.open = "false";
+      trigger.setAttribute("aria-expanded", "false");
+      menu.hidden = true;
+      if (returnFocus) trigger.focus();
+    };
+
+    trigger.addEventListener("click", (e) => {
+      e.stopPropagation();
+      admin.dataset.open === "true" ? close() : open();
+    });
+
+    document.addEventListener("click", (e) => {
+      if (admin.dataset.open === "true" && !admin.contains(e.target)) close();
+    });
+
+    document.addEventListener("keydown", (e) => {
+      if (admin.dataset.open !== "true") return;
+      if (e.key === "Escape") { e.preventDefault(); close(true); return; }
+      if (e.key === "ArrowDown" || e.key === "ArrowUp") {
+        e.preventDefault();
+        const i = items.indexOf(document.activeElement);
+        const step = e.key === "ArrowDown" ? 1 : -1;
+        const next = items[(i + step + items.length) % items.length];
+        next?.focus();
+      }
+    });
+  }
+
+  /* ------------------------------------------------------------------ */
   /* Smooth-scroll fallback for older Safari                             */
   /* ------------------------------------------------------------------ */
   document.querySelectorAll('a[href^="#"]').forEach((a) => {

@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Human AI Marketing — site update log." />
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="theme-color" content="#0F1B2D" />
+  <title>Status · Human AI Marketing</title>
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg" />
+  <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..900,0..100;1,9..144,300..900,0..100&family=Geist:wght@300..700&family=Geist+Mono:wght@300..600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../styles.css" />
+  <style>
+    /* Page-local layout — status timeline */
+    .status-page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    .status-mast {
+      background: var(--bone);
+      border-bottom: 1px solid var(--ink-10);
+    }
+    .status-mast__inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 22px var(--gutter);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+    .status-mast .back {
+      font-family: var(--mono);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--ink-70);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .status-mast .back:hover { color: var(--hearth); }
+    .status-mast .back .arrow {
+      display: inline-block;
+      transition: transform 200ms var(--ease);
+    }
+    .status-mast .back:hover .arrow { transform: translateX(-3px); }
+
+    .status-hero {
+      padding: 96px var(--gutter) 56px;
+      max-width: var(--max);
+      margin: 0 auto;
+      width: 100%;
+    }
+    .status-hero__eyebrow {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--hearth);
+      margin: 0 0 18px;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .status-hero__eyebrow .pulse {
+      width: 8px; height: 8px;
+      background: var(--signal);
+      border-radius: 50%;
+      box-shadow: 0 0 0 0 rgba(61, 189, 201, 0.6);
+      animation: status-pulse 1.8s ease-out infinite;
+    }
+    @keyframes status-pulse {
+      0%   { box-shadow: 0 0 0 0 rgba(61, 189, 201, 0.55); }
+      70%  { box-shadow: 0 0 0 10px rgba(61, 189, 201, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(61, 189, 201, 0); }
+    }
+    .status-hero h1 {
+      font-family: var(--display);
+      font-weight: 400;
+      font-style: italic;
+      font-size: clamp(40px, 6vw, 72px);
+      line-height: 1.05;
+      letter-spacing: -0.01em;
+      margin: 0 0 22px;
+      color: var(--ink);
+    }
+    .status-hero p {
+      font-family: var(--sans);
+      font-size: 17px;
+      line-height: 1.55;
+      color: var(--ink-70);
+      max-width: 60ch;
+      margin: 0;
+    }
+    .status-meta {
+      margin-top: 36px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px 36px;
+      padding-top: 28px;
+      border-top: 1px solid var(--ink-10);
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--ink-70);
+    }
+    .status-meta b {
+      display: block;
+      color: var(--ink-50);
+      font-weight: 500;
+      margin-bottom: 4px;
+      letter-spacing: 0.14em;
+    }
+    .status-meta .live::before {
+      content: "";
+      display: inline-block;
+      width: 7px; height: 7px;
+      background: var(--signal);
+      border-radius: 50%;
+      margin-right: 7px;
+      transform: translateY(-1px);
+    }
+
+    .status-log {
+      padding: 24px var(--gutter) 96px;
+      max-width: var(--max);
+      margin: 0 auto;
+      width: 100%;
+    }
+    .status-log__title {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--ink-50);
+      margin: 0 0 24px;
+    }
+    .status-day {
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      gap: 36px;
+      padding: 32px 0;
+      border-top: 1px solid var(--ink-10);
+    }
+    .status-day:last-child { border-bottom: 1px solid var(--ink-10); }
+    .status-day__date {
+      font-family: var(--mono);
+      font-size: 12px;
+      letter-spacing: 0.06em;
+      color: var(--ink);
+      position: sticky;
+      top: 24px;
+      align-self: start;
+    }
+    .status-day__date b {
+      display: block;
+      font-family: var(--display);
+      font-weight: 400;
+      font-style: italic;
+      font-size: 32px;
+      line-height: 1;
+      letter-spacing: -0.01em;
+      color: var(--ink);
+      margin-top: 4px;
+    }
+    .status-day__entries {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+    .status-entry {
+      display: grid;
+      grid-template-columns: 96px 1fr;
+      gap: 20px;
+      align-items: start;
+    }
+    .status-entry__tag {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink);
+      padding: 4px 8px;
+      border: 1px solid var(--ink);
+      border-radius: 999px;
+      justify-self: start;
+      align-self: start;
+      white-space: nowrap;
+    }
+    .status-entry__tag[data-kind="ship"]   { color: var(--hearth-deep); border-color: var(--hearth); background: rgba(226, 115, 59, 0.08); }
+    .status-entry__tag[data-kind="content"]{ color: var(--signal-deep); border-color: var(--signal); background: rgba(61, 189, 201, 0.08); }
+    .status-entry__tag[data-kind="fix"]    { color: var(--ink); border-color: var(--ink-50); background: var(--bone-cool); }
+    .status-entry__tag[data-kind="infra"]  { color: var(--slate); border-color: var(--ink-20); background: var(--bone-warm); }
+    .status-entry__body h3 {
+      font-family: var(--display);
+      font-weight: 500;
+      font-size: 19px;
+      line-height: 1.3;
+      letter-spacing: -0.005em;
+      margin: 0 0 6px;
+      color: var(--ink);
+    }
+    .status-entry__body p {
+      font-family: var(--sans);
+      font-size: 14px;
+      line-height: 1.55;
+      color: var(--ink-70);
+      margin: 0;
+    }
+    .status-entry__refs {
+      margin-top: 8px;
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.04em;
+      color: var(--ink-50);
+    }
+    .status-entry__refs code {
+      font-family: var(--mono);
+      background: var(--bone-warm);
+      padding: 1px 6px;
+      border-radius: 4px;
+      color: var(--ink);
+    }
+
+    @media (max-width: 720px) {
+      .status-day {
+        grid-template-columns: 1fr;
+        gap: 16px;
+        padding: 24px 0;
+      }
+      .status-day__date {
+        position: static;
+      }
+      .status-day__date b { font-size: 26px; }
+      .status-entry {
+        grid-template-columns: 1fr;
+        gap: 8px;
+      }
+    }
+  </style>
+</head>
+<body class="status-page">
+  <div class="grain" aria-hidden="true"></div>
+
+  <header class="status-mast" role="banner">
+    <div class="status-mast__inner">
+      <a href="../" class="wordmark" aria-label="Human AI Marketing — back to home">
+        <span class="wordmark__h">human</span>
+        <span class="wordmark__dot" aria-hidden="true">·</span>
+        <span class="wordmark__ai">AI</span>
+        <span class="wordmark__dot" aria-hidden="true">·</span>
+        <span class="wordmark__m">marketing</span>
+      </a>
+      <a href="../" class="back">
+        <span class="arrow" aria-hidden="true">←</span>
+        Back to site
+      </a>
+    </div>
+  </header>
+
+  <main>
+    <section class="status-hero">
+      <p class="status-hero__eyebrow"><span class="pulse" aria-hidden="true"></span> Site status</p>
+      <h1>What we shipped, by the day.</h1>
+      <p>A running log of what's been added, changed, fixed, and rendered on humanaimarketing.com. Read top-down — newest at the top.</p>
+
+      <div class="status-meta">
+        <div>
+          <b>System</b>
+          <span class="live">All systems operational</span>
+        </div>
+        <div>
+          <b>Last update</b>
+          <span data-last-update>2026-05-24</span>
+        </div>
+        <div>
+          <b>Total entries</b>
+          <span data-entry-count>10</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="status-log" aria-labelledby="log-title">
+      <h2 class="status-log__title" id="log-title">Change log</h2>
+
+      <article class="status-day">
+        <div class="status-day__date">
+          May<b>24, 2026</b>
+        </div>
+        <div class="status-day__entries">
+          <div class="status-entry">
+            <span class="status-entry__tag" data-kind="ship">Ship</span>
+            <div class="status-entry__body">
+              <h3>Admin shortcut in footer</h3>
+              <p>Discreet circled "A" in the bottom-right of the footer opens a popover with internal links — Brand guide and Status. Keyboard, ARIA, and click-outside dismissal all wired.</p>
+              <p class="status-entry__refs">routes <code>/brand</code>, <code>/status</code></p>
+            </div>
+          </div>
+
+          <div class="status-entry">
+            <span class="status-entry__tag" data-kind="content">Content</span>
+            <div class="status-entry__body">
+              <h3>Geneva &amp; St. Charles slides re-rendered</h3>
+              <p>All three hero slides now share a matched sun-drenched golden-hour treatment. Geneva at street level on Third Street; St. Charles aerial over the Fox River with the white pergola. Served via Cloudinary with f_auto and q_auto.</p>
+              <p class="status-entry__refs"><code>human-ai-marketing/hero/geneva</code>, <code>…/st-charles</code></p>
+            </div>
+          </div>
+
+          <div class="status-entry">
+            <span class="status-entry__tag" data-kind="content">Content</span>
+            <div class="status-entry__body">
+              <h3>Batavia hero swapped to River Street arch</h3>
+              <p>The "RIVER STREET" arch shot replaces the earlier overhead. Re-rendered through OpenAI at golden hour with long shadows on the herringbone brick. Hot-swapped in place at the same public_id so no HTML changes were needed.</p>
+              <p class="status-entry__refs"><code>human-ai-marketing/hero/batavia</code></p>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="status-day">
+        <div class="status-day__date">
+          May<b>23, 2026</b>
+        </div>
+        <div class="status-day__entries">
+          <div class="status-entry">
+            <span class="status-entry__tag" data-kind="ship">Ship</span>
+            <div class="status-entry__body">
+              <h3>Marketing homepage launched</h3>
+              <p>Editorial / magazine layout with a full-bleed slideshow hero of the three Tri-Cities. Sections for services, process, pillars, proof, about, and a Netlify-powered contact form.</p>
+              <p class="status-entry__refs">route <code>/</code></p>
+            </div>
+          </div>
+
+          <div class="status-entry">
+            <span class="status-entry__tag" data-kind="infra">Infra</span>
+            <div class="status-entry__body">
+              <h3>Brand guide moved to <code style="font-family:var(--mono);background:var(--bone-warm);padding:1px 6px;border-radius:4px;">/brand/</code></h3>
+              <p>The brand guide was reorganized off the root path to make room for the marketing homepage. Internal handbook links and the new admin popover both point to the new location.</p>
+              <p class="status-entry__refs">route <code>/brand</code></p>
+            </div>
+          </div>
+
+          <div class="status-entry">
+            <span class="status-entry__tag" data-kind="infra">Infra</span>
+            <div class="status-entry__body">
+              <h3>Cloudinary image pipeline live</h3>
+              <p>All hero photography now flows through Cloudinary with format-on-the-fly (f_auto), quality-on-the-fly (q_auto), and responsive srcset at 768 / 1280 / 1920 widths. New renders deploy via overwrite + invalidate so URLs in HTML stay stable.</p>
+            </div>
+          </div>
+
+          <div class="status-entry">
+            <span class="status-entry__tag" data-kind="ship">Ship</span>
+            <div class="status-entry__body">
+              <h3>Favicon system added</h3>
+              <p>An SVG favicon (interlocking warm + cool rings on ink-navy), an Apple touch icon at 180px, and a 512px PWA icon. Linked from every page.</p>
+              <p class="status-entry__refs"><code>favicon.svg</code>, <code>apple-touch-icon.png</code>, <code>icon-512.png</code></p>
+            </div>
+          </div>
+
+          <div class="status-entry">
+            <span class="status-entry__tag" data-kind="content">Content</span>
+            <div class="status-entry__body">
+              <h3>Git article published in the handbook</h3>
+              <p>Second article in the intern handbook covers cloning, branching, committing, and basic recovery. Password-gated behind the same edge function as the rest of the handbook.</p>
+              <p class="status-entry__refs">route <code>/handbook/git</code></p>
+            </div>
+          </div>
+
+          <div class="status-entry">
+            <span class="status-entry__tag" data-kind="fix">Fix</span>
+            <div class="status-entry__body">
+              <h3>Process timeline grid</h3>
+              <p>Body copy in the "How we work" section was wrapping into the rail column. Reworked the row/column placements so the rail spans both rows and copy stays in the right cell.</p>
+            </div>
+          </div>
+
+          <div class="status-entry">
+            <span class="status-entry__tag" data-kind="fix">Fix</span>
+            <div class="status-entry__body">
+              <h3>Root URL now resolves</h3>
+              <p><code>netlify.toml</code> was inside <code>brand/web/</code>; Netlify only reads it from the repo root. Moved it up one level, set <code>publish = "brand/web"</code>, and re-deployed so <code>/</code> serves the homepage and Netlify Forms picks up <code>project-inquiry</code>.</p>
+            </div>
+          </div>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <footer class="footer" role="contentinfo">
+    <div class="footer__inner">
+      <a href="../" class="wordmark wordmark--mini" aria-label="Human AI Marketing — home">
+        <span class="wordmark__h">human</span>
+        <span class="wordmark__dot" aria-hidden="true">·</span>
+        <span class="wordmark__ai">AI</span>
+        <span class="wordmark__dot" aria-hidden="true">·</span>
+        <span class="wordmark__m">marketing</span>
+      </a>
+      <p class="footer__meta">
+        <span>© <span data-year>2026</span> Human AI Marketing, LLC</span>
+        <span class="footer__sep" aria-hidden="true">·</span>
+        <span>Internal · noindex</span>
+      </p>
+    </div>
+
+    <div class="admin" data-admin>
+      <button type="button" class="admin__trigger" aria-haspopup="menu" aria-expanded="false" aria-controls="admin-menu">
+        <span class="admin__glyph" aria-hidden="true">A</span>
+        <span class="visually-hidden">Admin menu</span>
+      </button>
+      <div class="admin__menu" id="admin-menu" role="menu" hidden>
+        <p class="admin__label">Internal</p>
+        <a class="admin__item" href="../brand/" role="menuitem">
+          <svg class="admin__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="3.25" y="3.25" width="7.5" height="7.5" rx="1.25" />
+            <rect x="13.25" y="3.25" width="7.5" height="7.5" rx="1.25" />
+            <rect x="3.25" y="13.25" width="7.5" height="7.5" rx="1.25" />
+            <rect x="13.25" y="13.25" width="7.5" height="7.5" rx="1.25" />
+          </svg>
+          <span class="admin__item-label">Brand guide</span>
+          <span class="admin__item-path" aria-hidden="true">/brand</span>
+        </a>
+        <a class="admin__item" href="./" role="menuitem" aria-current="page">
+          <svg class="admin__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M2.75 12h4.1l1.8-5.2 3.55 11.4 2.1-6.2h7" />
+          </svg>
+          <span class="admin__item-label">Status</span>
+          <span class="admin__item-path" aria-hidden="true">/status</span>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Year + admin popover (self-contained for this page).
+    document.querySelectorAll("[data-year]").forEach((n) => (n.textContent = new Date().getFullYear()));
+
+    const admin = document.querySelector("[data-admin]");
+    if (admin) {
+      const trigger = admin.querySelector(".admin__trigger");
+      const menu    = admin.querySelector(".admin__menu");
+      const items   = Array.from(admin.querySelectorAll('[role="menuitem"]'));
+
+      const open  = () => {
+        admin.dataset.open = "true";
+        trigger.setAttribute("aria-expanded", "true");
+        menu.hidden = false;
+        requestAnimationFrame(() => items[0]?.focus());
+      };
+      const close = (returnFocus = false) => {
+        admin.dataset.open = "false";
+        trigger.setAttribute("aria-expanded", "false");
+        menu.hidden = true;
+        if (returnFocus) trigger.focus();
+      };
+
+      trigger.addEventListener("click", (e) => {
+        e.stopPropagation();
+        admin.dataset.open === "true" ? close() : open();
+      });
+      document.addEventListener("click", (e) => {
+        if (admin.dataset.open === "true" && !admin.contains(e.target)) close();
+      });
+      document.addEventListener("keydown", (e) => {
+        if (admin.dataset.open !== "true") return;
+        if (e.key === "Escape") { e.preventDefault(); close(true); return; }
+        if (e.key === "ArrowDown" || e.key === "ArrowUp") {
+          e.preventDefault();
+          const i = items.indexOf(document.activeElement);
+          const step = e.key === "ArrowDown" ? 1 : -1;
+          items[(i + step + items.length) % items.length]?.focus();
+        }
+      });
+    }
+  </script>
+</body>
+</html>
