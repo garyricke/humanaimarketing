@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Handbook · Sign in · Human AI Marketing</title>
+  <link rel="icon" type="image/svg+xml" href="../../favicon.svg" />
+  <link rel="apple-touch-icon" sizes="180x180" href="../../apple-touch-icon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --ink: #0F1B2D;
+      --ink-70: rgba(15, 27, 45, 0.72);
+      --ink-50: rgba(15, 27, 45, 0.5);
+      --ink-15: rgba(15, 27, 45, 0.15);
+      --bone: #F6F1E7;
+      --bone-soft: #FBF8F1;
+      --hearth: #E2733B;
+      --hearth-deep: #B8581F;
+      --white: #FFFFFF;
+      --serif: 'Fraunces', Georgia, serif;
+      --sans: 'Geist', -apple-system, BlinkMacSystemFont, sans-serif;
+      --mono: 'Geist Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body { height: 100%; }
+
+    body {
+      margin: 0;
+      display: grid;
+      place-items: center;
+      background:
+        radial-gradient(1200px 600px at 20% -10%, rgba(226, 115, 59, 0.08), transparent 60%),
+        radial-gradient(900px 500px at 110% 110%, rgba(61, 189, 201, 0.06), transparent 60%),
+        var(--bone);
+      color: var(--ink);
+      font-family: var(--sans);
+      padding: 32px 20px;
+    }
+
+    .gate {
+      width: 100%;
+      max-width: 380px;
+      text-align: center;
+    }
+
+    .wordmark {
+      font-family: var(--sans);
+      font-size: 0.78rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--ink-70);
+      margin: 0 0 56px;
+    }
+    .wordmark__ai {
+      font-family: var(--mono);
+      color: var(--hearth);
+      font-weight: 600;
+      letter-spacing: 0.04em;
+    }
+    .wordmark__sep {
+      color: var(--ink-50);
+      margin: 0 6px;
+    }
+
+    .gate__eyebrow {
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--ink-50);
+      margin: 0 0 14px;
+    }
+
+    .gate__title {
+      font-family: var(--serif);
+      font-weight: 500;
+      font-size: 1.95rem;
+      line-height: 1.12;
+      letter-spacing: -0.015em;
+      margin: 0 0 14px;
+    }
+    .gate__title em {
+      font-style: italic;
+      color: var(--hearth-deep);
+    }
+
+    .gate__lede {
+      font-size: 0.95rem;
+      line-height: 1.55;
+      color: var(--ink-70);
+      margin: 0 0 32px;
+    }
+
+    .gate__form {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .gate__input {
+      width: 100%;
+      padding: 14px 16px;
+      font-family: var(--mono);
+      font-size: 1rem;
+      letter-spacing: 0.04em;
+      color: var(--ink);
+      background: var(--bone-soft);
+      border: 1px solid var(--ink-15);
+      border-radius: 4px;
+      outline: none;
+      transition: border-color 200ms ease, background 200ms ease, box-shadow 200ms ease;
+    }
+    .gate__input::placeholder {
+      color: var(--ink-50);
+      font-style: italic;
+    }
+    .gate__input:focus {
+      border-color: var(--hearth);
+      background: var(--white);
+      box-shadow: 0 0 0 3px rgba(226, 115, 59, 0.15);
+    }
+    .gate.is-error .gate__input {
+      border-color: var(--hearth);
+      background: var(--white);
+    }
+
+    .gate__button {
+      width: 100%;
+      padding: 14px 16px;
+      font-family: var(--mono);
+      font-size: 0.82rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      font-weight: 600;
+      color: var(--bone);
+      background: var(--ink);
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      transition: background 200ms ease, transform 120ms ease;
+    }
+    .gate__button:hover {
+      background: #1a2a44;
+    }
+    .gate__button:active {
+      transform: translateY(1px);
+    }
+    .gate__button-arrow {
+      transition: transform 200ms ease;
+    }
+    .gate__button:hover .gate__button-arrow {
+      transform: translateX(3px);
+    }
+
+    .gate__error {
+      margin: 14px 0 0;
+      font-family: var(--mono);
+      font-size: 0.76rem;
+      letter-spacing: 0.04em;
+      color: var(--hearth-deep);
+      display: none;
+    }
+    .gate.is-error .gate__error {
+      display: block;
+    }
+
+    .gate__footnote {
+      margin: 44px 0 0;
+      font-size: 0.78rem;
+      line-height: 1.55;
+      color: var(--ink-50);
+      font-style: italic;
+    }
+    .gate__footnote a {
+      color: var(--ink-70);
+      text-decoration: underline;
+      text-decoration-color: var(--ink-15);
+      text-underline-offset: 3px;
+    }
+    .gate__footnote a:hover {
+      color: var(--ink);
+    }
+
+    @media (max-width: 480px) {
+      .gate__title { font-size: 1.7rem; }
+      .wordmark { margin-bottom: 40px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="gate" id="gate">
+    <p class="wordmark">
+      <span>human</span><span class="wordmark__sep">·</span><span class="wordmark__ai">AI</span><span class="wordmark__sep">·</span><span>marketing</span>
+    </p>
+
+    <p class="gate__eyebrow">Intern handbook · Internal</p>
+    <h1 class="gate__title">This handbook is <em>gated</em>.</h1>
+    <p class="gate__lede">Enter the team password to continue. Gary shares it via 1Password — never in Slack or email.</p>
+
+    <form class="gate__form" method="POST" action="/handbook/login/" autocomplete="off" spellcheck="false">
+      <input type="hidden" name="next" id="next" value="/handbook/" />
+      <input
+        class="gate__input"
+        type="password"
+        name="password"
+        id="password"
+        placeholder="Team password"
+        required
+        autofocus
+        autocomplete="current-password"
+      />
+      <button class="gate__button" type="submit">
+        <span>Continue</span>
+        <span class="gate__button-arrow" aria-hidden="true">→</span>
+      </button>
+    </form>
+
+    <p class="gate__error" id="err">Wrong password. Try again.</p>
+
+    <p class="gate__footnote">
+      Stays signed in for 30 days on this device. <a href="/">Back to homepage</a>.
+    </p>
+  </main>
+
+  <script>
+    (() => {
+      const params = new URLSearchParams(window.location.search);
+      const next = params.get('next');
+      if (next && next.startsWith('/handbook/')) {
+        document.getElementById('next').value = next;
+      }
+      if (params.get('err') === '1') {
+        document.getElementById('gate').classList.add('is-error');
+        const pw = document.getElementById('password');
+        pw.value = '';
+        pw.focus();
+      }
+    })();
+  </script>
+</body>
+</html>

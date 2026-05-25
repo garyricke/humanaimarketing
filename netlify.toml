@@ -5,7 +5,8 @@
   publish = "brand/web"
   edge_functions = "brand/web/netlify/edge-functions"
 
-# Password-gate the intern handbook (Basic Auth in auth.js).
+# Password-gate the intern handbook. auth.js renders a branded login
+# page at /handbook/login/ and issues an HMAC-signed session cookie.
 [[edge_functions]]
   function = "auth"
   path = "/handbook"
