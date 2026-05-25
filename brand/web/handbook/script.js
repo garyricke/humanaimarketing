@@ -107,6 +107,47 @@
     }
   });
 
+  // ===== Slideshow crossfade (auto + manual chip select) =====
+  $$('.slideshow').forEach(slideshow => {
+    const slides = $$('.slideshow__slide', slideshow);
+    const chips = $$('.slideshow__chip', slideshow);
+    if (slides.length < 2) return;
+
+    let i = 0;
+    let timer;
+
+    const goTo = (idx) => {
+      if (idx === i) return;
+      slides[i].classList.remove('is-active');
+      const prevChip = chips[i];
+      if (prevChip) {
+        prevChip.classList.remove('is-active');
+        prevChip.setAttribute('aria-selected', 'false');
+      }
+      i = idx;
+      slides[i].classList.add('is-active');
+      const nextChip = chips[i];
+      if (nextChip) {
+        nextChip.classList.add('is-active');
+        nextChip.setAttribute('aria-selected', 'true');
+      }
+    };
+
+    const startAuto = () => {
+      clearInterval(timer);
+      timer = setInterval(() => goTo((i + 1) % slides.length), 5000);
+    };
+
+    chips.forEach((chip, idx) => {
+      chip.addEventListener('click', () => {
+        goTo(idx);
+        startAuto();
+      });
+    });
+
+    startAuto();
+  });
+
   $$('.code').forEach(block => {
     const btn = document.createElement('button');
     btn.type = 'button';

@@ -38,8 +38,9 @@
         <li><a href="#welcome"><span class="toc__num">I</span><span class="toc__text">About the shared services</span></a></li>
         <li><a href="#keys"><span class="toc__num">II</span><span class="toc__text">What you need from Gary</span></a></li>
         <li><a href="#env"><span class="toc__num">III</span><span class="toc__text">Set up your local <code>.env</code></span></a></li>
-        <li><a href="#ai-calls"><span class="toc__num">IV</span><span class="toc__text">Using the keys in code</span></a></li>
-        <li><a href="#checklist"><span class="toc__num">V</span><span class="toc__text">Don't leak the keys</span></a></li>
+        <li><a href="#claude-code"><span class="toc__num">IV</span><span class="toc__text">Using the keys in a Claude Code session</span></a></li>
+        <li><a href="#ai-calls"><span class="toc__num">V</span><span class="toc__text">Using the keys in production code</span></a></li>
+        <li><a href="#checklist"><span class="toc__num">VI</span><span class="toc__text">Don't leak the keys</span></a></li>
       </ol>
       <p class="toc__series-label">Other articles</p>
       <ul class="toc__series">
@@ -106,7 +107,72 @@
           <p>Most Git Bash installs include <code>unzip</code>. If yours doesn't (you'll get <code>command not found</code>), use File Explorer instead: right-click <code>apikeys.zip</code> → <em>Extract All&hellip;</em>, enter the password when prompted, then move the resulting <code>.env</code> file back into your project root.</p>
         </div>
 
-        <p>After unzipping, the new <code>.env</code> file contains all three credentials. Here's what it looks like inside (with fake values shown for illustration):</p>
+        <p>With <code>apikeys.zip</code> unpacked, your project root should look like this — the dotfiles are dimmed because macOS treats them as hidden:</p>
+
+        <figure class="finder-mock" aria-label="Finder window showing the project root after unzipping apikeys.zip. Hidden dotfiles are dimmed; apikeys.zip, brand, and generated_imgs are normal weight.">
+          <div class="finder-mock__window">
+            <div class="finder-mock__pane finder-mock__pane--list">
+              <ul>
+                <li><div class="finder-mock__row is-hidden">
+                  <span class="finder-mock__icon finder-mock__icon--folder" aria-hidden="true"></span>
+                  <span class="finder-mock__name">.claude</span>
+                  <span class="finder-mock__chevron" aria-hidden="true">›</span>
+                </div></li>
+                <li><div class="finder-mock__row is-hidden">
+                  <span class="finder-mock__icon finder-mock__icon--file" aria-hidden="true"></span>
+                  <span class="finder-mock__name">.claudeignore</span>
+                </div></li>
+                <li><div class="finder-mock__row is-hidden">
+                  <span class="finder-mock__icon finder-mock__icon--file" aria-hidden="true"></span>
+                  <span class="finder-mock__name">.env</span>
+                </div></li>
+                <li><div class="finder-mock__row is-hidden">
+                  <span class="finder-mock__icon finder-mock__icon--folder" aria-hidden="true"></span>
+                  <span class="finder-mock__name">.git</span>
+                  <span class="finder-mock__chevron" aria-hidden="true">›</span>
+                </div></li>
+                <li><div class="finder-mock__row is-hidden">
+                  <span class="finder-mock__icon finder-mock__icon--file" aria-hidden="true"></span>
+                  <span class="finder-mock__name">.gitignore</span>
+                </div></li>
+                <li><div class="finder-mock__row">
+                  <span class="finder-mock__icon finder-mock__icon--file" aria-hidden="true"></span>
+                  <span class="finder-mock__name">apikeys.zip</span>
+                </div></li>
+                <li><div class="finder-mock__row">
+                  <span class="finder-mock__icon finder-mock__icon--folder" aria-hidden="true"></span>
+                  <span class="finder-mock__name">brand</span>
+                  <span class="finder-mock__chevron" aria-hidden="true">›</span>
+                </div></li>
+                <li><div class="finder-mock__row">
+                  <span class="finder-mock__icon finder-mock__icon--folder" aria-hidden="true"></span>
+                  <span class="finder-mock__name">generated_imgs</span>
+                  <span class="finder-mock__chevron" aria-hidden="true">›</span>
+                </div></li>
+              </ul>
+            </div>
+            <div class="finder-mock__pane finder-mock__pane--detail">
+              <p class="finder-mock__detail-label">What you're looking at</p>
+              <dl class="finder-mock__legend">
+                <dt><code>.env</code></dt>
+                <dd>New — your local credentials. Gitignored.</dd>
+                <dt><code>apikeys.zip</code></dt>
+                <dd>Committed to git. Useless without the password.</dd>
+                <dt><code>.claude/</code></dt>
+                <dd>Project-level Claude Code config &amp; ignore rules.</dd>
+                <dt><code>brand/</code></dt>
+                <dd>The site source — what gets deployed.</dd>
+                <dt><code>generated_imgs/</code></dt>
+                <dd>Where AI image output lands. Gitignored.</dd>
+              </dl>
+            </div>
+          </div>
+          <figcaption>
+            <p><strong>Dimmed files are hidden.</strong> Anything that starts with a <code>.</code> won't show in Finder until you toggle hidden items on — see the callout below for how, on both macOS and Windows.</p>
+          </figcaption>
+        </figure>
+
+        <p>And here's what the new <code>.env</code> file contains, opened in <code>nano</code> (with fake values shown for illustration):</p>
 
         <figure class="nano-mock" aria-label="Example of the .env file being edited in nano, with fake placeholder values for illustration only">
           <div class="nano-mock__bar">
@@ -159,8 +225,9 @@
           <p>Files starting with a dot (<code>.env</code>, <code>.gitignore</code>) are hidden by default in graphical file browsers.</p>
           <ul>
             <li><em>macOS Finder:</em> press <kbd>⌘</kbd> + <kbd>Shift</kbd> + <kbd>.</kbd> to toggle hidden files on and off.</li>
-            <li><em>Windows File Explorer:</em> open the <em>View</em> menu → <em>Show</em> → check <em>Hidden items</em>.</li>
+            <li><em>Windows File Explorer:</em> open the <em>View</em> menu → <em>Show</em> → check <em>Hidden items</em> (the setting persists until you uncheck it).</li>
             <li><em>Either OS, from the terminal:</em> run <code>ls -la</code> to list all files including hidden ones.</li>
+            <li><em>macOS, permanently:</em> to make Finder always show hidden files without toggling, run this once in Terminal: <code>defaults write com.apple.finder AppleShowAllFiles -bool true &amp;&amp; killall Finder</code>. Reverse later by swapping <code>true</code> for <code>false</code>.</li>
           </ul>
         </div>
 
@@ -182,10 +249,150 @@
         </div>
       </section>
 
-      <section id="ai-calls" class="section">
+      <section id="claude-code" class="section">
         <p class="section__num">IV.</p>
-        <h2>Using the keys in code</h2>
-        <p>This is the single most important rule for shared keys. Read it twice.</p>
+        <h2>Using the keys in a Claude Code session</h2>
+        <p>Most of the day-to-day work — generating placeholder imagery for a landing page, batching transforms, uploading assets — happens <em>inside</em> a Claude Code session, not in production code. There are two ways the keys reach Claude when you're building, and it's worth knowing which is which.</p>
+
+        <h3>Two paths, two key locations</h3>
+        <p><strong>Path 1 — MCP server tools (one-off prompts).</strong> Gary has installed a handful of Model Context Protocol servers globally on your machine, including <code>nano-banana</code> (Gemini image gen) and <code>openai-images</code> (OpenAI image gen). Each server was configured with its API key <em>once</em>, when it was installed — the keys live in Claude's global MCP config, not in this project's <code>.env</code>. From your end it's invisible: you ask, Claude calls the tool, the tool already has the key.</p>
+        <p><strong>Path 2 — Node scripts Claude writes and runs (repeatable jobs).</strong> Anything that needs to run again later, or process more than a few files, is better as a script in <code>scripts/</code>. Those scripts read the project's <code>.env</code> at runtime — the same file you unzipped in Section III. Claude writes the script, runs it via Bash, and the script handles its own key loading.</p>
+
+        <div class="callout callout--info">
+          <p class="callout__label">Why Claude itself never reads <code>.env</code></p>
+          <p>The repo's <code>.claude/settings.json</code> blocks Claude's filesystem tools from opening <code>.env</code> directly. A Node script Claude writes <em>can</em> read it — because it runs as a separate process — but the raw key never appears in the conversation transcript. That keeps secrets out of the chat log and out of any future context-window snapshot, while still letting the code Claude writes do real work.</p>
+        </div>
+
+        <h3>A worked example: placeholder hero images for a landing page</h3>
+        <p>Say you're building a new landing page and you need three hero images while the photographer is still scheduling the shoot. A prompt like this is enough:</p>
+        <pre class="code"><code>Use nano banana to generate three placeholder hero
+images for a Tri-Cities coffee-shop landing page —
+golden-hour storefronts, warm interiors. Upload each
+to Cloudinary under brand/placeholders/, then update
+brand/web/index.html so the hero <img> tags pull from
+those Cloudinary URLs, web-optimized.</code></pre>
+
+        <p>Behind the scenes, Claude will:</p>
+        <ol>
+          <li>Call <code>mcp__nano-banana__generate_image</code> three times with prompts derived from the brief. The Gemini key is already on the MCP server — you don't pass it.</li>
+          <li>Save the PNGs locally to <code>generated_imgs/</code> (which is gitignored — see <a href="#checklist">Section VI</a>).</li>
+          <li>Write or reuse a small Node script that reads <code>CLOUDINARY_URL</code> from <code>.env</code>, signs an upload request, and pushes each PNG into <code>brand/placeholders/</code> on Cloudinary with stable public IDs.</li>
+          <li>Edit <code>brand/web/index.html</code> to point the hero <code>&lt;img&gt;</code> tags at the new Cloudinary URLs, inserting <code>f_auto,q_auto,w_1600</code> into the transform segment so the browser receives WebP or AVIF at an appropriate width.</li>
+        </ol>
+
+        <p>The resulting URL has the optimization baked into the path:</p>
+        <pre class="code"><code>https://res.cloudinary.com/dsbllwpbh/image/upload/
+  f_auto,q_auto,w_1600/brand/placeholders/hero-1.png</code></pre>
+
+        <p><code>f_auto</code> picks the best format the browser supports (WebP, AVIF, or fall back to PNG/JPEG). <code>q_auto</code> picks a quality level that balances size against perceptible loss. <code>w_1600</code> caps the width — pair it with a <code>srcset</code> using <code>w_800</code>, <code>w_1200</code>, <code>w_1600</code> to let the browser fetch only what the viewport needs.</p>
+
+        <h3>Other prompts that follow this shape</h3>
+        <ul>
+          <li><em>"Use openai-images to re-render <code>generated_imgs/hero-batavia.png</code> at golden hour — last 10 minutes before sunset, long warm shadows raking left — then update Cloudinary in place using overwrite=true and invalidate=true so the live page picks it up."</em></li>
+          <li><em>"Generate four square avatars with nano-banana for the testimonials section, 512&times;512, and upload them to <code>brand/testimonials/</code> on Cloudinary with public IDs <code>avatar-1</code> through <code>avatar-4</code>."</em></li>
+          <li><em>"Look at the current hero image's aspect ratio and write a script that batches three new variations through openai-images at the same crop, uploading each with a <code>variant-N</code> suffix."</em></li>
+        </ul>
+
+        <div class="callout callout--info">
+          <p class="callout__label">Cost &amp; iteration</p>
+          <p>MCP image calls cost roughly 2–4 cents apiece. Inside a single Claude session you can easily fire a dozen of them while iterating on a prompt — that's fine, but it's not free. Don't leave a loop running, and if Claude is about to regenerate the same image five times to try variations, ask it to commit to one approach first.</p>
+        </div>
+
+        <h3>What the workflow actually produces</h3>
+        <p>Here's what the loop above looks like end-to-end. The two images below were generated live during the writing of this handbook — one by Gemini (Nano Banana), one by OpenAI (gpt-image-1) — both from the same brief, both uploaded to Cloudinary, both served through <code>f_auto,q_auto</code> so your browser receives WebP or AVIF at the width it actually needs.</p>
+
+        <figure class="slideshow" aria-label="Two AI-generated Memorial Day placeholder images for a Batavia home, cross-fading every five seconds">
+          <div class="slideshow__stage">
+            <img class="slideshow__slide is-active"
+                 src="https://res.cloudinary.com/dsbllwpbh/image/upload/f_auto,q_auto,w_1200/brand/placeholders/memorial-day-batavia-gemini"
+                 srcset="https://res.cloudinary.com/dsbllwpbh/image/upload/f_auto,q_auto,w_640/brand/placeholders/memorial-day-batavia-gemini 640w, https://res.cloudinary.com/dsbllwpbh/image/upload/f_auto,q_auto,w_960/brand/placeholders/memorial-day-batavia-gemini 960w, https://res.cloudinary.com/dsbllwpbh/image/upload/f_auto,q_auto,w_1200/brand/placeholders/memorial-day-batavia-gemini 1200w"
+                 sizes="(max-width: 720px) 100vw, 680px"
+                 alt="Memorial Day backyard gathering at a craftsman-style home in Batavia, Illinois — generated by Gemini (nano-banana).">
+            <img class="slideshow__slide"
+                 src="https://res.cloudinary.com/dsbllwpbh/image/upload/f_auto,q_auto,w_1200/brand/placeholders/memorial-day-batavia-openai"
+                 srcset="https://res.cloudinary.com/dsbllwpbh/image/upload/f_auto,q_auto,w_640/brand/placeholders/memorial-day-batavia-openai 640w, https://res.cloudinary.com/dsbllwpbh/image/upload/f_auto,q_auto,w_960/brand/placeholders/memorial-day-batavia-openai 960w, https://res.cloudinary.com/dsbllwpbh/image/upload/f_auto,q_auto,w_1200/brand/placeholders/memorial-day-batavia-openai 1200w"
+                 sizes="(max-width: 720px) 100vw, 680px"
+                 alt="Memorial Day backyard gathering at a craftsman-style home in Batavia, Illinois — generated by OpenAI (gpt-image-1).">
+            <div class="slideshow__chips" role="tablist" aria-label="Choose which generated image to display">
+              <button type="button" class="slideshow__chip is-active" role="tab" aria-selected="true">Gemini</button>
+              <button type="button" class="slideshow__chip" role="tab" aria-selected="false">OpenAI</button>
+            </div>
+          </div>
+          <figcaption>
+            <strong>Two placeholders, web-optimized via Cloudinary.</strong>
+            Slide 1 — Gemini (Nano Banana) · Slide 2 — OpenAI (gpt-image-1) · five-second rotation.
+          </figcaption>
+        </figure>
+
+        <p>And here is the exact prompt that produced everything above — the two image generations, the Cloudinary uploads, this very figure, and the prompt block you're now reading:</p>
+
+        <pre class="code"><code>After cost &amp; interation, create an image slideshow with two
+images. One image should be generated with gemini and the other
+with openai. The image should be of a memorial day celebration
+at a home in Batavia IL. Have the images rotating via the
+slideshow. Have the images served from cloudinary and web
+optimized. **After you install this, show this exact prompt
+underneath as an example of how I prompted claude code.</code></pre>
+
+        <h3>Improving an existing image (edit, not generate)</h3>
+        <p>The same workflow handles <em>edits</em> just as well. Hand Claude an existing photo, ask both models to relight it, and you get a before/after triptych you can drop into a page. The slideshow below cycles through the original snapshot first, then each model's interpretation of the same brief — same source, same prompt, two different ideas of what "professionally lit" means.</p>
+
+        <figure class="slideshow slideshow--portrait" aria-label="Three portraits cross-fading: an original cellphone selfie, a Gemini-relit version, and an OpenAI-relit version.">
+          <div class="slideshow__stage">
+            <img class="slideshow__slide is-active"
+                 src="https://res.cloudinary.com/dsbllwpbh/image/upload/f_auto,q_auto,w_880/brand/placeholders/portrait-original"
+                 srcset="https://res.cloudinary.com/dsbllwpbh/image/upload/f_auto,q_auto,w_440/brand/placeholders/portrait-original 440w, https://res.cloudinary.com/dsbllwpbh/image/upload/f_auto,q_auto,w_660/brand/placeholders/portrait-original 660w, https://res.cloudinary.com/dsbllwpbh/image/upload/f_auto,q_auto,w_880/brand/placeholders/portrait-original 880w"
+                 sizes="(max-width: 720px) 80vw, 440px"
+                 alt="Original cellphone selfie used as the source image — middle-aged man with silver hair in a blue shirt, sitting in a car.">
+            <img class="slideshow__slide"
+                 src="https://res.cloudinary.com/dsbllwpbh/image/upload/f_auto,q_auto,w_880/brand/placeholders/portrait-gemini"
+                 srcset="https://res.cloudinary.com/dsbllwpbh/image/upload/f_auto,q_auto,w_440/brand/placeholders/portrait-gemini 440w, https://res.cloudinary.com/dsbllwpbh/image/upload/f_auto,q_auto,w_660/brand/placeholders/portrait-gemini 660w, https://res.cloudinary.com/dsbllwpbh/image/upload/f_auto,q_auto,w_880/brand/placeholders/portrait-gemini 880w"
+                 sizes="(max-width: 720px) 80vw, 440px"
+                 alt="Same subject and background, relit by Gemini (nano-banana) — softer key light from upper left, gentle rim separation.">
+            <img class="slideshow__slide"
+                 src="https://res.cloudinary.com/dsbllwpbh/image/upload/f_auto,q_auto,w_880/brand/placeholders/portrait-openai"
+                 srcset="https://res.cloudinary.com/dsbllwpbh/image/upload/f_auto,q_auto,w_440/brand/placeholders/portrait-openai 440w, https://res.cloudinary.com/dsbllwpbh/image/upload/f_auto,q_auto,w_660/brand/placeholders/portrait-openai 660w, https://res.cloudinary.com/dsbllwpbh/image/upload/f_auto,q_auto,w_880/brand/placeholders/portrait-openai 880w"
+                 sizes="(max-width: 720px) 80vw, 440px"
+                 alt="Same subject and background, relit by OpenAI (gpt-image-1) — magazine-portrait lighting with shadow-side fill.">
+            <div class="slideshow__chips" role="tablist" aria-label="Choose which generated image to display">
+              <button type="button" class="slideshow__chip is-active" role="tab" aria-selected="true">Original</button>
+              <button type="button" class="slideshow__chip" role="tab" aria-selected="false">Gemini</button>
+              <button type="button" class="slideshow__chip" role="tab" aria-selected="false">OpenAI</button>
+            </div>
+          </div>
+          <figcaption>
+            <strong>Before &amp; after — one source, two relights.</strong>
+            Slide 1 — Original · Slide 2 — Gemini · Slide 3 — OpenAI · five-second rotation.
+          </figcaption>
+        </figure>
+
+        <p>And the prompt <em>you</em> gave Claude Code:</p>
+
+        <pre class="code"><code>recreate this image as if it were shot by a professional
+photographer with professional lighting, but leave the person
+and the background un changed, just lit professionally and shot
+with profesional equipment</code></pre>
+
+        <p>Claude Code didn't pass that brief through to the models verbatim. It expanded it into something more directive — same intent, but with explicit instructions about light direction, depth-of-field, and color grading so the two models had less room to wander. Here's the actual prompt that went out, in parallel, to both <code>mcp__nano-banana__edit_image</code> and <code>mcp__openai-images__edit_image</code>:</p>
+
+        <pre class="code"><code>Recreate this image as if it were shot by a professional photographer
+with professional lighting, but leave the person and the background
+unchanged — just lit professionally and shot with professional
+equipment. Keep the same composition, same facial features, same
+clothing, same expression, same vehicle interior background. Add a
+flattering key light from the upper left that softly sculpts the
+face, a soft fill on the shadow side to retain detail, and a gentle
+rim light separating him from the background. Medium-format-style
+depth of field with the eyes tack-sharp. Color-graded for skin tone
+neutrality. Photorealistic, magazine-portrait quality.</code></pre>
+
+        <p>This expansion is part of how Claude Code interprets a loose brief — and it's the layer to inspect first when a generated image drifts. If the result misses, the fix is usually in <em>that</em> prompt, not yours: either ask Claude to revise the expanded version directly, or tighten your original so the expansion has less to invent.</p>
+      </section>
+
+      <section id="ai-calls" class="section">
+        <p class="section__num">V.</p>
+        <h2>Using the keys in production code</h2>
+        <p>Section IV covers the build-time workflow. When an AI call has to happen <em>at runtime</em> — a visitor on the live site triggering image generation, for instance — the rules change. Read this twice.</p>
 
         <div class="callout callout--danger">
           <p class="callout__label">Never call AI APIs from browser JavaScript</p>
@@ -218,7 +425,7 @@ export default async (req) => {
       </section>
 
       <section id="checklist" class="section">
-        <p class="section__num">V.</p>
+        <p class="section__num">VI.</p>
         <h2>Don't leak the keys</h2>
         <p>Run through this every time before you push. It takes ten seconds and will save you the worst week of your apprenticeship.</p>
         <ul class="checklist checklist--final">
