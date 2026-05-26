@@ -1,0 +1,79 @@
+{
+  "device-lineup": {
+    "url": "https://res.cloudinary.com/dsbllwpbh/image/upload/v1778686363/batavia/device-lineup.jpg",
+    "public_id": "batavia/device-lineup",
+    "width": 2752,
+    "height": 1536,
+    "bytes": 2190713
+  },
+  "emoto-warning": {
+    "url": "https://res.cloudinary.com/dsbllwpbh/image/upload/v1778686364/batavia/emoto-warning.png",
+    "public_id": "batavia/emoto-warning",
+    "width": 1024,
+    "height": 1024,
+    "bytes": 1655993
+  },
+  "helmet-hero": {
+    "url": "https://res.cloudinary.com/dsbllwpbh/image/upload/v1778686365/batavia/helmet-hero.jpg",
+    "public_id": "batavia/helmet-hero",
+    "width": 1024,
+    "height": 1024,
+    "bytes": 625367
+  },
+  "hero": {
+    "url": "https://res.cloudinary.com/dsbllwpbh/image/upload/v1778686366/batavia/hero.jpg",
+    "public_id": "batavia/hero",
+    "width": 2752,
+    "height": 1536,
+    "bytes": 2795354
+  },
+  "lights-at-night": {
+    "url": "https://res.cloudinary.com/dsbllwpbh/image/upload/v1778686367/batavia/lights-at-night.jpg",
+    "public_id": "batavia/lights-at-night",
+    "width": 1024,
+    "height": 1024,
+    "bytes": 661311
+  },
+  "officer-friendly": {
+    "url": "https://res.cloudinary.com/dsbllwpbh/image/upload/v1778686368/batavia/officer-friendly.png",
+    "public_id": "batavia/officer-friendly",
+    "width": 1024,
+    "height": 1024,
+    "bytes": 1343302
+  },
+  "where-to-ride-map": {
+    "url": "https://res.cloudinary.com/dsbllwpbh/image/upload/v1778686369/batavia/where-to-ride-map.jpg",
+    "public_id": "batavia/where-to-ride-map",
+    "width": 2752,
+    "height": 1536,
+    "bytes": 3282255
+  },
+  "end-card-hadley": {
+    "url": "https://res.cloudinary.com/dsbllwpbh/image/upload/v1779457235/batavia/end-card-hadley.jpg",
+    "public_id": "batavia/end-card-hadley",
+    "width": 1536,
+    "height": 2752,
+    "bytes": 2598263
+  },
+  "end-card-josh": {
+    "url": "https://res.cloudinary.com/dsbllwpbh/image/upload/v1779457237/batavia/end-card-josh.jpg",
+    "public_id": "batavia/end-card-josh",
+    "width": 1536,
+    "height": 2752,
+    "bytes": 2534183
+  },
+  "end-card-morgan": {
+    "url": "https://res.cloudinary.com/dsbllwpbh/image/upload/v1779457238/batavia/end-card-morgan.jpg",
+    "public_id": "batavia/end-card-morgan",
+    "width": 1536,
+    "height": 2752,
+    "bytes": 2698923
+  },
+  "officer-webb-finger-up": {
+    "url": "https://res.cloudinary.com/dsbllwpbh/image/upload/v1779457238/batavia/officer-webb-finger-up.jpg",
+    "public_id": "batavia/officer-webb-finger-up",
+    "width": 1536,
+    "height": 2752,
+    "bytes": 2248805
+  }
+}

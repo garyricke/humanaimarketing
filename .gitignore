@@ -15,3 +15,7 @@ node_modules/
 
 # Nano-banana / image-gen local output cache (originals live in Cloudinary)
 generated_imgs/
+
+# Rendered video — Cloudinary-hosted, never in git
+*.mp4
+*.mov
