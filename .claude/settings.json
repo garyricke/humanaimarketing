@@ -5,14 +5,12 @@
   },
   "permissions": {
     "deny": [
-      {
-        "tool": "FileSystem",
-        "path": ".env"
-      },
-      {
-        "tool": "FileSystem",
-        "path": ".env.*"
-      }
+      "Read(./.env)",
+      "Read(./.env.*)",
+      "Edit(./.env)",
+      "Edit(./.env.*)",
+      "Write(./.env)",
+      "Write(./.env.*)"
     ]
   }
 }
