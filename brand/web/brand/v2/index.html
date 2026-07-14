@@ -1,0 +1,1451 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Brand v2 · Preview · Human AI Marketing</title>
+  <link rel="icon" type="image/svg+xml" href="../../favicon.svg" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500&family=Inter:wght@300;400;500&family=Caveat:wght@400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --paper: #EDE4D2;
+      --bone:  #F7EFDD;
+      --ink:   #1B2738;
+      --ink-70: rgba(27, 39, 56, 0.72);
+      --ink-50: rgba(27, 39, 56, 0.5);
+      --ink-25: rgba(27, 39, 56, 0.25);
+      --ink-10: rgba(27, 39, 56, 0.1);
+      --teal:  #4A7682;
+      --sumi:  #0F1620;
+
+      --serif: 'Fraunces', Georgia, serif;
+      --sans:  'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+      --hand:  'Caveat', cursive;
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body { margin: 0; }
+
+    body {
+      background: var(--bone);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      letter-spacing: 0.005em;
+
+      /* faint paper grain */
+      background-image:
+        radial-gradient(rgba(27, 39, 56, 0.022) 1px, transparent 1px),
+        radial-gradient(rgba(27, 39, 56, 0.014) 1px, transparent 1px);
+      background-size: 3px 3px, 7px 7px;
+      background-position: 0 0, 1px 2px;
+    }
+
+    .stage {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 80px 28px 120px;
+    }
+
+    /* ——— Top wordmark ——— */
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 120px;
+      font-family: var(--sans);
+      font-size: 0.78rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--ink-50);
+    }
+    .topbar__brand {
+      font-family: var(--serif);
+      font-size: 1.05rem;
+      letter-spacing: 0.02em;
+      text-transform: none;
+      color: var(--ink);
+    }
+    .topbar__brand .ai {
+      color: var(--teal);
+      font-style: italic;
+    }
+    .topbar__brand .dot {
+      color: var(--ink-50);
+      margin: 0 4px;
+    }
+    .topbar__label {
+      font-family: var(--hand);
+      font-size: 1.15rem;
+      text-transform: none;
+      letter-spacing: 0;
+      color: var(--ink-70);
+    }
+
+    /* ——— Hero ——— */
+    .hero {
+      text-align: center;
+      margin-bottom: 160px;
+    }
+    .mark {
+      display: block;
+      width: 132px;
+      height: 132px;
+      margin: 0 auto 28px;
+    }
+    .wordmark {
+      font-family: var(--serif);
+      font-weight: 400;
+      font-size: 2.6rem;
+      letter-spacing: 0.01em;
+      line-height: 1;
+      margin: 0 0 56px;
+      color: var(--ink);
+    }
+    .wordmark .ai {
+      color: var(--teal);
+      font-style: italic;
+    }
+    .wordmark .dot {
+      color: var(--ink-50);
+      margin: 0 6px;
+      font-style: normal;
+    }
+    .hero__line {
+      font-family: var(--serif);
+      font-weight: 300;
+      font-size: 1.6rem;
+      line-height: 1.35;
+      letter-spacing: -0.005em;
+      max-width: 22ch;
+      margin: 0 auto;
+      color: var(--ink);
+    }
+    .hero__line em {
+      font-style: italic;
+      color: var(--teal);
+    }
+    .hero__caption {
+      margin-top: 28px;
+      font-family: var(--hand);
+      font-size: 1.4rem;
+      color: var(--ink-70);
+      line-height: 1;
+    }
+
+    /* ——— Section ——— */
+    .section {
+      margin: 0 0 120px;
+    }
+    .section__eyebrow {
+      font-family: var(--sans);
+      font-size: 0.72rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--ink-50);
+      margin: 0 0 18px;
+    }
+    .section__title {
+      font-family: var(--serif);
+      font-weight: 400;
+      font-size: 1.8rem;
+      line-height: 1.2;
+      letter-spacing: -0.005em;
+      margin: 0 0 24px;
+    }
+    .section__body p {
+      margin: 0 0 18px;
+      font-size: 1.02rem;
+      line-height: 1.65;
+      color: var(--ink);
+    }
+    .section__body p:last-child { margin-bottom: 0; }
+
+    /* ——— Hand-drawn underline under a word ——— */
+    .underline-hand {
+      position: relative;
+      display: inline-block;
+    }
+    .underline-hand svg {
+      position: absolute;
+      left: -4%;
+      right: -4%;
+      bottom: -8px;
+      width: 108%;
+      height: 10px;
+      color: var(--teal);
+    }
+
+    /* ——— Two-column pair ——— */
+    .pair {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 56px;
+    }
+    @media (max-width: 640px) {
+      .pair { grid-template-columns: 1fr; gap: 48px; }
+    }
+    .idea__kanji {
+      font-family: var(--serif);
+      font-size: 2rem;
+      color: var(--teal);
+      margin: 0 0 4px;
+      letter-spacing: 0.02em;
+    }
+    .idea__name {
+      font-family: var(--serif);
+      font-style: italic;
+      font-weight: 400;
+      font-size: 1.15rem;
+      color: var(--ink);
+      margin: 0 0 14px;
+    }
+    .idea__body {
+      font-size: 0.98rem;
+      line-height: 1.65;
+      color: var(--ink);
+      margin: 0;
+    }
+
+    /* ——— Three flows ——— */
+    .flows {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 36px;
+    }
+    .flow {
+      display: grid;
+      grid-template-columns: 64px 1fr;
+      gap: 20px;
+      align-items: baseline;
+    }
+    .flow__num {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 2.3rem;
+      font-weight: 300;
+      color: var(--teal);
+      line-height: 1;
+    }
+    .flow__title {
+      font-family: var(--serif);
+      font-weight: 400;
+      font-size: 1.25rem;
+      margin: 0 0 6px;
+    }
+    .flow__body {
+      font-size: 0.98rem;
+      line-height: 1.6;
+      color: var(--ink);
+      margin: 0;
+    }
+
+    /* ——— Voice example ——— */
+    .voice {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+      margin-top: 24px;
+    }
+    @media (max-width: 640px) {
+      .voice { grid-template-columns: 1fr; }
+    }
+    .voice__card {
+      background: var(--paper);
+      border-radius: 4px;
+      padding: 22px 22px 24px;
+      border: 1px solid var(--ink-10);
+    }
+    .voice__mark {
+      font-family: var(--hand);
+      font-size: 1.5rem;
+      line-height: 1;
+      color: var(--teal);
+      margin: 0 0 12px;
+    }
+    .voice__card--no .voice__mark { color: var(--ink-25); }
+    .voice__text {
+      font-family: var(--serif);
+      font-size: 1.05rem;
+      line-height: 1.4;
+      color: var(--ink);
+      margin: 0;
+    }
+    .voice__card--no .voice__text {
+      color: var(--ink-50);
+      text-decoration: line-through;
+      text-decoration-thickness: 1px;
+      text-decoration-color: var(--ink-25);
+    }
+
+    /* ——— Color swatches ——— */
+    .swatches {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 14px;
+      margin-top: 24px;
+    }
+    @media (max-width: 640px) {
+      .swatches { grid-template-columns: repeat(3, 1fr); }
+    }
+    .swatch {
+      text-align: left;
+    }
+    .swatch__chip {
+      aspect-ratio: 1 / 1;
+      border-radius: 4px;
+      border: 1px solid var(--ink-10);
+      margin-bottom: 10px;
+    }
+    .swatch__name {
+      font-family: var(--serif);
+      font-size: 0.95rem;
+      margin: 0 0 2px;
+    }
+    .swatch__hex {
+      font-family: var(--sans);
+      font-size: 0.74rem;
+      letter-spacing: 0.06em;
+      color: var(--ink-50);
+      text-transform: lowercase;
+      margin: 0;
+    }
+
+    /* ——— Typography specimen ——— */
+    .specimen {
+      display: grid;
+      gap: 22px;
+      margin-top: 12px;
+    }
+    .specimen__row {
+      display: grid;
+      grid-template-columns: 90px 1fr;
+      gap: 20px;
+      align-items: baseline;
+      padding-bottom: 22px;
+      border-bottom: 1px solid var(--ink-10);
+    }
+    .specimen__row:last-child { border-bottom: none; }
+    .specimen__label {
+      font-family: var(--sans);
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--ink-50);
+    }
+    .specimen__sample-serif {
+      font-family: var(--serif);
+      font-weight: 400;
+      font-size: 1.7rem;
+      line-height: 1.2;
+      margin: 0;
+    }
+    .specimen__sample-sans {
+      font-family: var(--sans);
+      font-size: 1.02rem;
+      line-height: 1.6;
+      margin: 0;
+    }
+    .specimen__sample-hand {
+      font-family: var(--hand);
+      font-size: 1.7rem;
+      color: var(--ink);
+      margin: 0;
+    }
+
+    /* ——— Apple-style hero panel sequence ——— */
+    /* Panels break out of the narrow .stage column to claim the full viewport. */
+    .panels {
+      width: 100vw;
+      margin-left: calc(-50vw + 50%);
+      margin-right: calc(-50vw + 50%);
+      margin-top: 24px;
+      margin-bottom: 160px;
+    }
+
+    .panel {
+      width: 100%;
+    }
+
+    /* ——— Photo panel: full-bleed image, headline below on paper ——— */
+    .panel--photo {
+      padding-bottom: 88px;
+    }
+    .panel__media {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      overflow: hidden;
+      background: var(--paper);
+    }
+    .panel__media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .panel__copy {
+      max-width: 760px;
+      margin: 56px auto 0;
+      padding: 0 28px;
+      text-align: center;
+    }
+    .panel__headline {
+      font-family: var(--serif);
+      font-weight: 300;
+      font-size: clamp(2rem, 5.4vw, 3.4rem);
+      line-height: 1.1;
+      letter-spacing: -0.012em;
+      margin: 0 0 18px;
+      color: var(--ink);
+    }
+    .panel__headline em {
+      font-style: italic;
+      color: var(--teal);
+    }
+    .panel__caption {
+      font-family: var(--hand);
+      font-size: 1.45rem;
+      color: var(--ink-70);
+      line-height: 1.35;
+      margin: 0;
+    }
+
+    /* ——— Type-only panel: a single statement, generous padding ——— */
+    .panel--type {
+      padding: 140px 28px;
+      text-align: center;
+    }
+    .panel--type-paper { background: var(--paper); }
+    .panel--type .panel__headline {
+      max-width: 820px;
+      margin: 0 auto;
+      font-size: clamp(2rem, 5.8vw, 3.6rem);
+    }
+    .panel--type .panel__caption {
+      margin-top: 22px;
+    }
+
+    /* ——— Quote panel: an italic chapter epigraph ——— */
+    .panel--quote {
+      padding: 160px 28px;
+      text-align: center;
+    }
+    .panel--quote .panel__headline {
+      font-style: italic;
+      font-weight: 400;
+      font-size: clamp(1.8rem, 4.6vw, 2.8rem);
+      max-width: 720px;
+      margin: 0 auto;
+      line-height: 1.25;
+    }
+    .panel--quote .panel__headline em {
+      font-style: italic;
+      color: var(--teal);
+    }
+
+    /* ——— Split panel: photo on one side, copy on the other ——— */
+    .panel--split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: stretch;
+      min-height: 560px;
+    }
+    .panel--split .panel__media {
+      aspect-ratio: auto;
+      height: 100%;
+    }
+    .panel--split .panel__copy {
+      text-align: left;
+      margin: 0;
+      padding: 72px 64px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      max-width: 100%;
+      background: var(--paper);
+    }
+    .panel--split .panel__copy .panel__headline {
+      font-size: clamp(1.7rem, 3.8vw, 2.6rem);
+    }
+    .panel--split .panel__copy .panel__body {
+      font-family: var(--sans);
+      font-size: 1.02rem;
+      line-height: 1.65;
+      color: var(--ink);
+      margin: 0;
+      max-width: 32ch;
+    }
+
+    /* ——— Closing panel: a single handwritten line ——— */
+    .panel--closing {
+      padding: 180px 28px 200px;
+      text-align: center;
+    }
+    .panel--closing .panel__hand {
+      font-family: var(--hand);
+      font-size: clamp(2.8rem, 8vw, 5rem);
+      color: var(--ink);
+      margin: 0;
+      line-height: 1;
+    }
+
+    @media (max-width: 768px) {
+      .panel--split {
+        grid-template-columns: 1fr;
+        min-height: 0;
+      }
+      .panel--split .panel__media {
+        aspect-ratio: 4 / 3;
+      }
+      .panel--split .panel__copy {
+        padding: 56px 28px 64px;
+      }
+      .panel--type, .panel--quote { padding-top: 96px; padding-bottom: 96px; }
+      .panel--closing { padding-top: 120px; padding-bottom: 140px; }
+    }
+
+    /* ——— Text-over-image hero variants ——— */
+    /* A row of full-bleed heroes where the type sits on the photograph,
+       not below it. Three placements demonstrate the range. */
+    .heroes {
+      width: 100vw;
+      margin-left: calc(-50vw + 50%);
+      margin-bottom: 0;
+    }
+
+    .heroes__intro {
+      max-width: 760px;
+      margin: 0 auto 56px;
+      padding: 0 28px;
+      text-align: center;
+    }
+    .heroes__intro p { margin: 0; }
+    .heroes__intro h2 {
+      font-family: var(--serif);
+      font-weight: 400;
+      font-size: clamp(1.7rem, 3.6vw, 2.4rem);
+      line-height: 1.2;
+      letter-spacing: -0.005em;
+      margin: 0 0 14px;
+    }
+    .heroes__lede {
+      font-size: 0.98rem;
+      line-height: 1.6;
+      color: var(--ink-70);
+      max-width: 56ch;
+      margin: 0 auto;
+    }
+
+    .hero-bleed {
+      position: relative;
+      width: 100%;
+      height: clamp(480px, 80vh, 760px);
+      overflow: hidden;
+      isolation: isolate;
+    }
+
+    .hero-bleed__media {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      z-index: 0;
+    }
+
+    .hero-bleed__scrim {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .hero-bleed__copy {
+      position: absolute;
+      z-index: 2;
+    }
+
+    .hero-bleed__eyebrow {
+      font-family: var(--sans);
+      font-size: 0.7rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      margin: 0 0 16px;
+      opacity: 0.85;
+    }
+    .hero-bleed__headline {
+      font-family: var(--serif);
+      font-weight: 400;
+      font-size: clamp(2rem, 5vw, 3.4rem);
+      line-height: 1.1;
+      letter-spacing: -0.012em;
+      margin: 0 0 16px;
+    }
+    .hero-bleed__headline em {
+      font-style: italic;
+    }
+    .hero-bleed__body {
+      font-family: var(--sans);
+      font-size: 1rem;
+      line-height: 1.55;
+      margin: 0;
+      max-width: 38ch;
+    }
+
+    /* —— Variant A: bottom dark-scrim + centered cream text —— */
+    .hero-bleed--bottom-scrim .hero-bleed__scrim {
+      background: linear-gradient(
+        to top,
+        rgba(15, 22, 32, 0.78) 0%,
+        rgba(15, 22, 32, 0.45) 28%,
+        rgba(15, 22, 32, 0.05) 62%,
+        rgba(15, 22, 32, 0.0) 80%
+      );
+    }
+    .hero-bleed--bottom-scrim .hero-bleed__copy {
+      left: 0; right: 0; bottom: 0;
+      padding: 56px 28px 72px;
+      text-align: center;
+      color: var(--bone);
+    }
+    .hero-bleed--bottom-scrim .hero-bleed__copy .hero-bleed__body {
+      margin: 0 auto;
+      max-width: 44ch;
+      opacity: 0.92;
+    }
+    .hero-bleed--bottom-scrim .hero-bleed__headline em { color: var(--bone); }
+
+    /* —— Variant B: upper-left ink text on open-sky photograph —— */
+    .hero-bleed--upper-left .hero-bleed__scrim {
+      /* very subtle local lift to keep type legible against bright sky */
+      background: linear-gradient(
+        135deg,
+        rgba(247, 239, 221, 0.55) 0%,
+        rgba(247, 239, 221, 0.18) 30%,
+        rgba(247, 239, 221, 0.0) 55%
+      );
+    }
+    .hero-bleed--upper-left .hero-bleed__copy {
+      top: 56px;
+      left: 0;
+      max-width: 560px;
+      padding: 0 28px 0 max(28px, calc((100vw - 1200px) / 2));
+      color: var(--ink);
+    }
+    .hero-bleed--upper-left .hero-bleed__body { color: var(--ink-70); }
+    .hero-bleed--upper-left .hero-bleed__headline em { color: var(--teal); }
+    .hero-bleed--upper-left .hero-bleed__eyebrow { color: var(--teal); opacity: 1; }
+
+    /* —— Variant C: bone text card pinned to one corner —— */
+    .hero-bleed--card-pin .hero-bleed__scrim {
+      /* barely-there vignette so the card edge doesn't fight bright pixels */
+      background: linear-gradient(
+        to top right,
+        rgba(15, 22, 32, 0.3) 0%,
+        rgba(15, 22, 32, 0.0) 45%
+      );
+    }
+    .hero-bleed--card-pin .hero-bleed__copy {
+      left: max(28px, calc((100vw - 1200px) / 2));
+      bottom: 56px;
+      max-width: 360px;
+      padding: 30px 34px 32px;
+      background: var(--paper);
+      color: var(--ink);
+      border-radius: 4px;
+      box-shadow: 0 10px 30px rgba(15, 22, 32, 0.22);
+    }
+    .hero-bleed--card-pin .hero-bleed__eyebrow { color: var(--teal); opacity: 1; }
+    .hero-bleed--card-pin .hero-bleed__body { color: var(--ink-70); }
+    .hero-bleed--card-pin .hero-bleed__headline {
+      font-size: clamp(1.5rem, 3vw, 2rem);
+    }
+    .hero-bleed--card-pin .hero-bleed__headline em { color: var(--teal); }
+
+    @media (max-width: 768px) {
+      .hero-bleed { height: clamp(420px, 70vh, 560px); }
+      .hero-bleed--upper-left .hero-bleed__copy { top: 36px; padding-left: 28px; padding-right: 28px; }
+      .hero-bleed--card-pin .hero-bleed__copy {
+        left: 20px; right: 20px;
+        bottom: 28px;
+        max-width: none;
+      }
+    }
+
+    /* ——— Spring carousel ——— */
+    .carousel {
+      width: 100vw;
+      margin-left: calc(-50vw + 50%);
+      margin-bottom: 160px;
+      position: relative;
+    }
+    .carousel__head {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      max-width: 1200px;
+      margin: 0 auto 36px;
+      padding: 0 28px;
+      gap: 32px;
+    }
+    .carousel__intro {
+      max-width: 560px;
+    }
+    .carousel__intro .section__eyebrow { margin-bottom: 14px; }
+    .carousel__intro h2 {
+      font-family: var(--serif);
+      font-weight: 400;
+      font-size: clamp(1.6rem, 3.4vw, 2.2rem);
+      line-height: 1.2;
+      letter-spacing: -0.005em;
+      margin: 0 0 12px;
+    }
+    .carousel__intro p {
+      font-size: 0.98rem;
+      line-height: 1.6;
+      color: var(--ink-70);
+      margin: 0;
+    }
+    .carousel__nav {
+      display: flex;
+      gap: 12px;
+      flex-shrink: 0;
+      padding-bottom: 4px;
+    }
+    .carousel__btn {
+      appearance: none;
+      width: 44px;
+      height: 44px;
+      border-radius: 999px;
+      border: 1px solid var(--ink-25);
+      background: var(--paper);
+      color: var(--ink);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--serif);
+      font-size: 1.15rem;
+      line-height: 1;
+      transition: background 200ms ease, color 200ms ease, border-color 200ms ease, transform 120ms ease, opacity 200ms ease;
+    }
+    .carousel__btn:hover {
+      background: var(--ink);
+      color: var(--bone);
+      border-color: var(--ink);
+    }
+    .carousel__btn:active { transform: scale(0.96); }
+    .carousel__btn[disabled] {
+      opacity: 0.3;
+      cursor: default;
+    }
+    .carousel__btn[disabled]:hover {
+      background: var(--paper);
+      color: var(--ink);
+      border-color: var(--ink-25);
+    }
+
+    .carousel__track {
+      display: flex;
+      gap: 24px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      padding: 0 max(28px, calc((100vw - 1200px) / 2)) 8px;
+      scroll-padding-left: max(28px, calc((100vw - 1200px) / 2));
+      -webkit-overflow-scrolling: touch;
+    }
+    .carousel__track::-webkit-scrollbar { display: none; }
+
+    .card {
+      flex: 0 0 min(560px, 86vw);
+      scroll-snap-align: start;
+      display: flex;
+      flex-direction: column;
+    }
+    .card__media {
+      aspect-ratio: 3 / 2;
+      overflow: hidden;
+      border-radius: 8px;
+      background: var(--paper);
+    }
+    .card__media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .card__eyebrow {
+      font-family: var(--sans);
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin: 22px 0 8px;
+    }
+    .card__headline {
+      font-family: var(--serif);
+      font-weight: 400;
+      font-size: 1.55rem;
+      line-height: 1.18;
+      letter-spacing: -0.005em;
+      margin: 0 0 10px;
+      color: var(--ink);
+    }
+    .card__body {
+      font-family: var(--sans);
+      font-size: 0.95rem;
+      line-height: 1.55;
+      color: var(--ink-70);
+      margin: 0;
+      max-width: 38ch;
+    }
+
+    @media (max-width: 640px) {
+      .carousel__head {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .card__headline { font-size: 1.4rem; }
+    }
+
+    /* ——— Footer ——— */
+    .footnote {
+      margin-top: 24px;
+      padding-top: 36px;
+      border-top: 1px solid var(--ink-10);
+      font-family: var(--sans);
+      font-size: 0.82rem;
+      line-height: 1.6;
+      color: var(--ink-50);
+      font-style: italic;
+    }
+    .footnote a {
+      color: var(--ink-70);
+      text-decoration: underline;
+      text-decoration-color: var(--ink-25);
+      text-underline-offset: 3px;
+    }
+    .footnote a:hover { color: var(--ink); }
+  </style>
+</head>
+<body>
+  <main class="stage">
+
+    <!-- Top bar: quiet brand presence + exploratory tag -->
+    <header class="topbar">
+      <a class="topbar__brand" href="/" aria-label="Human AI Marketing home">
+        <span>h</span><span class="dot">·</span><span class="ai">AI</span>
+      </a>
+      <span class="topbar__label">v2 · preview</span>
+    </header>
+
+    <!-- Hero: the mark, the wordmark, one line -->
+    <section class="hero">
+      <!-- Hand-drawn mark: imperfect circle + tilde-wave inside -->
+      <svg class="mark" viewBox="0 0 132 132" aria-label="Human AI Marketing mark" role="img">
+        <!-- Imperfect circle: slightly oval, slightly wobbly -->
+        <path
+          d="M 66 14
+             C 96 16, 121 38, 119 70
+             C 117 100, 92 119, 64 119
+             C 36 119, 13 96, 14 66
+             C 15 36, 38 14, 66 14 Z"
+          fill="none"
+          stroke="#1B2738"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+        <!-- Tilde / wave: asymmetric, slightly off-center -->
+        <path
+          d="M 38 70
+             C 46 56, 56 56, 64 70
+             C 72 84, 84 84, 94 68"
+          fill="none"
+          stroke="#1B2738"
+          stroke-width="2.2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </svg>
+
+      <h1 class="wordmark">
+        <span>h</span><span class="dot">·</span><span class="ai">AI</span>
+      </h1>
+
+      <p class="hero__line">
+        beginner's mind. <em>imperfect hand.</em> local roots.
+      </p>
+      <p class="hero__caption">a quieter direction.</p>
+    </section>
+
+    <!-- ===========================================================
+         Apple-style hero panel sequence — the brand in context.
+         These break out of the narrow column to claim the viewport.
+         =========================================================== -->
+    <div class="panels" aria-label="Hero panel examples">
+
+      <!-- 1 · Full-bleed photo: apprentice + shopkeeper -->
+      <section class="panel panel--photo">
+        <figure class="panel__media">
+          <img
+            src="https://res.cloudinary.com/dsbllwpbh/image/upload/f_auto,q_auto,w_1600/brand/panels/panel-apprentice-shopkeeper.jpg"
+            srcset="
+              https://res.cloudinary.com/dsbllwpbh/image/upload/f_auto,q_auto,w_800/brand/panels/panel-apprentice-shopkeeper.jpg 800w,
+              https://res.cloudinary.com/dsbllwpbh/image/upload/f_auto,q_auto,w_1200/brand/panels/panel-apprentice-shopkeeper.jpg 1200w,
+              https://res.cloudinary.com/dsbllwpbh/image/upload/f_auto,q_auto,w_1600/brand/panels/panel-apprentice-shopkeeper.jpg 1600w,
+              https://res.cloudinary.com/dsbllwpbh/image/upload/f_auto,q_auto,w_2400/brand/panels/panel-apprentice-shopkeeper.jpg 2400w
+            "
+            sizes="100vw"
+            alt="A young apprentice with a notebook sits beside an older shopkeeper at a wooden table in a Batavia storefront. Warm afternoon window light, exposed brick, a chipped enamel mug, hand-drawn sketches on paper, an old laptop between them."
+            loading="lazy"
+          />
+        </figure>
+        <div class="panel__copy">
+          <h2 class="panel__headline">marketing, made <em>by hand.</em></h2>
+          <p class="panel__caption">an apprentice. a shopkeeper. one good afternoon.</p>
+        </div>
+      </section>
+
+      <!-- 2 · Type-only panel -->
+      <section class="panel panel--type panel--type-paper">
+        <h2 class="panel__headline">
+          what if marketing was
+          <span class="underline-hand">
+            <em>a relationship</em>
+            <svg viewBox="0 0 100 10" preserveAspectRatio="none" aria-hidden="true">
+              <path d="M 1 6 C 18 3, 36 8, 52 5 C 68 2, 84 7, 99 4"
+                    fill="none" stroke="currentColor" stroke-width="1.4"
+                    stroke-linecap="round" />
+            </svg>
+          </span>
+          ?
+        </h2>
+        <p class="panel__caption">not a campaign. not a funnel. a person, then another.</p>
+      </section>
+
+      <!-- 3 · Split panel: community workshop -->
+      <section class="panel panel--split">
+        <figure class="panel__media">
+          <img
+            src="https://res.cloudinary.com/dsbllwpbh/image/upload/f_auto,q_auto,w_1200/brand/panels/panel-community-workshop.jpg"
+            srcset="
+              https://res.cloudinary.com/dsbllwpbh/image/upload/f_auto,q_auto,w_800/brand/panels/panel-community-workshop.jpg 800w,
+              https://res.cloudinary.com/dsbllwpbh/image/upload/f_auto,q_auto,w_1200/brand/panels/panel-community-workshop.jpg 1200w,
+              https://res.cloudinary.com/dsbllwpbh/image/upload/f_auto,q_auto,w_1600/brand/panels/panel-community-workshop.jpg 1600w
+            "
+            sizes="(max-width: 768px) 100vw, 50vw"
+            alt="Five young people gathered around a long wooden table in a high-ceilinged community room in downtown Geneva, Illinois. Tall arched windows let in low golden-hour light. Open notebooks, sketches, and a small ceramic vase on the table. One person stands and gestures while the others lean in and write."
+            loading="lazy"
+          />
+        </figure>
+        <div class="panel__copy">
+          <h2 class="panel__headline">small rooms. <em>real tools.</em></h2>
+          <p class="panel__body">
+            five apprentices. one notebook each. one local project on the table.
+            we learn by doing, in public, on saturday afternoons.
+          </p>
+        </div>
+      </section>
+
+      <!-- 4 · Type quote panel -->
+      <section class="panel panel--quote">
+        <h2 class="panel__headline">
+          the agency is the trellis. <em>the work is the byproduct.</em>
+        </h2>
+      </section>
+
+      <!-- 5 · Full-bleed photo: downtown walk -->
+      <section class="panel panel--photo">
+        <figure class="panel__media">
+          <img
+            src="https://res.cloudinary.com/dsbllwpbh/image/upload/f_auto,q_auto,w_1600/brand/panels/panel-downtown-walk.jpg"
+            srcset="
+              https://res.cloudinary.com/dsbllwpbh/image/upload/f_auto,q_auto,w_800/brand/panels/panel-downtown-walk.jpg 800w,
+              https://res.cloudinary.com/dsbllwpbh/image/upload/f_auto,q_auto,w_1200/brand/panels/panel-downtown-walk.jpg 1200w,
+              https://res.cloudinary.com/dsbllwpbh/image/upload/f_auto,q_auto,w_1600/brand/panels/panel-downtown-walk.jpg 1600w,
+              https://res.cloudinary.com/dsbllwpbh/image/upload/f_auto,q_auto,w_2400/brand/panels/panel-downtown-walk.jpg 2400w
+            "
+            sizes="100vw"
+            alt="Golden hour on a brick-paved downtown sidewalk in the Fox Valley. A young apprentice with a tote bag and notebook walks alongside an older shopkeeper in a barn coat. Vintage hanging signs read Geneva Hardware Co. and Batavia Bakery. Gas-lamp streetlights are just starting to glow."
+            loading="lazy"
+          />
+        </figure>
+        <div class="panel__copy">
+          <h2 class="panel__headline">made local. <em>tie by tie.</em></h2>
+          <p class="panel__caption">every project, a thread between two parts of the city.</p>
+        </div>
+      </section>
+
+      <!-- 6 · Closing handwritten line -->
+      <section class="panel panel--closing">
+        <p class="panel__hand">begin again.</p>
+      </section>
+
+    </div>
+
+    <!-- ===========================================================
+         Text-over-image heroes — three overlay treatments.
+         The image carries the emotion; type sits on the photograph.
+         =========================================================== -->
+    <section class="heroes" aria-label="Hero variants — text over image">
+
+      <div class="heroes__intro">
+        <p class="section__eyebrow">treatment · heroes</p>
+        <h2>heroes, with type on top.</h2>
+        <p class="heroes__lede">
+          when the photograph is doing the heavy lifting, the headline goes
+          <em>on</em> it, not below it. three placements — bottom scrim,
+          upper-left, and a pinned card — cover the cases.
+        </p>
+      </div>
+
+      <!-- A · Bottom-scrim cinematic -->
+      <article class="hero-bleed hero-bleed--bottom-scrim">
+        <img
+          class="hero-bleed__media"
+          src="https://res.cloudinary.com/dsbllwpbh/image/upload/f_auto,q_auto,w_1800/brand/panels/panel-community-workshop.jpg"
+          srcset="
+            https://res.cloudinary.com/dsbllwpbh/image/upload/f_auto,q_auto,w_900/brand/panels/panel-community-workshop.jpg 900w,
+            https://res.cloudinary.com/dsbllwpbh/image/upload/f_auto,q_auto,w_1400/brand/panels/panel-community-workshop.jpg 1400w,
+            https://res.cloudinary.com/dsbllwpbh/image/upload/f_auto,q_auto,w_1800/brand/panels/panel-community-workshop.jpg 1800w,
+            https://res.cloudinary.com/dsbllwpbh/image/upload/f_auto,q_auto,w_2400/brand/panels/panel-community-workshop.jpg 2400w
+          "
+          sizes="100vw"
+          alt="Five young apprentices around a long wooden table in a high-ceilinged Geneva community room, sketches and notebooks on the table, golden window light."
+          loading="lazy"
+        />
+        <div class="hero-bleed__scrim" aria-hidden="true"></div>
+        <div class="hero-bleed__copy">
+          <p class="hero-bleed__eyebrow">saturday sessions</p>
+          <h2 class="hero-bleed__headline">what gets taught <em>in five hours.</em></h2>
+          <p class="hero-bleed__body">
+            five apprentices. one notebook each. real client briefs.
+            open enrollment, every season.
+          </p>
+        </div>
+      </article>
+
+      <!-- B · Upper-left ink text on open-sky photograph -->
+      <article class="hero-bleed hero-bleed--upper-left">
+        <img
+          class="hero-bleed__media"
+          src="https://res.cloudinary.com/dsbllwpbh/image/upload/f_auto,q_auto,w_1800/brand/panels/panel-downtown-walk.jpg"
+          srcset="
+            https://res.cloudinary.com/dsbllwpbh/image/upload/f_auto,q_auto,w_900/brand/panels/panel-downtown-walk.jpg 900w,
+            https://res.cloudinary.com/dsbllwpbh/image/upload/f_auto,q_auto,w_1400/brand/panels/panel-downtown-walk.jpg 1400w,
+            https://res.cloudinary.com/dsbllwpbh/image/upload/f_auto,q_auto,w_1800/brand/panels/panel-downtown-walk.jpg 1800w,
+            https://res.cloudinary.com/dsbllwpbh/image/upload/f_auto,q_auto,w_2400/brand/panels/panel-downtown-walk.jpg 2400w
+          "
+          sizes="100vw"
+          alt="A young apprentice and an older shopkeeper walk together down a golden-hour brick sidewalk in downtown Geneva, past Geneva Hardware Co. and Batavia Bakery storefronts."
+          loading="lazy"
+        />
+        <div class="hero-bleed__scrim" aria-hidden="true"></div>
+        <div class="hero-bleed__copy">
+          <p class="hero-bleed__eyebrow">the work, in public</p>
+          <h2 class="hero-bleed__headline">we walk to <em>our clients.</em></h2>
+          <p class="hero-bleed__body">
+            the apprentice meets the shopkeeper on her sidewalk, in her shop,
+            on her schedule. that is how the city learns to trust the work.
+          </p>
+        </div>
+      </article>
+
+      <!-- C · Bone text card pinned to lower-left of image -->
+      <article class="hero-bleed hero-bleed--card-pin">
+        <img
+          class="hero-bleed__media"
+          src="https://res.cloudinary.com/dsbllwpbh/image/upload/f_auto,q_auto,w_1800/brand/panels/panel-apprentice-shopkeeper.jpg"
+          srcset="
+            https://res.cloudinary.com/dsbllwpbh/image/upload/f_auto,q_auto,w_900/brand/panels/panel-apprentice-shopkeeper.jpg 900w,
+            https://res.cloudinary.com/dsbllwpbh/image/upload/f_auto,q_auto,w_1400/brand/panels/panel-apprentice-shopkeeper.jpg 1400w,
+            https://res.cloudinary.com/dsbllwpbh/image/upload/f_auto,q_auto,w_1800/brand/panels/panel-apprentice-shopkeeper.jpg 1800w,
+            https://res.cloudinary.com/dsbllwpbh/image/upload/f_auto,q_auto,w_2400/brand/panels/panel-apprentice-shopkeeper.jpg 2400w
+          "
+          sizes="100vw"
+          alt="A young apprentice with a notebook and pencil sits beside a smiling older shopkeeper at a wooden table inside a small Batavia storefront, leaning toward a laptop together in warm afternoon light."
+          loading="lazy"
+        />
+        <div class="hero-bleed__scrim" aria-hidden="true"></div>
+        <div class="hero-bleed__copy">
+          <p class="hero-bleed__eyebrow">open enrollment · spring 2026</p>
+          <h2 class="hero-bleed__headline">applications open. <em>cohort 03.</em></h2>
+          <p class="hero-bleed__body">
+            for tri-cities students 16–22. ten apprentices.
+            one season. one local engagement each.
+          </p>
+        </div>
+      </article>
+
+    </section>
+
+    <!-- ===========================================================
+         Spring carousel — different content, same frame.
+         A range test: can the brand hold saturated photography?
+         =========================================================== -->
+    <section class="carousel" aria-label="Spring 2026 — carousel sample">
+      <div class="carousel__head">
+        <div class="carousel__intro">
+          <p class="section__eyebrow">range · spring 2026</p>
+          <h2>the same brand, in saturated weather.</h2>
+          <p>
+            a quiet system holds when the content is loud. these cards keep the
+            same serif, the same paper, the same one-quiet-teal frame — and let
+            saturated tri-cities photography do the talking.
+          </p>
+        </div>
+        <div class="carousel__nav" role="group" aria-label="Carousel navigation">
+          <button class="carousel__btn" type="button" data-carousel-prev aria-label="Previous">←</button>
+          <button class="carousel__btn" type="button" data-carousel-next aria-label="Next">→</button>
+        </div>
+      </div>
+
+      <div class="carousel__track" data-carousel-track>
+
+        <article class="card">
+          <figure class="card__media">
+            <img
+              src="https://res.cloudinary.com/dsbllwpbh/image/upload/f_auto,q_auto,w_1200/brand/panels/spring-blossoms.jpg"
+              srcset="
+                https://res.cloudinary.com/dsbllwpbh/image/upload/f_auto,q_auto,w_640/brand/panels/spring-blossoms.jpg 640w,
+                https://res.cloudinary.com/dsbllwpbh/image/upload/f_auto,q_auto,w_1000/brand/panels/spring-blossoms.jpg 1000w,
+                https://res.cloudinary.com/dsbllwpbh/image/upload/f_auto,q_auto,w_1400/brand/panels/spring-blossoms.jpg 1400w
+              "
+              sizes="(max-width: 640px) 86vw, 560px"
+              alt="Bright pink and white crabapple blossoms canopy a brick downtown sidewalk in Batavia. A young woman in a yellow rain slicker walks beneath them with an iced coffee."
+              loading="lazy"
+            />
+          </figure>
+          <p class="card__eyebrow">in season</p>
+          <h3 class="card__headline">blossoms on the avenue.</h3>
+          <p class="card__body">
+            the first warm afternoon in May. wilson street is a tunnel of pink.
+            iced coffee weather, finally.
+          </p>
+        </article>
+
+        <article class="card">
+          <figure class="card__media">
+            <img
+              src="https://res.cloudinary.com/dsbllwpbh/image/upload/f_auto,q_auto,w_1200/brand/panels/spring-river.jpg"
+              srcset="
+                https://res.cloudinary.com/dsbllwpbh/image/upload/f_auto,q_auto,w_640/brand/panels/spring-river.jpg 640w,
+                https://res.cloudinary.com/dsbllwpbh/image/upload/f_auto,q_auto,w_1000/brand/panels/spring-river.jpg 1000w,
+                https://res.cloudinary.com/dsbllwpbh/image/upload/f_auto,q_auto,w_1400/brand/panels/spring-river.jpg 1400w
+              "
+              sizes="(max-width: 640px) 86vw, 560px"
+              alt="Three kayakers in red, yellow, and turquoise paddle on the Fox River. Lush new-growth trees and wild purple irises line the bank. An old limestone mill is visible downstream."
+              loading="lazy"
+            />
+          </figure>
+          <p class="card__eyebrow">in season</p>
+          <h3 class="card__headline">the river, awake again.</h3>
+          <p class="card__body">
+            kayaks at the dam, fresh leaves on the bank. the Fox River thaws in
+            increments — and then all at once.
+          </p>
+        </article>
+
+        <article class="card">
+          <figure class="card__media">
+            <img
+              src="https://res.cloudinary.com/dsbllwpbh/image/upload/f_auto,q_auto,w_1200/brand/panels/spring-market.jpg"
+              srcset="
+                https://res.cloudinary.com/dsbllwpbh/image/upload/f_auto,q_auto,w_640/brand/panels/spring-market.jpg 640w,
+                https://res.cloudinary.com/dsbllwpbh/image/upload/f_auto,q_auto,w_1000/brand/panels/spring-market.jpg 1000w,
+                https://res.cloudinary.com/dsbllwpbh/image/upload/f_auto,q_auto,w_1400/brand/panels/spring-market.jpg 1400w
+              "
+              sizes="(max-width: 640px) 86vw, 560px"
+              alt="Saturday farmers market in downtown Geneva. Tulips, daffodils, peonies in galvanized buckets, crates of strawberries and asparagus. A vendor in a denim apron hands a strawberry sample to a young family."
+              loading="lazy"
+            />
+          </figure>
+          <p class="card__eyebrow">in season</p>
+          <h3 class="card__headline">saturdays, in season.</h3>
+          <p class="card__body">
+            tulips and strawberries on the street. five blocks, fifty
+            conversations, one neighborhood.
+          </p>
+        </article>
+
+        <article class="card">
+          <figure class="card__media">
+            <img
+              src="https://res.cloudinary.com/dsbllwpbh/image/upload/f_auto,q_auto,w_1200/brand/panels/spring-garden.jpg"
+              srcset="
+                https://res.cloudinary.com/dsbllwpbh/image/upload/f_auto,q_auto,w_640/brand/panels/spring-garden.jpg 640w,
+                https://res.cloudinary.com/dsbllwpbh/image/upload/f_auto,q_auto,w_1000/brand/panels/spring-garden.jpg 1000w,
+                https://res.cloudinary.com/dsbllwpbh/image/upload/f_auto,q_auto,w_1400/brand/panels/spring-garden.jpg 1400w
+              "
+              sizes="(max-width: 640px) 86vw, 560px"
+              alt="A flower shop named Bloom & Vine opens for the season in downtown St. Charles. Galvanized buckets of vivid orange ranunculus, pink tulips, yellow daffodils, and purple hyacinths line the sidewalk. The shopkeeper, in a green canvas apron, arranges a bucket."
+              loading="lazy"
+            />
+          </figure>
+          <p class="card__eyebrow">in season</p>
+          <h3 class="card__headline">every shop, a fresh start.</h3>
+          <p class="card__body">
+            bloom &amp; vine reopens. so does the hardware store. so does the
+            bakery. so do we.
+          </p>
+        </article>
+
+        <article class="card">
+          <figure class="card__media">
+            <img
+              src="https://res.cloudinary.com/dsbllwpbh/image/upload/f_auto,q_auto,w_1200/brand/panels/spring-patio.jpg"
+              srcset="
+                https://res.cloudinary.com/dsbllwpbh/image/upload/f_auto,q_auto,w_640/brand/panels/spring-patio.jpg 640w,
+                https://res.cloudinary.com/dsbllwpbh/image/upload/f_auto,q_auto,w_1000/brand/panels/spring-patio.jpg 1000w,
+                https://res.cloudinary.com/dsbllwpbh/image/upload/f_auto,q_auto,w_1400/brand/panels/spring-patio.jpg 1400w
+              "
+              sizes="(max-width: 640px) 86vw, 560px"
+              alt="Six friends laugh around a wooden bistro table on a downtown patio just after sunset. Edison-bulb string lights overhead, aperol spritz and red wine raised in a toast, a platter of bruschetta on the table. Pink geraniums and blue lobelia bloom in a window box behind them."
+              loading="lazy"
+            />
+          </figure>
+          <p class="card__eyebrow">in season</p>
+          <h3 class="card__headline">the season we step outside.</h3>
+          <p class="card__body">
+            string lights click on. friends find each other downtown.
+            this is what a local economy looks like.
+          </p>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- Mission -->
+    <section class="section">
+      <p class="section__eyebrow">mission</p>
+      <h2 class="section__title">
+        teach young people to build
+        <span class="underline-hand">
+          audiences
+          <!-- Hand-drawn underline -->
+          <svg viewBox="0 0 100 10" preserveAspectRatio="none" aria-hidden="true">
+            <path d="M 1 6 C 18 3, 36 8, 52 5 C 68 2, 84 7, 99 4"
+                  fill="none" stroke="currentColor" stroke-width="1.4"
+                  stroke-linecap="round" />
+          </svg>
+        </span>
+        with AI — while staying recognizably human.
+      </h2>
+      <div class="section__body">
+        <p>
+          place them with the local businesses, churches, schools, and civic groups
+          that need this help. the work that comes out of that exchange is the product.
+          the agency is the trellis.
+        </p>
+      </div>
+    </section>
+
+    <!-- Two ideas -->
+    <section class="section">
+      <p class="section__eyebrow">philosophy</p>
+      <h2 class="section__title">two ideas anchor the brand.</h2>
+      <div class="pair">
+        <div class="idea">
+          <p class="idea__kanji">初心</p>
+          <p class="idea__name">Shoshin — beginner's mind.</p>
+          <p class="idea__body">
+            approach every project as if for the first time.
+            curiosity over expertise. questions over answers.
+            the intern's first day is the agency's default posture.
+          </p>
+        </div>
+        <div class="idea">
+          <p class="idea__kanji">侘寂</p>
+          <p class="idea__name">Wabi-Sabi — beauty in imperfection.</p>
+          <p class="idea__body">
+            asymmetry. weathering. the visible hand of the maker.
+            we will not airbrush our work into hollowness.
+            the smudge and the off-kilter line are evidence we were here.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Three flows -->
+    <section class="section">
+      <p class="section__eyebrow">what we do</p>
+      <h2 class="section__title">a mentorship-led practice, in three flows.</h2>
+      <ol class="flows">
+        <li class="flow">
+          <span class="flow__num">i.</span>
+          <div>
+            <h3 class="flow__title">train.</h3>
+            <p class="flow__body">
+              a rolling cohort of high-school and college students learn AI-assisted
+              audience building inside our handbook and weekly sessions.
+              apprenticeship rhythms, not bootcamp gloss.
+            </p>
+          </div>
+        </li>
+        <li class="flow">
+          <span class="flow__num">ii.</span>
+          <div>
+            <h3 class="flow__title">place.</h3>
+            <p class="flow__body">
+              we pair each apprentice with a real local engagement —
+              a parish bulletin, a chamber email, a shop's website.
+              they do the work; a manager reviews.
+            </p>
+          </div>
+        </li>
+        <li class="flow">
+          <span class="flow__num">iii.</span>
+          <div>
+            <h3 class="flow__title">connect.</h3>
+            <p class="flow__body">
+              every engagement is also a tie between two parts of the city —
+              an 18-year-old learning the craft, a 60-year-old shopkeeper learning the tools.
+              the byproduct is community, not just deliverables.
+            </p>
+          </div>
+        </li>
+      </ol>
+    </section>
+
+    <!-- Voice -->
+    <section class="section">
+      <p class="section__eyebrow">voice</p>
+      <h2 class="section__title">short. direct. lowercase by default.</h2>
+      <div class="voice">
+        <div class="voice__card">
+          <p class="voice__mark">✓ on brand</p>
+          <p class="voice__text">we teach interns to build audiences with AI.</p>
+        </div>
+        <div class="voice__card voice__card--no">
+          <p class="voice__mark">✗ off brand</p>
+          <p class="voice__text">we leverage cutting-edge generative tools to empower digital-native talent.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Color -->
+    <section class="section">
+      <p class="section__eyebrow">color</p>
+      <h2 class="section__title">a small palette. paper, ink, one quiet teal.</h2>
+      <div class="swatches">
+        <div class="swatch">
+          <div class="swatch__chip" style="background: #EDE4D2;"></div>
+          <p class="swatch__name">Paper</p>
+          <p class="swatch__hex">#EDE4D2</p>
+        </div>
+        <div class="swatch">
+          <div class="swatch__chip" style="background: #F7EFDD;"></div>
+          <p class="swatch__name">Bone</p>
+          <p class="swatch__hex">#F7EFDD</p>
+        </div>
+        <div class="swatch">
+          <div class="swatch__chip" style="background: #1B2738;"></div>
+          <p class="swatch__name">Ink</p>
+          <p class="swatch__hex">#1B2738</p>
+        </div>
+        <div class="swatch">
+          <div class="swatch__chip" style="background: #4A7682;"></div>
+          <p class="swatch__name">Teal</p>
+          <p class="swatch__hex">#4A7682</p>
+        </div>
+        <div class="swatch">
+          <div class="swatch__chip" style="background: #0F1620;"></div>
+          <p class="swatch__name">Sumi</p>
+          <p class="swatch__hex">#0F1620</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Typography specimen -->
+    <section class="section">
+      <p class="section__eyebrow">typography</p>
+      <h2 class="section__title">three voices on the page.</h2>
+      <div class="specimen">
+        <div class="specimen__row">
+          <span class="specimen__label">Headline</span>
+          <p class="specimen__sample-serif">fraunces — the headline rests on the page.</p>
+        </div>
+        <div class="specimen__row">
+          <span class="specimen__label">Body</span>
+          <p class="specimen__sample-sans">
+            inter, 16–17px, line-height 1.6. neutral enough to disappear
+            so the words can do the talking.
+          </p>
+        </div>
+        <div class="specimen__row">
+          <span class="specimen__label">Hand</span>
+          <p class="specimen__sample-hand">caveat — for the human signature.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- What it isn't -->
+    <section class="section">
+      <p class="section__eyebrow">what this brand is not</p>
+      <h2 class="section__title">a quiet list, by negation.</h2>
+      <div class="section__body">
+        <p>not a tech brand. no glow, no gradients, no abstract data-flow illustrations.</p>
+        <p>not a hype brand. we do not announce. we do the work and let people find it.</p>
+        <p>not a polished corporate brand. the slightly crooked line stays in.</p>
+        <p>not an AI brand. AI is in our toolbox, not our mission statement.</p>
+      </div>
+    </section>
+
+    <!-- Footnote -->
+    <footer class="footnote">
+      <p>
+        exploratory draft. v1 remains live across the rest of the site.
+        full guide at <code>brand/brand-guide-v2.md</code> in the repo.
+        feedback welcome — <a href="mailto:gary.ricke@orbisdesign.com">gary.ricke@orbisdesign.com</a>.
+      </p>
+    </footer>
+
+  </main>
+
+  <script>
+    // Carousel arrow navigation — one card-width per click.
+    (() => {
+      const track = document.querySelector('[data-carousel-track]');
+      const prev  = document.querySelector('[data-carousel-prev]');
+      const next  = document.querySelector('[data-carousel-next]');
+      if (!track || !prev || !next) return;
+
+      const step = () => {
+        const card = track.querySelector('.card');
+        if (!card) return 0;
+        const gap = parseFloat(getComputedStyle(track).columnGap || 24);
+        return card.getBoundingClientRect().width + gap;
+      };
+
+      const updateNav = () => {
+        const max = track.scrollWidth - track.clientWidth;
+        prev.toggleAttribute('disabled', track.scrollLeft <= 4);
+        next.toggleAttribute('disabled', track.scrollLeft >= max - 4);
+      };
+
+      prev.addEventListener('click', () => track.scrollBy({ left: -step(), behavior: 'smooth' }));
+      next.addEventListener('click', () => track.scrollBy({ left:  step(), behavior: 'smooth' }));
+
+      track.addEventListener('scroll', updateNav, { passive: true });
+      window.addEventListener('resize', updateNav);
+      updateNav();
+    })();
+  </script>
+</body>
+</html>
