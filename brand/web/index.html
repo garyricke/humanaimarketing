@@ -3,71 +3,58 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Human AI Marketing — a Fox Valley mentorship-led practice. We teach young people to build audiences with AI and place them with local businesses, churches, and civic groups in Batavia, Geneva, and St. Charles, Illinois." />
+  <meta name="description" content="Human AI Marketing — we build and run your marketing with AI speed and human hands, from Batavia, Illinois." />
   <meta name="theme-color" content="#F7EFDD" />
-  <meta property="og:title" content="Human AI Marketing — marketing, made by hand." />
-  <meta property="og:description" content="A Batavia-based mentorship-led practice. We teach apprentices to build audiences with AI, then place them with local businesses in the Fox Valley." />
+  <meta property="og:title" content="Human AI Marketing — Human service. AI speed." />
+  <meta property="og:description" content="We build and run your marketing — website, email, print, and social — so you can run your business. Batavia, Illinois." />
   <meta property="og:type" content="website" />
   <meta property="og:locale" content="en_US" />
-  <title>Human AI Marketing · Marketing, made by hand.</title>
+  <title>Human AI Marketing · Human service. AI speed.</title>
 
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
   <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
   <link rel="preconnect" href="https://res.cloudinary.com" crossorigin />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..800;1,9..144,300..800&family=Inter:wght@300;400;500;600&family=Caveat:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
   <style>
     /* ===========================================================
-       Variables — v2 brand
+       v3 — warm minimal, panel-first. Big photography, short words,
+       depth behind expanders.
        =========================================================== */
     :root {
-      --paper: #EDE4D2;   /* warmer off-white — accent / lift */
-      --bone:  #F7EFDD;   /* lighter off-white — page base */
-      --ink:   #1B2738;   /* primary text + line */
-      --ink-90: rgba(27, 39, 56, 0.9);
-      --ink-70: rgba(27, 39, 56, 0.72);
-      --ink-50: rgba(27, 39, 56, 0.5);
-      --ink-25: rgba(27, 39, 56, 0.25);
-      --ink-15: rgba(27, 39, 56, 0.15);
-      --ink-10: rgba(27, 39, 56, 0.1);
-      --ink-05: rgba(27, 39, 56, 0.05);
-      --teal:  #4A7682;   /* the one quiet accent */
+      --bg:        #F7EFDD;
+      --card:      #FFFFFF;
+      --dark:      #0F1620;
+      --ink:       #1B2738;
+      --ink-60:    rgba(27, 39, 56, 0.62);
+      --ink-40:    rgba(27, 39, 56, 0.4);
+      --ink-12:    rgba(27, 39, 56, 0.12);
+      --ink-06:    rgba(27, 39, 56, 0.06);
+      --white-70:  rgba(255, 255, 255, 0.72);
+      --white-50:  rgba(255, 255, 255, 0.5);
+      --white-10:  rgba(255, 255, 255, 0.09);
+      --teal:      #4A7682;
       --teal-deep: #355864;
-      --sumi:  #0F1620;   /* deepest tone */
-
-      --serif: 'Fraunces', Georgia, serif;
-      --sans:  'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
-      --hand:  'Caveat', cursive;
-
-      --measure: 1200px;  /* page max — wide content */
-      --measure-narrow: 720px;  /* narrow prose column */
+      --teal-sky:  #9FC2CD;   /* teal for dark panels */
+      --sans: 'Inter', -apple-system, BlinkMacSystemFont, 'SF Pro Text', system-ui, sans-serif;
+      --measure: 1080px;
+      --gap: 12px;
+      --radius: 20px;
     }
 
-    /* ===========================================================
-       Reset + base
-       =========================================================== */
     *, *::before, *::after { box-sizing: border-box; }
-    html, body { margin: 0; }
     html { scroll-behavior: smooth; }
-
+    html, body { margin: 0; }
     body {
-      background: var(--bone);
+      background: var(--bg);
       color: var(--ink);
       font-family: var(--sans);
-      font-weight: 400;
-      font-size: 16px;
-      line-height: 1.6;
+      font-size: 17px;
+      line-height: 1.5;
       -webkit-font-smoothing: antialiased;
-      letter-spacing: 0.005em;
-      background-image:
-        radial-gradient(rgba(27, 39, 56, 0.022) 1px, transparent 1px),
-        radial-gradient(rgba(27, 39, 56, 0.014) 1px, transparent 1px);
-      background-size: 3px 3px, 7px 7px;
-      background-position: 0 0, 1px 2px;
     }
-
     img { max-width: 100%; display: block; }
     a { color: inherit; text-decoration: none; }
     button { font: inherit; cursor: pointer; }
@@ -78,820 +65,719 @@
       clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
     }
 
-    /* ===========================================================
-       Masthead — sticky, transparent over hero, paper after scroll
-       =========================================================== */
-    .masthead {
-      position: fixed;
-      top: 0; left: 0; right: 0;
+    .wrap {
+      max-width: var(--measure);
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ============================ Nav ============================ */
+    .nav {
+      position: sticky;
+      top: 0;
       z-index: 50;
-      padding: 18px 28px;
-      background: transparent;
-      transition: background 220ms ease, border-color 220ms ease, padding 220ms ease;
+      background: rgba(247, 239, 221, 0.85);
+      backdrop-filter: saturate(160%) blur(14px);
+      -webkit-backdrop-filter: saturate(160%) blur(14px);
+      border-bottom: 1px solid transparent;
+      transition: border-color 200ms ease;
     }
-    .masthead.is-scrolled {
-      background: rgba(247, 239, 221, 0.92);
-      backdrop-filter: saturate(140%) blur(8px);
-      -webkit-backdrop-filter: saturate(140%) blur(8px);
-      border-bottom: 1px solid var(--ink-10);
-      padding: 12px 28px;
-    }
-    .masthead__inner {
+    .nav.is-scrolled { border-bottom-color: var(--ink-12); }
+    .nav__inner {
       max-width: var(--measure);
       margin: 0 auto;
+      padding: 0 24px;
+      height: 52px;
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      gap: 32px;
-    }
-
-    /* Masthead text: white over the hero, ink once scrolled past it */
-    .wordmark {
-      display: inline-flex;
-      align-items: baseline;
-      gap: 4px;
-      font-family: var(--serif);
-      font-weight: 400;
-      font-size: 1.05rem;
-      letter-spacing: 0.01em;
-      color: #FFFFFF;
-      white-space: nowrap;
-      text-shadow: 0 1px 2px rgba(15, 22, 32, 0.4);
-      transition: color 200ms ease, text-shadow 200ms ease;
-    }
-    .wordmark .ai {
-      color: rgba(255, 255, 255, 0.7);
-      font-style: italic;
-      transition: color 200ms ease;
-    }
-    .wordmark .dot {
-      color: rgba(255, 255, 255, 0.45);
-      margin: 0 2px;
-      font-style: normal;
-      transition: color 200ms ease;
-    }
-
-    .masthead__nav {
-      display: flex;
-      gap: 28px;
-      align-items: center;
-    }
-    .masthead__nav a {
-      font-family: var(--sans);
-      font-size: 0.78rem;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: rgba(255, 255, 255, 0.88);
-      padding: 8px 0;
-      transition: color 180ms ease, background 180ms ease, border-color 180ms ease;
-      text-shadow: 0 1px 2px rgba(15, 22, 32, 0.35);
-    }
-    .masthead__nav a:hover,
-    .masthead__nav a:focus-visible { color: #FFFFFF; outline: none; }
-    .masthead__nav .nav-cta {
-      color: #FFFFFF;
-      padding: 8px 16px;
-      border: 1px solid rgba(255, 255, 255, 0.55);
-      border-radius: 999px;
-    }
-    .masthead__nav .nav-cta:hover {
-      background: #FFFFFF;
-      color: var(--ink);
-      border-color: #FFFFFF;
-      text-shadow: none;
-    }
-
-    /* Scrolled state: paper-backed bar with dark text */
-    .masthead.is-scrolled .wordmark {
-      color: var(--ink);
-      text-shadow: none;
-    }
-    .masthead.is-scrolled .wordmark .ai { color: var(--teal); }
-    .masthead.is-scrolled .wordmark .dot { color: var(--ink-50); }
-    .masthead.is-scrolled .masthead__nav a {
-      color: var(--ink-70);
-      text-shadow: none;
-    }
-    .masthead.is-scrolled .masthead__nav a:hover { color: var(--ink); }
-    .masthead.is-scrolled .masthead__nav .nav-cta {
-      color: var(--ink);
-      border-color: var(--ink-25);
-    }
-    .masthead.is-scrolled .masthead__nav .nav-cta:hover {
-      background: var(--ink);
-      color: var(--bone);
-      border-color: var(--ink);
-    }
-
-    @media (max-width: 780px) {
-      .masthead__nav { gap: 16px; }
-      .masthead__nav a:not(.nav-cta) { display: none; }
-      .masthead__nav a:nth-last-child(1),
-      .masthead__nav a:nth-last-child(2) { display: inline-flex; }
-    }
-
-    /* ===========================================================
-       Hero — full viewport-feel, text-overlay (upper-left ink)
-       =========================================================== */
-    .hero {
-      position: relative;
-      width: 100%;
-      height: clamp(620px, 92vh, 880px);
-      overflow: hidden;
-      isolation: isolate;
-    }
-    /* Slideshow: three crossfading tri-cities photos */
-    .slideshow {
-      position: absolute; inset: 0;
-      z-index: 0;
-    }
-    .slide {
-      position: absolute; inset: 0;
-      margin: 0;
-      opacity: 0;
-      transition: opacity 1200ms cubic-bezier(0.22, 1, 0.36, 1);
-    }
-    .slide.is-active { opacity: 1; }
-    .slide img {
-      width: 100%; height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-    .hero__scrim {
-      position: absolute; inset: 0; z-index: 1;
-      pointer-events: none;
-      /* Inverted polarity: a dark ink bloom over the headline+lede zone
-         so white text reads, plus a thin left-edge tail for the cite.
-         Right ~60% of the photo stays untouched. */
-      background:
-        radial-gradient(
-          ellipse 56% 72% at 0% 22%,
-          rgba(15, 22, 32, 0.62) 0%,
-          rgba(15, 22, 32, 0.42) 22%,
-          rgba(15, 22, 32, 0.2) 45%,
-          rgba(15, 22, 32, 0.06) 65%,
-          rgba(15, 22, 32, 0.0) 80%
-        ),
-        linear-gradient(
-          to right,
-          rgba(15, 22, 32, 0.34) 0%,
-          rgba(15, 22, 32, 0.1) 14%,
-          rgba(15, 22, 32, 0.0) 26%
-        );
-    }
-    .hero__inner {
-      position: relative;
-      z-index: 2;
-      max-width: var(--measure);
-      margin: 0 auto;
-      padding: 130px 28px 56px;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-    .hero__copy {
-      max-width: 620px;
-      color: #FFFFFF;
-    }
-    .hero__eyebrow {
-      font-family: var(--sans);
-      font-size: 0.74rem;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: #FFFFFF;
-      margin: 0 0 22px;
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      text-shadow: 0 1px 2px rgba(15, 22, 32, 0.45);
-    }
-    .hero__eyebrow .dot {
-      width: 4px; height: 4px;
-      border-radius: 999px;
-      background: #FFFFFF;
-      display: inline-block;
-      opacity: 0.85;
-    }
-    .hero__title {
-      font-family: var(--serif);
-      font-weight: 700;
-      font-size: clamp(2.6rem, 6.6vw, 5rem);
-      line-height: 1.02;
-      letter-spacing: -0.025em;
-      margin: 0 0 26px;
-      color: #FFFFFF;
-      font-optical-sizing: auto;
-      /* Soft dark halo for legibility on bright pixels at the scrim edges. */
-      text-shadow: 0 1px 0 rgba(15, 22, 32, 0.32),
-                   0 0 28px rgba(15, 22, 32, 0.28);
-    }
-    .hero__title em {
-      font-style: italic;
-      font-weight: 700;
-      color: rgba(255, 255, 255, 0.55);
-      position: relative;
-      white-space: nowrap;
-    }
-    .hero__title em::after {
-      content: '';
-      position: absolute;
-      left: -2%; right: -2%;
-      bottom: -10px;
-      height: 8px;
-      /* Semi-transparent white underline to match the italic */
-      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 10" preserveAspectRatio="none"><path d="M 1 6 C 18 3, 36 8, 52 5 C 68 2, 84 7, 99 4" fill="none" stroke="white" stroke-opacity="0.55" stroke-width="1.4" stroke-linecap="round"/></svg>');
-      background-repeat: no-repeat;
-      background-size: 100% 100%;
-    }
-    .hero__lede {
-      font-family: var(--serif);
-      font-weight: 500;
-      font-size: clamp(1.18rem, 1.85vw, 1.5rem);
-      line-height: 1.4;
-      color: #FFFFFF;
-      max-width: 28em;
-      margin: 0;
-      text-shadow: 0 1px 2px rgba(15, 22, 32, 0.42),
-                   0 0 18px rgba(15, 22, 32, 0.28);
-    }
-
-    .hero__foot {
-      display: flex;
-      align-items: flex-end;
       justify-content: space-between;
       gap: 24px;
-      flex-wrap: wrap;
     }
-    .hero__cite {
-      font-family: var(--hand);
-      font-size: 1.4rem;
-      color: #FFFFFF;
-      max-width: 16ch;
-      line-height: 1.2;
-      margin: 0;
-      text-shadow: 0 1px 2px rgba(15, 22, 32, 0.45),
-                   0 0 16px rgba(15, 22, 32, 0.3);
-    }
-    /* Slideshow UI — quiet dots + monospace city plate */
-    .slideshow__ui {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-end;
-      gap: 14px;
-    }
-    .slideshow__dots {
-      display: flex;
-      gap: 10px;
-    }
-    .dot {
-      appearance: none;
-      border: 1px solid rgba(255, 255, 255, 0.55);
-      background: transparent;
-      width: 10px; height: 10px;
-      border-radius: 999px;
-      cursor: pointer;
-      padding: 0;
-      transition: background 200ms ease, border-color 200ms ease, transform 120ms ease;
-    }
-    .dot.is-active {
-      background: #FFFFFF;
-      border-color: #FFFFFF;
-    }
-    .dot:hover { border-color: #FFFFFF; }
-    .dot:active { transform: scale(0.92); }
-    .dot:focus-visible {
-      outline: 2px solid var(--teal);
-      outline-offset: 3px;
-    }
-
-    .slideshow__city {
-      font-family: ui-monospace, 'SF Mono', Menlo, monospace;
-      font-size: 0.72rem;
-      letter-spacing: 0.14em;
-      color: rgba(255, 255, 255, 0.78);
-      text-transform: uppercase;
-      margin: 0;
-      text-shadow: 0 1px 2px rgba(15, 22, 32, 0.5);
-    }
-    .slideshow__num,
-    .slideshow__total { color: #FFFFFF; font-weight: 500; }
-    .slideshow__sep { color: rgba(255, 255, 255, 0.4); margin: 0 4px; }
-    .slideshow__bullet { margin: 0 8px; color: rgba(255, 255, 255, 0.4); }
-
-    @media (max-width: 640px) {
-      .slideshow__ui { align-items: flex-start; }
-    }
-
-    /* ===========================================================
-       Section primitive
-       =========================================================== */
-    .section {
-      padding: 120px 28px;
-    }
-    .section--narrow {
-      max-width: var(--measure-narrow);
-      margin: 0 auto;
-    }
-    .section--wide {
-      max-width: var(--measure);
-      margin: 0 auto;
-    }
-    .section__eyebrow {
-      font-family: var(--sans);
-      font-size: 0.72rem;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--ink-50);
-      margin: 0 0 18px;
-    }
-    .section__title {
-      font-family: var(--serif);
-      font-weight: 600;
-      font-size: clamp(1.8rem, 4vw, 2.8rem);
-      line-height: 1.12;
-      letter-spacing: -0.012em;
-      margin: 0 0 24px;
-      color: var(--ink);
-      max-width: 22ch;
-    }
-    .section__title em {
-      font-style: italic;
-      color: var(--teal);
-    }
-    .section__deck {
-      font-size: 1.02rem;
-      line-height: 1.65;
-      color: var(--ink-70);
-      max-width: 56ch;
-      margin: 0;
-    }
-
-    .section--paper {
-      /* sections on Paper to differentiate against the Bone body */
-      background: var(--paper);
-    }
-
-    /* ===========================================================
-       Philosophy — two ideas
-       =========================================================== */
-    .ideas {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 64px;
-      margin-top: 64px;
-    }
-    .idea__kanji {
-      font-family: var(--serif);
-      font-size: 2.2rem;
-      color: var(--teal);
-      margin: 0 0 8px;
-    }
-    .idea__name {
-      font-family: var(--serif);
-      font-style: italic;
-      font-size: 1.25rem;
-      color: var(--ink);
-      margin: 0 0 16px;
-    }
-    .idea__body {
-      font-size: 1rem;
-      line-height: 1.65;
-      color: var(--ink);
-      margin: 0;
-      max-width: 38ch;
-    }
-    @media (max-width: 740px) {
-      .ideas { grid-template-columns: 1fr; gap: 48px; }
-    }
-
-    /* ===========================================================
-       Flow panels — Train · Place · Connect
-       =========================================================== */
-    .flows {
-      display: flex;
-      flex-direction: column;
-    }
-    .flow {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      align-items: stretch;
-      min-height: 540px;
-    }
-    .flow:nth-child(even) .flow__media { order: 2; }
-    .flow__media {
-      position: relative;
-      overflow: hidden;
-    }
-    .flow__media img {
-      width: 100%; height: 100%;
-      object-fit: cover;
-    }
-    .flow__copy {
-      padding: 88px 64px;
-      background: var(--paper);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-    .flow__num {
-      font-family: var(--serif);
-      font-style: italic;
-      font-weight: 300;
-      font-size: 2.4rem;
-      color: var(--teal);
-      margin: 0 0 10px;
-      line-height: 1;
-    }
-    .flow__title {
-      font-family: var(--serif);
-      font-weight: 600;
-      font-size: clamp(1.85rem, 3.5vw, 2.5rem);
-      line-height: 1.08;
-      letter-spacing: -0.014em;
-      margin: 0 0 18px;
-      color: var(--ink);
-    }
-    .flow__title em { font-style: italic; font-weight: 600; color: var(--teal-deep); }
-    .flow__body {
-      font-size: 1.04rem;
-      line-height: 1.65;
-      color: var(--ink);
-      margin: 0 0 22px;
-      max-width: 36ch;
-    }
-    .flow__points {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      display: grid;
-      gap: 8px;
-    }
-    .flow__points li {
-      font-family: var(--sans);
-      font-size: 0.86rem;
-      letter-spacing: 0.04em;
-      color: var(--ink-70);
-      padding-left: 18px;
-      position: relative;
-    }
-    .flow__points li::before {
-      content: '';
-      position: absolute; left: 0; top: 0.65em;
-      width: 8px; height: 1px;
-      background: var(--teal);
-    }
-    @media (max-width: 820px) {
-      .flow { grid-template-columns: 1fr; min-height: 0; }
-      .flow:nth-child(even) .flow__media { order: 0; }
-      .flow__media img { aspect-ratio: 4 / 3; }
-      .flow__copy { padding: 56px 28px 64px; }
-    }
-
-    /* ===========================================================
-       Two-audience cards
-       =========================================================== */
-    .paths {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 24px;
-      margin-top: 56px;
-    }
-    .path {
-      background: var(--paper);
-      border-radius: 4px;
-      padding: 56px 48px;
-      display: flex;
-      flex-direction: column;
-    }
-    .path__eyebrow {
-      font-family: var(--sans);
-      font-size: 0.72rem;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--teal);
-      margin: 0 0 14px;
-    }
-    .path__title {
-      font-family: var(--serif);
-      font-weight: 600;
-      font-size: clamp(1.65rem, 2.9vw, 2.05rem);
-      line-height: 1.12;
-      letter-spacing: -0.012em;
-      margin: 0 0 18px;
-      color: var(--ink);
-    }
-    .path__title em { font-style: italic; font-weight: 600; color: var(--teal-deep); }
-    .path__body {
-      font-size: 1rem;
-      line-height: 1.65;
-      color: var(--ink);
-      margin: 0 0 24px;
-      max-width: 38ch;
-    }
-    .path__points {
-      list-style: none;
-      padding: 0;
-      margin: 0 0 32px;
-      display: grid;
-      gap: 8px;
-    }
-    .path__points li {
-      font-family: var(--sans);
-      font-size: 0.92rem;
-      color: var(--ink-70);
-      padding-left: 20px;
-      position: relative;
-    }
-    .path__points li::before {
-      content: '';
-      position: absolute; left: 0; top: 0.7em;
-      width: 10px; height: 1px;
-      background: var(--teal);
-    }
-    .path__cta {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      font-family: var(--sans);
-      font-size: 0.78rem;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      font-weight: 500;
-      color: var(--ink);
-      align-self: flex-start;
-      padding-bottom: 4px;
-      border-bottom: 1px solid var(--ink);
-      transition: gap 200ms ease, opacity 200ms ease;
-    }
-    .path__cta:hover { gap: 16px; }
-    .path__cta-arrow { display: inline-block; }
-    @media (max-width: 820px) {
-      .paths { grid-template-columns: 1fr; }
-      .path { padding: 48px 32px; }
-    }
-
-    /* ===========================================================
-       Articles
-       =========================================================== */
-    .articles {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 28px;
-      margin-top: 56px;
-      list-style: none;
-      padding: 0;
-    }
-    .article { margin: 0; }
-    .article__link {
-      display: flex;
-      flex-direction: column;
-      color: var(--ink);
-    }
-    .article__thumb {
-      aspect-ratio: 3 / 2;
-      overflow: hidden;
-      border-radius: 4px;
-      background: var(--paper);
-      margin: 0 0 20px;
-      position: relative;
-    }
-    .article__thumb img {
-      width: 100%; height: 100%;
-      object-fit: cover;
-      transition: transform 600ms cubic-bezier(0.22, 1, 0.36, 1);
-    }
-    .article__link:hover .article__thumb img { transform: scale(1.04); }
-    .article__num {
-      font-family: var(--sans);
-      font-size: 0.7rem;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--teal);
-      margin: 0 0 8px;
-    }
-    .article__title {
-      font-family: var(--serif);
-      font-weight: 500;
-      font-size: 1.4rem;
-      line-height: 1.2;
-      letter-spacing: -0.008em;
-      margin: 0 0 10px;
-      color: var(--ink);
-    }
-    .article__deck {
+    .nav__brand {
       font-size: 0.95rem;
-      line-height: 1.55;
-      color: var(--ink-70);
-      margin: 0 0 16px;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      white-space: nowrap;
     }
-    .article__more {
-      font-family: var(--sans);
-      font-size: 0.78rem;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--ink);
-      display: inline-flex;
-      gap: 8px;
-      transition: gap 200ms ease;
+    .nav__brand span { color: var(--teal-deep); }
+    .nav__links { display: flex; gap: 26px; align-items: center; }
+    .nav__links a {
+      font-size: 0.82rem;
+      color: var(--ink-60);
+      transition: color 160ms ease;
     }
-    .article__link:hover .article__more { gap: 14px; }
-    .article__more--muted { color: var(--ink-50); text-transform: uppercase; }
-
-    .article--soon .article__thumb { filter: saturate(0.6); }
-    .article__badge {
-      position: absolute;
-      top: 16px; left: 16px;
-      font-family: var(--sans);
-      font-size: 0.68rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--bone);
-      background: var(--ink);
-      padding: 6px 12px;
+    .nav__links a:hover { color: var(--ink); }
+    .nav__cta {
+      font-size: 0.8rem !important;
+      font-weight: 500;
+      color: #fff !important;
+      background: var(--teal-deep);
+      padding: 7px 15px;
       border-radius: 999px;
+      transition: background 160ms ease;
+    }
+    .nav__cta:hover { background: var(--ink); }
+    @media (max-width: 720px) {
+      .nav__links a:not(.nav__cta) { display: none; }
     }
 
-    @media (max-width: 1040px) {
-      .articles { grid-template-columns: repeat(2, 1fr); gap: 40px 28px; }
+    /* ============================ Buttons & links ============================ */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--teal-deep);
+      color: #fff;
+      font-size: 0.95rem;
+      font-weight: 500;
+      padding: 12px 24px;
+      border-radius: 999px;
+      border: none;
+      transition: background 160ms ease, transform 120ms ease;
+    }
+    .btn:hover { background: var(--ink); }
+    .btn:active { transform: translateY(1px); }
+    .btn--light { background: #fff; color: var(--ink); }
+    .btn--light:hover { background: var(--bg); }
+    .tlink {
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--teal-deep);
+      transition: color 160ms ease;
+    }
+    .tlink:hover { color: var(--ink); }
+    .tlink::after { content: ' ›'; }
+
+    /* ============================ Panels ============================ */
+    .panel {
+      position: relative;
+      margin-top: var(--gap);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    .panel--light { background: var(--card); color: var(--ink); }
+    .panel--dark  { background: var(--dark); color: #fff; }
+
+    .panel__copy {
+      width: 100%;
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 84px 24px 0;
+      text-align: center;
+    }
+    .panel__kicker {
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--teal-deep);
+      margin: 0 0 10px;
+    }
+    .panel--dark .panel__kicker { color: var(--teal-sky); }
+    .panel__title {
+      font-size: clamp(2.1rem, 5vw, 3.4rem);
+      font-weight: 700;
+      letter-spacing: -0.022em;
+      line-height: 1.06;
+      margin: 0 0 12px;
+    }
+    .panel__line {
+      font-size: clamp(1.05rem, 2vw, 1.3rem);
+      color: var(--ink-60);
+      margin: 0 auto 10px;
+      max-width: 30em;
+    }
+    .panel--dark .panel__line { color: var(--white-70); }
+    .panel__price {
+      font-size: 0.95rem;
+      font-weight: 600;
+      margin: 0 0 4px;
+    }
+    .panel__price small {
+      font-weight: 400;
+      color: var(--ink-60);
+    }
+    .panel--dark .panel__price small { color: var(--white-70); }
+    .panel__actions {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin: 20px 0 0;
+    }
+    .panel--dark .tlink { color: var(--teal-sky); }
+    .panel--dark .tlink:hover { color: #fff; }
+
+    .panel__media {
+      margin: 48px 0 0;
+      height: clamp(300px, 44vw, 560px);
+    }
+    .panel__media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
 
-    @media (max-width: 620px) {
-      .articles { grid-template-columns: 1fr; gap: 48px; }
+    /* Hero panel — photo background, text overlaid */
+    .panel--hero {
+      margin-top: 0;
+      min-height: clamp(560px, 88vh, 860px);
+      justify-content: flex-start;
+      color: #fff;
     }
+    .panel--hero .panel__bg {
+      position: absolute;
+      inset: 0;
+    }
+    .panel--hero .panel__bg img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+    }
+    .panel--hero .panel__bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(15, 22, 32, 0.6) 0%,
+        rgba(15, 22, 32, 0.32) 38%,
+        rgba(15, 22, 32, 0.08) 70%,
+        rgba(15, 22, 32, 0.22) 100%
+      );
+    }
+    .panel--hero .panel__copy {
+      position: relative;
+      z-index: 1;
+      padding-top: 110px;
+    }
+    .panel--hero .panel__kicker { color: rgba(255, 255, 255, 0.85); }
+    .panel--hero .panel__line { color: rgba(255, 255, 255, 0.92); }
+    .panel--hero .tlink { color: #fff; }
+    .panel--hero .tlink:hover { color: rgba(255, 255, 255, 0.75); }
 
-    /* ===========================================================
-       Contact form
-       =========================================================== */
-    .contact {
-      max-width: 760px;
+    /* ============================ Expander ============================ */
+    .panel__details { width: 100%; }
+    .panel__summary {
+      list-style: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin: 26px auto 0;
+      padding: 8px 16px;
+      border-radius: 999px;
+      background: var(--ink-06);
+      font-size: 0.88rem;
+      font-weight: 500;
+      cursor: pointer;
+      user-select: none;
+      transition: background 160ms ease;
+    }
+    .panel__summary:hover { background: var(--ink-12); }
+    .panel--dark .panel__summary { background: var(--white-10); color: #fff; }
+    .panel--dark .panel__summary:hover { background: rgba(255, 255, 255, 0.16); }
+    .panel__summary::-webkit-details-marker { display: none; }
+    .panel__summary::after { content: '+'; font-weight: 500; }
+    details[open] .panel__summary::after { content: '–'; }
+    details[open] .panel__summary .when-closed { display: none; }
+    .panel__summary .when-open { display: none; }
+    details[open] .panel__summary .when-open { display: inline; }
+
+    .panel__body {
+      max-width: 640px;
+      margin: 28px auto 0;
+      text-align: left;
+      display: grid;
+      gap: 20px;
+    }
+    .panel__body ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: 10px;
+    }
+    .panel__body li {
+      font-size: 0.95rem;
+      color: var(--ink-60);
+      padding-left: 26px;
+      position: relative;
+    }
+    .panel--dark .panel__body li { color: var(--white-70); }
+    .panel__body li::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 3px;
+      width: 16px; height: 16px;
+      border-radius: 999px;
+      background: var(--teal-deep);
+      -webkit-mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none"><path d="M3.5 8.5l3 3 6-6.5" stroke="black" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>') center / contain no-repeat;
+      mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none"><path d="M3.5 8.5l3 3 6-6.5" stroke="black" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>') center / contain no-repeat;
+    }
+    .panel--dark .panel__body li::before { background: var(--teal-sky); }
+    .panel__note {
+      background: var(--bg);
+      border-radius: 12px;
+      padding: 18px 20px;
+      font-size: 0.92rem;
+      line-height: 1.55;
+      color: var(--ink);
+      margin: 0;
+    }
+    .panel__note a { color: var(--teal-deep); font-weight: 500; }
+    .panel__note a:hover { color: var(--ink); }
+    .panel--dark .panel__note { background: var(--white-10); color: #fff; }
+    .panel--dark .panel__note a { color: var(--teal-sky); }
+    .panel--dark .panel__note a:hover { color: #fff; }
+
+    /* ============================ Sections (non-panel) ============================ */
+    .section { padding: 96px 0; }
+    .section__head {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+    .section__head h2 {
+      font-size: clamp(1.9rem, 4.5vw, 3rem);
+      font-weight: 700;
+      letter-spacing: -0.022em;
+      line-height: 1.1;
+      margin: 0 0 12px;
+    }
+    .section__head p {
+      font-size: 1.1rem;
+      color: var(--ink-60);
+      max-width: 36em;
       margin: 0 auto;
     }
-    .contact__lede {
-      font-family: var(--serif);
-      font-style: italic;
-      font-weight: 300;
-      font-size: clamp(1.1rem, 1.6vw, 1.3rem);
-      line-height: 1.5;
-      color: var(--ink-70);
-      margin: 24px 0 48px;
-      max-width: 50ch;
+
+    /* ============================ Pricing ============================ */
+    .pricing-card {
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 12px 44px 36px;
+      overflow-x: auto;
     }
-    .form {
+    @media (max-width: 720px) { .pricing-card { padding: 6px 22px 28px; } }
+    .price-table {
+      width: 100%;
+      min-width: 520px;
+      border-collapse: collapse;
+    }
+    .price-table td, .price-table th {
+      text-align: left;
+      padding: 14px 12px;
+      border-bottom: 1px solid var(--ink-06);
+      vertical-align: baseline;
+    }
+    .price-table .group th {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--teal-deep);
+      padding-top: 36px;
+      border-bottom: 1px solid var(--ink-12);
+    }
+    .price-table .item {
+      font-weight: 600;
+      font-size: 0.98rem;
+      white-space: nowrap;
+      width: 1%;
+      padding-right: 28px;
+    }
+    .price-table .sub .item { font-weight: 400; padding-left: 28px; }
+    .price-table .what { font-size: 0.9rem; color: var(--ink-60); }
+    .price-table .price {
+      font-weight: 600;
+      font-size: 0.98rem;
+      text-align: right;
+      white-space: nowrap;
+      font-variant-numeric: tabular-nums;
+    }
+    .price-table .price small {
+      font-weight: 400;
+      color: var(--ink-60);
+      font-size: 0.8rem;
+    }
+    .pricing-foot {
+      font-size: 0.9rem;
+      color: var(--ink-60);
+      max-width: 56em;
+      margin: 24px auto 0;
+      text-align: center;
+    }
+
+    /* ============================ How it works ============================ */
+    .how {
       display: grid;
-      gap: 22px;
-      background: var(--paper);
-      padding: 48px 48px 44px;
-      border-radius: 4px;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--gap);
     }
-    .form__row {
+    @media (max-width: 720px) { .how { grid-template-columns: 1fr; } }
+    .how__step {
+      background: var(--card);
+      border-radius: var(--radius);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    .how__photo {
+      aspect-ratio: 4 / 3;
+      margin: 0;
+      overflow: hidden;
+    }
+    .how__photo img { width: 100%; height: 100%; object-fit: cover; }
+    .how__copy { padding: 26px 28px 30px; }
+    .how__copy h3 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      margin: 0 0 8px;
+    }
+    .how__copy p {
+      font-size: 0.95rem;
+      color: var(--ink-60);
+      margin: 0;
+    }
+    .how-foot {
+      text-align: center;
+      font-size: 0.95rem;
+      color: var(--ink-60);
+      margin: 36px auto 0;
+      max-width: 40em;
+    }
+    .how-foot strong { color: var(--ink); font-weight: 600; }
+
+    /* ============================ The Library — the school ============================ */
+    .disc {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: center;
+      max-width: 620px;
+      margin: -16px auto 52px;
+    }
+    .disc span {
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--ink-60);
+      background: var(--card);
+      border-radius: 999px;
+      padding: 7px 14px;
+      white-space: nowrap;
+    }
+    .disc .disc__old {
+      color: var(--ink-40);
+      text-decoration: line-through;
+      background: transparent;
+      border: 1px solid var(--ink-12);
+    }
+
+    .works {
       display: grid;
-      gap: 22px;
-    }
-    .form__row--two {
       grid-template-columns: 1fr 1fr;
+      gap: var(--gap);
+      list-style: none;
+      margin: 0;
+      padding: 0;
     }
-    @media (max-width: 640px) {
-      .form { padding: 32px 24px; }
-      .form__row--two { grid-template-columns: 1fr; }
+    @media (max-width: 860px) { .works { grid-template-columns: 1fr; } }
+    .work {
+      background: var(--card);
+      border-radius: var(--radius);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
     }
-    .field {
+    .work__media {
+      margin: 0;
+      aspect-ratio: 16 / 9;
+      overflow: hidden;
+      position: relative;
+      background: var(--bg);
+    }
+    .work__media img { width: 100%; height: 100%; object-fit: cover; }
+    .work__badge {
+      position: absolute;
+      top: 14px; left: 14px;
+      z-index: 2;
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      background: var(--ink);
+      color: #fff;
+      padding: 5px 10px;
+      border-radius: 999px;
+    }
+    .work__badge--free { background: var(--teal-deep); }
+    .work__copy {
+      padding: 28px 32px 30px;
       display: flex;
       flex-direction: column;
       gap: 8px;
+      flex: 1;
     }
-    .field__label {
-      font-family: var(--sans);
+    .work__kicker {
       font-size: 0.72rem;
-      letter-spacing: 0.18em;
+      font-weight: 600;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
-      color: var(--ink-70);
+      color: var(--teal-deep);
+      margin: 0;
     }
-    .field__opt {
-      text-transform: none;
-      letter-spacing: 0;
-      color: var(--ink-50);
-      font-style: italic;
+    .work__copy h3 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: -0.016em;
+      margin: 0;
     }
-    .field input,
-    .field select,
-    .field textarea {
+    .work__line {
+      font-size: 0.95rem;
+      color: var(--ink-60);
+      margin: 0;
+    }
+    .work__actions {
+      display: flex;
+      gap: 18px;
+      align-items: center;
+      margin-top: 12px;
+    }
+    .btn--small { padding: 9px 18px; font-size: 0.88rem; }
+
+    .work__details { margin-top: 4px; }
+    .work__summary {
+      list-style: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 7px 14px;
+      border-radius: 999px;
+      background: var(--ink-06);
+      font-size: 0.82rem;
+      font-weight: 500;
+      cursor: pointer;
+      user-select: none;
+      transition: background 160ms ease;
+    }
+    .work__summary:hover { background: var(--ink-12); }
+    .work__summary::-webkit-details-marker { display: none; }
+    .work__summary::after { content: '+'; font-weight: 500; }
+    details[open] .work__summary::after { content: '–'; }
+    .work__body {
+      margin-top: 16px;
+      display: grid;
+      gap: 12px;
+    }
+    .work__body ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: 8px;
+    }
+    .work__body li {
+      font-size: 0.9rem;
+      color: var(--ink-60);
+      padding-left: 24px;
+      position: relative;
+    }
+    .work__body li::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 3px;
+      width: 15px; height: 15px;
+      border-radius: 999px;
+      background: var(--teal-deep);
+      -webkit-mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none"><path d="M3.5 8.5l3 3 6-6.5" stroke="black" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>') center / contain no-repeat;
+      mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none"><path d="M3.5 8.5l3 3 6-6.5" stroke="black" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>') center / contain no-repeat;
+    }
+    .work__meta {
+      font-size: 0.8rem;
+      color: var(--ink-40);
+      margin: 0;
+    }
+    .shelf-foot {
+      text-align: center;
+      font-size: 0.9rem;
+      color: var(--ink-60);
+      margin-top: 32px;
+    }
+    .shelf-foot a { color: var(--teal-deep); font-weight: 500; }
+    .shelf-foot a:hover { color: var(--ink); }
+
+    /* ============================ Membership gate ============================ */
+    .gate {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      background: rgba(15, 22, 32, 0.55);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+    }
+    .gate[hidden] { display: none; }
+    .gate__card {
+      background: var(--card);
+      border-radius: var(--radius);
+      max-width: 460px;
       width: 100%;
-      padding: 12px 14px;
-      font: inherit;
-      font-family: var(--sans);
-      font-size: 0.98rem;
+      padding: 40px 36px 32px;
+      position: relative;
+      text-align: center;
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+    .gate__close {
+      position: absolute;
+      top: 14px; right: 14px;
+      width: 32px; height: 32px;
+      border: none;
+      border-radius: 999px;
+      background: var(--ink-06);
       color: var(--ink);
-      background: var(--bone);
-      border: 1px solid var(--ink-15);
-      border-radius: 4px;
+      font-size: 1rem;
+      line-height: 1;
+      transition: background 160ms ease;
+    }
+    .gate__close:hover { background: var(--ink-12); }
+    .gate__kicker {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--teal-deep);
+      margin: 0 0 8px;
+    }
+    .gate__card h3 {
+      font-size: 1.55rem;
+      font-weight: 700;
+      letter-spacing: -0.018em;
+      margin: 0 0 8px;
+    }
+    .gate__sub {
+      font-size: 0.92rem;
+      color: var(--ink-60);
+      margin: 0 0 22px;
+    }
+    .gate__actions {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 26px;
+    }
+    .gate__code {
+      border-top: 1px solid var(--ink-06);
+      padding-top: 20px;
+      display: grid;
+      gap: 10px;
+      text-align: left;
+    }
+    .gate__code label {
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--ink-60);
+    }
+    .gate__row { display: flex; gap: 8px; }
+    .gate__row input {
+      flex: 1;
+      font: inherit;
+      font-size: 0.95rem;
+      color: var(--ink);
+      background: var(--bg);
+      border: 1px solid transparent;
+      border-radius: 12px;
+      padding: 11px 14px;
       outline: none;
-      transition: border-color 180ms ease, box-shadow 180ms ease, background 180ms ease;
+      text-transform: uppercase;
+      transition: border-color 160ms ease, background 160ms ease;
     }
-    .field input:focus,
-    .field select:focus,
-    .field textarea:focus {
+    .gate__row input:focus { border-color: var(--teal); background: #fff; }
+    .gate__msg { font-size: 0.85rem; margin: 0; min-height: 1.2em; color: var(--ink-60); }
+    .gate__msg.is-ok { color: var(--teal-deep); font-weight: 500; }
+    .gate__msg.is-bad { color: #A0522D; }
+
+    /* ============================ Contact ============================ */
+    .contact-card {
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 44px;
+      max-width: 680px;
+      margin: 0 auto;
+    }
+    @media (max-width: 720px) { .contact-card { padding: 30px 24px; } }
+    .form { display: grid; gap: 18px; }
+    .form__row { display: grid; gap: 18px; grid-template-columns: 1fr 1fr; }
+    @media (max-width: 560px) { .form__row { grid-template-columns: 1fr; } }
+    .field { display: grid; gap: 6px; }
+    .field span {
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--ink-60);
+    }
+    .field input, .field select, .field textarea {
+      font: inherit;
+      font-size: 0.95rem;
+      color: var(--ink);
+      background: var(--bg);
+      border: 1px solid transparent;
+      border-radius: 12px;
+      padding: 12px 14px;
+      outline: none;
+      transition: border-color 160ms ease, background 160ms ease;
+      width: 100%;
+    }
+    .field input:focus, .field select:focus, .field textarea:focus {
       border-color: var(--teal);
-      background: #FFFCF3;
-      box-shadow: 0 0 0 3px rgba(74, 118, 130, 0.14);
+      background: #fff;
     }
-    .field textarea { resize: vertical; min-height: 124px; }
-    .field select { appearance: none; -webkit-appearance: none;
+    .field textarea { resize: vertical; min-height: 110px; }
+    .field select {
+      appearance: none; -webkit-appearance: none;
       background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="8" viewBox="0 0 12 8"><path d="M1 1l5 5 5-5" stroke="%231B2738" stroke-width="1.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>');
       background-repeat: no-repeat;
       background-position: right 14px center;
       padding-right: 36px;
     }
-
     .form__foot {
       display: flex;
       align-items: center;
-      gap: 24px;
+      justify-content: space-between;
+      gap: 16px;
       flex-wrap: wrap;
-      margin-top: 8px;
+      margin-top: 4px;
     }
-    .btn {
-      appearance: none;
-      border: none;
-      background: var(--ink);
-      color: var(--bone);
-      font-family: var(--sans);
-      font-size: 0.82rem;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      font-weight: 500;
-      padding: 14px 22px;
-      border-radius: 999px;
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      transition: background 180ms ease, transform 120ms ease;
-    }
-    .btn:hover { background: var(--sumi); }
-    .btn:active { transform: translateY(1px); }
-    .btn__arrow { display: inline-block; transition: transform 200ms ease; }
-    .btn:hover .btn__arrow { transform: translateX(4px); }
-    .form__note {
-      font-family: var(--serif);
-      font-style: italic;
-      font-size: 0.95rem;
-      color: var(--ink-70);
-      max-width: 32ch;
-    }
+    .form__note { font-size: 0.85rem; color: var(--ink-60); margin: 0; }
 
-    /* ===========================================================
-       Footer
-       =========================================================== */
+    /* ============================ Footer ============================ */
     .footer {
-      padding: 80px 28px 96px;
-      border-top: 1px solid var(--ink-10);
-      position: relative;
+      border-top: 1px solid var(--ink-12);
+      padding: 40px 24px 56px;
     }
     .footer__inner {
       max-width: var(--measure);
       margin: 0 auto;
-      display: grid;
-      grid-template-columns: auto 1fr auto;
-      gap: 48px;
-      align-items: center;
-    }
-    .footer__nav {
       display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
       flex-wrap: wrap;
-      gap: 24px;
-      justify-content: center;
     }
-    .footer__nav a {
-      font-family: var(--sans);
-      font-size: 0.78rem;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--ink-70);
-      transition: color 180ms ease;
-    }
-    .footer__nav a:hover { color: var(--ink); }
-    .footer__meta {
-      font-family: var(--sans);
-      font-size: 0.78rem;
-      color: var(--ink-50);
-      font-style: italic;
+    .footer p, .footer a {
+      font-size: 0.8rem;
+      color: var(--ink-60);
       margin: 0;
-      text-align: right;
     }
-    .footer__meta span { display: inline-block; }
-    .footer__sep { margin: 0 8px; color: var(--ink-25); font-style: normal; }
-    @media (max-width: 820px) {
-      .footer__inner {
-        grid-template-columns: 1fr;
-        gap: 28px;
-        text-align: center;
-      }
-      .footer__meta { text-align: center; }
-    }
+    .footer a:hover { color: var(--ink); }
+    .footer__links { display: flex; gap: 20px; flex-wrap: wrap; }
 
-    /* ===========================================================
-       Admin popover (preserved from v1)
-       =========================================================== */
+    /* ============================ Admin popover ============================ */
     .admin {
       position: fixed;
       right: 22px; bottom: 22px;
@@ -900,585 +786,712 @@
     .admin__trigger {
       width: 38px; height: 38px;
       border-radius: 999px;
-      border: 1px solid var(--ink-15);
-      background: var(--paper);
-      color: var(--ink-50);
+      border: 1px solid var(--ink-12);
+      background: var(--card);
+      color: var(--ink-40);
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      font-family: var(--mono, var(--sans));
       font-weight: 500;
-      letter-spacing: 0.04em;
       transition: opacity 180ms ease, background 180ms ease, color 180ms ease, transform 120ms ease;
       opacity: 0.55;
     }
-    .admin__trigger:hover { opacity: 1; background: var(--ink); color: var(--bone); border-color: var(--ink); }
+    .admin__trigger:hover { opacity: 1; background: var(--ink); color: #fff; border-color: var(--ink); }
     .admin__trigger:active { transform: scale(0.96); }
     .admin__menu {
       position: absolute;
       right: 0; bottom: 50px;
-      min-width: 220px;
-      background: var(--bone);
-      border: 1px solid var(--ink-10);
-      border-radius: 6px;
+      min-width: 230px;
+      background: var(--card);
+      border: 1px solid var(--ink-12);
+      border-radius: 12px;
       padding: 10px;
       box-shadow: 0 12px 32px rgba(15, 22, 32, 0.16);
     }
     .admin__menu[hidden] { display: none; }
     .admin__label {
-      font-family: var(--sans);
       font-size: 0.68rem;
-      letter-spacing: 0.2em;
+      font-weight: 600;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
-      color: var(--ink-50);
+      color: var(--ink-40);
       margin: 6px 10px 10px;
     }
     .admin__item {
       display: grid;
-      grid-template-columns: 22px 1fr auto;
+      grid-template-columns: 1fr auto;
       gap: 10px;
       align-items: center;
       padding: 9px 10px;
-      border-radius: 4px;
+      border-radius: 8px;
       transition: background 160ms ease;
     }
-    .admin__item:hover { background: var(--paper); }
-    .admin__icon { width: 18px; height: 18px; color: var(--ink-70); }
-    .admin__item-label {
-      font-family: var(--sans);
-      font-size: 0.88rem;
-      color: var(--ink);
-    }
+    .admin__item:hover { background: var(--bg); }
+    .admin__item-label { font-size: 0.88rem; color: var(--ink); }
     .admin__item-path {
       font-family: ui-monospace, 'SF Mono', Menlo, monospace;
       font-size: 0.7rem;
-      color: var(--ink-50);
+      color: var(--ink-40);
     }
   </style>
 </head>
 <body>
 
-  <!-- =========================== MASTHEAD =========================== -->
-  <header class="masthead" id="masthead" role="banner">
-    <div class="masthead__inner">
-      <a href="#top" class="wordmark" aria-label="Human AI Marketing — home">
-        <span>human</span><span class="dot">·</span><span class="ai">AI</span><span class="dot">·</span><span>marketing</span>
-      </a>
-      <nav class="masthead__nav" aria-label="Primary">
-        <a href="#philosophy">Philosophy</a>
-        <a href="#train">Train</a>
-        <a href="#place">Place</a>
-        <a href="#connect">Connect</a>
-        <a href="#articles">Articles</a>
-        <a href="#contact" class="nav-cta">Say hello</a>
-      </nav>
+  <!-- ============================ NAV ============================ -->
+  <nav class="nav" id="nav" aria-label="Primary">
+    <div class="nav__inner">
+      <a class="nav__brand" href="#top">human <span>AI</span> marketing</a>
+      <div class="nav__links">
+        <a href="#desk">Products</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#how">How it works</a>
+        <a href="#library">Library</a>
+        <a href="#contact" class="nav__cta">Say hello</a>
+      </div>
     </div>
-  </header>
+  </nav>
 
   <main id="top">
 
-    <!-- =========================== HERO =========================== -->
-    <section class="hero" aria-labelledby="hero-title">
-      <div class="slideshow" aria-hidden="true">
-        <figure class="slide is-active" data-city="Batavia, IL" data-num="01">
-          <img
-            src="https://res.cloudinary.com/dsbllwpbh/image/upload/f_auto,q_auto,w_1920,c_limit/human-ai-marketing/hero/batavia.jpg"
-            srcset="
-              https://res.cloudinary.com/dsbllwpbh/image/upload/f_auto,q_auto,w_768,c_limit/human-ai-marketing/hero/batavia.jpg 768w,
-              https://res.cloudinary.com/dsbllwpbh/image/upload/f_auto,q_auto,w_1280,c_limit/human-ai-marketing/hero/batavia.jpg 1280w,
-              https://res.cloudinary.com/dsbllwpbh/image/upload/f_auto,q_auto,w_1920,c_limit/human-ai-marketing/hero/batavia.jpg 1920w
-            "
-            sizes="100vw"
-            alt=""
-            fetchpriority="high"
-            decoding="async"
-          />
-        </figure>
-        <figure class="slide" data-city="Geneva, IL" data-num="02">
-          <img
-            src="https://res.cloudinary.com/dsbllwpbh/image/upload/f_auto,q_auto,w_1920,c_limit/human-ai-marketing/hero/geneva.jpg"
-            srcset="
-              https://res.cloudinary.com/dsbllwpbh/image/upload/f_auto,q_auto,w_768,c_limit/human-ai-marketing/hero/geneva.jpg 768w,
-              https://res.cloudinary.com/dsbllwpbh/image/upload/f_auto,q_auto,w_1280,c_limit/human-ai-marketing/hero/geneva.jpg 1280w,
-              https://res.cloudinary.com/dsbllwpbh/image/upload/f_auto,q_auto,w_1920,c_limit/human-ai-marketing/hero/geneva.jpg 1920w
-            "
-            sizes="100vw"
-            alt=""
-            decoding="async"
-          />
-        </figure>
-        <figure class="slide" data-city="St. Charles, IL" data-num="03">
-          <img
-            src="https://res.cloudinary.com/dsbllwpbh/image/upload/f_auto,q_auto,w_1920,c_limit/human-ai-marketing/hero/st-charles.jpg"
-            srcset="
-              https://res.cloudinary.com/dsbllwpbh/image/upload/f_auto,q_auto,w_768,c_limit/human-ai-marketing/hero/st-charles.jpg 768w,
-              https://res.cloudinary.com/dsbllwpbh/image/upload/f_auto,q_auto,w_1280,c_limit/human-ai-marketing/hero/st-charles.jpg 1280w,
-              https://res.cloudinary.com/dsbllwpbh/image/upload/f_auto,q_auto,w_1920,c_limit/human-ai-marketing/hero/st-charles.jpg 1920w
-            "
-            sizes="100vw"
-            alt=""
-            decoding="async"
-          />
-        </figure>
+    <!-- ============================ HERO PANEL ============================ -->
+    <header class="panel panel--hero">
+      <div class="panel__bg" aria-hidden="true">
+        <img
+          src="https://res.cloudinary.com/dsbllwpbh/image/upload/f_auto,q_auto,w_1920,c_limit/human-ai-marketing/hero/batavia.jpg"
+          srcset="
+            https://res.cloudinary.com/dsbllwpbh/image/upload/f_auto,q_auto,w_768,c_limit/human-ai-marketing/hero/batavia.jpg 768w,
+            https://res.cloudinary.com/dsbllwpbh/image/upload/f_auto,q_auto,w_1280,c_limit/human-ai-marketing/hero/batavia.jpg 1280w,
+            https://res.cloudinary.com/dsbllwpbh/image/upload/f_auto,q_auto,w_1920,c_limit/human-ai-marketing/hero/batavia.jpg 1920w
+          "
+          sizes="100vw"
+          alt=""
+          fetchpriority="high"
+          decoding="async"
+        />
       </div>
-      <div class="hero__scrim" aria-hidden="true"></div>
+      <div class="panel__copy">
+        <p class="panel__kicker">Batavia, Illinois</p>
+        <h1 class="panel__title">Human service.<br />AI speed.</h1>
+        <p class="panel__line">
+          We build and run your marketing — website, email, print, and
+          social — so you can run your business.
+        </p>
+        <div class="panel__actions">
+          <a class="btn btn--light" href="#desk">See the products</a>
+          <a class="tlink" href="#pricing">See pricing</a>
+        </div>
+      </div>
+    </header>
 
-      <div class="hero__inner">
-        <div class="hero__copy">
-          <p class="hero__eyebrow">
-            <span class="dot" aria-hidden="true"></span>
-            <span>Fox Valley · Est. 2026 · Batavia, Illinois</span>
-          </p>
-          <h1 id="hero-title" class="hero__title">
-            marketing, made <em>by hand.</em>
-          </h1>
-          <p class="hero__lede">
-            we teach young people to build audiences with AI — and pair them
-            with the local businesses, churches, and civic groups that need
-            the help.
-          </p>
+    <!-- ============================ PRODUCT 01 ============================ -->
+    <section class="panel panel--light" id="desk" aria-labelledby="desk-title">
+      <div class="panel__copy">
+        <p class="panel__kicker">For businesses</p>
+        <h2 class="panel__title" id="desk-title">The Marketing Desk</h2>
+        <p class="panel__line">
+          Your website, email, print, and social — built with AI,
+          run by people.
+        </p>
+        <p class="panel__price">Builds from $7,500 <small>· care from $149/mo</small></p>
+        <div class="panel__actions">
+          <a class="btn" href="#contact" data-inquiry="convert">Convert my site</a>
+          <a class="tlink" href="#pricing">Full pricing</a>
+        </div>
+        <details class="panel__details">
+          <summary class="panel__summary">
+            <span class="when-closed">Learn more</span>
+            <span class="when-open">Close</span>
+          </summary>
+          <div class="panel__body">
+            <ul>
+              <li>Website and landing pages, rebuilt and managed</li>
+              <li>Email, print, and social — designed and shipped monthly</li>
+              <li>Every piece reviewed by a senior before it goes out</li>
+              <li>Your job: the stories, the interviews, the customers</li>
+            </ul>
+            <p class="panel__note">
+              <strong>On Squarespace?</strong> Your renewal is going up —
+              <a href="articles/squarespace-pricing/">we charted the whole decade</a>.
+              Book your conversion before your renewal date and it's
+              <strong>$5,900 instead of $7,500</strong> — $1,600 off, and
+              the offer ends with the August 4, 2026 increase.
+            </p>
+            <p class="panel__note">
+              <strong>Want it in-house?</strong> The Handoff gives you the
+              complete codebase and trains your own person to run it,
+              with apprentice hours on call. $4,500, including a year of
+              the Library for your team.
+            </p>
+          </div>
+        </details>
+      </div>
+      <figure class="panel__media">
+        <img
+          src="https://res.cloudinary.com/dsbllwpbh/image/upload/f_auto,q_auto,w_1920,c_limit/brand/panels/panel-apprentice-shopkeeper.jpg"
+          srcset="
+            https://res.cloudinary.com/dsbllwpbh/image/upload/f_auto,q_auto,w_960,c_limit/brand/panels/panel-apprentice-shopkeeper.jpg 960w,
+            https://res.cloudinary.com/dsbllwpbh/image/upload/f_auto,q_auto,w_1440,c_limit/brand/panels/panel-apprentice-shopkeeper.jpg 1440w,
+            https://res.cloudinary.com/dsbllwpbh/image/upload/f_auto,q_auto,w_1920,c_limit/brand/panels/panel-apprentice-shopkeeper.jpg 1920w
+          "
+          sizes="100vw"
+          alt="An apprentice and a shopkeeper reviewing a laptop together at a wooden table in a Batavia storefront."
+          loading="lazy"
+          decoding="async"
+        />
+      </figure>
+    </section>
+
+    <!-- ============================ PRODUCT 02 ============================ -->
+    <section class="panel panel--dark" id="library-product" aria-labelledby="library-title">
+      <div class="panel__copy">
+        <p class="panel__kicker">For learners</p>
+        <h2 class="panel__title" id="library-title">The Library</h2>
+        <p class="panel__line">
+          A new kind of school. Every craft, re-thought for the AI era.
+        </p>
+        <p class="panel__price">$99/mo · $990/yr <small>· free for students · included for clients</small></p>
+        <div class="panel__actions">
+          <a class="btn btn--light" href="#contact" data-inquiry="library">Become a member</a>
+          <a class="tlink" href="#library">See the curriculum</a>
+        </div>
+        <details class="panel__details">
+          <summary class="panel__summary">
+            <span class="when-closed">Learn more</span>
+            <span class="when-open">Close</span>
+          </summary>
+          <div class="panel__body">
+            <ul>
+              <li>Design, photography, code, video, podcasts — re-approached from scratch</li>
+              <li>Taught from real client work in Claude Code, Codex, and the current AI toolkit</li>
+              <li>New lessons constantly; the curriculum compounds</li>
+              <li>Founding members: $590/yr, locked for life — first 100 seats</li>
+              <li>Teams of ten: $4,900/yr</li>
+            </ul>
+            <p class="panel__note">
+              The old apps — Photoshop, Lightroom, Canva, Mailchimp — are
+              archaic next to what these approaches can do. We teach what
+              replaced them.
+            </p>
+            <p class="panel__note">
+              Can't swing the fee? Apply for a free or discounted
+              membership — we say yes a lot.
+            </p>
+          </div>
+        </details>
+      </div>
+      <figure class="panel__media">
+        <img
+          src="https://res.cloudinary.com/dsbllwpbh/image/upload/f_auto,q_auto,w_1920,c_limit/brand/panels/panel-community-workshop.jpg"
+          srcset="
+            https://res.cloudinary.com/dsbllwpbh/image/upload/f_auto,q_auto,w_960,c_limit/brand/panels/panel-community-workshop.jpg 960w,
+            https://res.cloudinary.com/dsbllwpbh/image/upload/f_auto,q_auto,w_1440,c_limit/brand/panels/panel-community-workshop.jpg 1440w,
+            https://res.cloudinary.com/dsbllwpbh/image/upload/f_auto,q_auto,w_1920,c_limit/brand/panels/panel-community-workshop.jpg 1920w
+          "
+          sizes="100vw"
+          alt="A small group of apprentices around a wooden table in a community room, notebooks open, golden window light."
+          loading="lazy"
+          decoding="async"
+        />
+      </figure>
+    </section>
+
+    <!-- ============================ PRODUCT 03 ============================ -->
+    <section class="panel panel--light" id="batavia" aria-labelledby="batavia-title">
+      <div class="panel__copy">
+        <p class="panel__kicker">For Batavia</p>
+        <h2 class="panel__title" id="batavia-title">BataviaIL.co</h2>
+        <p class="panel__line">
+          A website for every one of Batavia's 2,200 businesses
+          and organizations.
+        </p>
+        <p class="panel__price">Coming soon <small>· priced on its own terms</small></p>
+        <div class="panel__actions">
+          <a class="btn" href="#contact" data-inquiry="batavia">Get on the list</a>
+        </div>
+        <details class="panel__details">
+          <summary class="panel__summary">
+            <span class="when-closed">Learn more</span>
+            <span class="when-open">Close</span>
+          </summary>
+          <div class="panel__body">
+            <ul>
+              <li>The whole town on modern rails, at once</li>
+              <li>One consistent, searchable Batavia</li>
+              <li>Built the same way everything on this page is built</li>
+            </ul>
+          </div>
+        </details>
+      </div>
+      <figure class="panel__media">
+        <img
+          src="https://res.cloudinary.com/dsbllwpbh/image/upload/f_auto,q_auto,w_1920,c_limit/brand/panels/panel-downtown-walk.jpg"
+          srcset="
+            https://res.cloudinary.com/dsbllwpbh/image/upload/f_auto,q_auto,w_960,c_limit/brand/panels/panel-downtown-walk.jpg 960w,
+            https://res.cloudinary.com/dsbllwpbh/image/upload/f_auto,q_auto,w_1440,c_limit/brand/panels/panel-downtown-walk.jpg 1440w,
+            https://res.cloudinary.com/dsbllwpbh/image/upload/f_auto,q_auto,w_1920,c_limit/brand/panels/panel-downtown-walk.jpg 1920w
+          "
+          sizes="100vw"
+          alt="Two people walking past brick storefronts on a downtown Fox Valley sidewalk at golden hour."
+          loading="lazy"
+          decoding="async"
+        />
+      </figure>
+    </section>
+
+    <!-- ============================ PRICING ============================ -->
+    <section class="section" id="pricing" aria-labelledby="pricing-title">
+      <div class="wrap">
+        <div class="section__head">
+          <h2 id="pricing-title">Pricing.</h2>
+          <p>Posted plainly. No discovery call, no quote request.</p>
         </div>
 
-        <div class="hero__foot">
-          <p class="hero__cite">a mentorship, in public. <br />the work is the byproduct.</p>
-          <div class="slideshow__ui">
-            <div class="slideshow__dots" role="tablist" aria-label="Choose tri-cities photo">
-              <button class="dot is-active" type="button" data-slide="0" role="tab" aria-selected="true" aria-label="Show Batavia, IL"></button>
-              <button class="dot" type="button" data-slide="1" role="tab" aria-selected="false" aria-label="Show Geneva, IL"></button>
-              <button class="dot" type="button" data-slide="2" role="tab" aria-selected="false" aria-label="Show St. Charles, IL"></button>
+        <div class="pricing-card">
+          <table class="price-table">
+            <thead class="visually-hidden">
+              <tr><th>Item</th><th>What it is</th><th>Price</th></tr>
+            </thead>
+            <tbody>
+              <tr class="group"><th colspan="3">Build once</th></tr>
+              <tr>
+                <td class="item">The Conversion</td>
+                <td class="what">Your current site, rebuilt as hand-coded custom work from the content you already have. Redesign-grade — tuned for search and AI answers.</td>
+                <td class="price">$7,500</td>
+              </tr>
+              <tr class="sub">
+                <td class="item">Squarespace special</td>
+                <td class="what">Book before your renewal date and save $1,600. Ends with the August 4, 2026 increase.</td>
+                <td class="price">$5,900</td>
+              </tr>
+              <tr>
+                <td class="item">The Refresh</td>
+                <td class="what">The Conversion, plus new writing, new imagery, and a landing page.</td>
+                <td class="price">$12,500</td>
+              </tr>
+              <tr>
+                <td class="item">The Flagship</td>
+                <td class="what">Full custom: new brand, new content, new photography. The whole story, told again.</td>
+                <td class="price">from $18,000</td>
+              </tr>
+              <tr>
+                <td class="item">Landing page</td>
+                <td class="what">One custom, conversion-focused page for a campaign.</td>
+                <td class="price">$2,500</td>
+              </tr>
+              <tr>
+                <td class="item">The Handoff</td>
+                <td class="what">Your complete codebase, plus real training for your own person. Includes a year of the Library for your team.</td>
+                <td class="price">$4,500</td>
+              </tr>
+
+              <tr class="group"><th colspan="3">Run monthly</th></tr>
+              <tr>
+                <td class="item">Hosting &amp; care</td>
+                <td class="what">Hosting, backups, and the small edits — you email us, we change it.</td>
+                <td class="price">$149<small>/mo</small></td>
+              </tr>
+              <tr>
+                <td class="item">One channel</td>
+                <td class="what">Email, social, or print — planned, designed, and shipped every month.</td>
+                <td class="price">$1,950<small>/mo</small></td>
+              </tr>
+              <tr>
+                <td class="item">The whole desk</td>
+                <td class="what">Every channel, plus campaigns and landing pages. A marketing department.</td>
+                <td class="price">$4,500<small>/mo</small></td>
+              </tr>
+              <tr>
+                <td class="item">Apprentice hours</td>
+                <td class="what">Extra hands on anything above, senior-reviewed.</td>
+                <td class="price">$125<small>/hr</small></td>
+              </tr>
+              <tr class="sub">
+                <td class="item">Senior strategist</td>
+                <td class="what">Direct senior time, itemized.</td>
+                <td class="price">$225<small>/hr</small></td>
+              </tr>
+
+              <tr class="group"><th colspan="3">The Library</th></tr>
+              <tr>
+                <td class="item">Individual</td>
+                <td class="what">Every lesson and video, as the school grows.</td>
+                <td class="price">$99<small>/mo</small> · $990<small>/yr</small></td>
+              </tr>
+              <tr class="sub">
+                <td class="item">Founding member</td>
+                <td class="what">The first 100 seats, locked for life.</td>
+                <td class="price">$590<small>/yr</small></td>
+              </tr>
+              <tr>
+                <td class="item">Team of ten</td>
+                <td class="what">One membership, ten seats.</td>
+                <td class="price">$4,900<small>/yr</small></td>
+              </tr>
+              <tr>
+                <td class="item">Students</td>
+                <td class="what">Anyone currently enrolled, anywhere. Verified, free.</td>
+                <td class="price">Free</td>
+              </tr>
+              <tr>
+                <td class="item">Clients</td>
+                <td class="what">Every active client, as long as you're with us.</td>
+                <td class="price">Included</td>
+              </tr>
+              <tr>
+                <td class="item">Financial aid</td>
+                <td class="what">A short application. 25–75% off, decided case by case.</td>
+                <td class="price">Apply</td>
+              </tr>
+
+              <tr class="group"><th colspan="3">Batavia</th></tr>
+              <tr>
+                <td class="item">BataviaIL.co</td>
+                <td class="what">2,200 storefronts, one town. Priced on its own terms.</td>
+                <td class="price">Soon</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p class="pricing-foot">
+          The list price is the list price. Every discount here is named,
+          personal, and expiring — a special, a founding seat, an aid
+          application. If the price is the only thing in the way, apply.
+          We would rather adjust than lose the work.
+        </p>
+      </div>
+    </section>
+
+    <!-- ============================ HOW IT WORKS ============================ -->
+    <section class="section" id="how" aria-labelledby="how-title" style="padding-top: 0;">
+      <div class="wrap">
+        <div class="section__head">
+          <h2 id="how-title">How it works.</h2>
+          <p>A mentorship-led practice: local apprentices, senior review, AI tools.</p>
+        </div>
+
+        <div class="how">
+          <div class="how__step">
+            <figure class="how__photo">
+              <img
+                src="https://res.cloudinary.com/dsbllwpbh/image/upload/f_auto,q_auto,w_800,c_limit/brand/panels/panel-community-workshop.jpg"
+                sizes="(max-width: 720px) 100vw, 33vw"
+                alt="Apprentices learning around a table in warm window light."
+                loading="lazy" decoding="async"
+              />
+            </figure>
+            <div class="how__copy">
+              <h3>Train</h3>
+              <p>Tri-cities students, 16–22, learn the AI toolkit through real briefs and weekly sessions.</p>
             </div>
-            <p class="slideshow__city">
-              <span class="slideshow__num" data-current-num>01</span>
-              <span class="slideshow__sep">/</span>
-              <span class="slideshow__total">03</span>
-              <span class="slideshow__bullet">·</span>
-              <span data-current-city>Batavia, IL</span>
-            </p>
+          </div>
+          <div class="how__step">
+            <figure class="how__photo">
+              <img
+                src="https://res.cloudinary.com/dsbllwpbh/image/upload/f_auto,q_auto,w_800,c_limit/brand/panels/panel-apprentice-shopkeeper.jpg"
+                sizes="(max-width: 720px) 100vw, 33vw"
+                alt="An apprentice working with a shopkeeper at their storefront."
+                loading="lazy" decoding="async"
+              />
+            </figure>
+            <div class="how__copy">
+              <h3>Place</h3>
+              <p>Each apprentice runs one local engagement — a shop's site, a parish bulletin, a chamber email.</p>
+            </div>
+          </div>
+          <div class="how__step">
+            <figure class="how__photo">
+              <img
+                src="https://res.cloudinary.com/dsbllwpbh/image/upload/f_auto,q_auto,w_800,c_limit/brand/panels/panel-downtown-walk.jpg"
+                sizes="(max-width: 720px) 100vw, 33vw"
+                alt="Two generations walking a downtown sidewalk together at golden hour."
+                loading="lazy" decoding="async"
+              />
+            </figure>
+            <div class="how__copy">
+              <h3>Connect</h3>
+              <p>A senior reviews everything that ships, and every project ties the town a little closer.</p>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
 
-    <!-- =========================== I · PHILOSOPHY =========================== -->
-    <section class="section section--narrow" id="philosophy" aria-labelledby="philosophy-title">
-      <p class="section__eyebrow">i · philosophy</p>
-      <h2 id="philosophy-title" class="section__title">
-        two ideas anchor <em>the work.</em>
-      </h2>
-      <p class="section__deck">
-        we use the fastest tools in the world. we also slow down enough to
-        notice what they cannot do. the brand sits on that tension.
-      </p>
-
-      <div class="ideas">
-        <div class="idea">
-          <p class="idea__kanji">初心</p>
-          <p class="idea__name">Shoshin — beginner's mind.</p>
-          <p class="idea__body">
-            approach every project as if for the first time. curiosity over
-            expertise. questions over answers. the intern's first day is the
-            agency's default posture.
-          </p>
-        </div>
-        <div class="idea">
-          <p class="idea__kanji">侘寂</p>
-          <p class="idea__name">Wabi-Sabi — beauty in imperfection.</p>
-          <p class="idea__body">
-            asymmetry. weathering. the visible hand of the maker. we will not
-            airbrush our work into hollowness. the smudge and the off-kilter
-            line are evidence we were here.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- =========================== II · TRAIN · PLACE · CONNECT =========================== -->
-    <section class="section--wide" aria-labelledby="flows-title">
-      <div class="section section--narrow" style="padding-bottom: 56px;">
-        <p class="section__eyebrow">ii · what we do</p>
-        <h2 id="flows-title" class="section__title">
-          a mentorship-led practice, <em>in three flows.</em>
-        </h2>
-        <p class="section__deck">
-          we train. we place. we connect. each cycle ties a young person
-          learning a new craft to a local business that needs the help — and
-          puts a little more thread between two parts of the city.
+        <p class="how-foot">
+          Two ideas anchor the work: <strong>beginner's mind</strong> and
+          <strong>beauty in imperfection</strong>. The fastest tools in the
+          world, slowed down enough to notice what they can't do.
         </p>
       </div>
-
-      <div class="flows">
-        <!-- Train -->
-        <article class="flow" id="train">
-          <figure class="flow__media">
-            <img
-              src="https://res.cloudinary.com/dsbllwpbh/image/upload/f_auto,q_auto,w_1200/brand/panels/panel-community-workshop.jpg"
-              srcset="
-                https://res.cloudinary.com/dsbllwpbh/image/upload/f_auto,q_auto,w_800/brand/panels/panel-community-workshop.jpg 800w,
-                https://res.cloudinary.com/dsbllwpbh/image/upload/f_auto,q_auto,w_1200/brand/panels/panel-community-workshop.jpg 1200w,
-                https://res.cloudinary.com/dsbllwpbh/image/upload/f_auto,q_auto,w_1600/brand/panels/panel-community-workshop.jpg 1600w
-              "
-              sizes="(max-width: 820px) 100vw, 50vw"
-              alt="A small group of young apprentices around a wooden table in a community room, notebooks open, golden-hour window light from tall arched windows."
-              loading="lazy"
-              decoding="async"
-            />
-          </figure>
-          <div class="flow__copy">
-            <p class="flow__num">i.</p>
-            <h3 class="flow__title">train.</h3>
-            <p class="flow__body">
-              a rolling cohort of high-school and college students learn the AI
-              toolkit through our handbook and weekly sessions. apprenticeship
-              rhythms, not bootcamp gloss.
-            </p>
-            <ul class="flow__points">
-              <li>16–22 year olds from the tri-cities</li>
-              <li>real briefs, real reviews, real bylines</li>
-              <li>paid hours; public credit</li>
-            </ul>
-          </div>
-        </article>
-
-        <!-- Place -->
-        <article class="flow" id="place">
-          <figure class="flow__media">
-            <img
-              src="https://res.cloudinary.com/dsbllwpbh/image/upload/f_auto,q_auto,w_1200/brand/panels/panel-apprentice-shopkeeper.jpg"
-              srcset="
-                https://res.cloudinary.com/dsbllwpbh/image/upload/f_auto,q_auto,w_800/brand/panels/panel-apprentice-shopkeeper.jpg 800w,
-                https://res.cloudinary.com/dsbllwpbh/image/upload/f_auto,q_auto,w_1200/brand/panels/panel-apprentice-shopkeeper.jpg 1200w,
-                https://res.cloudinary.com/dsbllwpbh/image/upload/f_auto,q_auto,w_1600/brand/panels/panel-apprentice-shopkeeper.jpg 1600w
-              "
-              sizes="(max-width: 820px) 100vw, 50vw"
-              alt="A young apprentice and an older shopkeeper at a wooden table in a Batavia storefront, looking at a laptop together, hand-drawn sketches and an enamel mug on the table."
-              loading="lazy"
-              decoding="async"
-            />
-          </figure>
-          <div class="flow__copy">
-            <p class="flow__num">ii.</p>
-            <h3 class="flow__title">place.</h3>
-            <p class="flow__body">
-              we pair each apprentice with a real local engagement — a parish
-              bulletin, a chamber email, a shop's website. they do the work.
-              a manager reviews.
-            </p>
-            <ul class="flow__points">
-              <li>one apprentice, one local partner</li>
-              <li>scope sized to a season</li>
-              <li>review by a senior team member</li>
-            </ul>
-          </div>
-        </article>
-
-        <!-- Connect -->
-        <article class="flow" id="connect">
-          <figure class="flow__media">
-            <img
-              src="https://res.cloudinary.com/dsbllwpbh/image/upload/f_auto,q_auto,w_1200/brand/panels/panel-downtown-walk.jpg"
-              srcset="
-                https://res.cloudinary.com/dsbllwpbh/image/upload/f_auto,q_auto,w_800/brand/panels/panel-downtown-walk.jpg 800w,
-                https://res.cloudinary.com/dsbllwpbh/image/upload/f_auto,q_auto,w_1200/brand/panels/panel-downtown-walk.jpg 1200w,
-                https://res.cloudinary.com/dsbllwpbh/image/upload/f_auto,q_auto,w_1600/brand/panels/panel-downtown-walk.jpg 1600w
-              "
-              sizes="(max-width: 820px) 100vw, 50vw"
-              alt="A young apprentice and an older shopkeeper walking together along a brick-paved downtown sidewalk past Geneva Hardware Co. and Batavia Bakery storefronts at golden hour."
-              loading="lazy"
-              decoding="async"
-            />
-          </figure>
-          <div class="flow__copy">
-            <p class="flow__num">iii.</p>
-            <h3 class="flow__title">connect.</h3>
-            <p class="flow__body">
-              every engagement is also a thread between two parts of the city.
-              an 18-year-old learning the craft. a 60-year-old learning the
-              tools. the byproduct is community.
-            </p>
-            <ul class="flow__points">
-              <li>local first, always</li>
-              <li>credit visible on every deliverable</li>
-              <li>graduates stay in the network</li>
-            </ul>
-          </div>
-        </article>
-      </div>
     </section>
 
-    <!-- =========================== III · TWO PATHS =========================== -->
-    <section class="section section--wide section--paper" aria-labelledby="paths-title">
-      <p class="section__eyebrow">iii · two ways in</p>
-      <h2 id="paths-title" class="section__title">
-        the door, on <em>two sides.</em>
-      </h2>
-      <p class="section__deck">
-        we are looking for two kinds of people: apprentices who want to learn
-        the work, and local hosts who have work that needs doing. tell us
-        which side of the door you're on.
-      </p>
-
-      <div class="paths">
-        <article class="path">
-          <p class="path__eyebrow">for apprentices</p>
-          <h3 class="path__title">
-            apply to the <em>spring cohort.</em>
-          </h3>
-          <p class="path__body">
-            for tri-cities students 16–22 who want to learn how to build
-            audiences with AI — and ship real work for a local business while
-            they do it.
+    <!-- ============================ THE LIBRARY — THE SCHOOL ============================ -->
+    <section class="section" id="library" aria-labelledby="shelf-title" style="padding-top: 0;">
+      <div class="wrap">
+        <div class="section__head">
+          <h2 id="shelf-title">A new kind of school.</h2>
+          <p>
+            Every craft here is re-thought from scratch with AI — taught
+            from real client work, added to constantly. The old apps are
+            archaic. The curriculum is what replaced them.
           </p>
-          <ul class="path__points">
-            <li>ten apprentices per season</li>
-            <li>weekly saturday sessions in batavia</li>
-            <li>one paid local engagement each</li>
-            <li>public byline on every piece you ship</li>
-          </ul>
-          <a class="path__cta" href="#contact" data-inquiry="apprentice">
-            <span>apply</span>
-            <span class="path__cta-arrow" aria-hidden="true">→</span>
-          </a>
-        </article>
+        </div>
 
-        <article class="path">
-          <p class="path__eyebrow">for hosts</p>
-          <h3 class="path__title">
-            host an <em>apprentice.</em>
-          </h3>
-          <p class="path__body">
-            for shops, churches, schools, and civic groups in batavia, geneva,
-            and st. charles. one apprentice, one project, one season. a senior
-            team member behind every brief.
-          </p>
-          <ul class="path__points">
-            <li>real work — site, email, brand, content</li>
-            <li>scope sized to one season</li>
-            <li>price that funds the program, honestly</li>
-            <li>manager backing every apprentice</li>
-          </ul>
-          <a class="path__cta" href="#contact" data-inquiry="host">
-            <span>host</span>
-            <span class="path__cta-arrow" aria-hidden="true">→</span>
-          </a>
-        </article>
-      </div>
-    </section>
+        <div class="disc" aria-label="Disciplines">
+          <span>Graphic design</span>
+          <span>Photography</span>
+          <span>Coding</span>
+          <span>Video</span>
+          <span>Podcasts</span>
+          <span>Email</span>
+          <span>Print</span>
+          <span>Social</span>
+          <span class="disc__old">Photoshop</span>
+          <span class="disc__old">Lightroom</span>
+          <span class="disc__old">Canva</span>
+          <span class="disc__old">Mailchimp</span>
+        </div>
 
-    <!-- =========================== IV · ARTICLES =========================== -->
-    <section class="section section--wide" id="articles" aria-labelledby="articles-title">
-      <p class="section__eyebrow">iv · from the studio</p>
-      <h2 id="articles-title" class="section__title">
-        things we <em>wrote down.</em>
-      </h2>
-      <p class="section__deck">
-        how we actually work, and what the tools our clients pay for
-        actually cost. written plainly, shared here for anyone curious.
-        four of an ongoing series.
-      </p>
+        <ol class="works">
+          <li>
+            <article class="work">
+              <figure class="work__media">
+                <img
+                  src="https://res.cloudinary.com/dsbllwpbh/image/upload/f_auto,q_auto,w_960,c_limit/brand/articles/article-squarespace-pricing"
+                  sizes="(max-width: 860px) 100vw, 50vw"
+                  alt="A stack of paper invoices and a renewal notice on a walnut desk."
+                  loading="lazy" decoding="async"
+                />
+                <span class="work__badge work__badge--free">Free lesson</span>
+              </figure>
+              <div class="work__copy">
+                <p class="work__kicker">Business · Analysis</p>
+                <h3>Ten years of Squarespace pricing</h3>
+                <p class="work__line">A decade of increases, charted against inflation — and what to do about yours.</p>
+                <div class="work__actions">
+                  <a class="btn btn--small" href="articles/squarespace-pricing/">Read free</a>
+                </div>
+                <details class="work__details">
+                  <summary class="work__summary">What's inside</summary>
+                  <div class="work__body">
+                    <ul>
+                      <li>The full price history, 2016–2026, sourced and charted</li>
+                      <li>The 2022 crossing — when flat pricing became +61%</li>
+                      <li>How Wix, Webflow, WordPress.com, and Duda compare</li>
+                      <li>Exactly what to do before August 4, 2026</li>
+                    </ul>
+                    <p class="work__meta">Analysis · 15-min read · interactive chart · open to everyone</p>
+                  </div>
+                </details>
+              </div>
+            </article>
+          </li>
 
-      <ol class="articles">
-        <li class="article">
-          <a class="article__link" href="handbook/">
-            <figure class="article__thumb">
-              <img
-                src="https://res.cloudinary.com/dsbllwpbh/image/upload/f_auto,q_auto,w_960,c_limit/brand/articles/article-api-keys"
-                srcset="
-                  https://res.cloudinary.com/dsbllwpbh/image/upload/f_auto,q_auto,w_480,c_limit/brand/articles/article-api-keys 480w,
-                  https://res.cloudinary.com/dsbllwpbh/image/upload/f_auto,q_auto,w_720,c_limit/brand/articles/article-api-keys 720w,
-                  https://res.cloudinary.com/dsbllwpbh/image/upload/f_auto,q_auto,w_960,c_limit/brand/articles/article-api-keys 960w
-                "
-                sizes="(max-width: 620px) 100vw, (max-width: 1040px) 50vw, 25vw"
-                alt="A brass key resting on a leather notebook in warm afternoon light."
-                loading="lazy"
-                decoding="async"
-              />
-            </figure>
-            <p class="article__num">№ 01</p>
-            <h3 class="article__title">setting up the shared API keys.</h3>
-            <p class="article__deck">
-              how we hand off shared credentials across every project —
-              an encrypted archive, a one-line unzip, zero secrets in the chat.
-            </p>
-            <span class="article__more">read article <span aria-hidden="true">→</span></span>
-          </a>
-        </li>
+          <li>
+            <article class="work">
+              <figure class="work__media">
+                <img
+                  src="https://res.cloudinary.com/dsbllwpbh/image/upload/f_auto,q_auto,w_960,c_limit/brand/articles/article-api-keys"
+                  sizes="(max-width: 860px) 100vw, 50vw"
+                  alt="A brass key resting on a leather notebook in warm afternoon light."
+                  loading="lazy" decoding="async"
+                />
+                <span class="work__badge">Members</span>
+              </figure>
+              <div class="work__copy">
+                <p class="work__kicker">Coding · Security</p>
+                <h3>Shared API keys, done right</h3>
+                <p class="work__line">Credential handoffs with zero secrets in the chat — the professional pattern.</p>
+                <div class="work__actions">
+                  <a class="btn btn--small js-gated" href="handbook/">Read</a>
+                </div>
+                <details class="work__details">
+                  <summary class="work__summary">What's inside</summary>
+                  <div class="work__body">
+                    <ul>
+                      <li>The encrypted-archive handoff, step by step</li>
+                      <li>The one-line unzip that works on any machine</li>
+                      <li>Why secrets never ride in the chat — and what to do instead</li>
+                    </ul>
+                    <p class="work__meta">Tutorial · 8-min read · walkthrough video included</p>
+                  </div>
+                </details>
+              </div>
+            </article>
+          </li>
 
-        <li class="article article--soon">
-          <div class="article__link" aria-disabled="true">
-            <figure class="article__thumb">
-              <img
-                src="https://res.cloudinary.com/dsbllwpbh/image/upload/f_auto,q_auto,w_960,c_limit/brand/articles/article-claude-code"
-                srcset="
-                  https://res.cloudinary.com/dsbllwpbh/image/upload/f_auto,q_auto,w_480,c_limit/brand/articles/article-claude-code 480w,
-                  https://res.cloudinary.com/dsbllwpbh/image/upload/f_auto,q_auto,w_720,c_limit/brand/articles/article-claude-code 720w,
-                  https://res.cloudinary.com/dsbllwpbh/image/upload/f_auto,q_auto,w_960,c_limit/brand/articles/article-claude-code 960w
-                "
-                sizes="(max-width: 620px) 100vw, (max-width: 1040px) 50vw, 25vw"
-                alt="A laptop on a warm walnut desk with a brass lamp and steaming coffee mug, late-afternoon light."
-                loading="lazy"
-                decoding="async"
-              />
-              <span class="article__badge">Coming soon</span>
-            </figure>
-            <p class="article__num">№ 02</p>
-            <h3 class="article__title">setting up Claude Code.</h3>
-            <p class="article__deck">
-              getting a Claude Code session running locally and finding the
-              everyday workflow — from install to first commit.
-            </p>
-            <span class="article__more article__more--muted">in progress</span>
-          </div>
-        </li>
+          <li>
+            <article class="work">
+              <figure class="work__media">
+                <img
+                  src="https://res.cloudinary.com/dsbllwpbh/image/upload/f_auto,q_auto,w_960,c_limit/brand/articles/article-git"
+                  sizes="(max-width: 860px) 100vw, 50vw"
+                  alt="A hand-drawn branching diagram in ink on a cream notepad with a brass fountain pen."
+                  loading="lazy" decoding="async"
+                />
+                <span class="work__badge">Members</span>
+              </figure>
+              <div class="work__copy">
+                <p class="work__kicker">Coding · Workflow</p>
+                <h3>Git &amp; GitHub, from zero</h3>
+                <p class="work__line">The version-control habits behind every project we ship — written for a first week.</p>
+                <div class="work__actions">
+                  <a class="btn btn--small js-gated" href="handbook/git/">Read</a>
+                </div>
+                <details class="work__details">
+                  <summary class="work__summary">What's inside</summary>
+                  <div class="work__body">
+                    <ul>
+                      <li>Clone, branch, commit, push — the whole loop</li>
+                      <li>Review habits that actually stick</li>
+                      <li>The exact commands, with what each one means</li>
+                    </ul>
+                    <p class="work__meta">Tutorial · 12-min read · copy-paste ready</p>
+                  </div>
+                </details>
+              </div>
+            </article>
+          </li>
 
-        <li class="article">
-          <a class="article__link" href="handbook/git/">
-            <figure class="article__thumb">
-              <img
-                src="https://res.cloudinary.com/dsbllwpbh/image/upload/f_auto,q_auto,w_960,c_limit/brand/articles/article-git"
-                srcset="
-                  https://res.cloudinary.com/dsbllwpbh/image/upload/f_auto,q_auto,w_480,c_limit/brand/articles/article-git 480w,
-                  https://res.cloudinary.com/dsbllwpbh/image/upload/f_auto,q_auto,w_720,c_limit/brand/articles/article-git 720w,
-                  https://res.cloudinary.com/dsbllwpbh/image/upload/f_auto,q_auto,w_960,c_limit/brand/articles/article-git 960w
-                "
-                sizes="(max-width: 620px) 100vw, (max-width: 1040px) 50vw, 25vw"
-                alt="A hand-drawn branching diagram in ink on a cream notepad with a brass fountain pen, warm light."
-                loading="lazy"
-                decoding="async"
-              />
-            </figure>
-            <p class="article__num">№ 03</p>
-            <h3 class="article__title">using Git &amp; GitHub.</h3>
-            <p class="article__deck">
-              our day-to-day Git habits, written so a junior can actually
-              follow it — clone, branch, commit, push, review.
-            </p>
-            <span class="article__more">read article <span aria-hidden="true">→</span></span>
-          </a>
-        </li>
+          <li>
+            <article class="work">
+              <figure class="work__media">
+                <img
+                  src="https://res.cloudinary.com/dsbllwpbh/image/upload/f_auto,q_auto,w_960,c_limit/brand/articles/article-claude-code"
+                  sizes="(max-width: 860px) 100vw, 50vw"
+                  alt="A laptop on a warm walnut desk with a brass lamp and steaming coffee mug."
+                  loading="lazy" decoding="async"
+                />
+                <span class="work__badge">Soon</span>
+              </figure>
+              <div class="work__copy">
+                <p class="work__kicker">Coding · Foundations</p>
+                <h3>Claude Code, day one</h3>
+                <p class="work__line">The tool at the center of everything here — from install to first commit.</p>
+                <details class="work__details">
+                  <summary class="work__summary">What's inside</summary>
+                  <div class="work__body">
+                    <ul>
+                      <li>Install to first commit, on a clean machine</li>
+                      <li>The everyday workflow we actually use</li>
+                      <li>What to ask for, and when to say no</li>
+                    </ul>
+                    <p class="work__meta">Tutorial · in progress — members see it first</p>
+                  </div>
+                </details>
+              </div>
+            </article>
+          </li>
+        </ol>
 
-        <li class="article">
-          <a class="article__link" href="articles/squarespace-pricing/">
-            <figure class="article__thumb">
-              <img
-                src="https://res.cloudinary.com/dsbllwpbh/image/upload/f_auto,q_auto,w_960,c_limit/brand/articles/article-squarespace-pricing"
-                srcset="
-                  https://res.cloudinary.com/dsbllwpbh/image/upload/f_auto,q_auto,w_480,c_limit/brand/articles/article-squarespace-pricing 480w,
-                  https://res.cloudinary.com/dsbllwpbh/image/upload/f_auto,q_auto,w_720,c_limit/brand/articles/article-squarespace-pricing 720w,
-                  https://res.cloudinary.com/dsbllwpbh/image/upload/f_auto,q_auto,w_960,c_limit/brand/articles/article-squarespace-pricing 960w
-                "
-                sizes="(max-width: 620px) 100vw, (max-width: 1040px) 50vw, 25vw"
-                alt="A stack of paper invoices and a renewal notice on a walnut desk, brass pen and reading glasses in warm afternoon light."
-                loading="lazy"
-                decoding="async"
-              />
-            </figure>
-            <p class="article__num">№ 04</p>
-            <h3 class="article__title">ten years of squarespace pricing.</h3>
-            <p class="article__deck">
-              another renewal letter, another increase. what a decade of
-              price rises actually adds up to — and how it compares.
-            </p>
-            <span class="article__more">read article <span aria-hidden="true">→</span></span>
-          </a>
-        </li>
-      </ol>
-    </section>
-
-    <!-- =========================== V · CONTACT =========================== -->
-    <section class="section section--paper" id="contact" aria-labelledby="contact-title">
-      <div class="contact">
-        <p class="section__eyebrow">v · begin</p>
-        <h2 id="contact-title" class="section__title">
-          say <em>hello.</em>
-        </h2>
-        <p class="contact__lede">
-          one short note. a real person here in batavia will read it and
-          write back within one business day. no autoresponder, no funnel.
+        <p class="shelf-foot">
+          The school is growing fast — design, photography, video, podcasts,
+          and more are on the way. $990 a year — $590 for founding members,
+          free for students, included for clients.
+          <a href="#" data-gate-open>Have a code?</a>
         </p>
+      </div>
+    </section>
 
-        <form
-          class="form"
-          name="inquiry"
-          method="POST"
-          data-netlify="true"
-          netlify-honeypot="bot-field"
-          action="/?sent=1#contact"
-        >
-          <input type="hidden" name="form-name" value="inquiry" />
-          <p hidden>
-            <label>Don't fill this out if you're human: <input name="bot-field" /></label>
-          </p>
-
-          <div class="form__row form__row--two">
-            <label class="field">
-              <span class="field__label">Your name</span>
-              <input type="text" name="name" required autocomplete="name" />
-            </label>
-            <label class="field">
-              <span class="field__label">Email</span>
-              <input type="email" name="email" required autocomplete="email" inputmode="email" />
-            </label>
+    <!-- ============================ MEMBERSHIP GATE ============================ -->
+    <div class="gate" id="gate" hidden role="dialog" aria-modal="true" aria-labelledby="gate-title">
+      <div class="gate__card">
+        <button type="button" class="gate__close" data-gate-close aria-label="Close">✕</button>
+        <p class="gate__kicker">The Library</p>
+        <h3 id="gate-title">Reading is for members.</h3>
+        <p class="gate__sub">
+          $99 a month or $990 a year — $590 a year, locked for life, for
+          the first 100 founding members. Free for students. Included for
+          clients. Every lesson, as the school grows.
+        </p>
+        <div class="gate__actions">
+          <a class="btn" href="#contact" data-inquiry="library" data-gate-close>Become a member</a>
+          <a class="tlink" href="#contact" data-inquiry="library" data-gate-close>Apply for aid</a>
+        </div>
+        <div class="gate__code">
+          <label for="gate-code">Have a member or student code?</label>
+          <div class="gate__row">
+            <input type="text" id="gate-code" autocomplete="off" spellcheck="false" placeholder="Enter code" />
+            <button type="button" class="btn btn--small" data-gate-unlock>Unlock</button>
           </div>
+          <p class="gate__msg" data-gate-msg aria-live="polite"></p>
+        </div>
+      </div>
+    </div>
 
-          <label class="field">
-            <span class="field__label">I'm a&hellip;</span>
-            <select name="inquiry_type" id="inquiry_type">
-              <option value="apprentice">prospective apprentice (16–22)</option>
-              <option value="host">local business / org wanting to host</option>
-              <option value="press">press or partner</option>
-              <option value="other">something else</option>
-            </select>
-          </label>
+    <!-- ============================ CONTACT ============================ -->
+    <section class="section" id="contact" aria-labelledby="contact-title" style="padding-top: 0;">
+      <div class="wrap">
+        <div class="section__head">
+          <h2 id="contact-title">Say hello.</h2>
+          <p>One short note. A real person in Batavia writes back within a business day.</p>
+        </div>
 
-          <label class="field">
-            <span class="field__label">Tell us about it</span>
-            <textarea
-              name="message"
-              rows="5"
-              required
-              placeholder="what you're hoping to do — a paragraph is plenty."
-            ></textarea>
-          </label>
+        <div class="contact-card">
+          <form
+            class="form"
+            name="inquiry"
+            method="POST"
+            data-netlify="true"
+            netlify-honeypot="bot-field"
+            action="/?sent=1#contact"
+          >
+            <input type="hidden" name="form-name" value="inquiry" />
+            <p hidden>
+              <label>Don't fill this out if you're human: <input name="bot-field" /></label>
+            </p>
 
-          <div class="form__foot">
-            <button type="submit" class="btn">
-              <span>send it over</span>
-              <span class="btn__arrow" aria-hidden="true">→</span>
-            </button>
-            <p class="form__note">a real person reads every one of these.</p>
-          </div>
-        </form>
+            <div class="form__row">
+              <label class="field">
+                <span>Your name</span>
+                <input type="text" name="name" required autocomplete="name" />
+              </label>
+              <label class="field">
+                <span>Email</span>
+                <input type="email" name="email" required autocomplete="email" inputmode="email" />
+              </label>
+            </div>
+
+            <label class="field">
+              <span>I'm a&hellip;</span>
+              <select name="inquiry_type" id="inquiry_type">
+                <option value="convert">Business ready to convert my website</option>
+                <option value="library">Future Library member</option>
+                <option value="apprentice">Prospective apprentice (16–22)</option>
+                <option value="host">Local business / org wanting to host</option>
+                <option value="batavia">Batavia business — the BataviaIL.co list</option>
+                <option value="press">Press or partner</option>
+                <option value="other">Something else</option>
+              </select>
+            </label>
+
+            <label class="field">
+              <span>Tell us about it</span>
+              <textarea name="message" rows="5" required placeholder="A paragraph is plenty."></textarea>
+            </label>
+
+            <div class="form__foot">
+              <button type="submit" class="btn">Send</button>
+              <p class="form__note">A real person reads every one of these.</p>
+            </div>
+          </form>
+        </div>
       </div>
     </section>
 
   </main>
 
-  <!-- =========================== FOOTER =========================== -->
+  <!-- ============================ FOOTER ============================ -->
   <footer class="footer" role="contentinfo">
     <div class="footer__inner">
-      <a href="#top" class="wordmark" aria-label="Human AI Marketing — back to top">
-        <span>human</span><span class="dot">·</span><span class="ai">AI</span><span class="dot">·</span><span>marketing</span>
-      </a>
-
-      <nav class="footer__nav" aria-label="Footer">
-        <a href="#philosophy">Philosophy</a>
-        <a href="#train">Train</a>
-        <a href="#place">Place</a>
-        <a href="#connect">Connect</a>
-        <a href="#articles">Articles</a>
+      <p>© <span data-year>2026</span> Human AI Marketing, LLC · Batavia, IL</p>
+      <div class="footer__links">
+        <a href="#desk">Products</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#library">Library</a>
         <a href="#contact">Contact</a>
-      </nav>
-
-      <p class="footer__meta">
-        <span>© <span data-year>2026</span> Human AI Marketing, LLC</span>
-        <span class="footer__sep" aria-hidden="true">·</span>
-        <span>Batavia, IL</span>
-        <span class="footer__sep" aria-hidden="true">·</span>
-        <span>Made in the Fox Valley</span>
-      </p>
+      </div>
     </div>
 
-    <!-- Admin popover — preserved from v1 -->
+    <!-- Admin popover — discreet internal shortcuts -->
     <div class="admin" data-admin>
       <button type="button" class="admin__trigger" aria-haspopup="menu" aria-expanded="false" aria-controls="admin-menu">
         <span aria-hidden="true">A</span>
@@ -1487,35 +1500,22 @@
       <div class="admin__menu" id="admin-menu" role="menu" hidden>
         <p class="admin__label">Internal</p>
         <a class="admin__item" href="brand/" role="menuitem">
-          <svg class="admin__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <rect x="3.25" y="3.25" width="7.5" height="7.5" rx="1.25" />
-            <rect x="13.25" y="3.25" width="7.5" height="7.5" rx="1.25" />
-            <rect x="3.25" y="13.25" width="7.5" height="7.5" rx="1.25" />
-            <rect x="13.25" y="13.25" width="7.5" height="7.5" rx="1.25" />
-          </svg>
           <span class="admin__item-label">Brand v1</span>
           <span class="admin__item-path">/brand</span>
         </a>
         <a class="admin__item" href="brand/v2/" role="menuitem">
-          <svg class="admin__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <circle cx="12" cy="12" r="8.25" />
-            <path d="M7.5 12.5 c 2 -3, 3.5 -3, 4.5 0 s 2.5 3, 4.5 0" />
-          </svg>
-          <span class="admin__item-label">Brand v2 preview</span>
+          <span class="admin__item-label">Brand v2</span>
           <span class="admin__item-path">/brand/v2</span>
         </a>
         <a class="admin__item" href="index-v1.html" role="menuitem">
-          <svg class="admin__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M4 4h12l4 4v12H4z" />
-            <path d="M8 12h8M8 16h8" />
-          </svg>
           <span class="admin__item-label">Home v1 (archive)</span>
           <span class="admin__item-path">/index-v1</span>
         </a>
+        <a class="admin__item" href="index-v2.html" role="menuitem">
+          <span class="admin__item-label">Home v2 (archive)</span>
+          <span class="admin__item-path">/index-v2</span>
+        </a>
         <a class="admin__item" href="status/" role="menuitem">
-          <svg class="admin__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M2.75 12h4.1l1.8-5.2 3.55 11.4 2.1-6.2h7" />
-          </svg>
           <span class="admin__item-label">Status</span>
           <span class="admin__item-path">/status</span>
         </a>
@@ -1524,67 +1524,21 @@
   </footer>
 
   <script>
-    // ——— Hero slideshow: crossfade through three tri-cities photos ———
+    // Nav border after scroll
     (() => {
-      const slides = document.querySelectorAll('.slide');
-      const dots   = document.querySelectorAll('.slideshow__dots .dot');
-      const numEl  = document.querySelector('[data-current-num]');
-      const cityEl = document.querySelector('[data-current-city]');
-      if (slides.length === 0) return;
-
-      const total = slides.length;
-      const INTERVAL = 6500;
-      let idx = 0;
-      let timer;
-
-      const show = (n) => {
-        idx = (n + total) % total;
-        slides.forEach((s, i) => s.classList.toggle('is-active', i === idx));
-        dots.forEach((d, i) => {
-          const active = i === idx;
-          d.classList.toggle('is-active', active);
-          d.setAttribute('aria-selected', active ? 'true' : 'false');
-        });
-        if (numEl)  numEl.textContent  = String(idx + 1).padStart(2, '0');
-        if (cityEl) cityEl.textContent = slides[idx].dataset.city || '';
-      };
-      const start = () => {
-        clearInterval(timer);
-        timer = setInterval(() => show(idx + 1), INTERVAL);
-      };
-
-      dots.forEach((d, i) => {
-        d.addEventListener('click', () => { show(i); start(); });
-      });
-
-      // Pause while the tab is hidden, resume on return
-      document.addEventListener('visibilitychange', () => {
-        if (document.hidden) clearInterval(timer);
-        else start();
-      });
-
-      show(0);
-      start();
-    })();
-
-    // ——— Masthead: add a quiet paper-backed bar after first scroll ———
-    (() => {
-      const mast = document.getElementById('masthead');
-      if (!mast) return;
-      const onScroll = () => {
-        mast.classList.toggle('is-scrolled', window.scrollY > 64);
-      };
+      const nav = document.getElementById('nav');
+      const onScroll = () => nav.classList.toggle('is-scrolled', window.scrollY > 8);
       onScroll();
       window.addEventListener('scroll', onScroll, { passive: true });
     })();
 
-    // ——— Auto-fill the year ———
+    // Year
     (() => {
       const y = document.querySelector('[data-year]');
       if (y) y.textContent = String(new Date().getFullYear());
     })();
 
-    // ——— Pre-select inquiry type when Apply / Host links are used ———
+    // Pre-select inquiry type from product CTAs
     (() => {
       const select = document.getElementById('inquiry_type');
       document.querySelectorAll('[data-inquiry]').forEach((el) => {
@@ -1594,13 +1548,96 @@
       });
     })();
 
-    // ——— Admin popover ———
+    // Only one product expander open at a time
+    (() => {
+      const all = document.querySelectorAll('.panel__details');
+      all.forEach((d) => {
+        d.addEventListener('toggle', () => {
+          if (d.open) all.forEach((o) => { if (o !== d) o.open = false; });
+        });
+      });
+    })();
+
+    // Membership gate — prototype. Client-side only: it shapes the UX, it is
+    // not security. Real enforcement will be a Netlify edge function + Stripe.
+    (() => {
+      const gate = document.getElementById('gate');
+      if (!gate) return;
+      const KEY = 'ham_member';
+      const HASHES = [
+        'bb6baeda7510ed2f064d87d9a51a97d89a7ffc64bd1dcf9d0a37ec7231e6c4f5',
+        '8588b89d0151446a3d3b31e60af8be0ed1094d541b35e75e7bf538e70308f644',
+        'ef587a804deef091f04d7aee89f3188bf0050a368cb1abaf6d575f4629e6d7ae'
+      ];
+      const input = document.getElementById('gate-code');
+      const msg = gate.querySelector('[data-gate-msg]');
+      let pendingHref = null;
+
+      const isMember = () => localStorage.getItem(KEY) === '1';
+      const open = () => {
+        gate.hidden = false;
+        document.body.style.overflow = 'hidden';
+        input.focus();
+      };
+      const close = () => {
+        gate.hidden = true;
+        document.body.style.overflow = '';
+        pendingHref = null;
+        msg.textContent = '';
+        msg.className = 'gate__msg';
+      };
+
+      document.querySelectorAll('.js-gated').forEach((a) => {
+        a.addEventListener('click', (e) => {
+          if (isMember()) return;
+          e.preventDefault();
+          pendingHref = a.getAttribute('href');
+          open();
+        });
+      });
+      document.querySelectorAll('[data-gate-open]').forEach((el) => {
+        el.addEventListener('click', (e) => { e.preventDefault(); open(); });
+      });
+      gate.querySelectorAll('[data-gate-close]').forEach((el) => {
+        el.addEventListener('click', close);
+      });
+      gate.addEventListener('click', (e) => { if (e.target === gate) close(); });
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && !gate.hidden) close();
+      });
+
+      const sha256 = async (text) => {
+        const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(text));
+        return [...new Uint8Array(buf)].map(b => b.toString(16).padStart(2, '0')).join('');
+      };
+
+      const unlock = async () => {
+        const code = (input.value || '').trim().toUpperCase();
+        if (!code) return;
+        const hash = await sha256(code);
+        if (HASHES.includes(hash)) {
+          localStorage.setItem(KEY, '1');
+          msg.textContent = 'Welcome in.';
+          msg.className = 'gate__msg is-ok';
+          const dest = pendingHref;
+          setTimeout(() => { close(); if (dest) window.location.href = dest; }, 700);
+        } else {
+          msg.textContent = 'That code didn’t match — check it and try again.';
+          msg.className = 'gate__msg is-bad';
+        }
+      };
+      gate.querySelector('[data-gate-unlock]').addEventListener('click', unlock);
+      input.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') { e.preventDefault(); unlock(); }
+      });
+    })();
+
+    // Admin popover
     (() => {
       const root = document.querySelector('[data-admin]');
       if (!root) return;
       const trigger = root.querySelector('.admin__trigger');
       const menu = root.querySelector('.admin__menu');
-
       const close = () => {
         menu.hidden = true;
         trigger.setAttribute('aria-expanded', 'false');
@@ -1609,7 +1646,6 @@
         menu.hidden = false;
         trigger.setAttribute('aria-expanded', 'true');
       };
-
       trigger.addEventListener('click', (e) => {
         e.stopPropagation();
         menu.hidden ? open() : close();
@@ -1622,15 +1658,15 @@
       });
     })();
 
-    // ——— Sent toast — read ?sent=1 from URL ———
+    // Sent toast
     (() => {
       const url = new URL(window.location.href);
       if (url.searchParams.get('sent') !== '1') return;
       const form = document.querySelector('.form');
       if (!form) return;
       const note = document.createElement('p');
-      note.style.cssText = 'margin: 0 0 28px; padding: 14px 18px; background: rgba(74,118,130,0.12); border: 1px solid rgba(74,118,130,0.35); border-radius: 4px; font-family: var(--serif); font-style: italic; color: var(--ink);';
-      note.textContent = 'thanks — got it. we will write back within one business day.';
+      note.style.cssText = 'margin: 0 0 20px; padding: 12px 16px; background: rgba(74,118,130,0.1); border-radius: 12px; font-size: 0.92rem; color: var(--ink);';
+      note.textContent = 'Thanks — got it. We\'ll write back within one business day.';
       form.parentNode.insertBefore(note, form);
     })();
   </script>
