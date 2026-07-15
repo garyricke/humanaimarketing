@@ -1632,6 +1632,19 @@
       });
     })();
 
+    // Native lazy-loading has proven unreliable here — in some Chrome
+    // sessions below-the-fold images never start fetching at all. Once the
+    // page itself is done, flip everything to eager so nothing stays blank.
+    (() => {
+      const kick = () => {
+        document.querySelectorAll('img[loading="lazy"]').forEach((img) => {
+          img.loading = 'eager';
+        });
+      };
+      if (document.readyState === 'complete') kick();
+      else window.addEventListener('load', kick, { once: true });
+    })();
+
     // Admin popover
     (() => {
       const root = document.querySelector('[data-admin]');
