@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CamTech IT Solutions — Website Proposal</title>
+<meta name="description" content="A conversion-first landing page proposal for CamTech IT Solutions, prepared by Human AI Marketing.">
+<meta name="robots" content="noindex">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Epilogue:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0b1622;
+    --panel:#101f30;
+    --paper:#f7f9fb;
+    --white:#ffffff;
+    --blue:#1470af;
+    --blue-bright:#3fa3e8;
+    --blue-wash:#eaf3fa;
+    --line:#d8e0e8;
+    --line-dark:rgba(255,255,255,.14);
+    --muted:#54626f;
+    --muted-dark:#8fa1b3;
+    --display:'Poppins',sans-serif;
+    --body:'Epilogue',sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--body);color:var(--ink);background:var(--paper);line-height:1.65;font-size:17px}
+  img{max-width:100%;height:auto;display:block}
+  a{color:var(--blue)}
+  h1,h2,h3,h4{font-family:var(--display);line-height:1.15}
+
+  /* ---------- sticky header ---------- */
+  .bar{position:sticky;top:0;z-index:50;background:rgba(11,22,34,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line-dark)}
+  .bar-in{max-width:1120px;margin:0 auto;padding:12px 24px;display:flex;align-items:center;gap:20px}
+  .bar img{height:34px;width:auto}
+  .bar .tag{color:var(--muted-dark);font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;font-family:var(--display)}
+  .bar nav{margin-left:auto;display:flex;gap:18px}
+  .bar nav a{color:#cfdbe6;text-decoration:none;font-size:13px;font-weight:500}
+  .bar nav a:hover{color:var(--blue-bright)}
+  @media(max-width:820px){.bar nav{display:none}}
+
+  /* ---------- cover ---------- */
+  .cover{position:relative;background:var(--ink);color:var(--white);overflow:hidden}
+  .hero-slide{position:absolute;inset:0;z-index:0;background-size:cover;background-position:center;opacity:0;transition:opacity 1.8s ease}
+  .hero-slide.active{opacity:1}
+  .cover::before{content:"";position:absolute;inset:0;z-index:1;background:
+    linear-gradient(100deg, rgba(11,22,34,.94) 0%, rgba(11,22,34,.78) 42%, rgba(11,22,34,.30) 78%, rgba(11,22,34,.15) 100%),
+    radial-gradient(1100px 500px at 85% -10%, rgba(20,112,175,.28), transparent 60%)}
+  .hero-dots{position:absolute;right:26px;bottom:22px;display:flex;gap:9px;z-index:3}
+  .hero-dots .dot{width:10px;height:10px;border-radius:50%;border:1px solid rgba(255,255,255,.55);background:transparent;cursor:pointer;padding:0;transition:background .3s,border-color .3s}
+  .hero-dots .dot.active{background:var(--blue-bright);border-color:var(--blue-bright)}
+  .cover-in{position:relative;z-index:2;max-width:1120px;margin:0 auto;padding:110px 24px 96px}
+  .eyebrow{font-family:var(--display);font-size:12px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--blue-bright);margin-bottom:22px}
+  .cover h1{font-size:clamp(38px,6vw,68px);font-weight:700;max-width:15ch}
+  .cover h1 em{font-style:normal;color:var(--blue-bright)}
+  .cover .sub{margin-top:26px;max-width:56ch;color:#c3d0dc;font-size:19px}
+  .cover-meta{margin-top:56px;display:flex;gap:0;flex-wrap:wrap;border-top:1px solid var(--line-dark)}
+  .cover-meta div{padding:18px 40px 0 0;margin-right:40px}
+  .cover-meta .k{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted-dark);font-family:var(--display);font-weight:600}
+  .cover-meta .v{font-size:16px;font-weight:500;color:var(--white);margin-top:4px}
+
+  /* ---------- document sections ---------- */
+  .doc{max-width:1120px;margin:0 auto;padding:0 24px}
+  section.block{padding:88px 0 8px}
+  .sec-head{display:flex;align-items:baseline;gap:22px;border-top:3px solid var(--ink);padding-top:26px;margin-bottom:34px}
+  .sec-num{font-family:var(--display);font-weight:700;font-size:15px;color:var(--blue);letter-spacing:.06em}
+  .sec-head h2{font-size:clamp(26px,3.4vw,38px);font-weight:700}
+  .lede{font-size:19px;max-width:66ch;color:#243342}
+  .cols{display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-top:34px}
+  @media(max-width:820px){.cols{grid-template-columns:1fr}}
+  p+p{margin-top:14px}
+  .note{color:var(--muted);font-size:15px}
+
+  /* findings */
+  .findings{margin-top:38px;display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+  @media(max-width:900px){.findings{grid-template-columns:1fr 1fr}}
+  @media(max-width:600px){.findings{grid-template-columns:1fr}}
+  .finding{background:var(--white);border:1px solid var(--line);border-top:3px solid var(--blue);padding:20px 20px 18px;border-radius:6px}
+  .finding svg{width:24px;height:24px;stroke:var(--blue);margin-bottom:12px}
+  .finding h4{font-size:15.5px;font-weight:600;margin-bottom:6px}
+  .finding p{font-size:14px;color:var(--muted);line-height:1.55}
+
+  /* competitor table */
+  .tablewrap{overflow-x:auto;margin-top:36px;border:1px solid var(--line);border-radius:8px;background:var(--white)}
+  table{border-collapse:collapse;width:100%;min-width:720px;font-size:15px}
+  th{font-family:var(--display);font-size:12px;letter-spacing:.1em;text-transform:uppercase;text-align:left;color:var(--white);background:var(--ink);padding:14px 18px;font-weight:600}
+  td{padding:15px 18px;border-top:1px solid var(--line);vertical-align:top}
+  td.rank{font-family:var(--display);font-weight:700;color:var(--blue);white-space:nowrap}
+  td strong{font-weight:600}
+  td .why{display:block;color:var(--muted);font-size:14px;margin-top:3px}
+  .gap{display:inline-block;font-family:var(--display);font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:3px 10px;border-radius:20px;white-space:nowrap}
+  .gap.miss{background:#fdeceb;color:#b42318}
+  .gap.part{background:#fef3e2;color:#9a5b13}
+  .stats{margin-top:30px;display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+  @media(max-width:820px){.stats{grid-template-columns:1fr}}
+  .stat{background:var(--ink);color:var(--white);border-radius:6px;padding:22px 22px 18px}
+  .stat .n{font-family:var(--display);font-size:30px;font-weight:700;color:var(--blue-bright)}
+  .stat p{font-size:13.5px;color:var(--muted-dark);margin-top:6px;line-height:1.5}
+
+  /* recommendation */
+  .rec{margin-top:36px;background:var(--white);border:1px solid var(--line);border-left:5px solid var(--blue);border-radius:6px;padding:34px 36px}
+  .rec h3{font-size:22px;margin-bottom:12px}
+  .rec ul{margin:16px 0 0 0;list-style:none}
+  .rec li{padding-left:30px;position:relative;margin-top:12px;font-size:16px}
+  .rec li svg{position:absolute;left:0;top:4px;width:19px;height:19px;stroke:var(--blue)}
+
+  /* blueprint */
+  .blueprint{margin-top:40px;display:grid;grid-template-columns:390px 1fr;gap:44px;align-items:start}
+  @media(max-width:900px){.blueprint{grid-template-columns:1fr}}
+  .wire{position:sticky;top:84px;background:var(--ink);border-radius:10px;padding:26px 24px;box-shadow:0 24px 60px -30px rgba(11,22,34,.55)}
+  @media(max-width:900px){.wire{position:static}}
+  .wire .wlabel{font-family:var(--display);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted-dark);margin-bottom:16px;font-weight:600}
+  .wblock{border:1px solid var(--line-dark);border-radius:5px;padding:10px 12px;margin-top:8px;display:flex;align-items:center;gap:10px}
+  .wblock .dot{font-family:var(--display);font-size:10.5px;font-weight:700;color:var(--ink);background:var(--blue-bright);border-radius:20px;min-width:22px;height:22px;display:flex;align-items:center;justify-content:center}
+  .wblock span{font-size:12.5px;color:#d5e0ea;font-weight:500;font-family:var(--display)}
+  .wblock.hero-w{background:linear-gradient(120deg,rgba(20,112,175,.45),rgba(20,112,175,.12));padding:22px 12px}
+  .anatomy{counter-reset:sec}
+  .anat{border-top:1px solid var(--line);padding:24px 0 22px;display:grid;grid-template-columns:46px 1fr;gap:16px}
+  .anat:first-child{border-top:none;padding-top:0}
+  .anat .num{font-family:var(--display);font-weight:700;font-size:14px;color:var(--white);background:var(--blue);border-radius:50%;width:30px;height:30px;display:flex;align-items:center;justify-content:center;margin-top:2px}
+  .anat h4{font-size:17.5px;font-weight:600}
+  .anat .what{color:#243342;font-size:15.5px;margin-top:5px}
+  .anat .why{margin-top:8px;font-size:14.5px;color:var(--muted);background:var(--blue-wash);border-left:3px solid var(--blue);padding:9px 14px;border-radius:0 5px 5px 0}
+  .anat .why strong{color:var(--blue);font-family:var(--display);font-size:11px;letter-spacing:.12em;text-transform:uppercase;display:block;margin-bottom:2px}
+
+  /* email section */
+  .email-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;margin-top:36px;align-items:start}
+  @media(max-width:900px){.email-grid{grid-template-columns:1fr}}
+  .email-shot{border:1px solid var(--line);border-radius:10px;overflow:hidden;box-shadow:0 30px 70px -34px rgba(11,22,34,.45)}
+  .btn{display:inline-flex;align-items:center;gap:10px;background:var(--blue);color:var(--white);text-decoration:none;font-family:var(--display);font-weight:600;font-size:15px;padding:13px 24px;border-radius:8px;margin-top:22px;transition:background .2s}
+  .btn:hover{background:#115e93}
+  .btn svg{width:18px;height:18px;stroke:currentColor}
+  .email-points{list-style:none;margin-top:18px}
+  .email-points li{padding-left:30px;position:relative;margin-top:13px;font-size:15.5px}
+  .email-points li svg{position:absolute;left:0;top:4px;width:19px;height:19px;stroke:var(--blue)}
+
+  /* investment */
+  .invest{margin-top:36px;display:grid;grid-template-columns:1fr 380px;gap:40px;align-items:start}
+  @media(max-width:900px){.invest{grid-template-columns:1fr}}
+  .inc{background:var(--white);border:1px solid var(--line);border-radius:8px;overflow:hidden}
+  .inc-row{display:grid;grid-template-columns:44px 1fr;gap:14px;padding:19px 24px;border-top:1px solid var(--line);align-items:start}
+  .inc-row:first-child{border-top:none}
+  .inc-row svg{width:24px;height:24px;stroke:var(--blue);margin-top:3px}
+  .inc-row h4{font-size:15.5px;font-weight:600}
+  .inc-row p{font-size:14px;color:var(--muted);margin-top:2px}
+  .price-card{position:sticky;top:84px;background:var(--ink);color:var(--white);border-radius:10px;padding:34px 32px;box-shadow:0 24px 60px -30px rgba(11,22,34,.55)}
+  @media(max-width:900px){.price-card{position:static}}
+  .price-card .k{font-family:var(--display);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--blue-bright);font-weight:600}
+  .price{font-family:var(--display);font-size:56px;font-weight:700;margin-top:4px}
+  .price small{font-size:16px;font-weight:500;color:var(--muted-dark)}
+  .price-card .was{margin-top:12px;font-size:15px;color:var(--muted-dark)}
+  .price-card .was s{font-family:var(--display);font-weight:600;font-size:20px;color:var(--muted-dark)}
+  .disc-badge{display:inline-block;font-family:var(--display);font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;background:var(--blue-bright);color:var(--ink);padding:4px 12px;border-radius:20px;margin-top:10px}
+  .price-card .terms{margin-top:18px;border-top:1px solid var(--line-dark);padding-top:16px;font-size:14px;color:#c3d0dc}
+  .price-card .terms p+p{margin-top:8px}
+
+  /* price benchmark */
+  .bench{margin-top:36px;background:var(--white);border:1px solid var(--line);border-radius:8px;padding:30px 32px 26px}
+  .bench-title{font-family:var(--display);font-size:16px;font-weight:600}
+  .bench-unit{font-size:13px;color:var(--muted);margin-top:2px}
+  .bench-plot{position:relative;margin-top:26px}
+  .bench-gridline{position:absolute;top:0;bottom:0;width:1px;background:var(--line)}
+  .bench-ref{position:absolute;top:0;bottom:0;left:55.9%;width:0;border-left:2px dashed var(--ink);z-index:2}
+  .bench-ref span{position:absolute;top:-30px;left:50%;transform:translateX(-50%);white-space:nowrap;font-family:var(--display);font-size:12px;font-weight:600;background:var(--ink);color:var(--white);padding:4px 12px;border-radius:20px}
+  .bench-ref.you{left:29.4%;border-left:2px solid var(--blue)}
+  .bench-ref.you span{background:var(--blue);top:auto;bottom:-30px}
+  .bench-plot{margin-bottom:34px}
+  .bench-plot{padding-top:34px}
+  .brow{position:relative;z-index:1;margin-top:16px}
+  .brow .blabel{font-size:13.5px;font-weight:500;color:var(--ink)}
+  .brow .blabel small{color:var(--muted);font-weight:400;font-size:12.5px}
+  .btrack{position:relative;height:26px;margin-top:5px}
+  .bbar{position:absolute;top:2px;height:22px;border-radius:4px;background:#cfe2f0}
+  .bbar.hot{background:var(--blue)}
+  .bval{position:absolute;top:3px;font-size:12.5px;font-family:var(--display);font-weight:600;color:var(--muted);white-space:nowrap}
+  .bval.on{color:#243342;right:10px;top:5px}
+  .bench-axis{position:relative;height:20px;margin-top:14px;border-top:1px solid var(--line);font-size:11.5px;color:var(--muted);font-family:var(--display)}
+  .bench-axis span{position:absolute;top:4px;transform:translateX(-50%)}
+  .bench-note{margin-top:14px;font-size:13px;color:var(--muted)}
+  .bench-legend{display:flex;gap:18px;margin-top:16px;font-size:12.5px;color:var(--muted);flex-wrap:wrap}
+  .bench-legend i{display:inline-block;width:14px;height:14px;border-radius:3px;margin-right:6px;vertical-align:-2px}
+  @media(max-width:640px){.bench{padding:22px 18px}.bench-ref span{font-size:10.5px}}
+
+  .math{margin-top:34px;display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  @media(max-width:820px){.math{grid-template-columns:1fr}}
+  .math-card{background:var(--white);border:1px solid var(--line);border-radius:8px;padding:26px 28px}
+  .math-card.dark{background:var(--ink);color:var(--white);border-color:var(--ink)}
+  .math-card h4{font-size:16px;margin-bottom:14px}
+  .math-card table.m{width:100%;min-width:0;border-collapse:collapse;font-size:14.5px}
+  .math-card table.m td{padding:7px 0;border-top:1px solid var(--line)}
+  .math-card table.m tr:first-child td{border-top:none}
+  .math-card table.m td:last-child{text-align:right;font-family:var(--display);font-weight:600;white-space:nowrap}
+  .math-card table.m tr.sum td{border-top:2px solid var(--ink);font-weight:600}
+  .math-card.dark .big{font-family:var(--display);font-size:44px;font-weight:700;color:var(--blue-bright)}
+  .math-card.dark p{font-size:14.5px;color:#c3d0dc;margin-top:10px}
+  .sources{margin-top:30px;font-size:13.5px;color:var(--muted)}
+  .sources ol{margin:10px 0 0 18px}
+  .sources li{margin-top:6px}
+  .sources a{color:var(--blue);text-decoration:none;word-break:break-all}
+  .sources a:hover{text-decoration:underline}
+
+  /* timeline */
+  .timeline{margin-top:36px;display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+  @media(max-width:900px){.timeline{grid-template-columns:1fr 1fr}}
+  @media(max-width:560px){.timeline{grid-template-columns:1fr}}
+  .week{background:var(--white);border:1px solid var(--line);border-radius:6px;padding:22px}
+  .week .w{font-family:var(--display);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--blue);font-weight:600}
+  .week h4{font-size:16.5px;margin-top:8px}
+  .week p{font-size:14px;color:var(--muted);margin-top:6px}
+
+  /* footer / next steps */
+  .foot{margin-top:96px;background:var(--ink);color:var(--white);position:relative;overflow:hidden}
+  .foot::before{content:"";position:absolute;inset:0;background:radial-gradient(900px 400px at 15% 120%, rgba(20,112,175,.35), transparent 60%)}
+  .foot-in{position:relative;max-width:1120px;margin:0 auto;padding:84px 24px 60px}
+  .foot h2{font-size:clamp(28px,4vw,44px);max-width:20ch}
+  .foot .steps{margin-top:34px;display:grid;grid-template-columns:repeat(3,1fr);gap:14px;max-width:900px}
+  @media(max-width:820px){.foot .steps{grid-template-columns:1fr}}
+  .foot .step{border:1px solid var(--line-dark);border-radius:6px;padding:20px}
+  .foot .step .n{font-family:var(--display);color:var(--blue-bright);font-weight:700;font-size:13px}
+  .foot .step p{font-size:14.5px;color:#c3d0dc;margin-top:6px}
+  .foot .sig{margin-top:56px;border-top:1px solid var(--line-dark);padding-top:28px;display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap}
+  .foot .sig .who{font-family:var(--display);font-weight:600;font-size:18px}
+  .foot .sig .who span{display:block;font-family:var(--body);font-weight:400;font-size:14px;color:var(--muted-dark);margin-top:4px}
+  .foot .sig a{color:var(--blue-bright);text-decoration:none}
+  .foot .sig img{height:30px;width:auto;opacity:.9}
+
+  /* reveal animation */
+  @media(prefers-reduced-motion:no-preference){
+    .reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease}
+    .reveal.in{opacity:1;transform:none}
+  }
+</style>
+</head>
+<body>
+
+<header class="bar">
+  <div class="bar-in">
+    <img src="https://res.cloudinary.com/dsbllwpbh/image/upload/f_auto,q_auto,w_400/v1784209516/camtech/logo-white" alt="CamTech IT Solutions">
+    <span class="tag">Website Proposal · July 2026</span>
+    <nav>
+      <a href="#today">Today</a>
+      <a href="#landscape">The Landscape</a>
+      <a href="#blueprint">The Page</a>
+      <a href="#email">The Email</a>
+      <a href="#investment">Investment</a>
+    </nav>
+  </div>
+</header>
+
+<div class="cover">
+  <div class="hero-slide active" style="background-image:url('https://res.cloudinary.com/dsbllwpbh/image/upload/f_auto,q_auto,w_1920/v1784211924/camtech/hero-gemini')" role="img" aria-label="Fiber-optic circuit traces above a blueprint Chicago skyline"></div>
+  <div class="hero-slide" style="background-image:url('https://res.cloudinary.com/dsbllwpbh/image/upload/f_auto,q_auto,w_1920/v1784211925/camtech/hero-openai')" role="img" aria-label="Light trails converging into circuitry over the Chicago lakefront"></div>
+  <div class="hero-dots" aria-label="Hero image selector">
+    <button class="dot active" type="button" aria-label="Show hero concept 1 (Gemini)"></button>
+    <button class="dot" type="button" aria-label="Show hero concept 2 (OpenAI)"></button>
+  </div>
+  <div class="cover-in">
+    <p class="eyebrow">Prepared for Paul Camacho · CamTech IT Solutions</p>
+    <h1>A front door that works as hard as <em>your engineers do.</em></h1>
+    <p class="sub">A conversion-first landing page for camtech.us — grounded in what the strongest managed-IT websites in your market actually do — plus a branded announcement email, ready to send the day the new site goes live. Delivered <strong style="color:#fff">One and Done</strong>: one handoff, one hour on Zoom, one week to launch, one round of revisions.</p>
+    <div class="cover-meta">
+      <div><p class="k">Prepared by</p><p class="v">Gary Ricke · Human AI Marketing</p></div>
+      <div><p class="k">Date</p><p class="v">July 16, 2026</p></div>
+      <div><p class="k">Investment</p><p class="v"><s style="color:var(--muted-dark);font-weight:400">$4,750</s> $2,500 — one-time rate</p></div>
+      <div><p class="k">Engagement</p><p class="v">One and Done — live in 1 week</p></div>
+    </div>
+  </div>
+</div>
+
+<div class="doc">
+
+  <!-- 01 SUMMARY -->
+  <section class="block reveal" id="summary">
+    <div class="sec-head"><span class="sec-num">01</span><h2>Executive summary</h2></div>
+    <p class="lede">CamTech has spent nearly thirty years earning trust the hard way — keeping networks running for construction firms, manufacturers, and professional-services teams across Chicagoland, Northern Indiana, and Southwest Florida. The current website doesn't tell that story, and it doesn't ask visitors to do anything with it.</p>
+    <div class="cols">
+      <p>We reviewed camtech.us page by page, then studied the managed-IT providers competing for the same Chicago-area searches — XL.net, SafePoint IT, CompassMSP, Ascentient, and PSM Partners. The pattern is unambiguous: the sites that win leads pair an outcome-driven headline with a visible phone number, hard proof (response times, review counts, guarantees), industry-specific sections, and a clear, repeated call to action.</p>
+      <p>We propose a single conversion-focused landing page that becomes the new camtech.us homepage: eleven purposeful sections, professionally written and custom-designed in CamTech's existing brand, built as a fast static page and deployed on modern hosting. The engagement includes a branded announcement email your team can copy and send to clients the day it launches.</p>
+      <p>The engagement itself is <strong>One and Done</strong>: you hand over everything you have, we sit down for one focused hour on Zoom, and the complete site is delivered in a week or less — with one round of revisions to make it exactly right. The full scope — strategy, copywriting, design, development, on-page SEO, analytics, and the email — carries a market-validated price of $4,750. For this proposal only, it's offered at a one-time favorite-customer rate of <strong>$2,500</strong>, with worry-free hosting available at $250/year — first year of light copy updates included free.</p>
+    </div>
+  </section>
+
+  <!-- 02 TODAY -->
+  <section class="block reveal" id="today">
+    <div class="sec-head"><span class="sec-num">02</span><h2>Where camtech.us stands today</h2></div>
+    <p class="lede">The current site is clean and professional-looking, but it behaves like a brochure, not a salesperson. Six findings matter most:</p>
+    <div class="findings">
+      <div class="finding">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/><line x1="2" y1="2" x2="22" y2="22"/></svg>
+        <h4>No phone number, anywhere</h4>
+        <p>Every competitor we reviewed puts a phone number in the persistent header. IT buyers in a crisis call — they don't fill out forms.</p>
+      </div>
+      <div class="finding">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5"/></svg>
+        <h4>One vague call to action</h4>
+        <p>A single mid-page "Let's Talk" is the only ask on the homepage. Strong MSP pages repeat a specific CTA three to five times down the page.</p>
+      </div>
+      <div class="finding">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="20" x2="12" y2="10"/><line x1="18" y1="20" x2="18" y2="4"/><line x1="6" y1="20" x2="6" y2="16"/></svg>
+        <h4>Zero proof</h4>
+        <p>No stats, no testimonials, no guarantees, no review counts. Thirty years of delivery — and the site makes no measurable claim at all.</p>
+      </div>
+      <div class="finding">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+        <h4>No industry story</h4>
+        <p>The client logos already on the site — builders, manufacturers, professional firms — are a ready-made verticals story that's never told.</p>
+      </div>
+      <div class="finding">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        <h4>No objection handling</h4>
+        <p>No FAQ, no pricing guidance, no response-time commitment. The questions every prospect has go unanswered until a sales call.</p>
+      </div>
+      <div class="finding">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        <h4>No real lead capture</h4>
+        <p>The homepage's only form is a newsletter signup. There's no consultation request form, no booking link, and the headline — "Your Personal &amp; Business IT Network" — names no outcome and no geography.</p>
+      </div>
+    </div>
+
+    <div class="rec" style="margin-top:38px">
+      <h3>And the platform bill keeps climbing.</h3>
+      <p>Your Squarespace renewal has doubled over seven years to <strong>$350/year</strong> — to host a site that's essentially static. That's not an accident: we tracked ten years of Squarespace's pricing, and the pattern is steady, compounding increases on renewal. Read the full analysis: <a href="https://humanaimarketing.netlify.app/articles/squarespace-pricing/"><strong>Ten years of Squarespace pricing</strong></a>.</p>
+      <p style="margin-top:12px">This project takes you off that treadmill entirely: a hand-built page on modern hosting at <strong>$250/year</strong> — $100 less than the renewal that's about a month out — with your first year of light copy updates included, and the site itself owned by you, not rented from a platform. One and Done delivers in a week, so the new site is live before Squarespace bills you again.</p>
+    </div>
+  </section>
+
+  <!-- 03 LANDSCAPE -->
+  <section class="block reveal" id="landscape">
+    <div class="sec-head"><span class="sec-num">03</span><h2>What the leaders in your space do</h2></div>
+    <p class="lede">We analyzed the landing pages of five managed-IT providers competing in your market: XL.net, SafePoint IT, CompassMSP, Ascentient, and PSM Partners. The three strongest share a near-identical playbook. Ten elements appear consistently — ranked here by importance, with CamTech's current status.</p>
+
+    <div class="stats">
+      <div class="stat"><p class="n">241</p><p>five-star reviews displayed by SafePoint IT, alongside a 90-day satisfaction guarantee and published pricing — the densest proof stack in the market.</p></div>
+      <div class="stat"><p class="n">79.8%</p><p>reduction in IT issues is XL.net's headline claim — a quantified outcome doing the persuading that adjectives can't.</p></div>
+      <div class="stat"><p class="n">&lt;30s</p><p>helpdesk response time is a headline stat for CompassMSP, next to a named local vCIO with a photo. Numbers plus a face build trust fast.</p></div>
+    </div>
+
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th style="width:44px">#</th><th>Element</th><th style="width:150px">CamTech today</th></tr></thead>
+        <tbody>
+          <tr><td class="rank">01</td><td><strong>Outcome + geography hero headline</strong><span class="why">"Chicago Managed IT Services — your full IT department without the full-time overhead." Instantly answers what, where, and what's in it for me — and captures local search intent.</span></td><td><span class="gap miss">Missing</span></td></tr>
+          <tr><td class="rank">02</td><td><strong>Specific CTA repeated 3–5&times; down the page</strong><span class="why">"Book a Consultation," "See Pricing" — every scroll depth is a conversion opportunity; specific verbs lower commitment anxiety.</span></td><td><span class="gap miss">One vague CTA</span></td></tr>
+          <tr><td class="rank">03</td><td><strong>Phone number in the persistent header</strong><span class="why">All five competitors show one. A visible number signals a real, reachable local team — and crisis buyers call.</span></td><td><span class="gap miss">Missing</span></td></tr>
+          <tr><td class="rank">04</td><td><strong>Quantified proof near the top</strong><span class="why">Issue-reduction percentages, response times, tickets resolved. Every MSP claims "proactive" — only numbers prove it. The clearest divider between strong and weak pages.</span></td><td><span class="gap miss">Missing</span></td></tr>
+          <tr><td class="rank">05</td><td><strong>Response commitment or guarantee</strong><span class="why">30-minute P1 response, service credits, 90-day guarantees, month-to-month terms — de-risks switching, the #1 buyer fear with MSPs.</span></td><td><span class="gap miss">Missing</span></td></tr>
+          <tr><td class="rank">06</td><td><strong>Named social proof: logos, testimonials, reviews</strong><span class="why">Third-party validation beats self-claims; recognizable local peers carry extra weight in a regional market.</span></td><td><span class="gap part">Logos only</span></td></tr>
+          <tr><td class="rank">07</td><td><strong>Industry-vertical section</strong><span class="why">"They know my industry" shortcuts the trust cycle. CamTech's construction and manufacturing client base is a genuine advantage here.</span></td><td><span class="gap miss">Missing</span></td></tr>
+          <tr><td class="rank">08</td><td><strong>Explicit local-team angle</strong><span class="why">"100% local engineers, no offshore call centers." The small MSP's single biggest structural advantage over national providers.</span></td><td><span class="gap part">Regions listed</span></td></tr>
+          <tr><td class="rank">09</td><td><strong>FAQ addressing pricing, response time, contracts</strong><span class="why">Handles objections before the sales call and feeds Google featured snippets and AI-generated answers.</span></td><td><span class="gap miss">Missing</span></td></tr>
+          <tr><td class="rank">10</td><td><strong>Certifications, partner badges &amp; a real contact form</strong><span class="why">Badges compress credibility into a glance; a proper consultation form captures buyers who aren't ready to call.</span></td><td><span class="gap miss">Missing</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note" style="margin-top:16px">Sources: live review of each competitor site, July 2026. Full findings available on request.</p>
+  </section>
+
+  <!-- 04 RECOMMENDATION -->
+  <section class="block reveal" id="recommendation">
+    <div class="sec-head"><span class="sec-num">04</span><h2>Our recommendation</h2></div>
+    <p class="lede">Build one page, and make it the homepage.</p>
+    <div class="rec">
+      <h3>A conversion-first landing page that replaces the camtech.us homepage — not a side-door campaign page.</h3>
+      <p>We considered a standalone campaign page for a single service (for example, network-security audits). We're recommending against it, for three reasons:</p>
+      <ul>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><strong>Your traffic already goes to the homepage.</strong> A campaign page only works with ad spend behind it. Referrals, repeat visitors, and "camtech" searches — the traffic you actually have — all land on the front door. Fix the front door first.</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><strong>The announcement email needs a destination worth announcing.</strong> "We redesigned our website" is a credible, natural reason to reach every client and prospect you have. "We made a new page about audits" is not.</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><strong>Every gap in section 03 lives on the homepage.</strong> One page closes all ten of them at once — and because it absorbs the essentials of your service pages, the entire Squarespace site can be retired before the $350 renewal hits. Service-specific pages can be spun out later if you ever run campaigns.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 05 BLUEPRINT -->
+  <section class="block reveal" id="blueprint">
+    <div class="sec-head"><span class="sec-num">05</span><h2>The page, section by section</h2></div>
+    <p class="lede">Eleven sections, in this order, each earning its place. The structure mirrors what the three strongest competitors converged on — adapted to CamTech's real advantages: thirty years in business, three regions, and a client roster in construction and manufacturing.</p>
+
+    <div class="blueprint">
+      <div class="wire" aria-hidden="true">
+        <p class="wlabel">Page blueprint</p>
+        <div class="wblock"><span class="dot">1</span><span>Header — phone + CTA</span></div>
+        <div class="wblock hero-w"><span class="dot">2</span><span>Hero — outcome + geo + dual CTA</span></div>
+        <div class="wblock"><span class="dot">3</span><span>Proof bar</span></div>
+        <div class="wblock"><span class="dot">4</span><span>Client logos</span></div>
+        <div class="wblock"><span class="dot">5</span><span>Pain &rarr; outcome narrative</span></div>
+        <div class="wblock"><span class="dot">6</span><span>Services grid</span></div>
+        <div class="wblock"><span class="dot">7</span><span>Industries served</span></div>
+        <div class="wblock"><span class="dot">8</span><span>Local advantage — 3 regions</span></div>
+        <div class="wblock"><span class="dot">9</span><span>Testimonials</span></div>
+        <div class="wblock"><span class="dot">10</span><span>FAQ</span></div>
+        <div class="wblock hero-w"><span class="dot">11</span><span>Final CTA + consultation form</span></div>
+      </div>
+
+      <div class="anatomy">
+        <div class="anat"><div class="num">1</div><div>
+          <h4>Header with phone number &amp; primary CTA</h4>
+          <p class="what">Slim, persistent header: CamTech logo, minimal navigation, a tappable phone number, and a "Book a Free IT Consultation" button.</p>
+          <p class="why"><strong>Why</strong>All five competitors keep a phone number in view at all times. It converts crisis-mode buyers a form never will, and it signals a reachable, local, human team.</p>
+        </div></div>
+        <div class="anat"><div class="num">2</div><div>
+          <h4>Hero: outcome + geography + dual CTA</h4>
+          <p class="what">A headline in the shape of "Managed IT &amp; Network Security for Chicagoland, Northern Indiana &amp; Southwest Florida" with a benefit subhead ("your full IT department, without the overhead") and two buttons: book a consultation, or call now.</p>
+          <p class="why"><strong>Why</strong>The strongest pattern in the market: answer what, where, and what's-in-it-for-me in five seconds, and capture the local search intent ("managed IT Chicago") the current tagline gives away.</p>
+        </div></div>
+        <div class="anat"><div class="num">3</div><div>
+          <h4>Proof bar</h4>
+          <p class="what">Three to four hard numbers, sourced with you during discovery: years in business (est. mid-'90s), clients supported, regions covered, and a response-time commitment.</p>
+          <p class="why"><strong>Why</strong>Quantified proof near the top is the clearest divider between the strong and weak pages we reviewed. Every MSP says "proactive" — numbers are the only claim buyers can't dismiss.</p>
+        </div></div>
+        <div class="anat"><div class="num">4</div><div>
+          <h4>Client logo strip</h4>
+          <p class="what">The eight-plus client logos already on camtech.us, presented as a single confident band: "Trusted by businesses across three states."</p>
+          <p class="why"><strong>Why</strong>It's CamTech's one existing trust asset, currently under-leveraged. Recognizable regional names are peer proof money can't buy.</p>
+        </div></div>
+        <div class="anat"><div class="num">5</div><div>
+          <h4>Pain &rarr; outcome narrative</h4>
+          <p class="what">A short section naming what prospects actually feel — slow support tickets, security anxiety, an IT bill that grows while service shrinks — and the outcome of switching: issues resolved before you notice them.</p>
+          <p class="why"><strong>Why</strong>The best competitor pages ("Is your IT holding your business back?") sell the problem before the service. Empathy earns the scroll to the services grid.</p>
+        </div></div>
+        <div class="anat"><div class="num">6</div><div>
+          <h4>Services grid</h4>
+          <p class="what">Four cards — Network Design, Network Security, Cloud Computing, Desktop Support — each rewritten as an outcome ("audits that find the gaps before attackers do"), with the essentials of today's service pages folded into the one page.</p>
+          <p class="why"><strong>Why</strong>Buyers scan for their problem. Cards with outcome-first copy outperform the current feature descriptions — and folding the service content in means the whole Squarespace site can be retired, not just the homepage.</p>
+        </div></div>
+        <div class="anat"><div class="num">7</div><div>
+          <h4>Industries served</h4>
+          <p class="what">Three vertical cards — Construction, Manufacturing, Professional Services — with one line each about the specific stakes (job-site connectivity, OT/IT security, client confidentiality).</p>
+          <p class="why"><strong>Why</strong>"They know my industry" shortcuts the trust cycle. CamTech's client roster proves these verticals today — the site just never says so. Competitors with weaker rosters say it loudly.</p>
+        </div></div>
+        <div class="anat"><div class="num">8</div><div>
+          <h4>The local advantage</h4>
+          <p class="what">A three-region section — Chicagoland, Northern Indiana, Southwest Florida — with the local-team story: real engineers, on-site when needed, no offshore call centers.</p>
+          <p class="why"><strong>Why</strong>The local angle is the small MSP's biggest structural edge over national providers, and it doubles as local-SEO surface area for all three service regions.</p>
+        </div></div>
+        <div class="anat"><div class="num">9</div><div>
+          <h4>Testimonials</h4>
+          <p class="what">Two or three short quotes with names, titles, and companies, gathered from your best client relationships. The ask-email template is in your hands at kickoff — most clients say yes within days.</p>
+          <p class="why"><strong>Why</strong>Named testimonials appeared on four of five competitor sites. Attributed local names outperform anonymous praise many times over, and asking is free.</p>
+        </div></div>
+        <div class="anat"><div class="num">10</div><div>
+          <h4>FAQ</h4>
+          <p class="what">Six to eight genuine questions: How fast do you respond? What does managed IT cost? Do you require long-term contracts? Can you work with our existing IT staff? Do you cover all three regions?</p>
+          <p class="why"><strong>Why</strong>Answers objections before the sales call, is the natural home for pricing candor (rare enough in this market to be a differentiator), and feeds Google featured snippets and AI answers.</p>
+        </div></div>
+        <div class="anat"><div class="num">11</div><div>
+          <h4>Final CTA + consultation form</h4>
+          <p class="what">A closing section with a short, low-friction form — name, company, email, phone, what's going on — plus the phone number one last time. Submissions land in your inbox; a thank-you state confirms receipt.</p>
+          <p class="why"><strong>Why</strong>The current homepage's only form is a newsletter signup. A real consultation form is the single highest-impact conversion fix on this list — it gives ready buyers somewhere to land.</p>
+        </div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 06 EMAIL -->
+  <section class="block reveal" id="email">
+    <div class="sec-head"><span class="sec-num">06</span><h2>The announcement email</h2></div>
+    <p class="lede">A new site only pays off if people see it. Included in this engagement: a branded HTML announcement email, written and designed to match the new page, that your team sends to clients and prospects on launch day.</p>
+    <div class="email-grid">
+      <div>
+        <a class="email-shot" href="announcement-email.html" style="display:block">
+          <img src="https://res.cloudinary.com/dsbllwpbh/image/upload/f_auto,q_auto,w_1000/v1784209665/camtech/email-announcement-preview" alt="Preview of the CamTech new-website announcement email" loading="lazy">
+        </a>
+      </div>
+      <div>
+        <h3 style="font-size:22px">Designed to be sent by you, in one click</h3>
+        <ul class="email-points">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><strong>Copy-and-send simple.</strong> Open the file, click "Copy email," paste into Gmail or Outlook — formatting, images, and buttons come along intact. No email platform required.</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><strong>Written as a note, not a blast.</strong> It reads like a message from your team — what's new, why it matters to the reader, and a single clear button to the site. It closes by inviting replies, which quietly restarts dormant conversations.</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><strong>On-brand and inbox-safe.</strong> CamTech's logo, colors, and voice, built with email-safe HTML and hosted, auto-optimized images so it renders correctly across mail clients.</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><strong>A reason to reach out that isn't a pitch.</strong> A site launch is the rare legitimate excuse to email every contact you have. The final copy ships alongside the finished page.</li>
+        </ul>
+        <a class="btn" href="announcement-email.html">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          View the working email
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 07 INVESTMENT -->
+  <section class="block reveal" id="investment">
+    <div class="sec-head"><span class="sec-num">07</span><h2>Investment</h2></div>
+    <p class="lede">One fixed price, everything included, no hourly surprises — and it isn't a number we made up. Section 08 shows exactly where it sits against published market rates, with sources.</p>
+    <div class="invest">
+      <div class="inc">
+        <div class="inc-row">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <div><h4>Discovery &amp; strategy — one hour, once</h4><p>You hand over everything you have (logos, client list, stats, photos, past materials), then we cover the rest in a single one-hour Zoom interview: proof points, response commitments, testimonial candidates, and positioning for all three regions.</p></div>
+        </div>
+        <div class="inc-row">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+          <div><h4>Conversion copywriting</h4><p>Every headline and section written for you — outcome-first, in CamTech's voice — including the FAQ and the testimonial-request email template.</p></div>
+        </div>
+        <div class="inc-row">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
+          <div><h4>Custom design</h4><p>Desktop and mobile designs in your existing brand — logo, palette, and typography — delivered as the finished, working page.</p></div>
+        </div>
+        <div class="inc-row">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+          <div><h4>Development &amp; deployment</h4><p>A hand-built, fast-loading responsive page — no page-builder bloat — with a working consultation form, deployed to modern hosting with SSL. Ongoing hosting is available for $250/year, fully managed.</p></div>
+        </div>
+        <div class="inc-row">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          <div><h4>On-page SEO &amp; analytics</h4><p>Title, meta, heading structure, and local keywords for Chicago, Northern Indiana, and SW Florida; image optimization and auto-format delivery; GA4 with conversion events on calls and form submissions.</p></div>
+        </div>
+        <div class="inc-row">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          <div><h4>Launch announcement email</h4><p>The branded, copy-and-send HTML email shown in section 06 — final copy, tested rendering, hosted images.</p></div>
+        </div>
+      </div>
+      <div class="price-card">
+        <p class="k">One and Done — fixed price</p>
+        <p class="was"><s>$4,750</s> &nbsp;market-validated price (see section 08)</p>
+        <p class="price">$2,500<small> USD</small></p>
+        <span class="disc-badge">One-time favorite-customer discount</span>
+        <div class="terms">
+          <p>This rate is a thank-you for a valued relationship — it applies to this proposal only and doesn't set pricing for future work.</p>
+          <p>50% ($1,250) to begin; 50% at launch approval.</p>
+          <p><strong>One and Done:</strong> complete site delivered within one week of the interview, with one round of revisions included.</p>
+          <p><strong>Hosting — $250/year</strong> ($100 less than your Squarespace renewal): fast, secure hosting with SSL and form handling, managed by us so there's nothing for you to maintain. Your first year includes free "light" copy updates — email us basic wording changes anytime and we'll make them at no charge. Anything more substantial gets a simple maintenance quote before any work begins.</p>
+          <p>Not included: ad campaigns, additional pages, ongoing retainer work — quoted separately if ever wanted.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 08 PRICE VALIDATION -->
+  <section class="block reveal" id="benchmark">
+    <div class="sec-head"><span class="sec-num">08</span><h2>The price, benchmarked</h2></div>
+    <p class="lede">Don't take the number on faith. Every figure below comes from published 2025–2026 pricing data for professionally built landing pages — sources linked at the bottom of this section.</p>
+
+    <div class="bench">
+      <p class="bench-title">Where $4,750 sits in the market</p>
+      <p class="bench-unit">Published price ranges for a single professionally built landing page, USD<sup>1–5</sup></p>
+      <div class="bench-plot">
+        <div class="bench-gridline" style="left:0%"></div>
+        <div class="bench-gridline" style="left:23.5%"></div>
+        <div class="bench-gridline" style="left:47.1%"></div>
+        <div class="bench-gridline" style="left:70.6%"></div>
+        <div class="bench-gridline" style="left:94.1%"></div>
+        <div class="bench-ref"><span>Market-validated price · $4,750</span></div>
+        <div class="bench-ref you"><span>Your one-time price · $2,500</span></div>
+        <div class="brow">
+          <p class="blabel">Template-based page <small>· builder theme, no custom design or copy</small></p>
+          <div class="btrack"><div class="bbar" style="left:3.5%;width:14.1%"></div><span class="bval" style="left:19.5%">$300 – $1,500</span></div>
+        </div>
+        <div class="brow">
+          <p class="blabel">Freelancer custom page <small>· design + build, copy usually extra</small></p>
+          <div class="btrack"><div class="bbar" style="left:17.6%;width:17.7%"></div><span class="bval" style="left:37%">$1,500 – $3,000</span></div>
+        </div>
+        <div class="brow">
+          <p class="blabel">Design studio custom page, copy included <small>· this engagement's tier</small></p>
+          <div class="btrack"><div class="bbar hot" style="left:29.4%;width:29.4%"></div><span class="bval" style="left:60.5%">$2,500 – $5,000</span></div>
+        </div>
+        <div class="brow">
+          <p class="blabel">Premium agency / conversion-optimized <small>· research, A/B testing, iteration cycles</small></p>
+          <div class="btrack"><div class="bbar" style="left:41.2%;width:52.9%"><span class="bval on">$3,500 – $8,000+</span></div></div>
+        </div>
+        <div class="bench-axis">
+          <span style="left:0%">$0</span><span style="left:23.5%">$2,000</span><span style="left:47.1%">$4,000</span><span style="left:70.6%">$6,000</span><span style="left:94.1%">$8,000</span>
+        </div>
+      </div>
+      <div class="bench-legend">
+        <span><i style="background:var(--blue)"></i>Comparable tier — custom design with copywriting included</span>
+        <span><i style="background:#cfe2f0"></i>Other market tiers</span>
+      </div>
+      <p class="bench-note">$4,750 lands in the upper-middle of its own tier — and below it, none of the tiers include copywriting, an announcement email, or a one-week turnaround. Your one-time $2,500 rate sits below where even freelancer-built custom pages top out.</p>
+    </div>
+
+    <div class="math">
+      <div class="math-card">
+        <h4>What this scope costs bought separately</h4>
+        <table class="m">
+          <tr><td>Custom landing-page design &amp; build — WebFX's price before copywriting, on a 6–8 week timeline<sup>1</sup></td><td>$3,000</td></tr>
+          <tr><td>Conversion copywriting for the page<sup>6</sup></td><td>$750 – $1,000</td></tr>
+          <tr><td>Custom-designed, coded HTML email<sup>7</sup></td><td>$500 – $1,000</td></tr>
+          <tr><td>On-page SEO + GA4 analytics setup<sup>5</sup></td><td>$300 – $900</td></tr>
+          <tr class="sum"><td>Market total, assembled piecemeal</td><td>$4,550 – $5,900</td></tr>
+        </table>
+      </div>
+      <div class="math-card dark">
+        <h4>This engagement</h4>
+        <p class="was" style="margin-top:6px;color:#8fa1b3;font-size:15px"><s style="font-family:var(--display);font-weight:600;font-size:20px">$4,750</s> &nbsp;market-validated price</p>
+        <p class="big">$2,500</p>
+        <p>Everything in the left column, from one person accountable for all of it, in one week — instead of coordinating a designer, a copywriter, and an email developer across a 6–8&nbsp;week agency timeline.</p>
+        <p>To be clear: $2,500 is not what this work costs — the benchmarks above put its fair market price at $4,750. It's a one-time, favorite-customer rate, offered once and not repeatable on future projects.<sup>2,3</sup></p>
+      </div>
+    </div>
+
+    <div class="sources">
+      <strong>Sources</strong> — pricing published or surveyed 2025–2026:
+      <ol>
+        <li>WebFX, <a href="https://www.webfx.com/ppc/pricing/landing-page-design/">Landing Page Design Pricing</a> — fully custom page $3,000, two revision rounds, copywriting quoted separately, 6–8 week turnaround.</li>
+        <li>Apexure, <a href="https://www.apexure.com/blog/landing-page-design-cost-break-down">Landing Page Design Cost Breakdown</a> — agency-built custom landing page $3,000–$5,000.</li>
+        <li>Leadpages, <a href="https://leadpages.com/blog/average-cost-of-website-design-for-small-business">Average Cost of Website Design for Small Business</a> — agency conversion page with strategy and copy $2,500–$8,000.</li>
+        <li>Landingi, <a href="https://landingi.com/landing-page/cost/">Landing Page Cost</a> — template-based $300–$1,500 vs. custom $1,500–$5,000.</li>
+        <li>Linear Design, <a href="https://lineardesign.com/blog/how-much-does-it-cost-to-design-a-landing-page/">How Much Does It Cost to Design a Landing Page?</a> — freelancer $500–$2,000, agency $2,000–$10,000+, plus SEO and analytics line items.</li>
+        <li>AWAI, <a href="https://www.awai.com/web-marketing/pricing-guide/">Web Copy Pricing Guide</a> — conversion-focused landing-page copy $750–$3,000; quality web copy industry standard ≈ $1,000/page.</li>
+        <li>Email Mavlers, <a href="https://emailmavlers.com/blog/how-much-does-email-template-design-cost/">How Much Does Email Template Design Cost?</a> — custom-designed, coded email template $500–$1,000.</li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- 09 TIMELINE -->
+  <section class="block reveal" id="timeline">
+    <div class="sec-head"><span class="sec-num">09</span><h2>How One and Done works</h2></div>
+    <p class="lede">One handoff. One hour. One week. One round of revisions. The process is built so you spend a single hour of your time — and get a finished site back before the week is out.</p>
+    <div class="timeline">
+      <div class="week"><p class="w">Step 1 · Day 0</p><h4>The handoff</h4><p>You send everything you have — logos, client names, photos, stats, old materials. A short checklist tells you exactly what to gather. Testimonial requests go out the same day.</p></div>
+      <div class="week"><p class="w">Step 2 · One hour</p><h4>The interview</h4><p>A single one-hour Zoom conversation. We ask everything we need — proof points, response commitments, what makes CamTech different — so we never have to come back with homework.</p></div>
+      <div class="week"><p class="w">Step 3 · Days 1–6</p><h4>The build</h4><p>Copy, design, development, form wiring, SEO, analytics, and the announcement email — all handled by us, no check-ins required. The one-week clock starts when the interview ends.</p></div>
+      <div class="week"><p class="w">Step 4 · Day 7</p><h4>Delivery &amp; revision</h4><p>You get the complete, working site on a live staging link. One round of revisions makes it exactly right — then we cut over the domain and the announcement email goes out.</p></div>
+    </div>
+    <p class="note" style="margin-top:16px">The one-week commitment assumes the handoff materials arrive before the interview and revision feedback comes back within a few business days.</p>
+  </section>
+
+</div>
+
+<!-- FOOTER / NEXT STEPS -->
+<div class="foot">
+  <div class="foot-in">
+    <p class="eyebrow">Next steps</p>
+    <h2>Three steps to a front door that sells.</h2>
+    <div class="steps">
+      <div class="step"><p class="n">STEP 1</p><p>Reply with a green light (or questions — happy to walk through any section of this proposal on a call).</p></div>
+      <div class="step"><p class="n">STEP 2</p><p>We send a simple agreement, the handoff checklist, and the Zoom invite; the 50% deposit books your interview slot.</p></div>
+      <div class="step"><p class="n">STEP 3</p><p>One week after the interview: the new camtech.us is live, and the announcement email is in your clients' inboxes.</p></div>
+    </div>
+    <div class="sig">
+      <div class="who">
+        Human AI Marketing
+        <span>Gary Ricke · <a href="mailto:gary.ricke@orbisdesign.com">gary.ricke@orbisdesign.com</a> · <a href="https://humanaimarketing.netlify.app/">humanaimarketing.netlify.app</a></span>
+        <span>Prepared for Paul Camacho, CamTech IT Solutions · July 16, 2026 · Valid for 30 days</span>
+      </div>
+      <img src="https://res.cloudinary.com/dsbllwpbh/image/upload/f_auto,q_auto,w_400/v1784209516/camtech/logo-white" alt="CamTech IT Solutions">
+    </div>
+  </div>
+</div>
+
+<script>
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold: .08 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  const slides = [...document.querySelectorAll('.hero-slide')];
+  const dots = [...document.querySelectorAll('.hero-dots .dot')];
+  let cur = 0, timer;
+  function show(i) {
+    cur = i;
+    slides.forEach((s, j) => s.classList.toggle('active', j === i));
+    dots.forEach((d, j) => d.classList.toggle('active', j === i));
+  }
+  function auto() { timer = setInterval(() => show((cur + 1) % slides.length), 8000); }
+  dots.forEach((d, i) => d.addEventListener('click', () => { clearInterval(timer); show(i); auto(); }));
+  if (!matchMedia('(prefers-reduced-motion: reduce)').matches) auto();
+</script>
+</body>
+</html>
