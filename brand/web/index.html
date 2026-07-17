@@ -11,6 +11,30 @@
   <meta property="og:locale" content="en_US" />
   <title>Human AI Marketing · Human service. AI speed.</title>
 
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Human AI Marketing, LLC",
+    "url": "https://humanaimarketing.org/",
+    "logo": "https://humanaimarketing.org/icon-512.png",
+    "slogan": "Human service. AI speed.",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "1770 S Randall Rd, Ste A #118",
+      "addressLocality": "Geneva",
+      "addressRegion": "IL",
+      "postalCode": "60134",
+      "addressCountry": "US"
+    },
+    "areaServed": [
+      { "@type": "City", "name": "Batavia, Illinois" },
+      { "@type": "City", "name": "Geneva, Illinois" },
+      { "@type": "City", "name": "St. Charles, Illinois" }
+    ]
+  }
+  </script>
+
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
   <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
   <link rel="preconnect" href="https://res.cloudinary.com" crossorigin />
@@ -754,6 +778,13 @@
       margin-top: 4px;
     }
     .form__note { font-size: 0.85rem; color: var(--ink-60); margin: 0; }
+    .contact__address {
+      font-style: normal;
+      font-size: 0.85rem;
+      color: var(--ink-60);
+      text-align: center;
+      margin: 24px auto 0;
+    }
 
     /* ============================ Footer ============================ */
     .footer {
@@ -776,6 +807,12 @@
     }
     .footer a:hover { color: var(--ink); }
     .footer__links { display: flex; gap: 20px; flex-wrap: wrap; }
+    .footer__id { display: grid; gap: 4px; }
+    .footer__address {
+      font-style: normal;
+      font-size: 0.8rem;
+      color: var(--ink-40);
+    }
 
     /* ============================ Admin popover ============================ */
     .admin {
@@ -1475,6 +1512,10 @@
             </div>
           </form>
         </div>
+
+        <address class="contact__address">
+          Prefer paper? Human AI Marketing, LLC · 1770 S Randall Rd, Ste A #118, Geneva, IL 60134
+        </address>
       </div>
     </section>
 
@@ -1483,7 +1524,10 @@
   <!-- ============================ FOOTER ============================ -->
   <footer class="footer" role="contentinfo">
     <div class="footer__inner">
-      <p>© <span data-year>2026</span> Human AI Marketing, LLC · Batavia, IL</p>
+      <div class="footer__id">
+        <p>© <span data-year>2026</span> Human AI Marketing, LLC · Batavia, IL</p>
+        <address class="footer__address">1770 S Randall Rd, Ste A #118, Geneva, IL 60134</address>
+      </div>
       <div class="footer__links">
         <a href="#desk">Products</a>
         <a href="#pricing">Pricing</a>

@@ -891,6 +891,15 @@ button:focus-visible {
 
 .footer a { color: var(--ink-70); }
 
+.footer__id { display: grid; gap: 6px; justify-items: end; text-align: right; }
+
+.footer__address {
+  font-style: normal;
+  font-size: 0.7rem;
+  letter-spacing: 0.06em;
+  color: var(--ink-50);
+}
+
 /* ===== Mobile refinements =================================== */
 
 @media (max-width: 640px) {
