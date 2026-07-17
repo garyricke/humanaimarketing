@@ -864,6 +864,19 @@
       transition: background 160ms ease;
     }
     .admin__item:hover { background: var(--bg); }
+    .admin__lock { margin: 0; padding: 4px; }
+    .admin__pass {
+      width: 100%;
+      box-sizing: border-box;
+      font: inherit;
+      font-size: 0.88rem;
+      padding: 8px 10px;
+      border: 1px solid var(--ink-12);
+      border-radius: 10px;
+      background: var(--bg);
+      color: var(--ink);
+    }
+    .admin__pass:focus { outline: 2px solid var(--teal); outline-offset: 1px; }
     .admin__item-label { font-size: 0.88rem; color: var(--ink); }
     .admin__item-path {
       font-family: ui-monospace, 'SF Mono', Menlo, monospace;
@@ -1544,6 +1557,17 @@
       </button>
       <div class="admin__menu" id="admin-menu" role="menu" hidden>
         <p class="admin__label">Internal</p>
+        <form class="admin__lock" data-admin-lock hidden>
+          <input
+            class="admin__pass"
+            type="password"
+            name="admin-pass"
+            placeholder="Password"
+            aria-label="Admin password"
+            autocomplete="off"
+          />
+        </form>
+        <div class="admin__items" data-admin-items hidden>
         <a class="admin__item" href="brand/" role="menuitem">
           <span class="admin__item-label">Brand v1</span>
           <span class="admin__item-path">/brand</span>
@@ -1564,6 +1588,7 @@
           <span class="admin__item-label">Status</span>
           <span class="admin__item-path">/status</span>
         </a>
+        </div>
       </div>
     </div>
   </footer>
@@ -1690,19 +1715,34 @@
       else window.addEventListener('load', kick, { once: true });
     })();
 
-    // Admin popover
+    // Admin popover — links hidden behind a password (UI gate, not security;
+    // the destination pages are still reachable by URL)
     (() => {
       const root = document.querySelector('[data-admin]');
       if (!root) return;
       const trigger = root.querySelector('.admin__trigger');
       const menu = root.querySelector('.admin__menu');
+      const lock = root.querySelector('[data-admin-lock]');
+      const items = root.querySelector('[data-admin-items]');
+      const pass = lock ? lock.querySelector('input') : null;
+      const HASH = '638a82444fed2fe411fb746f2773e054e8c5781b30e15c6ff4ec7a294d22013e';
+      const unlocked = () => {
+        try { return localStorage.getItem('ham_admin') === '1'; } catch { return false; }
+      };
+      const render = () => {
+        const ok = unlocked();
+        if (lock) lock.hidden = ok;
+        if (items) items.hidden = !ok;
+      };
       const close = () => {
         menu.hidden = true;
         trigger.setAttribute('aria-expanded', 'false');
       };
       const open = () => {
+        render();
         menu.hidden = false;
         trigger.setAttribute('aria-expanded', 'true');
+        if (!unlocked() && pass) pass.focus();
       };
       trigger.addEventListener('click', (e) => {
         e.stopPropagation();
@@ -1714,6 +1754,26 @@
       document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') close();
       });
+      if (lock) {
+        lock.addEventListener('submit', async (e) => {
+          e.preventDefault();
+          const buf = await crypto.subtle.digest(
+            'SHA-256',
+            new TextEncoder().encode(pass.value.trim())
+          );
+          const hex = [...new Uint8Array(buf)]
+            .map((b) => b.toString(16).padStart(2, '0'))
+            .join('');
+          if (hex === HASH) {
+            try { localStorage.setItem('ham_admin', '1'); } catch {}
+            pass.value = '';
+            render();
+          } else {
+            pass.value = '';
+            pass.placeholder = 'Try again';
+          }
+        });
+      }
     })();
 
     // Sent toast

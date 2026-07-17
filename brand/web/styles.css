@@ -2104,6 +2104,21 @@ img, svg { display: block; max-width: 100%; }
   color: var(--ink-50);
   margin: 4px 10px 6px;
 }
+.admin__lock {
+  margin: 0;
+  padding: 4px;
+}
+.admin__pass {
+  width: 100%;
+  box-sizing: border-box;
+  font-family: var(--sans);
+  font-size: 13px;
+  padding: 8px 10px;
+  border: 1px solid var(--ink-15, rgba(15, 27, 45, 0.15));
+  border-radius: 6px;
+  background: transparent;
+  color: var(--ink);
+}
 .admin__item {
   display: grid;
   grid-template-columns: 18px 1fr auto;

@@ -238,11 +238,53 @@
     const menu = admin.querySelector(".admin__menu");
     const items = Array.from(admin.querySelectorAll('[role="menuitem"]'));
 
+    // Links hidden behind a password (UI gate, not security). Same
+    // localStorage key across all pages, so one unlock covers the site.
+    const ADMIN_HASH = "638a82444fed2fe411fb746f2773e054e8c5781b30e15c6ff4ec7a294d22013e";
+    const isUnlocked = () => {
+      try { return localStorage.getItem("ham_admin") === "1"; } catch { return false; }
+    };
+    let lockForm = null;
+    const ensureLock = () => {
+      if (lockForm) return lockForm;
+      lockForm = document.createElement("form");
+      lockForm.className = "admin__lock";
+      lockForm.innerHTML =
+        '<input class="admin__pass" type="password" placeholder="Password" aria-label="Admin password" autocomplete="off" />';
+      const input = lockForm.querySelector("input");
+      lockForm.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const buf = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(input.value.trim()));
+        const hex = [...new Uint8Array(buf)].map((b) => b.toString(16).padStart(2, "0")).join("");
+        if (hex === ADMIN_HASH) {
+          try { localStorage.setItem("ham_admin", "1"); } catch {}
+          input.value = "";
+          renderLock();
+          items[0]?.focus();
+        } else {
+          input.value = "";
+          input.placeholder = "Try again";
+        }
+      });
+      menu.appendChild(lockForm);
+      return lockForm;
+    };
+    const renderLock = () => {
+      const ok = isUnlocked();
+      items.forEach((a) => (a.hidden = !ok));
+      if (!ok) ensureLock().hidden = false;
+      else if (lockForm) lockForm.hidden = true;
+    };
+
     const open = () => {
+      renderLock();
       admin.dataset.open = "true";
       trigger.setAttribute("aria-expanded", "true");
       menu.hidden = false;
-      requestAnimationFrame(() => items[0]?.focus());
+      requestAnimationFrame(() => {
+        if (isUnlocked()) items[0]?.focus();
+        else lockForm?.querySelector("input")?.focus();
+      });
     };
     const close = (returnFocus = false) => {
       admin.dataset.open = "false";

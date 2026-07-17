@@ -1595,20 +1595,58 @@
       });
     })();
 
-    // ——— Admin popover ———
+    // ——— Admin popover — links hidden behind a password (UI gate) ———
     (() => {
       const root = document.querySelector('[data-admin]');
       if (!root) return;
       const trigger = root.querySelector('.admin__trigger');
       const menu = root.querySelector('.admin__menu');
 
+      const HASH = '638a82444fed2fe411fb746f2773e054e8c5781b30e15c6ff4ec7a294d22013e';
+      const items = Array.from(menu.querySelectorAll('.admin__item'));
+      const isUnlocked = () => {
+        try { return localStorage.getItem('ham_admin') === '1'; } catch { return false; }
+      };
+      let lockForm = null;
+      const ensureLock = () => {
+        if (lockForm) return lockForm;
+        lockForm = document.createElement('form');
+        lockForm.className = 'admin__lock';
+        lockForm.innerHTML =
+          '<input class="admin__pass" type="password" placeholder="Password" aria-label="Admin password" autocomplete="off" style="width:100%;box-sizing:border-box;font-family:var(--sans);font-size:13px;padding:8px 10px;border:1px solid var(--ink-15);border-radius:6px;background:transparent;color:var(--ink);" />';
+        const input = lockForm.querySelector('input');
+        lockForm.addEventListener('submit', async (e) => {
+          e.preventDefault();
+          const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(input.value.trim()));
+          const hex = [...new Uint8Array(buf)].map((b) => b.toString(16).padStart(2, '0')).join('');
+          if (hex === HASH) {
+            try { localStorage.setItem('ham_admin', '1'); } catch {}
+            input.value = '';
+            render();
+          } else {
+            input.value = '';
+            input.placeholder = 'Try again';
+          }
+        });
+        menu.appendChild(lockForm);
+        return lockForm;
+      };
+      const render = () => {
+        const ok = isUnlocked();
+        items.forEach((a) => (a.hidden = !ok));
+        if (!ok) ensureLock().hidden = false;
+        else if (lockForm) lockForm.hidden = true;
+      };
+
       const close = () => {
         menu.hidden = true;
         trigger.setAttribute('aria-expanded', 'false');
       };
       const open = () => {
+        render();
         menu.hidden = false;
         trigger.setAttribute('aria-expanded', 'true');
+        if (!isUnlocked()) lockForm?.querySelector('input')?.focus();
       };
 
       trigger.addEventListener('click', (e) => {
