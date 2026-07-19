@@ -1,0 +1,8 @@
+<svg viewBox="0 0 132 132" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Human AI Marketing app icon">
+  <!-- App icon — Sumi tile, Bone mark at standard-plus weight. Exports clean at 512. -->
+  <rect width="132" height="132" rx="30" fill="#0F1620"/>
+  <g transform="translate(18.5 18.5) scale(0.72)" fill="none" stroke="#F7EFDD" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 66 14 C 96 16, 121 38, 119 70 C 117 100, 92 119, 64 119 C 36 119, 13 96, 14 66 C 15 36, 38 14, 66 14 Z" stroke-width="4.6"/>
+    <path d="M 38 70 C 46 56, 56 56, 64 70 C 72 84, 84 84, 94 68" stroke-width="4.9"/>
+  </g>
+</svg>

@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex" />
+  <title>The Mark · Identity · Human AI Marketing</title>
+  <link rel="icon" type="image/svg+xml" href="ham-mark-small.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400&family=Inter:wght@300;400;500&family=Caveat:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --paper: #EDE4D2;
+      --bone: #F7EFDD;
+      --ink: #1B2738;
+      --teal: #4A7682;
+      --teal-deep: #355864;
+      --sumi: #0F1620;
+      --ink-70: rgba(27, 39, 56, 0.7);
+      --ink-50: rgba(27, 39, 56, 0.5);
+      --ink-35: rgba(27, 39, 56, 0.35);
+      --ink-15: rgba(27, 39, 56, 0.15);
+      --ink-08: rgba(27, 39, 56, 0.08);
+      --serif: 'Fraunces', Georgia, serif;
+      --sans: 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+      --hand: 'Caveat', cursive;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    html, body { margin: 0; }
+
+    body {
+      background: var(--bone);
+      background-image:
+        radial-gradient(rgba(27, 39, 56, 0.022) 1px, transparent 1px),
+        radial-gradient(rgba(27, 39, 56, 0.014) 1px, transparent 1px);
+      background-size: 3px 3px, 7px 7px;
+      background-position: 0 0, 1px 2px;
+      color: var(--ink);
+      font-family: var(--sans);
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .stage {
+      max-width: 880px;
+      margin: 0 auto;
+      padding: 0 28px 40px;
+    }
+
+    /* ——— Topbar ——— */
+    .topbar {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      padding: 28px 0 0;
+    }
+    .topbar__brand {
+      font-family: var(--serif);
+      font-size: 1.15rem;
+      color: var(--ink);
+      text-decoration: none;
+    }
+    .topbar__brand .ai { color: var(--teal); font-style: italic; }
+    .topbar__brand .dot { color: var(--ink-50); margin: 0 4px; }
+    .topbar__label {
+      font-size: 0.78rem;
+      letter-spacing: 0.14em;
+      color: var(--ink-50);
+    }
+
+    /* ——— Hero ——— */
+    .hero { text-align: center; padding: 96px 0 88px; }
+    .hero .mark-hero { width: 168px; height: 168px; margin: 0 auto 36px; display: block; color: var(--ink); }
+    .hero h1 {
+      font-family: var(--serif);
+      font-weight: 400;
+      font-size: clamp(2.4rem, 6vw, 3.4rem);
+      line-height: 1.05;
+      margin: 0 0 18px;
+    }
+    .hero h1 em { color: var(--teal-deep); }
+    .hero p {
+      font-family: var(--serif);
+      font-weight: 300;
+      font-size: 1.25rem;
+      color: var(--ink-70);
+      max-width: 34ch;
+      margin: 0 auto;
+    }
+
+    /* ——— Section scaffolding ——— */
+    .section { padding: 72px 0; border-top: 1px solid var(--ink-15); }
+    .section__eyebrow {
+      font-size: 0.75rem;
+      letter-spacing: 0.16em;
+      color: var(--ink-50);
+      margin: 0 0 10px;
+    }
+    .section__title {
+      font-family: var(--serif);
+      font-weight: 400;
+      font-size: clamp(1.7rem, 4vw, 2.2rem);
+      line-height: 1.1;
+      margin: 0 0 12px;
+    }
+    .section__title em { color: var(--teal-deep); }
+    .section__deck {
+      font-size: 0.98rem;
+      color: var(--ink-70);
+      max-width: 58ch;
+      margin: 0 0 40px;
+    }
+
+    /* ——— Anatomy ——— */
+    .anatomy { display: grid; grid-template-columns: minmax(240px, 320px) 1fr; gap: 48px; align-items: center; }
+    @media (max-width: 720px) { .anatomy { grid-template-columns: 1fr; } }
+    .anatomy__figure {
+      background: var(--paper);
+      border-radius: 14px;
+      padding: 36px;
+      display: grid;
+      place-items: center;
+    }
+    .anatomy__figure svg { width: 100%; max-width: 220px; height: auto; color: var(--ink); }
+    .anatomy dl { margin: 0; }
+    .anatomy dt {
+      font-family: var(--serif);
+      font-size: 1.15rem;
+      margin: 0 0 4px;
+    }
+    .anatomy dd { margin: 0 0 22px; font-size: 0.95rem; color: var(--ink-70); max-width: 48ch; }
+
+    .clearspace {
+      margin-top: 48px;
+      display: grid;
+      grid-template-columns: minmax(240px, 320px) 1fr;
+      gap: 48px;
+      align-items: center;
+    }
+    @media (max-width: 720px) { .clearspace { grid-template-columns: 1fr; } }
+    .clearspace__figure {
+      background: var(--paper);
+      border-radius: 14px;
+      padding: 48px;
+      display: grid;
+      place-items: center;
+    }
+    .clearspace__box {
+      border: 1.5px dashed var(--ink-35);
+      padding: 25%;
+      border-radius: 4px;
+    }
+    .clearspace__box svg { display: block; width: 120px; height: 120px; color: var(--ink); }
+    .clearspace p { font-size: 0.95rem; color: var(--ink-70); max-width: 48ch; margin: 0; }
+
+    /* ——— Sizes ——— */
+    .sizes-row {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 32px;
+      background: var(--paper);
+      border-radius: 14px;
+      padding: 44px 40px 32px;
+    }
+    .size-cell { text-align: center; }
+    .size-cell svg { display: block; margin: 0 auto 14px; color: var(--ink); }
+    .size-cell figcaption { font-size: 0.75rem; color: var(--ink-50); letter-spacing: 0.04em; }
+    .size-cell figcaption strong { display: block; color: var(--ink-70); font-weight: 500; letter-spacing: 0.1em; font-size: 0.7rem; }
+    figure { margin: 0; }
+
+    .size-compare { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 24px; }
+    @media (max-width: 640px) { .size-compare { grid-template-columns: 1fr; } }
+    .compare-card { background: var(--paper); border-radius: 14px; padding: 28px; text-align: center; }
+    .compare-card svg { display: block; margin: 6px auto 16px; color: var(--ink); }
+    .compare-card p { margin: 0; font-size: 0.85rem; color: var(--ink-70); }
+    .compare-card .verdict { font-family: var(--hand); font-size: 1.25rem; display: block; margin-bottom: 2px; }
+    .compare-card--no .verdict { color: var(--ink-50); }
+    .compare-card--yes .verdict { color: var(--teal-deep); }
+
+    /* ——— Lockups ——— */
+    .lockups { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    @media (max-width: 720px) { .lockups { grid-template-columns: 1fr; } }
+    .lockup {
+      background: var(--paper);
+      border-radius: 14px;
+      padding: 44px 32px;
+      display: grid;
+      place-items: center;
+      min-height: 190px;
+    }
+    .lockup--wide { grid-column: 1 / -1; }
+    .lockup__inner { display: flex; align-items: center; gap: 22px; }
+    .lockup__inner svg { color: var(--ink); flex: none; }
+    .lockup__stack { text-align: center; }
+    .lockup__stack svg { margin: 0 auto 18px; display: block; color: var(--ink); }
+    .lockup-word {
+      font-family: var(--serif);
+      font-size: 1.7rem;
+      line-height: 1;
+      white-space: nowrap;
+    }
+    .lockup-word .ai { color: var(--teal); font-style: italic; }
+    .lockup-word--mono { font-size: 2.1rem; }
+    .lockup-word--mono .dot { color: var(--ink-50); margin: 0 5px; font-style: normal; }
+    .lockup-caption {
+      text-align: center;
+      font-size: 0.78rem;
+      color: var(--ink-50);
+      margin: 12px 0 0;
+      letter-spacing: 0.06em;
+    }
+    .lockup-cellwrap { display: grid; gap: 0; align-content: start; }
+
+    /* ——— Color ——— */
+    .swatches { display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; margin-bottom: 40px; }
+    @media (max-width: 640px) { .swatches { grid-template-columns: repeat(2, 1fr); } }
+    .swatch { border-radius: 12px; overflow: hidden; border: 1px solid var(--ink-15); }
+    .swatch__chip { height: 74px; }
+    .swatch__meta { padding: 10px 12px; background: var(--bone); font-size: 0.75rem; line-height: 1.45; }
+    .swatch__meta strong { display: block; font-weight: 500; }
+    .swatch__meta span { color: var(--ink-50); }
+
+    .colorways { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+    @media (max-width: 720px) { .colorways { grid-template-columns: repeat(2, 1fr); } }
+    .colorway { border-radius: 12px; border: 1px solid var(--ink-15); overflow: hidden; text-align: center; }
+    .colorway__tile { display: grid; place-items: center; padding: 30px 0; }
+    .colorway__tile svg { width: 74px; height: 74px; }
+    .colorway figcaption { font-size: 0.75rem; color: var(--ink-50); padding: 10px 8px; background: var(--bone); line-height: 1.45; }
+    .colorway figcaption strong { color: var(--ink-70); font-weight: 500; display: block; }
+
+    /* ——— In use ——— */
+    .uses { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    @media (max-width: 720px) { .uses { grid-template-columns: 1fr; } }
+    .use { background: var(--paper); border-radius: 14px; padding: 30px; }
+    .use--wide { grid-column: 1 / -1; }
+    .use h3 { font-family: var(--serif); font-weight: 400; font-size: 1.05rem; margin: 0 0 18px; }
+    .use__note { font-size: 0.82rem; color: var(--ink-50); margin: 16px 0 0; }
+
+    /* Browser tab mock */
+    .tabmock {
+      background: var(--ink-08);
+      border-radius: 12px 12px 0 0;
+      padding: 10px 10px 0;
+    }
+    .tabmock__tab {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      background: var(--bone);
+      border-radius: 9px 9px 0 0;
+      padding: 9px 16px;
+      font-size: 0.8rem;
+      color: var(--ink-70);
+      max-width: 100%;
+    }
+    .tabmock__tab svg { width: 16px; height: 16px; flex: none; color: var(--ink); }
+    .tabmock__tab .x { color: var(--ink-35); margin-left: 8px; }
+    .tabmock__bar { background: var(--bone); border-radius: 0 9px 0 0; padding: 9px 14px; font-size: 0.75rem; color: var(--ink-50); }
+
+    /* App icon mock */
+    .iconrow { display: flex; align-items: flex-end; gap: 26px; flex-wrap: wrap; }
+    .iconrow figure { text-align: center; }
+    .iconrow svg { display: block; margin: 0 auto 10px; }
+    .iconrow figcaption { font-size: 0.72rem; color: var(--ink-50); }
+
+    /* Avatar mock */
+    .avatars { display: flex; align-items: center; gap: 22px; flex-wrap: wrap; }
+    .avatar { border-radius: 50%; overflow: hidden; display: grid; place-items: center; border: 1px solid var(--ink-15); }
+    .avatar--bone { background: var(--bone); color: var(--ink); }
+    .avatar--sumi { background: var(--sumi); color: var(--bone); }
+    .avatar svg { width: 62%; height: 62%; }
+
+    /* Watermark mock */
+    .photomock { position: relative; border-radius: 12px; overflow: hidden; }
+    .photomock img { display: block; width: 100%; height: auto; }
+    .photomock__mark {
+      position: absolute;
+      right: 18px;
+      bottom: 16px;
+      width: 40px;
+      height: 40px;
+      color: var(--bone);
+      opacity: 0.9;
+      filter: drop-shadow(0 0 12px rgba(15, 22, 32, 0.35));
+    }
+
+    /* Business card mock */
+    .card-pair { display: flex; gap: 22px; flex-wrap: wrap; }
+    .bizcard {
+      width: 300px;
+      aspect-ratio: 7 / 4;
+      border-radius: 10px;
+      border: 1px solid var(--ink-15);
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .bizcard--front { background: var(--bone); }
+    .bizcard--front svg { width: 34px; height: 34px; color: var(--ink); }
+    .bizcard__word { font-family: var(--serif); font-size: 1.05rem; }
+    .bizcard__word .ai { color: var(--teal); font-style: italic; }
+    .bizcard--back { background: var(--sumi); color: var(--bone); align-items: center; justify-content: center; }
+    .bizcard--back svg { width: 64px; height: 64px; color: var(--bone); }
+
+    /* Email signature mock */
+    .sigmock {
+      background: var(--bone);
+      border: 1px solid var(--ink-15);
+      border-radius: 10px;
+      padding: 20px 22px;
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      max-width: 440px;
+    }
+    .sigmock svg { width: 44px; height: 44px; flex: none; color: var(--ink); }
+    .sigmock__text { font-size: 0.82rem; line-height: 1.55; color: var(--ink-70); }
+    .sigmock__text strong { color: var(--ink); font-weight: 500; }
+    .sigmock__text .ai { color: var(--teal); font-style: italic; }
+
+    /* ——— Don'ts ——— */
+    .donts { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+    @media (max-width: 720px) { .donts { grid-template-columns: repeat(2, 1fr); } }
+    .dont { background: var(--paper); border-radius: 12px; padding: 24px 14px 16px; text-align: center; }
+    .dont__tile { height: 84px; display: grid; place-items: center; margin-bottom: 12px; color: var(--ink); }
+    .dont figcaption { font-size: 0.78rem; color: var(--ink-70); line-height: 1.45; }
+    .dont .x { font-family: var(--hand); font-size: 1.1rem; color: var(--ink-50); display: block; }
+
+    /* ——— Downloads ——— */
+    .files { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    @media (max-width: 640px) { .files { grid-template-columns: 1fr; } }
+    .file {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      background: var(--paper);
+      border-radius: 12px;
+      padding: 16px 18px;
+      text-decoration: none;
+      color: var(--ink);
+    }
+    .file:hover { background: #E7DCC6; }
+    .file svg { width: 34px; height: 34px; flex: none; color: var(--ink); }
+    .file--dark svg { color: var(--bone); background: var(--sumi); border-radius: 8px; padding: 5px; width: 24px; height: 24px; }
+    .file__meta { font-size: 0.85rem; line-height: 1.45; }
+    .file__meta strong { display: block; font-weight: 500; }
+    .file__meta span { color: var(--ink-50); font-size: 0.78rem; }
+
+    /* ——— Closing ——— */
+    .closing { text-align: center; padding: 88px 0 40px; border-top: 1px solid var(--ink-15); }
+    .closing p { font-family: var(--hand); font-size: 1.7rem; color: var(--ink-70); margin: 0; }
+  </style>
+</head>
+<body>
+
+  <!-- Shared mark geometry. Three drawings, one per size band. -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <symbol id="mark-display" viewBox="0 0 132 132">
+        <path d="M 66 14 C 96 16, 121 38, 119 70 C 117 100, 92 119, 64 119 C 36 119, 13 96, 14 66 C 15 36, 38 14, 66 14 Z"
+          fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M 38 70 C 46 56, 56 56, 64 70 C 72 84, 84 84, 94 68"
+          fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+      </symbol>
+      <symbol id="mark-standard" viewBox="0 0 132 132">
+        <path d="M 66 14 C 96 16, 121 38, 119 70 C 117 100, 92 119, 64 119 C 36 119, 13 96, 14 66 C 15 36, 38 14, 66 14 Z"
+          fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M 38 70 C 46 56, 56 56, 64 70 C 72 84, 84 84, 94 68"
+          fill="none" stroke="currentColor" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"/>
+      </symbol>
+      <symbol id="mark-small" viewBox="0 0 32 32">
+        <path d="M 16 3.4 C 23.3 3.9, 29.3 9.2, 28.8 17 C 28.4 24.2, 22.3 28.8, 15.5 28.8 C 8.7 28.8, 3.2 23.3, 3.4 16 C 3.6 8.7, 9.2 3.4, 16 3.4 Z"
+          fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M 9.4 17 C 11.3 13.8, 13.7 13.8, 15.6 17 C 17.5 20.2, 20.3 20.2, 22.6 16.6"
+          fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+      </symbol>
+      <symbol id="mark-appicon" viewBox="0 0 132 132">
+        <rect width="132" height="132" rx="30" fill="#0F1620"/>
+        <g transform="translate(18.5 18.5) scale(0.72)" fill="none" stroke="#F7EFDD" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M 66 14 C 96 16, 121 38, 119 70 C 117 100, 92 119, 64 119 C 36 119, 13 96, 14 66 C 15 36, 38 14, 66 14 Z" stroke-width="4.6"/>
+          <path d="M 38 70 C 46 56, 56 56, 64 70 C 72 84, 84 84, 94 68" stroke-width="4.9"/>
+        </g>
+      </symbol>
+    </defs>
+  </svg>
+
+  <div class="stage">
+
+    <header class="topbar">
+      <a class="topbar__brand" href="/" aria-label="Human AI Marketing home">h<span class="dot">·</span><span class="ai">AI</span></a>
+      <span class="topbar__label">IDENTITY</span>
+    </header>
+
+    <!-- ————— Hero ————— -->
+    <section class="hero">
+      <svg class="mark-hero" role="img" aria-label="Human AI Marketing mark"><use href="#mark-display"/></svg>
+      <h1>the <em>mark.</em></h1>
+      <p>An imperfect circle, drawn once. A human signal running through it.</p>
+    </section>
+
+    <!-- ————— 01 Anatomy ————— -->
+    <section class="section" id="anatomy">
+      <p class="section__eyebrow">01</p>
+      <h2 class="section__title">what it <em>is.</em></h2>
+      <p class="section__deck">Two strokes, nothing else. Both drawn by hand, and both mean something.</p>
+
+      <div class="anatomy">
+        <div class="anatomy__figure">
+          <svg role="img" aria-label="The mark at display size"><use href="#mark-display"/></svg>
+        </div>
+        <dl>
+          <dt>The circle</dt>
+          <dd>An ensō — drawn in one motion, deliberately imperfect. It is the community we work inside, and the beginner's mind we bring to it. It never gets corrected into a perfect circle.</dd>
+          <dt>The wave</dt>
+          <dd>A human signal — a hand-drawn tilde riding through the middle. It is a voice, a heartbeat, a wavelength. The asymmetry is the point: no two passes of a pen are the same.</dd>
+          <dt>Together</dt>
+          <dd>The human signal inside the loop. Everything the agency makes should feel like this: technology holding the shape, a person supplying the life.</dd>
+        </dl>
+      </div>
+
+      <div class="clearspace">
+        <div class="clearspace__figure">
+          <div class="clearspace__box">
+            <svg role="img" aria-label="Clear space diagram"><use href="#mark-display"/></svg>
+          </div>
+        </div>
+        <p><strong>Clear space.</strong> Keep at least one quarter of the mark's diameter clear on every side — no type, no photos, no edges. The mark is quiet; give it room to be quiet in.</p>
+      </div>
+    </section>
+
+    <!-- ————— 02 Sizes ————— -->
+    <section class="section" id="sizes">
+      <p class="section__eyebrow">02</p>
+      <h2 class="section__title">drawn <em>three times.</em></h2>
+      <p class="section__deck">One drawing cannot survive every size — thin hand-drawn strokes disappear at favicon scale. So the mark exists as three drawings with the same gesture: strokes thicken and the wobble calms down as the mark gets smaller. Pick by final rendered size, never by scaling whichever file is nearby.</p>
+
+      <div class="sizes-row">
+        <figure class="size-cell">
+          <svg width="160" height="160" role="img" aria-label="Display mark at 160 pixels"><use href="#mark-display"/></svg>
+          <figcaption><strong>DISPLAY</strong>160px · 72px and up</figcaption>
+        </figure>
+        <figure class="size-cell">
+          <svg width="96" height="96" role="img" aria-label="Display mark at 96 pixels"><use href="#mark-display"/></svg>
+          <figcaption><strong>DISPLAY</strong>96px</figcaption>
+        </figure>
+        <figure class="size-cell">
+          <svg width="64" height="64" role="img" aria-label="Standard mark at 64 pixels"><use href="#mark-standard"/></svg>
+          <figcaption><strong>STANDARD</strong>64px · 28–72px</figcaption>
+        </figure>
+        <figure class="size-cell">
+          <svg width="40" height="40" role="img" aria-label="Standard mark at 40 pixels"><use href="#mark-standard"/></svg>
+          <figcaption><strong>STANDARD</strong>40px</figcaption>
+        </figure>
+        <figure class="size-cell">
+          <svg width="24" height="24" role="img" aria-label="Small mark at 24 pixels"><use href="#mark-small"/></svg>
+          <figcaption><strong>SMALL</strong>24px · under 28px</figcaption>
+        </figure>
+        <figure class="size-cell">
+          <svg width="16" height="16" role="img" aria-label="Small mark at 16 pixels"><use href="#mark-small"/></svg>
+          <figcaption><strong>SMALL</strong>16px</figcaption>
+        </figure>
+      </div>
+
+      <div class="size-compare">
+        <figure class="compare-card compare-card--no">
+          <svg width="16" height="16" role="img" aria-label="Display drawing wrongly used at 16 pixels"><use href="#mark-display"/></svg>
+          <figcaption><span class="verdict">✗ not this</span><p>The display drawing scaled to 16px — the strokes thin out and the wave dissolves.</p></figcaption>
+        </figure>
+        <figure class="compare-card compare-card--yes">
+          <svg width="16" height="16" role="img" aria-label="Small drawing correctly used at 16 pixels"><use href="#mark-small"/></svg>
+          <figcaption><span class="verdict">✓ this</span><p>The small drawing at 16px — redrawn heavier and calmer, so it still reads as the mark.</p></figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ————— 03 Lockups ————— -->
+    <section class="section" id="lockups">
+      <p class="section__eyebrow">03</p>
+      <h2 class="section__title">with the <em>name.</em></h2>
+      <p class="section__deck">The wordmark is Fraunces, lowercase, with the AI set italic in teal. The mark sits to its left at cap-height-and-a-half, or above it when centered. On its own, the mark is reserved for places the name already lives — avatars, favicons, watermarks.</p>
+
+      <div class="lockups">
+        <div class="lockup-cellwrap lockup--wide">
+          <div class="lockup lockup--wide">
+            <div class="lockup__inner">
+              <svg width="56" height="56" role="img" aria-label="Mark"><use href="#mark-standard"/></svg>
+              <span class="lockup-word">human <span class="ai">AI</span> marketing</span>
+            </div>
+          </div>
+          <p class="lockup-caption">Primary lockup — horizontal</p>
+        </div>
+
+        <div class="lockup-cellwrap">
+          <div class="lockup">
+            <div class="lockup__stack">
+              <svg width="72" height="72" role="img" aria-label="Mark"><use href="#mark-display"/></svg>
+              <span class="lockup-word">human <span class="ai">AI</span> marketing</span>
+            </div>
+          </div>
+          <p class="lockup-caption">Stacked — centered contexts only</p>
+        </div>
+
+        <div class="lockup-cellwrap">
+          <div class="lockup">
+            <div class="lockup__inner">
+              <svg width="48" height="48" role="img" aria-label="Mark"><use href="#mark-standard"/></svg>
+              <span class="lockup-word lockup-word--mono">h<span class="dot">·</span><span class="ai">AI</span></span>
+            </div>
+          </div>
+          <p class="lockup-caption">Monogram — tight spaces, internal pages</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ————— 04 Color ————— -->
+    <section class="section" id="color">
+      <p class="section__eyebrow">04</p>
+      <h2 class="section__title">in <em>color.</em></h2>
+      <p class="section__deck">The palette is small on purpose: warm paper, ink, one quiet teal. The mark is Ink on the light surfaces and Bone on the dark ones. Teal is a rare accent — never the default. No orange, no bright cyan, no gradients, no shadows.</p>
+
+      <div class="swatches">
+        <figure class="swatch"><div class="swatch__chip" style="background:#EDE4D2"></div><figcaption class="swatch__meta"><strong>Paper</strong><span>#EDE4D2</span></figcaption></figure>
+        <figure class="swatch"><div class="swatch__chip" style="background:#F7EFDD"></div><figcaption class="swatch__meta"><strong>Bone</strong><span>#F7EFDD</span></figcaption></figure>
+        <figure class="swatch"><div class="swatch__chip" style="background:#1B2738"></div><figcaption class="swatch__meta"><strong>Ink</strong><span>#1B2738</span></figcaption></figure>
+        <figure class="swatch"><div class="swatch__chip" style="background:#4A7682"></div><figcaption class="swatch__meta"><strong>Teal</strong><span>#4A7682</span></figcaption></figure>
+        <figure class="swatch"><div class="swatch__chip" style="background:#0F1620"></div><figcaption class="swatch__meta"><strong>Sumi</strong><span>#0F1620</span></figcaption></figure>
+      </div>
+
+      <div class="colorways">
+        <figure class="colorway">
+          <div class="colorway__tile" style="background:#F7EFDD; color:#1B2738"><svg role="img" aria-label="Ink mark on Bone"><use href="#mark-display"/></svg></div>
+          <figcaption><strong>Ink on Bone</strong>the default</figcaption>
+        </figure>
+        <figure class="colorway">
+          <div class="colorway__tile" style="background:#EDE4D2; color:#1B2738"><svg role="img" aria-label="Ink mark on Paper"><use href="#mark-display"/></svg></div>
+          <figcaption><strong>Ink on Paper</strong>long-read surfaces</figcaption>
+        </figure>
+        <figure class="colorway">
+          <div class="colorway__tile" style="background:#0F1620; color:#F7EFDD"><svg role="img" aria-label="Bone mark on Sumi"><use href="#mark-display"/></svg></div>
+          <figcaption><strong>Bone on Sumi</strong>reverse, dark surfaces</figcaption>
+        </figure>
+        <figure class="colorway">
+          <div class="colorway__tile" style="background:#F7EFDD; color:#4A7682"><svg role="img" aria-label="Teal mark on Bone"><use href="#mark-display"/></svg></div>
+          <figcaption><strong>Teal on Bone</strong>rare accent only</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ————— 05 In use ————— -->
+    <section class="section" id="uses">
+      <p class="section__eyebrow">05</p>
+      <h2 class="section__title">out in the <em>world.</em></h2>
+      <p class="section__deck">The same gesture, everywhere the brand shows up. Small drawing in the tab, standard drawing in the avatar, display drawing wherever there's room to breathe.</p>
+
+      <div class="uses">
+        <div class="use">
+          <h3>Browser tab</h3>
+          <div class="tabmock">
+            <div class="tabmock__tab">
+              <svg role="img" aria-label="Favicon"><use href="#mark-small"/></svg>
+              <span>Human AI Marketing</span>
+              <span class="x">✕</span>
+            </div>
+            <div class="tabmock__bar">humanaimarketing.org</div>
+          </div>
+          <p class="use__note">Small drawing as the favicon — <code>ham-mark-small.svg</code>. This page is already wearing it.</p>
+        </div>
+
+        <div class="use">
+          <h3>App icon</h3>
+          <div class="iconrow">
+            <figure>
+              <svg width="96" height="96" role="img" aria-label="App icon at 96"><use href="#mark-appicon"/></svg>
+              <figcaption>512 / 180</figcaption>
+            </figure>
+            <figure>
+              <svg width="64" height="64" role="img" aria-label="App icon at 64"><use href="#mark-appicon"/></svg>
+              <figcaption>64</figcaption>
+            </figure>
+            <figure>
+              <svg width="48" height="48" role="img" aria-label="App icon at 48"><use href="#mark-appicon"/></svg>
+              <figcaption>48</figcaption>
+            </figure>
+          </div>
+          <p class="use__note">Sumi tile, Bone strokes, radius at 23% — home-screen and touch icons.</p>
+        </div>
+
+        <div class="use">
+          <h3>Avatar</h3>
+          <div class="avatars">
+            <div class="avatar avatar--bone" style="width:88px;height:88px"><svg role="img" aria-label="Avatar, ink on bone"><use href="#mark-standard"/></svg></div>
+            <div class="avatar avatar--sumi" style="width:88px;height:88px"><svg role="img" aria-label="Avatar, bone on sumi"><use href="#mark-standard"/></svg></div>
+            <div class="avatar avatar--bone" style="width:48px;height:48px"><svg role="img" aria-label="Small avatar"><use href="#mark-standard"/></svg></div>
+            <div class="avatar avatar--sumi" style="width:32px;height:32px"><svg role="img" aria-label="Tiny avatar"><use href="#mark-small"/></svg></div>
+          </div>
+          <p class="use__note">Social profiles and Google Business. Mark at ~62% of the circle; both colorways allowed.</p>
+        </div>
+
+        <div class="use">
+          <h3>Email signature</h3>
+          <div class="sigmock">
+            <svg role="img" aria-label="Mark"><use href="#mark-standard"/></svg>
+            <div class="sigmock__text">
+              <strong>Gary Ricke</strong> · human <span class="ai">AI</span> marketing<br />
+              humanaimarketing.org · Batavia, Illinois
+            </div>
+          </div>
+          <p class="use__note">Standard drawing at 44px, left of a two-line signature. Nothing else.</p>
+        </div>
+
+        <div class="use use--wide">
+          <h3>Photo watermark</h3>
+          <div class="photomock">
+            <img
+              src="https://res.cloudinary.com/dsbllwpbh/image/upload/f_auto,q_auto,w_1200/brand/panels/spring-market.jpg"
+              srcset="
+                https://res.cloudinary.com/dsbllwpbh/image/upload/f_auto,q_auto,w_640/brand/panels/spring-market.jpg 640w,
+                https://res.cloudinary.com/dsbllwpbh/image/upload/f_auto,q_auto,w_1200/brand/panels/spring-market.jpg 1200w"
+              sizes="(max-width: 880px) 100vw, 820px"
+              alt="Saturday farmers market in downtown Geneva — the mark sits quietly in the lower right corner."
+              loading="lazy"
+            />
+            <svg class="photomock__mark" role="img" aria-label="Watermark"><use href="#mark-standard"/></svg>
+          </div>
+          <p class="use__note">Bone mark at 40px, lower right, over the calmest corner of the photograph. Never over a face, never bigger than a thumbprint.</p>
+        </div>
+
+        <div class="use use--wide">
+          <h3>Business card</h3>
+          <div class="card-pair">
+            <div class="bizcard bizcard--front">
+              <svg role="img" aria-label="Mark"><use href="#mark-standard"/></svg>
+              <div>
+                <div class="bizcard__word">human <span class="ai">AI</span> marketing</div>
+                <div style="font-size:0.72rem; color:var(--ink-50); margin-top:4px">Batavia, Illinois · humanaimarketing.org</div>
+              </div>
+            </div>
+            <div class="bizcard bizcard--back">
+              <svg role="img" aria-label="Mark reversed"><use href="#mark-display"/></svg>
+            </div>
+          </div>
+          <p class="use__note">Front: Bone stock, standard mark, wordmark bottom-left. Back: Sumi flood with the display mark alone, centered.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ————— 06 Don'ts ————— -->
+    <section class="section" id="donts">
+      <p class="section__eyebrow">06</p>
+      <h2 class="section__title">leave it <em>alone.</em></h2>
+      <p class="section__deck">The imperfection is the signature. Most damage comes from trying to help.</p>
+
+      <div class="donts">
+        <figure class="dont">
+          <div class="dont__tile">
+            <svg width="72" height="72" viewBox="0 0 132 132" role="img" aria-label="Perfected geometric version — not allowed">
+              <circle cx="66" cy="66" r="52" fill="none" stroke="currentColor" stroke-width="2"/>
+              <path d="M 36 66 C 46 50, 56 50, 66 66 C 76 82, 86 82, 96 66" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <figcaption><span class="x">✗</span>Don't perfect the circle or smooth the wave.</figcaption>
+        </figure>
+        <figure class="dont">
+          <div class="dont__tile">
+            <svg width="98" height="62" viewBox="0 0 132 132" preserveAspectRatio="none" role="img" aria-label="Stretched version — not allowed">
+              <path d="M 66 14 C 96 16, 121 38, 119 70 C 117 100, 92 119, 64 119 C 36 119, 13 96, 14 66 C 15 36, 38 14, 66 14 Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <path d="M 38 70 C 46 56, 56 56, 64 70 C 72 84, 84 84, 94 68" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <figcaption><span class="x">✗</span>Don't stretch, squash, or rotate it.</figcaption>
+        </figure>
+        <figure class="dont">
+          <div class="dont__tile">
+            <svg width="72" height="72" viewBox="0 0 132 132" role="img" aria-label="Two-color version — not allowed">
+              <path d="M 66 14 C 96 16, 121 38, 119 70 C 117 100, 92 119, 64 119 C 36 119, 13 96, 14 66 C 15 36, 38 14, 66 14 Z" fill="none" stroke="#E2733B" stroke-width="2" stroke-linecap="round"/>
+              <path d="M 38 70 C 46 56, 56 56, 64 70 C 72 84, 84 84, 94 68" fill="none" stroke="#3DBDC9" stroke-width="2.2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <figcaption><span class="x">✗</span>Don't recolor it — one ink per use, from this palette.</figcaption>
+        </figure>
+        <figure class="dont">
+          <div class="dont__tile">
+            <svg width="72" height="72" viewBox="0 0 132 132" role="img" aria-label="Drop shadow version — not allowed" style="filter: drop-shadow(3px 4px 3px rgba(15,22,32,0.45))"><use href="#mark-display"/></svg>
+          </div>
+          <figcaption><span class="x">✗</span>No shadows, gradients, glows, or outlines.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ————— 07 Files ————— -->
+    <section class="section" id="files">
+      <p class="section__eyebrow">07</p>
+      <h2 class="section__title">the <em>files.</em></h2>
+      <p class="section__deck">All SVG — they scale losslessly and recolor by editing one stroke value. Export PNGs from these only when a platform demands it.</p>
+
+      <div class="files">
+        <a class="file" href="ham-mark.svg" download>
+          <svg role="img" aria-hidden="true"><use href="#mark-display"/></svg>
+          <span class="file__meta"><strong>ham-mark.svg</strong><span>Display drawing · 72px and up</span></span>
+        </a>
+        <a class="file" href="ham-mark-standard.svg" download>
+          <svg role="img" aria-hidden="true"><use href="#mark-standard"/></svg>
+          <span class="file__meta"><strong>ham-mark-standard.svg</strong><span>Standard drawing · 28–72px</span></span>
+        </a>
+        <a class="file" href="ham-mark-small.svg" download>
+          <svg role="img" aria-hidden="true"><use href="#mark-small"/></svg>
+          <span class="file__meta"><strong>ham-mark-small.svg</strong><span>Small drawing · favicons, under 28px</span></span>
+        </a>
+        <a class="file file--dark" href="ham-mark-reverse.svg" download>
+          <svg role="img" aria-hidden="true"><use href="#mark-display"/></svg>
+          <span class="file__meta"><strong>ham-mark-reverse.svg</strong><span>Bone strokes for dark surfaces</span></span>
+        </a>
+        <a class="file" href="ham-app-icon.svg" download>
+          <svg role="img" aria-hidden="true"><use href="#mark-appicon"/></svg>
+          <span class="file__meta"><strong>ham-app-icon.svg</strong><span>Sumi tile app icon · export at 512</span></span>
+        </a>
+      </div>
+    </section>
+
+    <footer class="closing">
+      <p>— drawn once, by hand.</p>
+    </footer>
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,8 @@
+<svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Human AI Marketing mark">
+  <!-- Small variant — favicons and anything under 28px. Redrawn on a 32 grid:
+       wobble reduced, wave simplified, strokes heavy enough to survive 16px. -->
+  <path d="M 16 3.4 C 23.3 3.9, 29.3 9.2, 28.8 17 C 28.4 24.2, 22.3 28.8, 15.5 28.8 C 8.7 28.8, 3.2 23.3, 3.4 16 C 3.6 8.7, 9.2 3.4, 16 3.4 Z"
+    fill="none" stroke="#1B2738" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M 9.4 17 C 11.3 13.8, 13.7 13.8, 15.6 17 C 17.5 20.2, 20.3 20.2, 22.6 16.6"
+    fill="none" stroke="#1B2738" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
