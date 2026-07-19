@@ -8,7 +8,7 @@
   <link rel="icon" type="image/svg+xml" href="ham-mark-small.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400&family=Inter:wght@300;400;500&family=Caveat:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400;1,9..144,600&family=Inter:wght@300;400;500&family=Caveat:wght@400;500&display=swap" rel="stylesheet" />
   <style>
     :root {
       --paper: #EDE4D2;
@@ -34,8 +34,8 @@
     body {
       background: var(--bone);
       background-image:
-        radial-gradient(rgba(27, 39, 56, 0.022) 1px, transparent 1px),
-        radial-gradient(rgba(27, 39, 56, 0.014) 1px, transparent 1px);
+        radial-gradient(rgba(27, 39, 56, 0.013) 1px, transparent 1px),
+        radial-gradient(rgba(27, 39, 56, 0.008) 1px, transparent 1px);
       background-size: 3px 3px, 7px 7px;
       background-position: 0 0, 1px 2px;
       color: var(--ink);
@@ -78,9 +78,10 @@
     .hero .mark-hero { width: 168px; height: 168px; margin: 0 auto 36px; display: block; color: var(--ink); }
     .hero h1 {
       font-family: var(--serif);
-      font-weight: 400;
+      font-weight: 600;
       font-size: clamp(2.4rem, 6vw, 3.4rem);
       line-height: 1.05;
+      letter-spacing: -0.01em;
       margin: 0 0 18px;
     }
     .hero h1 em { color: var(--teal-deep); }
@@ -103,9 +104,10 @@
     }
     .section__title {
       font-family: var(--serif);
-      font-weight: 400;
+      font-weight: 600;
       font-size: clamp(1.7rem, 4vw, 2.2rem);
-      line-height: 1.1;
+      line-height: 1.08;
+      letter-spacing: -0.008em;
       margin: 0 0 12px;
     }
     .section__title em { color: var(--teal-deep); }

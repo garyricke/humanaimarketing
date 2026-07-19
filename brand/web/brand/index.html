@@ -3,721 +3,731 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Human AI Marketing — Brand Guide. Human service. AI speed. A tri-cities marketing agency built in Batavia, Illinois." />
-  <title>Brand Guide · human · AI · marketing</title>
-  <link rel="icon" type="image/svg+xml" href="../favicon.svg" />
-  <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png" />
+  <meta name="description" content="Human AI Marketing — the brand guide. The mark, the name, the palette, the type, the voice. Batavia, Illinois." />
+  <title>Brand Guide · Human AI Marketing</title>
+  <link rel="icon" type="image/svg+xml" href="mark/ham-mark-small.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..900,0..100;1,9..144,300..900,0..100&family=Geist:wght@300..700&family=Geist+Mono:wght@300..600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400;1,9..144,600&family=Inter:wght@300;400;500&family=Caveat:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --paper: #EDE4D2;
+      --bone: #F7EFDD;
+      --ink: #1B2738;
+      --teal: #4A7682;
+      --teal-deep: #355864;
+      --sumi: #0F1620;
+      --ink-70: rgba(27, 39, 56, 0.7);
+      --ink-50: rgba(27, 39, 56, 0.5);
+      --ink-35: rgba(27, 39, 56, 0.35);
+      --ink-15: rgba(27, 39, 56, 0.15);
+      --ink-08: rgba(27, 39, 56, 0.08);
+      --serif: 'Fraunces', Georgia, serif;
+      --sans: 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+      --hand: 'Caveat', cursive;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    html, body { margin: 0; }
+
+    body {
+      background: var(--bone);
+      /* Paper speckle, pulled back — barely-there warmth, not visible tan grain */
+      background-image:
+        radial-gradient(rgba(27, 39, 56, 0.013) 1px, transparent 1px),
+        radial-gradient(rgba(27, 39, 56, 0.008) 1px, transparent 1px);
+      background-size: 3px 3px, 7px 7px;
+      background-position: 0 0, 1px 2px;
+      color: var(--ink);
+      font-family: var(--sans);
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .stage {
+      max-width: 880px;
+      margin: 0 auto;
+      padding: 0 28px 40px;
+    }
+
+    /* ——— Topbar ——— */
+    .topbar {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      padding: 28px 0 0;
+    }
+    .topbar__brand {
+      font-family: var(--serif);
+      font-size: 1.15rem;
+      font-weight: 500;
+      color: var(--ink);
+      text-decoration: none;
+    }
+    .topbar__brand .ai { color: var(--teal); font-style: italic; }
+    .topbar__brand .dot { color: var(--ink-50); margin: 0 4px; }
+    .topbar__label {
+      font-size: 0.78rem;
+      letter-spacing: 0.14em;
+      color: var(--ink-50);
+    }
+
+    /* ——— Hero ——— */
+    .hero { text-align: center; padding: 92px 0 84px; }
+    .hero .mark-hero { width: 150px; height: 150px; margin: 0 auto 34px; display: block; color: var(--ink); }
+    .hero .wordmark {
+      font-family: var(--serif);
+      font-weight: 500;
+      font-size: 1.5rem;
+      margin: 0 0 30px;
+    }
+    .hero .wordmark .ai { color: var(--teal); font-style: italic; }
+    .hero h1 {
+      font-family: var(--serif);
+      font-weight: 600;
+      font-size: clamp(2.5rem, 6vw, 3.5rem);
+      line-height: 1.04;
+      letter-spacing: -0.01em;
+      margin: 0 0 18px;
+    }
+    .hero h1 em { color: var(--teal-deep); }
+    .hero p {
+      font-family: var(--serif);
+      font-weight: 300;
+      font-size: 1.25rem;
+      color: var(--ink-70);
+      max-width: 40ch;
+      margin: 0 auto;
+    }
+
+    /* ——— Section scaffolding ——— */
+    .section { padding: 72px 0; border-top: 1px solid var(--ink-15); }
+    .section__eyebrow {
+      font-size: 0.75rem;
+      letter-spacing: 0.16em;
+      color: var(--ink-50);
+      margin: 0 0 10px;
+    }
+    .section__title {
+      font-family: var(--serif);
+      font-weight: 600;
+      font-size: clamp(1.8rem, 4vw, 2.3rem);
+      line-height: 1.08;
+      letter-spacing: -0.008em;
+      margin: 0 0 12px;
+    }
+    .section__title em { color: var(--teal-deep); }
+    .section__deck {
+      font-size: 0.98rem;
+      color: var(--ink-70);
+      max-width: 60ch;
+      margin: 0 0 40px;
+    }
+    .section__deck a { color: var(--teal-deep); }
+
+    /* ——— Foundation ——— */
+    .mission {
+      background: var(--paper);
+      border-radius: 14px;
+      padding: 44px 40px;
+      margin-bottom: 24px;
+    }
+    .mission__slogan {
+      font-family: var(--serif);
+      font-weight: 600;
+      font-size: clamp(1.6rem, 4vw, 2.1rem);
+      line-height: 1.15;
+      margin: 0 0 14px;
+    }
+    .mission__slogan em { color: var(--teal-deep); }
+    .mission__body { margin: 0; color: var(--ink-70); font-size: 0.98rem; max-width: 62ch; }
+
+    .philosophy { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 24px; }
+    @media (max-width: 640px) { .philosophy { grid-template-columns: 1fr; } }
+    .philosophy__card { background: var(--paper); border-radius: 14px; padding: 30px; }
+    .philosophy__card h3 { font-family: var(--serif); font-weight: 600; font-size: 1.1rem; margin: 0 0 8px; }
+    .philosophy__card h3 span { color: var(--ink-50); font-weight: 400; font-size: 0.95rem; margin-left: 6px; }
+    .philosophy__card p { margin: 0; font-size: 0.92rem; color: var(--ink-70); }
+
+    .values { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    @media (max-width: 720px) { .values { grid-template-columns: 1fr; } }
+    .value { border: 1px solid var(--ink-15); border-radius: 12px; padding: 18px 20px; }
+    .value h4 { font-family: var(--serif); font-weight: 600; font-size: 0.98rem; margin: 0 0 4px; }
+    .value p { margin: 0; font-size: 0.85rem; color: var(--ink-70); }
+
+    /* ——— Mark section ——— */
+    .anatomy { display: grid; grid-template-columns: minmax(240px, 320px) 1fr; gap: 48px; align-items: center; margin-bottom: 40px; }
+    @media (max-width: 720px) { .anatomy { grid-template-columns: 1fr; } }
+    .anatomy__figure {
+      background: var(--paper);
+      border-radius: 14px;
+      padding: 36px;
+      display: grid;
+      place-items: center;
+    }
+    .anatomy__figure svg { width: 100%; max-width: 210px; height: auto; color: var(--ink); }
+    .anatomy dl { margin: 0; }
+    .anatomy dt { font-family: var(--serif); font-weight: 600; font-size: 1.1rem; margin: 0 0 4px; }
+    .anatomy dd { margin: 0 0 20px; font-size: 0.95rem; color: var(--ink-70); max-width: 48ch; }
+
+    .sizes-row {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 32px;
+      background: var(--paper);
+      border-radius: 14px;
+      padding: 44px 40px 32px;
+    }
+    .size-cell { text-align: center; }
+    .size-cell svg { display: block; margin: 0 auto 14px; color: var(--ink); }
+    .size-cell figcaption { font-size: 0.75rem; color: var(--ink-50); letter-spacing: 0.04em; }
+    .size-cell figcaption strong { display: block; color: var(--ink-70); font-weight: 500; letter-spacing: 0.1em; font-size: 0.7rem; }
+    figure { margin: 0; }
+
+    /* ——— Lockups ——— */
+    .lockups { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    @media (max-width: 720px) { .lockups { grid-template-columns: 1fr; } }
+    .lockup {
+      background: var(--paper);
+      border-radius: 14px;
+      padding: 44px 32px;
+      display: grid;
+      place-items: center;
+      min-height: 180px;
+    }
+    .lockup--wide { grid-column: 1 / -1; }
+    .lockup__inner { display: flex; align-items: center; gap: 22px; }
+    .lockup__inner svg { color: var(--ink); flex: none; }
+    .lockup__stack { text-align: center; }
+    .lockup__stack svg { margin: 0 auto 18px; display: block; color: var(--ink); }
+    .lockup-word {
+      font-family: var(--serif);
+      font-weight: 500;
+      font-size: 1.7rem;
+      line-height: 1;
+      white-space: nowrap;
+    }
+    .lockup-word .ai { color: var(--teal); font-style: italic; }
+    .lockup-word--mono { font-size: 2.1rem; }
+    .lockup-word--mono .dot { color: var(--ink-50); margin: 0 5px; font-style: normal; }
+    .lockup-caption {
+      text-align: center;
+      font-size: 0.78rem;
+      color: var(--ink-50);
+      margin: 12px 0 0;
+      letter-spacing: 0.06em;
+    }
+    .lockup-cellwrap { display: grid; align-content: start; }
+
+    /* ——— Color ——— */
+    .swatches { display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; margin-bottom: 28px; }
+    @media (max-width: 640px) { .swatches { grid-template-columns: repeat(2, 1fr); } }
+    .swatch { border-radius: 12px; overflow: hidden; border: 1px solid var(--ink-15); }
+    .swatch__chip { height: 74px; }
+    .swatch__meta { padding: 10px 12px; background: var(--bone); font-size: 0.75rem; line-height: 1.5; }
+    .swatch__meta strong { display: block; font-weight: 500; }
+    .swatch__meta span { color: var(--ink-50); display: block; }
+    .swatch__meta em { color: var(--ink-70); font-style: normal; font-size: 0.72rem; }
+
+    .color-rules { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 28px; }
+    @media (max-width: 720px) { .color-rules { grid-template-columns: 1fr; } }
+    .color-rule { background: var(--paper); border-radius: 14px; padding: 26px 28px; }
+    .color-rule h3 { font-family: var(--serif); font-weight: 600; font-size: 1.05rem; margin: 0 0 8px; }
+    .color-rule p { margin: 0; font-size: 0.9rem; color: var(--ink-70); }
+
+    .colorways { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+    @media (max-width: 720px) { .colorways { grid-template-columns: repeat(2, 1fr); } }
+    .colorway { border-radius: 12px; border: 1px solid var(--ink-15); overflow: hidden; text-align: center; }
+    .colorway__tile { display: grid; place-items: center; padding: 28px 0; }
+    .colorway__tile svg { width: 70px; height: 70px; }
+    .colorway figcaption { font-size: 0.75rem; color: var(--ink-50); padding: 10px 8px; background: var(--bone); line-height: 1.45; }
+    .colorway figcaption strong { color: var(--ink-70); font-weight: 500; display: block; }
+
+    /* ——— Type ——— */
+    .type-specimen { background: var(--paper); border-radius: 14px; padding: 40px; display: grid; gap: 30px; margin-bottom: 24px; }
+    .spec { display: grid; grid-template-columns: 150px 1fr; gap: 24px; align-items: baseline; }
+    @media (max-width: 640px) { .spec { grid-template-columns: 1fr; gap: 6px; } }
+    .spec__label { font-size: 0.72rem; letter-spacing: 0.1em; color: var(--ink-50); line-height: 1.5; }
+    .spec__label strong { display: block; color: var(--ink-70); font-weight: 500; }
+    .spec__sample { margin: 0; overflow-wrap: break-word; }
+    .spec__sample--display { font-family: var(--serif); font-weight: 600; font-size: clamp(2rem, 5vw, 2.8rem); line-height: 1.04; letter-spacing: -0.01em; }
+    .spec__sample--display em { color: var(--teal-deep); }
+    .spec__sample--h2 { font-family: var(--serif); font-weight: 600; font-size: 1.5rem; line-height: 1.1; }
+    .spec__sample--deck { font-family: var(--serif); font-weight: 300; font-size: 1.2rem; color: var(--ink-70); }
+    .spec__sample--body { font-size: 0.98rem; max-width: 54ch; }
+    .spec__sample--hand { font-family: var(--hand); font-size: 1.6rem; color: var(--ink-70); }
+    .type-rules { font-size: 0.9rem; color: var(--ink-70); max-width: 62ch; }
+    .type-rules li { margin-bottom: 8px; }
+
+    /* ——— Surface ——— */
+    .surfaces { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    @media (max-width: 720px) { .surfaces { grid-template-columns: 1fr; } }
+    .surface-card { border: 1px solid var(--ink-15); border-radius: 14px; overflow: hidden; }
+    .surface-card__demo { height: 130px; }
+    .surface-card__demo--bone {
+      background: var(--bone);
+      background-image:
+        radial-gradient(rgba(27, 39, 56, 0.013) 1px, transparent 1px),
+        radial-gradient(rgba(27, 39, 56, 0.008) 1px, transparent 1px);
+      background-size: 3px 3px, 7px 7px;
+      background-position: 0 0, 1px 2px;
+    }
+    .surface-card__demo--paper {
+      background: var(--paper);
+      background-image:
+        radial-gradient(rgba(27, 39, 56, 0.013) 1px, transparent 1px),
+        radial-gradient(rgba(27, 39, 56, 0.008) 1px, transparent 1px);
+      background-size: 3px 3px, 7px 7px;
+      background-position: 0 0, 1px 2px;
+    }
+    .surface-card__meta { padding: 16px 20px; font-size: 0.85rem; color: var(--ink-70); border-top: 1px solid var(--ink-15); }
+    .surface-card__meta strong { color: var(--ink); font-weight: 500; }
+
+    /* ——— Imagery ——— */
+    .imagery-figure { border-radius: 14px; overflow: hidden; margin-bottom: 20px; }
+    .imagery-figure img { display: block; width: 100%; height: auto; }
+    .imagery-rules { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    @media (max-width: 640px) { .imagery-rules { grid-template-columns: 1fr; } }
+    .imagery-rule { border: 1px solid var(--ink-15); border-radius: 12px; padding: 16px 20px; font-size: 0.88rem; color: var(--ink-70); }
+    .imagery-rule strong { display: block; color: var(--ink); font-weight: 500; font-size: 0.9rem; margin-bottom: 2px; }
+
+    /* ——— Voice ——— */
+    .voice { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    @media (max-width: 720px) { .voice { grid-template-columns: 1fr; } }
+    .voice__card { border-radius: 14px; padding: 28px 30px; }
+    .voice__card--yes { background: var(--paper); }
+    .voice__card--no { background: transparent; border: 1px dashed var(--ink-35); }
+    .voice__verdict { font-family: var(--hand); font-size: 1.35rem; margin: 0 0 14px; }
+    .voice__card--yes .voice__verdict { color: var(--teal-deep); }
+    .voice__card--no .voice__verdict { color: var(--ink-50); }
+    .voice__card p { font-size: 0.93rem; margin: 0 0 14px; }
+    .voice__card p:last-child { margin-bottom: 0; }
+    .voice__card--no p { color: var(--ink-50); }
+
+    /* ——— Don'ts ——— */
+    .donts { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+    @media (max-width: 720px) { .donts { grid-template-columns: repeat(2, 1fr); } }
+    .dont { background: var(--paper); border-radius: 12px; padding: 24px 14px 16px; text-align: center; }
+    .dont__tile { height: 84px; display: grid; place-items: center; margin-bottom: 12px; color: var(--ink); }
+    .dont figcaption { font-size: 0.78rem; color: var(--ink-70); line-height: 1.45; }
+    .dont .x { font-family: var(--hand); font-size: 1.1rem; color: var(--ink-50); display: block; }
+
+    /* ——— System pages ——— */
+    .pages { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    @media (max-width: 640px) { .pages { grid-template-columns: 1fr; } }
+    .page-link {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      background: var(--paper);
+      border-radius: 12px;
+      padding: 16px 18px;
+      text-decoration: none;
+      color: var(--ink);
+    }
+    .page-link:hover { background: #E7DCC6; }
+    .page-link svg { width: 30px; height: 30px; flex: none; color: var(--ink); }
+    .page-link__meta { font-size: 0.85rem; line-height: 1.45; }
+    .page-link__meta strong { display: block; font-weight: 500; }
+    .page-link__meta span { color: var(--ink-50); font-size: 0.78rem; }
+
+    /* ——— Closing ——— */
+    .closing { text-align: center; padding: 88px 0 40px; border-top: 1px solid var(--ink-15); }
+    .closing p { font-family: var(--hand); font-size: 1.7rem; color: var(--ink-70); margin: 0; }
+  </style>
 </head>
 <body>
-  <!-- Grain overlay for tactile warmth -->
-  <div class="grain" aria-hidden="true"></div>
 
-  <!-- Scroll progress -->
-  <div class="progress" aria-hidden="true"><span></span></div>
+  <!-- Shared mark geometry — the same three drawings served at /brand/mark/ -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <symbol id="mark-display" viewBox="0 0 132 132">
+        <path d="M 66 14 C 96 16, 121 38, 119 70 C 117 100, 92 119, 64 119 C 36 119, 13 96, 14 66 C 15 36, 38 14, 66 14 Z"
+          fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M 38 70 C 46 56, 56 56, 64 70 C 72 84, 84 84, 94 68"
+          fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+      </symbol>
+      <symbol id="mark-standard" viewBox="0 0 132 132">
+        <path d="M 66 14 C 96 16, 121 38, 119 70 C 117 100, 92 119, 64 119 C 36 119, 13 96, 14 66 C 15 36, 38 14, 66 14 Z"
+          fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M 38 70 C 46 56, 56 56, 64 70 C 72 84, 84 84, 94 68"
+          fill="none" stroke="currentColor" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"/>
+      </symbol>
+      <symbol id="mark-small" viewBox="0 0 32 32">
+        <path d="M 16 3.4 C 23.3 3.9, 29.3 9.2, 28.8 17 C 28.4 24.2, 22.3 28.8, 15.5 28.8 C 8.7 28.8, 3.2 23.3, 3.4 16 C 3.6 8.7, 9.2 3.4, 16 3.4 Z"
+          fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M 9.4 17 C 11.3 13.8, 13.7 13.8, 15.6 17 C 17.5 20.2, 20.3 20.2, 22.6 16.6"
+          fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+      </symbol>
+    </defs>
+  </svg>
 
-  <!-- Masthead -->
-  <header class="masthead" role="banner">
-    <div class="masthead__inner">
-      <a href="#top" class="wordmark wordmark--mini" aria-label="Human AI Marketing — home">
-        <span class="wordmark__h">human</span>
-        <span class="wordmark__dot">·</span>
-        <span class="wordmark__ai">AI</span>
-        <span class="wordmark__dot">·</span>
-        <span class="wordmark__m">marketing</span>
-      </a>
-      <div class="masthead__meta">
-        <span>Brand Guide v1.0</span>
-        <span class="masthead__sep">/</span>
-        <span>Batavia, Illinois</span>
-        <span class="masthead__sep">/</span>
-        <span><span class="pulse"></span>Est. MMXXVI</span>
-      </div>
-    </div>
-  </header>
+  <div class="stage">
 
-  <!-- Side rail nav -->
-  <nav class="rail" aria-label="Section navigation">
-    <ol>
-      <li><a href="#manifesto" data-roman="I">Manifesto</a></li>
-      <li><a href="#mark" data-roman="II">Mark</a></li>
-      <li><a href="#palette" data-roman="III">Palette</a></li>
-      <li><a href="#type" data-roman="IV">Type</a></li>
-      <li><a href="#voice" data-roman="V">Voice</a></li>
-      <li><a href="#message" data-roman="VI">Message</a></li>
-      <li><a href="#values" data-roman="VII">Values</a></li>
-      <li><a href="#application" data-roman="VIII">Application</a></li>
-    </ol>
-  </nav>
+    <header class="topbar">
+      <a class="topbar__brand" href="/" aria-label="Human AI Marketing home">h<span class="dot">·</span><span class="ai">AI</span></a>
+      <span class="topbar__label">BRAND GUIDE</span>
+    </header>
 
-  <main id="top">
-
-    <!-- HERO -->
+    <!-- ————— Hero ————— -->
     <section class="hero">
-      <div class="hero__grid">
-        <div class="hero__eyebrow">
-          <span class="eyebrow-line"></span>
-          <span>The Brand Guide — Issue №1</span>
+      <svg class="mark-hero" role="img" aria-label="Human AI Marketing mark"><use href="#mark-display"/></svg>
+      <p class="wordmark">human <span class="ai">AI</span> marketing</p>
+      <h1>the brand <em>guide.</em></h1>
+      <p>One system: a hand-drawn mark, warm paper, quiet teal, and a voice that sounds like a neighbor.</p>
+    </section>
+
+    <!-- ————— 01 Foundation ————— -->
+    <section class="section" id="foundation">
+      <p class="section__eyebrow">01</p>
+      <h2 class="section__title">why we <em>exist.</em></h2>
+      <p class="section__deck">The short version, before any pixels.</p>
+
+      <div class="mission">
+        <p class="mission__slogan">Human service. <em>AI speed.</em></p>
+        <p class="mission__body">We make world-class marketing accessible to local businesses by pairing generative-AI speed with human white-glove service. You talk. We build. In days, not quarters — delivered by a real person you know by name, in Batavia, Illinois.</p>
+      </div>
+
+      <div class="philosophy">
+        <div class="philosophy__card">
+          <h3>Shoshin <span>· 初心 · beginner's mind</span></h3>
+          <p>Approach every project, client, and tool as if for the first time. Curiosity over expertise. Questions over answers.</p>
         </div>
-
-        <h1 class="hero__title">
-          <span class="hero__line">Human service.</span>
-          <span class="hero__line hero__line--ai">
-            <span class="ai-mark"><span class="ai-mark__inner">AI</span></span>
-            speed.
-          </span>
-        </h1>
-
-        <p class="hero__lede">
-          A marketing agency built in the Tri-Cities — pairing a real human
-          manager with a full-stack AI production engine. Websites in days,
-          not quarters. Service in person, not in tickets.
-        </p>
-
-        <div class="hero__foot">
-          <div class="hero__scroll">
-            <span class="hero__scroll-line"></span>
-            <span class="hero__scroll-text">Begin reading</span>
-          </div>
-          <div class="hero__stamp">
-            <span class="stamp-row"><span class="stamp-key">Issue</span><span class="stamp-val">01 / 26</span></span>
-            <span class="stamp-row"><span class="stamp-key">Series</span><span class="stamp-val">Identity</span></span>
-            <span class="stamp-row"><span class="stamp-key">Pages</span><span class="stamp-val">VIII</span></span>
-          </div>
+        <div class="philosophy__card">
+          <h3>Wabi-sabi <span>· 侘寂 · beauty in imperfection</span></h3>
+          <p>Asymmetry, weathering, the visible hand of the maker. The smudge and the off-kilter line are evidence we were here.</p>
         </div>
       </div>
 
-      <div class="hero__margin">
-        <span class="margin-note">Fox Valley · IL · 60510</span>
+      <div class="values">
+        <div class="value"><h4>Human first</h4><p>Every client has a named human contact. AI never answers a client unsupervised.</p></div>
+        <div class="value"><h4>Hometown loyalty</h4><p>Batavia, Geneva, St. Charles before anywhere else.</p></div>
+        <div class="value"><h4>Light speed</h4><p>If it takes a competitor six weeks, our target is six days.</p></div>
+        <div class="value"><h4>Honest pricing</h4><p>Real compute plus real hours. No agency tax.</p></div>
+        <div class="value"><h4>Apprentice-built</h4><p>Interns aren't a discount — we train, mentor, and credit them publicly.</p></div>
+        <div class="value"><h4>Quietly powerful tech</h4><p>The client never sees the gears. The work looks effortless.</p></div>
       </div>
     </section>
 
-    <!-- I. MANIFESTO -->
-    <section class="section section--manifesto" id="manifesto">
-      <div class="section__head">
-        <span class="section__roman">I</span>
-        <span class="section__label">Manifesto</span>
+    <!-- ————— 02 The mark ————— -->
+    <section class="section" id="mark">
+      <p class="section__eyebrow">02</p>
+      <h2 class="section__title">the <em>mark.</em></h2>
+      <p class="section__deck">An ensō drawn in one motion, with a human signal running through it. It ships as three size-optimized drawings — full anatomy, usage mocks, and downloadable files live on <a href="mark/">the identity page</a>.</p>
+
+      <div class="anatomy">
+        <div class="anatomy__figure">
+          <svg role="img" aria-label="The mark"><use href="#mark-display"/></svg>
+        </div>
+        <dl>
+          <dt>The circle</dt>
+          <dd>Deliberately imperfect — the community we work inside and the beginner's mind we bring to it. Never corrected into a perfect circle.</dd>
+          <dt>The wave</dt>
+          <dd>A hand-drawn tilde — a voice, a heartbeat, a wavelength. The asymmetry is the point.</dd>
+          <dt>Clear space</dt>
+          <dd>One quarter of the mark's diameter on every side. No type, no photos, no edges.</dd>
+        </dl>
       </div>
 
-      <h2 class="display">The future of marketing isn't humans replaced by AI. It's humans amplified by AI, on behalf of other humans.</h2>
-
-      <div class="split">
-        <article class="split__half split__half--human">
-          <header class="split__header">
-            <span class="split__chip split__chip--orange">Human</span>
-            <h3 class="split__title">The face.</h3>
-          </header>
-          <p>Every client has a named contact — a local intern or manager you'll see at the Chamber lunch or Limestone Coffee. They answer the phone. They sign the email. They show up.</p>
-          <ul class="split__list">
-            <li>White-glove handoff — no CMS, no prompts, no dashboards</li>
-            <li>One real person, by name, for every account</li>
-            <li>Apprentice-built — interns get the byline, the credit, the experience</li>
-          </ul>
-        </article>
-
-        <article class="split__half split__half--ai">
-          <header class="split__header">
-            <span class="split__chip split__chip--cyan">AI</span>
-            <h3 class="split__title">The engine.</h3>
-          </header>
-          <p>Behind the scenes, a full toolkit of generative models, scrapers, and pipelines produces work at a pace traditional agencies can't match — without ever appearing on the client's screen.</p>
-          <ul class="split__list">
-            <li>Claude · Gemini · OpenAI · Cloudinary · Nano Banana</li>
-            <li>Static front-ends shipped via GitHub → Netlify</li>
-            <li>Hyper-local AI persona hubs scaling Fox Valley → Chicago</li>
-          </ul>
-        </article>
+      <div class="sizes-row">
+        <figure class="size-cell">
+          <svg width="140" height="140" role="img" aria-label="Display mark at 140 pixels"><use href="#mark-display"/></svg>
+          <figcaption><strong>DISPLAY</strong>72px and up</figcaption>
+        </figure>
+        <figure class="size-cell">
+          <svg width="96" height="96" role="img" aria-label="Display mark at 96 pixels"><use href="#mark-display"/></svg>
+          <figcaption><strong>DISPLAY</strong>96px</figcaption>
+        </figure>
+        <figure class="size-cell">
+          <svg width="56" height="56" role="img" aria-label="Standard mark at 56 pixels"><use href="#mark-standard"/></svg>
+          <figcaption><strong>STANDARD</strong>28–72px</figcaption>
+        </figure>
+        <figure class="size-cell">
+          <svg width="36" height="36" role="img" aria-label="Standard mark at 36 pixels"><use href="#mark-standard"/></svg>
+          <figcaption><strong>STANDARD</strong>36px</figcaption>
+        </figure>
+        <figure class="size-cell">
+          <svg width="24" height="24" role="img" aria-label="Small mark at 24 pixels"><use href="#mark-small"/></svg>
+          <figcaption><strong>SMALL</strong>under 28px</figcaption>
+        </figure>
+        <figure class="size-cell">
+          <svg width="16" height="16" role="img" aria-label="Small mark at 16 pixels"><use href="#mark-small"/></svg>
+          <figcaption><strong>SMALL</strong>16px</figcaption>
+        </figure>
       </div>
-
-      <aside class="callout">
-        <span class="callout__key">Brand Promise</span>
-        <p class="callout__quote">You talk. We build. In days, not quarters.</p>
-      </aside>
     </section>
 
-    <!-- II. MARK -->
-    <section class="section section--mark" id="mark">
-      <div class="section__head">
-        <span class="section__roman">II</span>
-        <span class="section__label">Mark</span>
-      </div>
+    <!-- ————— 03 The name ————— -->
+    <section class="section" id="name">
+      <p class="section__eyebrow">03</p>
+      <h2 class="section__title">the <em>name.</em></h2>
+      <p class="section__deck">Fraunces, lowercase, with the AI set italic in teal. Always <em>human AI marketing</em> — never all-caps, never "Human Ai Marketing." The mark sits left of the name, or above it when centered.</p>
 
-      <div class="mark-grid">
-        <div class="mark-grid__display">
-          <div class="wordmark wordmark--xl">
-            <span class="wordmark__h">human</span>
-            <span class="wordmark__dot">·</span>
-            <span class="wordmark__ai">AI</span>
-            <span class="wordmark__dot">·</span>
-            <span class="wordmark__m">marketing</span>
-          </div>
-        </div>
-
-        <aside class="mark-grid__notes">
-          <h3 class="mark-grid__title">Construction</h3>
-          <dl class="spec-list">
-            <dt>human</dt><dd>Fraunces · lowercase · regular · -0.01em tracking</dd>
-            <dt>AI</dt><dd>Geist Mono · uppercase · medium · Signal Cyan</dd>
-            <dt>marketing</dt><dd>Fraunces · lowercase · regular · -0.01em tracking</dd>
-            <dt>· dots</dt><dd>Geist Mono · 70% scale · Hearth Orange</dd>
-          </dl>
-
-          <h3 class="mark-grid__title mark-grid__title--top">Clear Space</h3>
-          <p class="mark-grid__caption">Reserve a minimum of one <em>h</em> cap-height on all sides. Never set the wordmark on a busy photo without a solid plate.</p>
-
-          <h3 class="mark-grid__title mark-grid__title--top">Case</h3>
-          <p class="mark-grid__caption">Always rendered <em>human · AI · marketing</em>. Never <span class="muted">HUMAN · AI · MARKETING</span> or <span class="muted">Human · Ai · Marketing</span>.</p>
-        </aside>
-      </div>
-
-      <!-- Lockup variations -->
       <div class="lockups">
-        <figure class="lockup lockup--light">
-          <div class="lockup__face">
-            <span class="lockup__mono">human</span>
-            <span class="lockup__mono lockup__mono--cyan">AI</span>
-            <span class="lockup__mono">marketing</span>
+        <div class="lockup-cellwrap lockup--wide">
+          <div class="lockup lockup--wide">
+            <div class="lockup__inner">
+              <svg width="56" height="56" role="img" aria-label="Mark"><use href="#mark-standard"/></svg>
+              <span class="lockup-word">human <span class="ai">AI</span> marketing</span>
+            </div>
           </div>
-          <figcaption>Stacked / Mark</figcaption>
-        </figure>
+          <p class="lockup-caption">Primary lockup — horizontal</p>
+        </div>
 
-        <figure class="lockup lockup--dark">
-          <div class="lockup__face">
-            <span class="lockup__inline">human · <span class="cyan">AI</span> · marketing</span>
+        <div class="lockup-cellwrap">
+          <div class="lockup">
+            <div class="lockup__stack">
+              <svg width="72" height="72" role="img" aria-label="Mark"><use href="#mark-display"/></svg>
+              <span class="lockup-word">human <span class="ai">AI</span> marketing</span>
+            </div>
           </div>
-          <figcaption>Inline / Reversed</figcaption>
-        </figure>
+          <p class="lockup-caption">Stacked — centered contexts only</p>
+        </div>
 
-        <figure class="lockup lockup--mono">
-          <div class="lockup__face">
-            <svg viewBox="0 0 80 80" class="lockup__icon" aria-hidden="true">
-              <circle cx="40" cy="40" r="36" stroke="currentColor" stroke-width="2" fill="none" />
-              <path d="M 22 40 C 22 28, 34 28, 40 40 C 46 52, 58 52, 58 40" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" />
+        <div class="lockup-cellwrap">
+          <div class="lockup">
+            <div class="lockup__inner">
+              <svg width="48" height="48" role="img" aria-label="Mark"><use href="#mark-standard"/></svg>
+              <span class="lockup-word lockup-word--mono">h<span class="dot">·</span><span class="ai">AI</span></span>
+            </div>
+          </div>
+          <p class="lockup-caption">Monogram — tight spaces, internal pages</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ————— 04 Color ————— -->
+    <section class="section" id="color">
+      <p class="section__eyebrow">04</p>
+      <h2 class="section__title">the <em>palette.</em></h2>
+      <p class="section__deck">Small on purpose: two warm off-whites, ink, one quiet teal, and a deep sumi for emphasis. No orange, no bright cyan, no gradients, no drop shadows. When in doubt: more of the base color, less of everything else.</p>
+
+      <div class="swatches">
+        <figure class="swatch"><div class="swatch__chip" style="background:#EDE4D2"></div><figcaption class="swatch__meta"><strong>Paper</strong><span>#EDE4D2</span><em>warmer base or lift</em></figcaption></figure>
+        <figure class="swatch"><div class="swatch__chip" style="background:#F7EFDD"></div><figcaption class="swatch__meta"><strong>Bone</strong><span>#F7EFDD</span><em>lighter base or lift</em></figcaption></figure>
+        <figure class="swatch"><div class="swatch__chip" style="background:#1B2738"></div><figcaption class="swatch__meta"><strong>Ink</strong><span>#1B2738</span><em>text, strokes, the mark</em></figcaption></figure>
+        <figure class="swatch"><div class="swatch__chip" style="background:#4A7682"></div><figcaption class="swatch__meta"><strong>Teal</strong><span>#4A7682</span><em>the AI, rare accents</em></figcaption></figure>
+        <figure class="swatch"><div class="swatch__chip" style="background:#0F1620"></div><figcaption class="swatch__meta"><strong>Sumi</strong><span>#0F1620</span><em>emphasis, footers, dark tiles</em></figcaption></figure>
+      </div>
+
+      <div class="color-rules">
+        <div class="color-rule">
+          <h3>Base and lift</h3>
+          <p>Pick one per page and hold it: Paper-as-base with Bone lifts (long reads, the handbook), or Bone-as-base with Paper lifts (marketing, photography-led pages). Never alternate within one document.</p>
+        </div>
+        <div class="color-rule">
+          <h3>Teal is earned</h3>
+          <p>Teal carries the AI in the wordmark and one accent word per headline — italic, never two. At display sizes over busy backgrounds, step down to teal-deep <code>#355864</code>.</p>
+        </div>
+      </div>
+
+      <div class="colorways">
+        <figure class="colorway">
+          <div class="colorway__tile" style="background:#F7EFDD; color:#1B2738"><svg role="img" aria-label="Ink mark on Bone"><use href="#mark-display"/></svg></div>
+          <figcaption><strong>Ink on Bone</strong>the default</figcaption>
+        </figure>
+        <figure class="colorway">
+          <div class="colorway__tile" style="background:#EDE4D2; color:#1B2738"><svg role="img" aria-label="Ink mark on Paper"><use href="#mark-display"/></svg></div>
+          <figcaption><strong>Ink on Paper</strong>long-read surfaces</figcaption>
+        </figure>
+        <figure class="colorway">
+          <div class="colorway__tile" style="background:#0F1620; color:#F7EFDD"><svg role="img" aria-label="Bone mark on Sumi"><use href="#mark-display"/></svg></div>
+          <figcaption><strong>Bone on Sumi</strong>reverse, dark surfaces</figcaption>
+        </figure>
+        <figure class="colorway">
+          <div class="colorway__tile" style="background:#F7EFDD; color:#4A7682"><svg role="img" aria-label="Teal mark on Bone"><use href="#mark-display"/></svg></div>
+          <figcaption><strong>Teal on Bone</strong>rare accent only</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ————— 05 Type ————— -->
+    <section class="section" id="type">
+      <p class="section__eyebrow">05</p>
+      <h2 class="section__title">the <em>type.</em></h2>
+      <p class="section__deck">Three faces, three jobs. Fraunces carries the headlines — SemiBold, so they land with weight. Inter does the reading. Caveat is the pen in the margin.</p>
+
+      <div class="type-specimen">
+        <div class="spec">
+          <p class="spec__label"><strong>DISPLAY</strong>Fraunces 600<br />1.04 line height</p>
+          <p class="spec__sample spec__sample--display">marketing, made <em>by hand.</em></p>
+        </div>
+        <div class="spec">
+          <p class="spec__label"><strong>HEADING</strong>Fraunces 600</p>
+          <p class="spec__sample spec__sample--h2">a real person writes back.</p>
+        </div>
+        <div class="spec">
+          <p class="spec__label"><strong>DECK</strong>Fraunces 300</p>
+          <p class="spec__sample spec__sample--deck">The quiet line under a heavy headline.</p>
+        </div>
+        <div class="spec">
+          <p class="spec__label"><strong>BODY</strong>Inter 400<br />16px minimum</p>
+          <p class="spec__sample spec__sample--body">Plainspoken and specific. Name streets, names, businesses, and timeframes. Contractions welcome; buzzwords are not.</p>
+        </div>
+        <div class="spec">
+          <p class="spec__label"><strong>HAND</strong>Caveat</p>
+          <p class="spec__sample spec__sample--hand">— a note in the margin, used sparingly.</p>
+        </div>
+      </div>
+
+      <ul class="type-rules">
+        <li>Headlines: lowercase or sentence case, ending with a period. Never all-caps except short labels (≤ 4 words) in supporting roles.</li>
+        <li>Headlines are bold by default (600); inside a paragraph, emphasize with <em>italic</em>, not bold.</li>
+        <li>One italic teal accent word per headline — never two.</li>
+        <li>Line height tightens as size grows: 1.6 body, 1.1 headings, ~1.04 display.</li>
+      </ul>
+    </section>
+
+    <!-- ————— 06 Surface ————— -->
+    <section class="section" id="surface">
+      <p class="section__eyebrow">06</p>
+      <h2 class="section__title">the <em>surface.</em></h2>
+      <p class="section__deck">Every page is paper. A barely-there speckle gives the surface tooth — felt more than seen. This page is wearing it at the official strength.</p>
+
+      <div class="surfaces">
+        <div class="surface-card">
+          <div class="surface-card__demo surface-card__demo--bone"></div>
+          <div class="surface-card__meta"><strong>Bone + speckle</strong> — dot opacities 0.013 / 0.008 on a 3px / 7px grid. If you can point at the texture from arm's length, it's too strong.</div>
+        </div>
+        <div class="surface-card">
+          <div class="surface-card__demo surface-card__demo--paper"></div>
+          <div class="surface-card__meta"><strong>Paper + speckle</strong> — same recipe on the warmer base. Generous margins, one idea per screen, whitespace is content.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ————— 07 Imagery ————— -->
+    <section class="section" id="imagery">
+      <p class="section__eyebrow">07</p>
+      <h2 class="section__title">the <em>photographs.</em></h2>
+      <p class="section__deck">Photography is the most beautiful thing on the page; the interface gets out of the way.</p>
+
+      <figure class="imagery-figure">
+        <img
+          src="https://res.cloudinary.com/dsbllwpbh/image/upload/f_auto,q_auto,w_1200/brand/panels/spring-market.jpg"
+          srcset="
+            https://res.cloudinary.com/dsbllwpbh/image/upload/f_auto,q_auto,w_640/brand/panels/spring-market.jpg 640w,
+            https://res.cloudinary.com/dsbllwpbh/image/upload/f_auto,q_auto,w_1200/brand/panels/spring-market.jpg 1200w"
+          sizes="(max-width: 880px) 100vw, 820px"
+          alt="Saturday farmers market in downtown Geneva — tulips and strawberries under white tents, a vendor handing a sample to a young family."
+          loading="lazy"
+        />
+      </figure>
+
+      <div class="imagery-rules">
+        <div class="imagery-rule"><strong>Subject</strong>Real people in real rooms; real paper on real desks; real Fox Valley light.</div>
+        <div class="imagery-rule"><strong>Treatment</strong>Minimal post-processing, slightly warm white balance, occasional film grain.</div>
+        <div class="imagery-rule"><strong>Composition</strong>Asymmetry welcome; breathing room mandatory.</div>
+        <div class="imagery-rule"><strong>Avoid</strong>Stock photography, AI-rendered humans, futuristic gradients, tech-aesthetic glow.</div>
+      </div>
+    </section>
+
+    <!-- ————— 08 Voice ————— -->
+    <section class="section" id="voice">
+      <p class="section__eyebrow">08</p>
+      <h2 class="section__title">the <em>voice.</em></h2>
+      <p class="section__deck">Plainspoken, confident, specific, warm. A trusted neighbor who happens to have a computer science degree — never a pitch deck.</p>
+
+      <div class="voice">
+        <div class="voice__card voice__card--yes">
+          <p class="voice__verdict">✓ on brand</p>
+          <p>"We rebuilt your site over the weekend. Here's the before and after."</p>
+          <p>"A real person in Batavia reads your note and writes back within one business day."</p>
+          <p>"Squarespace was fine in 2016. It's costing you money now."</p>
+        </div>
+        <div class="voice__card voice__card--no">
+          <p class="voice__verdict">✗ off brand</p>
+          <p>"We leverage cutting-edge AI to revolutionize your digital presence."</p>
+          <p>"Our world-class team of experts is standing by 24/7."</p>
+          <p>"Unlock synergistic ROI with our omnichannel growth solutions."</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ————— 09 Don'ts ————— -->
+    <section class="section" id="donts">
+      <p class="section__eyebrow">09</p>
+      <h2 class="section__title">leave it <em>alone.</em></h2>
+      <p class="section__deck">The imperfection is the signature. Most damage comes from trying to help.</p>
+
+      <div class="donts">
+        <figure class="dont">
+          <div class="dont__tile">
+            <svg width="72" height="72" viewBox="0 0 132 132" role="img" aria-label="Perfected geometric version — not allowed">
+              <circle cx="66" cy="66" r="52" fill="none" stroke="currentColor" stroke-width="2"/>
+              <path d="M 36 66 C 46 50, 56 50, 66 66 C 76 82, 86 82, 96 66" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
             </svg>
-            <span class="lockup__hai">h<span class="cyan">·AI</span></span>
           </div>
-          <figcaption>Monogram / Favicon</figcaption>
+          <figcaption><span class="x">✗</span>Don't perfect the circle or smooth the wave.</figcaption>
+        </figure>
+        <figure class="dont">
+          <div class="dont__tile">
+            <svg width="72" height="72" viewBox="0 0 132 132" role="img" aria-label="Two-color version — not allowed">
+              <path d="M 66 14 C 96 16, 121 38, 119 70 C 117 100, 92 119, 64 119 C 36 119, 13 96, 14 66 C 15 36, 38 14, 66 14 Z" fill="none" stroke="#E2733B" stroke-width="2" stroke-linecap="round"/>
+              <path d="M 38 70 C 46 56, 56 56, 64 70 C 72 84, 84 84, 94 68" fill="none" stroke="#3DBDC9" stroke-width="2.2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <figcaption><span class="x">✗</span>No orange, no bright cyan — one ink per use, from this palette.</figcaption>
+        </figure>
+        <figure class="dont">
+          <div class="dont__tile">
+            <svg width="72" height="72" viewBox="0 0 132 132" role="img" aria-label="Drop shadow version — not allowed" style="filter: drop-shadow(3px 4px 3px rgba(15,22,32,0.45))"><use href="#mark-display"/></svg>
+          </div>
+          <figcaption><span class="x">✗</span>No shadows, gradients, glows, or outlines.</figcaption>
+        </figure>
+        <figure class="dont">
+          <div class="dont__tile">
+            <p style="font-family: var(--serif); font-weight: 600; font-size: 1.15rem; margin: 0; text-transform: uppercase; letter-spacing: 0.04em;">Human AI!</p>
+          </div>
+          <figcaption><span class="x">✗</span>No all-caps headlines, no hype punctuation, no "Human Ai."</figcaption>
         </figure>
       </div>
     </section>
 
-    <!-- III. PALETTE -->
-    <section class="section section--palette" id="palette">
-      <div class="section__head">
-        <span class="section__roman">III</span>
-        <span class="section__label">Palette</span>
-      </div>
+    <!-- ————— 10 System pages ————— -->
+    <section class="section" id="pages">
+      <p class="section__eyebrow">10</p>
+      <h2 class="section__title">the <em>system.</em></h2>
+      <p class="section__deck">Where the rest of the kit lives.</p>
 
-      <h2 class="display display--sm">A two-temperature system. Warm humans. Cool intelligence. Grounded in Midwestern neutrals.</h2>
-
-      <div class="palette-grid">
-        <article class="swatch swatch--lg swatch--navy" style="--bg:#0F1B2D; --fg:#F6F1E7;">
-          <header>
-            <span class="swatch__role">Primary · Foreground</span>
-            <h3 class="swatch__name">Ink Navy</h3>
-          </header>
-          <footer>
-            <code class="swatch__hex" data-copy="#0F1B2D">#0F1B2D</code>
-            <span class="swatch__rgb">R15 G27 B45</span>
-          </footer>
-        </article>
-
-        <article class="swatch swatch--lg swatch--bone" style="--bg:#F6F1E7; --fg:#0F1B2D;">
-          <header>
-            <span class="swatch__role">Primary · Canvas</span>
-            <h3 class="swatch__name">Bone</h3>
-          </header>
-          <footer>
-            <code class="swatch__hex" data-copy="#F6F1E7">#F6F1E7</code>
-            <span class="swatch__rgb">R246 G241 B231</span>
-          </footer>
-        </article>
-
-        <article class="swatch swatch--md swatch--orange" style="--bg:#E2733B; --fg:#F6F1E7;">
-          <header>
-            <span class="swatch__role">Accent · Human</span>
-            <h3 class="swatch__name">Hearth Orange</h3>
-          </header>
-          <footer>
-            <code class="swatch__hex" data-copy="#E2733B">#E2733B</code>
-            <span class="swatch__rgb">R226 G115 B59</span>
-          </footer>
-        </article>
-
-        <article class="swatch swatch--md swatch--cyan" style="--bg:#3DBDC9; --fg:#0F1B2D;">
-          <header>
-            <span class="swatch__role">Accent · AI</span>
-            <h3 class="swatch__name">Signal Cyan</h3>
-          </header>
-          <footer>
-            <code class="swatch__hex" data-copy="#3DBDC9">#3DBDC9</code>
-            <span class="swatch__rgb">R61 G189 B201</span>
-          </footer>
-        </article>
-
-        <article class="swatch swatch--sm" style="--bg:#4A5663; --fg:#F6F1E7;">
-          <header>
-            <span class="swatch__role">Neutral</span>
-            <h3 class="swatch__name">Slate</h3>
-          </header>
-          <footer>
-            <code class="swatch__hex" data-copy="#4A5663">#4A5663</code>
-          </footer>
-        </article>
-
-        <article class="swatch swatch--sm" style="--bg:#C9C2B3; --fg:#0F1B2D;">
-          <header>
-            <span class="swatch__role">Neutral</span>
-            <h3 class="swatch__name">Limestone</h3>
-          </header>
-          <footer>
-            <code class="swatch__hex" data-copy="#C9C2B3">#C9C2B3</code>
-          </footer>
-        </article>
-
-        <article class="swatch swatch--sm" style="--bg:#FFFFFF; --fg:#0F1B2D; --border:#0F1B2D;">
-          <header>
-            <span class="swatch__role">Neutral</span>
-            <h3 class="swatch__name">Pure White</h3>
-          </header>
-          <footer>
-            <code class="swatch__hex" data-copy="#FFFFFF">#FFFFFF</code>
-          </footer>
-        </article>
-      </div>
-
-      <div class="rules">
-        <div class="rules__col">
-          <h4>Rule 01</h4>
-          <p>Hearth Orange and Signal Cyan rarely share equal weight. One leads, one accents.</p>
-        </div>
-        <div class="rules__col">
-          <h4>Rule 02</h4>
-          <p>Never pure black. Use Ink Navy. The warmth matters.</p>
-        </div>
-        <div class="rules__col">
-          <h4>Rule 03</h4>
-          <p>Bone is the default canvas. Pure White is for high-contrast moments only.</p>
-        </div>
-        <div class="rules__col">
-          <h4>Rule 04</h4>
-          <p>Maintain WCAG AA contrast — 4.5:1 minimum for body text.</p>
-        </div>
+      <div class="pages">
+        <a class="page-link" href="mark/">
+          <svg role="img" aria-hidden="true"><use href="#mark-standard"/></svg>
+          <span class="page-link__meta"><strong>The mark — identity page</strong><span>/brand/mark · sizes, lockups, mocks, downloadable SVGs</span></span>
+        </a>
+        <a class="page-link" href="v1/">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="3.25" y="3.25" width="7.5" height="7.5" rx="1.25" />
+            <rect x="13.25" y="3.25" width="7.5" height="7.5" rx="1.25" />
+            <rect x="3.25" y="13.25" width="7.5" height="7.5" rx="1.25" />
+            <rect x="13.25" y="13.25" width="7.5" height="7.5" rx="1.25" />
+          </svg>
+          <span class="page-link__meta"><strong>Brand guide v1 — archive</strong><span>/brand/v1 · the original orange-and-cyan system</span></span>
+        </a>
+        <a class="page-link" href="v2/">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20" />
+          </svg>
+          <span class="page-link__meta"><strong>Brand v2 — exploration archive</strong><span>/brand/v2 · the preview that became this system</span></span>
+        </a>
+        <a class="page-link" href="/">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M3 10.5 12 3l9 7.5" /><path d="M5.5 9.5V21h13V9.5" />
+          </svg>
+          <span class="page-link__meta"><strong>The live site</strong><span>humanaimarketing.org · the system at work</span></span>
+        </a>
       </div>
     </section>
 
-    <!-- IV. TYPE -->
-    <section class="section section--type" id="type">
-      <div class="section__head">
-        <span class="section__roman">IV</span>
-        <span class="section__label">Type</span>
-      </div>
+    <footer class="closing">
+      <p>— one system, drawn by hand.</p>
+    </footer>
 
-      <div class="type-grid">
-
-        <article class="specimen specimen--display">
-          <header class="specimen__head">
-            <span class="specimen__role">Display / Headlines</span>
-            <h3 class="specimen__name">Fraunces</h3>
-            <span class="specimen__meta">Humanist serif · Variable · Optical sizes 9–144</span>
-          </header>
-          <p class="specimen__sample">Marketing at the speed of AI.</p>
-          <div class="specimen__scale">
-            <span class="scale-row" style="font-size: 5rem;">Aa Bb Cc</span>
-            <span class="scale-row" style="font-size: 2.5rem;">Built in Batavia.</span>
-            <span class="scale-row" style="font-size: 1.5rem;">Quietly powerful since 2026.</span>
-          </div>
-          <footer class="specimen__foot">
-            <span>Tracking: -0.01em</span>
-            <span>Line-height: 1.05–1.15</span>
-            <span>Case: Sentence</span>
-          </footer>
-        </article>
-
-        <article class="specimen specimen--body">
-          <header class="specimen__head">
-            <span class="specimen__role">Body / UI</span>
-            <h3 class="specimen__name specimen__name--sans">Geist</h3>
-            <span class="specimen__meta">Geometric sans · Variable · 300–700</span>
-          </header>
-          <p class="specimen__sample specimen__sample--sans">A clean, neutral sans for body copy and interface text. Designed to disappear so the message can land.</p>
-          <div class="specimen__scale specimen__scale--sans">
-            <span class="scale-row" style="font-size: 2rem;">Aa Bb Cc</span>
-            <span class="scale-row" style="font-size: 1.125rem;">Set at 16–18px minimum on web.</span>
-            <span class="scale-row" style="font-size: 0.875rem;">Open tracking. Line-height 1.5–1.65.</span>
-          </div>
-          <footer class="specimen__foot">
-            <span>Min size: 16px web</span>
-            <span>Line-height: 1.5–1.65</span>
-            <span>Weights: 400, 500, 600</span>
-          </footer>
-        </article>
-
-        <article class="specimen specimen--mono">
-          <header class="specimen__head">
-            <span class="specimen__role">Mono / Technical</span>
-            <h3 class="specimen__name specimen__name--mono">Geist Mono</h3>
-            <span class="specimen__meta">Monospace · Variable · 300–600</span>
-          </header>
-          <p class="specimen__sample specimen__sample--mono">AI = engine. Human = brand.</p>
-          <div class="specimen__scale specimen__scale--mono">
-            <span class="scale-row" style="font-size: 1.75rem;">01 · AI · h·AI</span>
-            <span class="scale-row" style="font-size: 1rem;">{ deployment: "netlify" }</span>
-            <span class="scale-row" style="font-size: 0.8125rem;">curl https://humanai.marketing</span>
-          </div>
-          <footer class="specimen__foot">
-            <span>Reserved for: AI mark, code, technical UI</span>
-            <span>Default color: Signal Cyan</span>
-          </footer>
-        </article>
-
-      </div>
-    </section>
-
-    <!-- V. VOICE -->
-    <section class="section section--voice" id="voice">
-      <div class="section__head">
-        <span class="section__roman">V</span>
-        <span class="section__label">Voice</span>
-      </div>
-
-      <h2 class="display display--sm">Plainspoken. Confident. Local. Warm.</h2>
-
-      <div class="voice-attrs">
-        <div class="voice-col">
-          <h4>We are</h4>
-          <ul class="tag-list">
-            <li>Approachable</li>
-            <li>Fast</li>
-            <li>Capable</li>
-            <li>Local</li>
-            <li>Modern</li>
-            <li>Candid</li>
-          </ul>
-        </div>
-        <div class="voice-col voice-col--neg">
-          <h4>We are not</h4>
-          <ul class="tag-list tag-list--strike">
-            <li>Cold</li>
-            <li>Corporate</li>
-            <li>Hype-driven</li>
-            <li>Jargon-heavy</li>
-            <li>Gatekeeping</li>
-            <li>AI-evangelizing</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="examples">
-        <article class="example example--good">
-          <header>
-            <span class="example__badge example__badge--good">On-brand</span>
-            <span class="example__ctx">Case study</span>
-          </header>
-          <blockquote>
-            We rebuilt the Batavia Park District's events page in four days. Same content, half the load time, zero CMS logins for their staff.
-          </blockquote>
-        </article>
-
-        <article class="example example--bad">
-          <header>
-            <span class="example__badge example__badge--bad">Off-brand</span>
-            <span class="example__ctx">Same case study</span>
-          </header>
-          <blockquote>
-            Leveraging cutting-edge generative AI, we orchestrated a holistic digital transformation for a key municipal stakeholder.
-          </blockquote>
-        </article>
-
-        <article class="example example--good">
-          <header>
-            <span class="example__badge example__badge--good">On-brand</span>
-            <span class="example__ctx">Client email</span>
-          </header>
-          <blockquote>
-            Hi Tad — your new homepage is live. Two small things I'd like your eyes on before we send the newsletter Friday.
-          </blockquote>
-        </article>
-
-        <article class="example example--bad">
-          <header>
-            <span class="example__badge example__badge--bad">Off-brand</span>
-            <span class="example__ctx">Same email</span>
-          </header>
-          <blockquote>
-            Per our previous correspondence, please find attached the deliverables for your review at your earliest convenience.
-          </blockquote>
-        </article>
-      </div>
-
-      <div class="lex">
-        <h3 class="lex__title">Lexicon</h3>
-        <div class="lex__grid">
-          <div class="lex__col lex__col--use">
-            <h4>Use</h4>
-            <ul>
-              <li>build, ship, launch</li>
-              <li>local, neighborhood, hometown</li>
-              <li>AI tools, AI workflow</li>
-              <li>website, page, email</li>
-              <li>client, business owner</li>
-              <li>intern, manager, team</li>
-            </ul>
-          </div>
-          <div class="lex__col lex__col--avoid">
-            <h4>Avoid</h4>
-            <ul>
-              <li>leverage, synergize, ideate</li>
-              <li>hyperlocal-first ecosystem</li>
-              <li>AI-powered, AI-driven, AI-enabled</li>
-              <li>digital asset, touchpoint</li>
-              <li>stakeholder, end-user</li>
-              <li>resource, headcount</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- VI. MESSAGE -->
-    <section class="section section--message" id="message">
-      <div class="section__head section__head--dark">
-        <span class="section__roman">VI</span>
-        <span class="section__label">Message</span>
-      </div>
-
-      <div class="tagline">
-        <span class="tagline__pre">Primary tagline</span>
-        <p class="tagline__main">Human service. <span class="cyan-mono">AI</span> speed.</p>
-      </div>
-
-      <div class="tag-alts">
-        <h3>Variants by context</h3>
-        <ul>
-          <li>Marketing at the speed of AI. Service at the speed of a neighbor.</li>
-          <li>Local marketing. Light-speed delivery.</li>
-          <li>Your local agency. With superpowers.</li>
-          <li>Built by humans. Powered by AI. Made for the tri-cities.</li>
-        </ul>
-      </div>
-
-      <div class="pillars">
-        <article class="pillar">
-          <span class="pillar__num">01</span>
-          <h3 class="pillar__title">Speed You Can Feel</h3>
-          <p>Days, not quarters. Hours, not weeks. New page live before your next staff meeting.</p>
-        </article>
-        <article class="pillar">
-          <span class="pillar__num">02</span>
-          <h3 class="pillar__title">A Real Human, By Name</h3>
-          <p>You won't get a ticket number. You'll get a person — and you'll probably see them at Limestone Coffee.</p>
-        </article>
-        <article class="pillar">
-          <span class="pillar__num">03</span>
-          <h3 class="pillar__title">Built Local, Made Premium</h3>
-          <p>We invest in the tri-cities first. Our portals, our talent, our clients — all rooted in the Fox Valley.</p>
-        </article>
-      </div>
-
-      <div class="boiler">
-        <span class="boiler__label">Boilerplate</span>
-        <p>Human AI Marketing is a tri-cities marketing agency that pairs human managers with a full-stack AI production engine. Founded in 2026 in Batavia, Illinois, we build websites, brand systems, email campaigns, and creative for local businesses and regional employers — delivered in days instead of months. Our white-glove service means clients never touch a CMS, an AI prompt, or a dashboard. They tell us what they want. We ship it.</p>
-      </div>
-    </section>
-
-    <!-- VII. VALUES -->
-    <section class="section section--values" id="values">
-      <div class="section__head">
-        <span class="section__roman">VII</span>
-        <span class="section__label">Values</span>
-      </div>
-
-      <ol class="values-list">
-        <li class="value">
-          <span class="value__num">01</span>
-          <h3 class="value__title">Human First</h3>
-          <p>Every client has a named human contact. AI never answers a client email unsupervised.</p>
-        </li>
-        <li class="value">
-          <span class="value__num">02</span>
-          <h3 class="value__title">Hometown Loyalty</h3>
-          <p>We prioritize businesses, schools, and civic groups in our service area before chasing distant accounts.</p>
-        </li>
-        <li class="value">
-          <span class="value__num">03</span>
-          <h3 class="value__title">Light Speed</h3>
-          <p>If a deliverable takes a competitor six weeks, our target is six days. Speed is a feature.</p>
-        </li>
-        <li class="value">
-          <span class="value__num">04</span>
-          <h3 class="value__title">Honest Pricing</h3>
-          <p>We quote based on real AI compute plus real human hours. No agency tax. Margins come from efficiency, not opacity.</p>
-        </li>
-        <li class="value">
-          <span class="value__num">05</span>
-          <h3 class="value__title">Apprentice-Built</h3>
-          <p>Interns aren't a discount — they're the future of the industry. We train, mentor, and credit them publicly.</p>
-        </li>
-        <li class="value">
-          <span class="value__num">06</span>
-          <h3 class="value__title">Quietly Powerful Tech</h3>
-          <p>The client should never see the gears. The work should look effortless.</p>
-        </li>
-      </ol>
-    </section>
-
-    <!-- VIII. APPLICATION -->
-    <section class="section section--application" id="application">
-      <div class="section__head">
-        <span class="section__roman">VIII</span>
-        <span class="section__label">Application</span>
-      </div>
-
-      <h2 class="display display--sm">The brand in the wild.</h2>
-
-      <div class="apps">
-        <!-- Website mock -->
-        <figure class="app app--web">
-          <div class="app__chrome">
-            <span class="app__dot"></span>
-            <span class="app__dot"></span>
-            <span class="app__dot"></span>
-            <span class="app__url">humanai.marketing</span>
-          </div>
-          <div class="app__screen">
-            <div class="screen-nav">
-              <span class="screen-logo">human · <span class="cyan">AI</span> · marketing</span>
-              <span class="screen-links">Work · Services · Tri-Cities · Contact</span>
-            </div>
-            <div class="screen-hero">
-              <p class="screen-eyebrow">— A Fox Valley agency</p>
-              <h4 class="screen-title">Days, not quarters.</h4>
-              <p class="screen-sub">Websites, branding, and email for local businesses — built by humans, powered by AI.</p>
-              <div class="screen-cta">Start a project →</div>
-            </div>
-          </div>
-          <figcaption>Web · Homepage</figcaption>
-        </figure>
-
-        <!-- Business card -->
-        <figure class="app app--card">
-          <div class="card card--front">
-            <div class="card__top">
-              <span class="card__logo">h<span class="cyan">·AI</span></span>
-              <span class="card__role">Account Manager</span>
-            </div>
-            <div class="card__bot">
-              <p class="card__name">Maya Hernández</p>
-              <p class="card__meta">maya@humanai.marketing</p>
-              <p class="card__meta">630 · 555 · 0148 — Batavia, IL</p>
-            </div>
-          </div>
-          <div class="card card--back">
-            <span class="card__back-mark">human · <span class="cyan">AI</span> · marketing</span>
-            <span class="card__back-tag">Human service. AI speed.</span>
-          </div>
-          <figcaption>Print · Business Card</figcaption>
-        </figure>
-
-        <!-- Email -->
-        <figure class="app app--email">
-          <div class="email">
-            <div class="email__head">
-              <span class="email__from">Maya at human · <span class="cyan">AI</span> · marketing</span>
-              <span class="email__date">Thu · 9:42 AM</span>
-            </div>
-            <p class="email__subj">your new homepage is live</p>
-            <div class="email__body">
-              <p>Hi Tad —</p>
-              <p>Quick note: the new homepage went live around 9:30 this morning. Same URL, faster load times, same content reorganized for the new product pages.</p>
-              <p>Two small things I'd like your eyes on before we send the newsletter Friday — I'll call this afternoon.</p>
-              <p>— Maya</p>
-            </div>
-            <div class="email__sig">
-              <span class="sig-mark">human · <span class="cyan">AI</span> · marketing</span>
-              <span class="sig-meta">Batavia · Geneva · St. Charles</span>
-            </div>
-          </div>
-          <figcaption>Email · Plain-text leaning</figcaption>
-        </figure>
-
-        <!-- Persona Hub -->
-        <figure class="app app--hub">
-          <div class="hub">
-            <div class="hub__top">
-              <span class="hub__locale">BataviaIL.co</span>
-              <span class="hub__powered">Powered by <span class="cyan">human·AI·marketing</span></span>
-            </div>
-            <h4 class="hub__title">Downtown Social</h4>
-            <p class="hub__sub">Persona · Local guide for the Riverwalk crowd</p>
-            <ul class="hub__list">
-              <li><span class="hub__badge">★</span> Limestone Coffee · Wilson Street</li>
-              <li><span class="hub__badge">★</span> The Bull Bar · Batavia Riverwalk</li>
-              <li><span class="hub__badge">★</span> River's Edge Park · Houston St.</li>
-            </ul>
-          </div>
-          <figcaption>Web · Persona Hub Card</figcaption>
-        </figure>
-      </div>
-    </section>
-
-  </main>
-
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="footer__grid">
-      <div class="footer__col footer__col--mark">
-        <div class="wordmark wordmark--lg">
-          <span class="wordmark__h">human</span>
-          <span class="wordmark__dot">·</span>
-          <span class="wordmark__ai">AI</span>
-          <span class="wordmark__dot">·</span>
-          <span class="wordmark__m">marketing</span>
-        </div>
-        <p class="footer__tag">Human service. AI speed.</p>
-      </div>
-
-      <div class="footer__col">
-        <h5>Service Area</h5>
-        <ul>
-          <li>Batavia, IL</li>
-          <li>Geneva, IL</li>
-          <li>St. Charles, IL</li>
-          <li>Greater Fox Valley</li>
-        </ul>
-      </div>
-
-      <div class="footer__col">
-        <h5>Document</h5>
-        <ul>
-          <li>Brand Guide v1.0</li>
-          <li>Established MMXXVI</li>
-          <li>Reviewed quarterly</li>
-          <li>50/50 member-managed LLC</li>
-        </ul>
-      </div>
-
-      <div class="footer__col">
-        <h5>Governance</h5>
-        <p class="footer__governance">A living document. Edits, contributions, and questions filed to the <span class="mono">/brand</span> directory of the project repo. Open to intern submissions — voice, tone, photography — with manager sign-off.</p>
-      </div>
-    </div>
-
-    <div class="footer__rule"></div>
-
-    <div class="footer__base">
-      <span>© <span id="year">2026</span> Human AI Marketing, LLC</span>
-      <span class="footer__centerline">human · <span class="cyan">AI</span> · marketing — built in Batavia, Illinois</span>
-      <span><span class="pulse"></span> Brand healthy</span>
-    </div>
-  </footer>
-
-  <!-- Copy-to-clipboard toast -->
-  <div class="toast" id="toast" role="status" aria-live="polite">Copied</div>
-
-  <script src="script.js"></script>
+  </div>
 </body>
 </html>
