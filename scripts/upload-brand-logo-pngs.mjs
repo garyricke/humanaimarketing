@@ -33,6 +33,8 @@ const FILES = [
   "ham-app-icon",
   "ham-lockup-horizontal",
   "ham-lockup-stacked",
+  "ham-logo-square",
+  "ham-logo-seal",
 ];
 const FOLDER = "brand/logo";
 
