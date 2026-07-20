@@ -351,6 +351,9 @@
     }
     .file:hover { background: #E7DCC6; }
     .file svg { width: 34px; height: 34px; flex: none; color: var(--ink); }
+    .file img { max-height: 40px; max-width: 150px; width: auto; height: auto; flex: none; }
+    .file .thumb-dark { background: var(--sumi); border-radius: 8px; padding: 6px 8px; display: grid; place-items: center; flex: none; }
+    .file .thumb-dark img { max-height: 28px; }
     .file--dark svg { color: var(--bone); background: var(--sumi); border-radius: 8px; padding: 5px; width: 24px; height: 24px; }
     .file__meta { font-size: 0.85rem; line-height: 1.45; }
     .file__meta strong { display: block; font-weight: 500; }
@@ -705,23 +708,23 @@
 
       <div class="files">
         <a class="file" href="https://res.cloudinary.com/dsbllwpbh/image/upload/fl_attachment:Human%20AI%20Marketing%20Logo/brand/logo/ham-lockup-horizontal.png" download>
-          <svg role="img" aria-hidden="true"><use href="#mark-standard"/></svg>
+          <img src="https://res.cloudinary.com/dsbllwpbh/image/upload/f_auto,q_auto,h_80,c_limit/brand/logo/ham-lockup-horizontal.png" alt="Preview: the mark beside the name" loading="lazy" />
           <span class="file__meta"><strong>Human AI Marketing Logo.png</strong><span>The full logo — mark + name, horizontal · 2400×640 · transparent</span></span>
         </a>
         <a class="file" href="https://res.cloudinary.com/dsbllwpbh/image/upload/fl_attachment:Human%20AI%20Marketing%20Logo%20Stacked/brand/logo/ham-lockup-stacked.png" download>
-          <svg role="img" aria-hidden="true"><use href="#mark-display"/></svg>
+          <img src="https://res.cloudinary.com/dsbllwpbh/image/upload/f_auto,q_auto,h_80,c_limit/brand/logo/ham-lockup-stacked.png" alt="Preview: the mark above the name" loading="lazy" />
           <span class="file__meta"><strong>Human AI Marketing Logo Stacked.png</strong><span>The full logo — mark above the name · 1800×950 · transparent</span></span>
         </a>
         <a class="file" href="https://res.cloudinary.com/dsbllwpbh/image/upload/fl_attachment:Human%20AI%20Marketing%20Mark/brand/logo/ham-mark.png" download>
-          <svg role="img" aria-hidden="true"><use href="#mark-display"/></svg>
+          <img src="https://res.cloudinary.com/dsbllwpbh/image/upload/f_auto,q_auto,h_80,c_limit/brand/logo/ham-mark.png" alt="Preview: the mark alone" loading="lazy" />
           <span class="file__meta"><strong>Human AI Marketing Mark.png</strong><span>Mark only, no name · 1024×1024 · transparent</span></span>
         </a>
-        <a class="file file--dark" href="https://res.cloudinary.com/dsbllwpbh/image/upload/fl_attachment:Human%20AI%20Marketing%20Mark%20Reverse/brand/logo/ham-mark-reverse.png" download>
-          <svg role="img" aria-hidden="true"><use href="#mark-display"/></svg>
+        <a class="file" href="https://res.cloudinary.com/dsbllwpbh/image/upload/fl_attachment:Human%20AI%20Marketing%20Mark%20Reverse/brand/logo/ham-mark-reverse.png" download>
+          <span class="thumb-dark"><img src="https://res.cloudinary.com/dsbllwpbh/image/upload/f_auto,q_auto,h_80,c_limit/brand/logo/ham-mark-reverse.png" alt="Preview: bone mark on a dark tile" loading="lazy" /></span>
           <span class="file__meta"><strong>Human AI Marketing Mark Reverse.png</strong><span>Mark only, bone strokes for dark surfaces · 1024×1024</span></span>
         </a>
         <a class="file" href="https://res.cloudinary.com/dsbllwpbh/image/upload/fl_attachment:Human%20AI%20Marketing%20App%20Icon/brand/logo/ham-app-icon.png" download>
-          <svg role="img" aria-hidden="true"><use href="#mark-appicon"/></svg>
+          <img src="https://res.cloudinary.com/dsbllwpbh/image/upload/f_auto,q_auto,h_80,c_limit/brand/logo/ham-app-icon.png" alt="Preview: app icon tile" loading="lazy" style="border-radius: 9px;" />
           <span class="file__meta"><strong>Human AI Marketing App Icon.png</strong><span>Sumi tile · 1024×1024</span></span>
         </a>
         <a class="file" href="ham-mark.svg" download="Human AI Marketing Mark.svg">
